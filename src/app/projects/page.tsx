@@ -82,7 +82,7 @@ export default function ProjectsPage() {
             A showcase of my work, personal projects, and contributions
           </p>
         </div>
-        
+
         {/* Featured Projects */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold mb-8 text-center">Featured Projects</h2>
@@ -95,24 +95,24 @@ export default function ProjectsPage() {
                     Project Image
                   </div>
                   {/* Uncomment when you have images */}
-                  {/* <Image 
-                    src={project.image} 
-                    alt={project.title} 
-                    fill 
-                    style={{ objectFit: 'cover' }} 
+                  {/* <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
                   /> */}
                 </div>
-                
+
                 <div className="p-6 flex-grow">
                   <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                   <p className="text-dark-lighter dark:text-light-darker mb-4">
                     {project.description}
                   </p>
-                  
+
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech, index) => (
-                      <span 
-                        key={index} 
+                      <span
+                        key={index}
                         className="px-2 py-1 bg-light-darker dark:bg-dark-lighter rounded-full text-xs"
                       >
                         {tech}
@@ -120,19 +120,19 @@ export default function ProjectsPage() {
                     ))}
                   </div>
                 </div>
-                
+
                 <div className="p-6 pt-0 flex justify-between">
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
+                  <a
+                    href={project.github}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center text-accent hover:text-accent-dark transition-colors"
                   >
                     <FaGithub className="mr-1" /> Code
                   </a>
-                  <a 
-                    href={project.demo} 
-                    target="_blank" 
+                  <a
+                    href={project.demo}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center text-accent hover:text-accent-dark transition-colors"
                   >
@@ -143,7 +143,7 @@ export default function ProjectsPage() {
             ))}
           </div>
         </div>
-        
+
         {/* Other Projects */}
         <div>
           <h2 className="text-3xl font-bold mb-8 text-center">Other Projects</h2>
@@ -154,15 +154,15 @@ export default function ProjectsPage() {
                   <FaCode className="text-accent text-2xl mr-3" />
                   <h3 className="text-xl font-bold">{project.title}</h3>
                 </div>
-                
+
                 <p className="text-dark-lighter dark:text-light-darker mb-4 flex-grow">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.slice(0, 3).map((tech, index) => (
-                    <span 
-                      key={index} 
+                    <span
+                      key={index}
                       className="px-2 py-1 bg-light-darker dark:bg-dark-lighter rounded-full text-xs"
                     >
                       {tech}
@@ -174,19 +174,19 @@ export default function ProjectsPage() {
                     </span>
                   )}
                 </div>
-                
+
                 <div className="flex justify-between">
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
+                  <a
+                    href={project.github}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center text-accent hover:text-accent-dark transition-colors"
                   >
                     <FaGithub className="mr-1" /> Code
                   </a>
-                  <a 
-                    href={project.demo} 
-                    target="_blank" 
+                  <a
+                    href={project.demo}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center text-accent hover:text-accent-dark transition-colors"
                   >
@@ -197,11 +197,11 @@ export default function ProjectsPage() {
             ))}
           </div>
         </div>
-        
+
         <div className="text-center mt-16">
           <h2 className="text-2xl font-bold mb-4">Interested in collaborating?</h2>
           <p className="text-lg max-w-2xl mx-auto mb-6 text-dark-lighter dark:text-light-darker">
-            I'm always looking for new projects and challenges. Let's build something amazing together!
+            I&apos;m always looking for new projects and challenges. Let&apos;s build something amazing together!
           </p>
           <a href="/contact" className="btn btn-accent">
             Get in Touch

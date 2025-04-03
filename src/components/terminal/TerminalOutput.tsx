@@ -3,7 +3,7 @@
 import React from 'react';
 
 interface TerminalOutputProps {
-  output: string | JSX.Element;
+  output: string | React.ReactNode;
 }
 
 const TerminalOutput: React.FC<TerminalOutputProps> = ({ output }) => {

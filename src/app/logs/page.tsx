@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { motion } from 'framer-motion';
-import { FaFile, FaDownload, FaTrash, FaSpinner, FaLock, FaUnlock } from 'react-icons/fa';
+import { FaFile, FaDownload, FaSpinner, FaLock, FaUnlock } from 'react-icons/fa';
 
 interface LogFile {
   name: string;
@@ -30,7 +30,7 @@ export default function LogsPage() {
   const fetchLogs = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('/api/log?action=list');
+      const response = await fetch('/api/logs?action=list');
       const data = await response.json();
       setLogs(data.files || []);
     } catch (error) {
@@ -44,7 +44,7 @@ export default function LogsPage() {
     setSelectedLog(filename);
     setIsLoading(true);
     try {
-      const response = await fetch(`/logs/${filename}`);
+      const response = await fetch(`/api/logs?file=${filename}`);
       const text = await response.text();
       setLogContent(text);
     } catch (error) {

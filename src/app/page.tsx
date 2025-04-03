@@ -44,7 +44,7 @@ export default function Home() {
       <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-b from-gray-900 via-black to-gray-900 z-50">
         <div className="text-center p-8 max-w-md">
           <h1 className="text-4xl font-bold mb-6 text-white">
-            <span className="text-blue-500">Anil Sahith</span>'s Portfolio
+            <span className="text-blue-500">Anil Sahith</span>&apos;s Portfolio
           </h1>
           <div className="w-24 h-24 border-t-4 border-blue-500 border-solid rounded-full animate-spin mx-auto mb-8"></div>
           <p className="text-gray-300 text-lg mb-6">Loading terminal environment...</p>
@@ -69,7 +69,7 @@ export default function Home() {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-          Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">Anil's Portfolio</span>
+          Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">Anil&apos;s Portfolio</span>
         </h1>
 
         <motion.p

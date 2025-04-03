@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { FaDownload, FaEye } from 'react-icons/fa';
 import { motion } from 'framer-motion';

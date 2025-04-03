@@ -1,8 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
 import MainLayout from '@/components/layout/MainLayout';
 import { FaGraduationCap, FaBriefcase, FaCode, FaLaptopCode, FaEye } from 'react-icons/fa';
 import { motion } from 'framer-motion';
@@ -22,9 +20,9 @@ export default function AboutPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="order-2 md:order-1">
-            <h2 className="text-3xl font-bold mb-6">Hello, I'm Anil</h2>
+            <h2 className="text-3xl font-bold mb-6">Hello, I&apos;m Anil</h2>
             <p className="mb-4">
-              I'm a passionate software engineer with expertise in full-stack development,
+              I&apos;m a passionate software engineer with expertise in full-stack development,
               artificial intelligence, machine learning, and data science. With a strong
               foundation in computer science and a keen eye for detail, I strive to create
               elegant solutions to complex problems.
@@ -35,7 +33,7 @@ export default function AboutPage() {
               Science and subsequently specialize in AI and machine learning.
             </p>
             <p className="mb-6">
-              When I'm not coding, you can find me exploring new technologies, contributing to
+              When I&apos;m not coding, you can find me exploring new technologies, contributing to
               open-source projects, or sharing my knowledge through technical writing and mentoring.
             </p>
 

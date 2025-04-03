@@ -10,16 +10,15 @@ import ThemeToggle from './ThemeToggle';
 
 // Import skill icons
 import {
-  FaPython, FaJs, FaJava, FaDatabase,
+  FaPython, FaJs, FaDatabase,
   FaReact, FaHtml5, FaCss3Alt,
-  FaNodeJs, FaDocker, FaAws, FaGoogle,
-  FaBrain, FaChartBar, FaCode, FaServer, FaCloud, FaTools
+  FaNodeJs, FaDocker, FaAws, FaGoogle
 } from 'react-icons/fa';
 import {
   SiTypescript, SiNextdotjs, SiTailwindcss,
   SiDjango, SiFlask, SiExpress,
   SiTensorflow, SiPytorch, SiScikitlearn, SiHuggingface,
-  SiPandas, SiNumpy, SiMongodb, SiPostgresql,
+  SiMongodb, SiPostgresql,
   SiKubernetes, SiRedux, SiGraphql, SiRedis, SiMysql
 } from 'react-icons/si';
 
@@ -27,14 +26,14 @@ type OSTheme = 'windows' | 'linux' | 'mac';
 
 interface Command {
   input: string;
-  output: string | JSX.Element;
+  output: string | React.ReactNode;
 }
 
 const Terminal: React.FC = () => {
   // Initialize with default welcome message to avoid empty initial render
   const welcomeMessage = (
     <>
-      <p className="text-green-400">Welcome to Anil's Terminal Portfolio!</p>
+      <p className="text-green-400">Welcome to Anil&apos;s Terminal Portfolio!</p>
       <p className="mt-2">Type <span className="text-yellow-400">help</span> to see available commands.</p>
       <p className="mt-2">Use the OS icons in the top-right corner to change the terminal theme.</p>
     </>
@@ -45,7 +44,7 @@ const Terminal: React.FC = () => {
   const [history, setHistory] = useState<Command[]>([{ input: '', output: welcomeMessage }]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [osTheme, setOsTheme] = useState<OSTheme>('linux');
-  const [isLoaded, setIsLoaded] = useState(true); // Start with loaded=true for immediate rendering
+  const [isLoaded] = useState(true); // Start with loaded=true for immediate rendering
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
@@ -102,7 +101,7 @@ const Terminal: React.FC = () => {
   // Process commands
   const processCommand = (cmd: string) => {
     const command = cmd.trim().toLowerCase();
-    let output: string | JSX.Element;
+    let output: string | React.ReactNode;
 
     switch (command) {
       case 'help':
@@ -137,7 +136,7 @@ const Terminal: React.FC = () => {
           <div>
             <p className="font-bold text-accent-light">About Me:</p>
             <p className="mt-1">
-              I'm Anil, a Software Engineer, AI/ML Engineer, and Data Scientist with a passion for building innovative solutions.
+              I&apos;m Anil, a Software Engineer, AI/ML Engineer, and Data Scientist with a passion for building innovative solutions.
               I specialize in full-stack development, machine learning, and data analysis.
             </p>
             <p className="mt-1">
@@ -511,7 +510,7 @@ const Terminal: React.FC = () => {
         transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
         whileHover={{ scale: 1.01 }}
       >
-      <TerminalHeader title={themeStyles.title} osTheme={osTheme} bgColor={themeStyles.headerBg} textColor={themeStyles.headerText} />
+      <TerminalHeader osTheme={osTheme} />
 
       {isLoaded ? (
         <div

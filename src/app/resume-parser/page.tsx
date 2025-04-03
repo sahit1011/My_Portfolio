@@ -9,7 +9,12 @@ import { analyzeJobDescription } from '@/utils/geminiApi';
 export default function ResumeParserPage() {
   const [jobDescription, setJobDescription] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [results, setResults] = useState<any>(null);
+  const [results, setResults] = useState<{
+    overallMatch: number;
+    skillsMatch: Array<{ skill: string; match: number; required: boolean }>;
+    missingSkills: string[];
+    candidateSummary: string;
+  } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -46,7 +51,7 @@ export default function ResumeParserPage() {
         >
           <h1 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">AI Resume Match Analyzer</h1>
           <p className="text-lg mb-8 text-gray-700 dark:text-gray-300">
-            Recruiters: Paste your job description below to see how well Anil Sahith's profile matches your requirements.
+            Recruiters: Paste your job description below to see how well Anil Sahith&apos;s profile matches your requirements.
             Our AI will analyze the job description and provide insights on skill match and overall fit.
           </p>
 
@@ -136,7 +141,7 @@ export default function ResumeParserPage() {
               <div className="mb-8">
                 <h3 className="text-xl font-semibold mb-4">Overall Candidate Compatibility</h3>
                 <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg border border-gray-200 dark:border-gray-700">
-                  <p className="text-gray-700 dark:text-gray-300 italic">"{results.candidateSummary}"</p>
+                  <p className="text-gray-700 dark:text-gray-300 italic">&quot;{results.candidateSummary}&quot;</p>
                 </div>
               </div>
 
@@ -144,8 +149,8 @@ export default function ResumeParserPage() {
                 <h3 className="text-xl font-semibold mb-4">Skills Match</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {results.skillsMatch
-                    .filter((skill: any) => skill.match >= 70)
-                    .map((skill: any, index: number) => (
+                    .filter((skill) => skill.match >= 70)
+                    .map((skill, index: number) => (
                       <div key={index} className="flex items-center">
                         <div className="w-2 h-2 rounded-full bg-green-500 mr-2"></div>
                         <span className="font-medium">
@@ -171,8 +176,8 @@ export default function ResumeParserPage() {
                 <h3 className="text-xl font-semibold mb-4">Key Strengths for This Role</h3>
                 <ul className="list-disc pl-5 space-y-2">
                   {results.skillsMatch
-                    .filter((skill: any) => skill.match >= 80)
-                    .map((skill: any, index: number) => (
+                    .filter((skill) => skill.match >= 80)
+                    .map((skill, index: number) => (
                       <li key={index} className="text-green-600 dark:text-green-400">
                         Strong proficiency in <span className="font-semibold">{skill.skill}</span>
                         {skill.required && ' (required skill)'}

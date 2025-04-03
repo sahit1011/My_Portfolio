@@ -2,7 +2,7 @@ import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import {
   FaCode, FaServer, FaDatabase, FaCloud, FaTools, FaBrain,
-  FaPython, FaJs, FaJava,
+  FaPython, FaJs,
   FaReact, FaHtml5, FaCss3Alt,
   FaNodeJs, FaDocker, FaAws, FaGoogle
 } from 'react-icons/fa';
@@ -10,7 +10,7 @@ import {
   SiTypescript, SiNextdotjs, SiTailwindcss,
   SiDjango, SiFlask, SiExpress,
   SiTensorflow, SiPytorch, SiScikitlearn, SiHuggingface,
-  SiPandas, SiNumpy, SiMongodb, SiPostgresql,
+  SiPandas, SiMongodb, SiPostgresql,
   SiKubernetes, SiRedux, SiGraphql, SiRedis, SiMysql
 } from 'react-icons/si';
 
@@ -153,7 +153,7 @@ export default function SkillsPage() {
         <div className="mt-16 text-center">
           <h2 className="text-2xl font-bold mb-4">Continuous Learning</h2>
           <p className="text-lg max-w-2xl mx-auto mb-6 text-dark-lighter dark:text-light-darker">
-            I'm constantly expanding my skill set and staying up-to-date with the latest technologies.
+            I&apos;m constantly expanding my skill set and staying up-to-date with the latest technologies.
             Currently learning: Rust, WebAssembly, and advanced MLOps.
           </p>
 

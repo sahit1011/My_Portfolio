@@ -6,7 +6,7 @@ import { FaCopy, FaCheck } from 'react-icons/fa';
 
 interface CopyTooltipProps {
   text: string;
-  label: string;
+  label: React.ReactNode;
   id: string; // Unique identifier for this tooltip
 }
 

@@ -5,17 +5,11 @@ import React from 'react';
 type OSTheme = 'windows' | 'linux' | 'mac';
 
 interface TerminalHeaderProps {
-  title: string;
   osTheme: OSTheme;
-  bgColor?: string;
-  textColor?: string;
 }
 
 const TerminalHeader: React.FC<TerminalHeaderProps> = ({
-  title,
-  osTheme,
-  bgColor = 'bg-gray-800',
-  textColor = 'text-gray-300'
+  osTheme
 }) => {
   // Windows CMD header
   if (osTheme === 'windows') {
