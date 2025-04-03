@@ -1,0 +1,536 @@
+'use client';
+
+import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
+import TerminalHeader from './TerminalHeader';
+import TerminalPrompt from './TerminalPrompt';
+import TerminalOutput from './TerminalOutput';
+import ThemeToggle from './ThemeToggle';
+
+// Import skill icons
+import {
+  FaPython, FaJs, FaJava, FaDatabase,
+  FaReact, FaHtml5, FaCss3Alt,
+  FaNodeJs, FaDocker, FaAws, FaGoogle,
+  FaBrain, FaChartBar, FaCode, FaServer, FaCloud, FaTools
+} from 'react-icons/fa';
+import {
+  SiTypescript, SiNextdotjs, SiTailwindcss,
+  SiDjango, SiFlask, SiExpress,
+  SiTensorflow, SiPytorch, SiScikitlearn, SiHuggingface,
+  SiPandas, SiNumpy, SiMongodb, SiPostgresql,
+  SiKubernetes, SiRedux, SiGraphql, SiRedis, SiMysql
+} from 'react-icons/si';
+
+type OSTheme = 'windows' | 'linux' | 'mac';
+
+interface Command {
+  input: string;
+  output: string | JSX.Element;
+}
+
+const Terminal: React.FC = () => {
+  const [input, setInput] = useState('');
+  const [history, setHistory] = useState<Command[]>([]);
+  const [historyIndex, setHistoryIndex] = useState(-1);
+  const [osTheme, setOsTheme] = useState<OSTheme>('linux');
+  const [isLoaded, setIsLoaded] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const terminalRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+
+  // Initial welcome message and loading state
+  useEffect(() => {
+    // Add a small delay to ensure the component is fully mounted
+    const timer = setTimeout(() => {
+      const welcomeMessage = (
+        <>
+          <p className="text-green-400">Welcome to Anil's Terminal Portfolio!</p>
+          <p className="mt-2">Type <span className="text-yellow-400">help</span> to see available commands.</p>
+          <p className="mt-2">Use the OS icons in the top-right corner to change the terminal theme.</p>
+        </>
+      );
+
+      setHistory([{ input: '', output: welcomeMessage }]);
+      setIsLoaded(true); // Mark the terminal as loaded
+    }, 100); // 100ms delay
+
+    return () => clearTimeout(timer); // Cleanup the timer
+  }, []);
+
+  // Auto-scroll to bottom when history changes
+  useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    }
+  }, [history]);
+
+  // Focus input on terminal click
+  const focusInput = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  // Process commands
+  const processCommand = (cmd: string) => {
+    const command = cmd.trim().toLowerCase();
+    let output: string | JSX.Element;
+
+    switch (command) {
+      case 'help':
+        output = (
+          <div>
+            <p className="font-bold text-accent-light text-lg">Available commands:</p>
+
+            <p className="font-semibold text-blue-400 mt-3 mb-1">Visit my Portfolio:</p>
+            <ul className="ml-4 mb-3">
+              <li><span className="text-yellow-400">portfolio</span> - Go to the main portfolio</li>
+              <li><span className="text-yellow-400">resume</span> - View my resume</li>
+              <li><span className="text-yellow-400">whoami</span> - Display my full name</li>
+            </ul>
+
+            <p className="font-semibold text-blue-400 mb-1">Other Commands:</p>
+            <ul className="ml-4">
+              <li><span className="text-yellow-400">help</span> - Show available commands</li>
+              <li><span className="text-yellow-400">about</span> - Learn about me</li>
+              <li><span className="text-yellow-400">skills</span> - View my technical skills</li>
+              <li><span className="text-yellow-400">projects</span> - See my projects</li>
+              <li><span className="text-yellow-400">contact</span> - Get my contact information</li>
+              <li><span className="text-yellow-400">clear</span> - Clear the terminal</li>
+              <li><span className="text-yellow-400">github</span> - Visit my GitHub profile</li>
+              <li><span className="text-yellow-400">linkedin</span> - Visit my LinkedIn profile</li>
+            </ul>
+          </div>
+        );
+        break;
+
+      case 'about':
+        output = (
+          <div>
+            <p className="font-bold text-accent-light">About Me:</p>
+            <p className="mt-1">
+              I'm Anil, a Software Engineer, AI/ML Engineer, and Data Scientist with a passion for building innovative solutions.
+              I specialize in full-stack development, machine learning, and data analysis.
+            </p>
+            <p className="mt-1">
+              Type <span className="text-yellow-400">portfolio</span> to see my full portfolio.
+            </p>
+          </div>
+        );
+        break;
+
+      case 'skills':
+        output = (
+          <div className="space-y-4">
+            {/* Frontend Development */}
+            <div>
+              <p className="font-semibold text-purple-400 mb-1">Frontend Development:</p>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
+                <div className="flex items-center gap-2">
+                  <FaReact className="text-blue-400" size={18} /> React.js
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiNextdotjs className="text-gray-300" size={18} /> Next.js
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaJs className="text-yellow-400" size={18} /> JavaScript
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiTypescript className="text-blue-500" size={18} /> TypeScript
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaHtml5 className="text-orange-500" size={18} /> HTML
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaCss3Alt className="text-blue-500" size={18} /> CSS
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiTailwindcss className="text-cyan-400" size={18} /> Tailwind CSS
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiRedux className="text-purple-600" size={18} /> Redux
+                </div>
+              </div>
+            </div>
+
+            {/* Backend Development */}
+            <div>
+              <p className="font-semibold text-yellow-500 mb-1">Backend Development:</p>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
+                <div className="flex items-center gap-2">
+                  <FaNodeJs className="text-green-500" size={18} /> Node.js
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiExpress className="text-gray-400" size={18} /> Express
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaPython className="text-blue-400" size={18} /> Python
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiDjango className="text-green-700" size={18} /> Django
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiFlask className="text-gray-300" size={18} /> Flask
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiGraphql className="text-pink-600" size={18} /> GraphQL
+                </div>
+              </div>
+            </div>
+
+            {/* Database & Data */}
+            <div>
+              <p className="font-semibold text-blue-400 mb-1">Database & Data:</p>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
+                <div className="flex items-center gap-2">
+                  <SiMongodb className="text-green-500" size={18} /> MongoDB
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiPostgresql className="text-blue-500" size={18} /> PostgreSQL
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiMysql className="text-blue-700" size={18} /> MySQL
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiRedis className="text-red-500" size={18} /> Redis
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaDatabase className="text-green-400" size={18} /> SQL
+                </div>
+              </div>
+            </div>
+
+            {/* AI & Machine Learning */}
+            <div>
+              <p className="font-semibold text-pink-400 mb-1">AI & Machine Learning:</p>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
+                <div className="flex items-center gap-2">
+                  <SiTensorflow className="text-orange-500" size={18} /> TensorFlow
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiPytorch className="text-red-500" size={18} /> PyTorch
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiScikitlearn className="text-orange-400" size={18} /> scikit-learn
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiHuggingface className="text-yellow-300" size={18} /> Hugging Face
+                </div>
+              </div>
+            </div>
+
+            {/* DevOps & Cloud */}
+            <div>
+              <p className="font-semibold text-blue-400 mb-1">DevOps & Cloud:</p>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
+                <div className="flex items-center gap-2">
+                  <FaDocker className="text-blue-400" size={18} /> Docker
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiKubernetes className="text-blue-500" size={18} /> Kubernetes
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaAws className="text-orange-400" size={18} /> AWS
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaGoogle className="text-blue-400" size={18} /> GCP
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+        break;
+
+      case 'projects':
+        output = (
+          <div>
+            <p className="font-bold text-accent-light">Featured Projects:</p>
+            <ul className="ml-4 mt-1">
+              <li><span className="text-yellow-400">Project 1:</span> AI-powered recommendation system</li>
+              <li><span className="text-yellow-400">Project 2:</span> Full-stack e-commerce platform</li>
+              <li><span className="text-yellow-400">Project 3:</span> Data visualization dashboard</li>
+            </ul>
+            <p className="mt-1">
+              Type <span className="text-yellow-400">portfolio</span> to see detailed project information.
+            </p>
+          </div>
+        );
+        break;
+
+      case 'contact':
+        output = (
+          <div>
+            <p className="font-bold text-accent-light">Contact Information:</p>
+            <p className="mt-1"><span className="text-yellow-400">Email:</span> your.email@example.com</p>
+            <p><span className="text-yellow-400">LinkedIn:</span> linkedin.com/in/yourusername</p>
+            <p><span className="text-yellow-400">GitHub:</span> github.com/yourusername</p>
+            <p><span className="text-yellow-400">Twitter:</span> twitter.com/yourusername</p>
+          </div>
+        );
+        break;
+
+      case 'clear':
+        setHistory([]);
+        return;
+
+      case 'portfolio':
+        output = <p>Redirecting to portfolio...</p>;
+        setTimeout(() => {
+          router.push('/about');
+        }, 1000);
+        break;
+
+      case 'resume':
+        output = (
+          <div className="font-mono text-sm">
+            <div className="mb-4">
+              <h2 className="text-xl font-bold text-blue-400">VALLEPU ANIL SAHITH</h2>
+              <p>Software Engineer | AI/ML Engineer | Data Scientist</p>
+              <p>your.email@example.com | +1 (123) 456-7890 | San Francisco, CA</p>
+              <p>github.com/yourusername | linkedin.com/in/yourusername</p>
+            </div>
+
+            <div className="mb-4">
+              <h3 className="text-lg font-bold text-yellow-400">SUMMARY</h3>
+              <p className="border-b border-gray-600 mb-2"></p>
+              <p>Experienced software engineer with expertise in full-stack development, AI/ML, and data science.
+              Passionate about building scalable applications and implementing machine learning solutions to solve complex problems.</p>
+            </div>
+
+            <div className="mb-4">
+              <h3 className="text-lg font-bold text-yellow-400">EDUCATION</h3>
+              <p className="border-b border-gray-600 mb-2"></p>
+              <p className="font-bold">Master of Science in Computer Science</p>
+              <p>Stanford University | 2018 - 2020</p>
+              <p className="mb-2">GPA: 3.9/4.0 | Specialization in Artificial Intelligence</p>
+
+              <p className="font-bold">Bachelor of Technology in Computer Science</p>
+              <p>Indian Institute of Technology | 2014 - 2018</p>
+              <p>GPA: 3.8/4.0 | Minor in Mathematics</p>
+            </div>
+
+            <div className="mb-4">
+              <h3 className="text-lg font-bold text-yellow-400">EXPERIENCE</h3>
+              <p className="border-b border-gray-600 mb-2"></p>
+
+              <p className="font-bold">Senior Software Engineer | Tech Innovations Inc.</p>
+              <p className="italic">Jan 2021 - Present</p>
+              <ul className="list-disc ml-4 mb-2">
+                <li>Developed and maintained microservices architecture using Node.js and Python</li>
+                <li>Implemented machine learning models for product recommendation system</li>
+                <li>Led a team of 5 engineers for the development of a new data pipeline</li>
+                <li>Reduced API response time by 40% through optimization techniques</li>
+              </ul>
+
+              <p className="font-bold">Software Engineer | DataTech Solutions</p>
+              <p className="italic">Jun 2020 - Dec 2020</p>
+              <ul className="list-disc ml-4 mb-2">
+                <li>Built RESTful APIs using Express.js and MongoDB</li>
+                <li>Developed front-end components with React and Redux</li>
+                <li>Implemented CI/CD pipelines using GitHub Actions</li>
+              </ul>
+            </div>
+
+            <div className="mb-4">
+              <h3 className="text-lg font-bold text-yellow-400">PROJECTS</h3>
+              <p className="border-b border-gray-600 mb-2"></p>
+
+              <p className="font-bold">AI-Powered Recommendation System</p>
+              <ul className="list-disc ml-4 mb-2">
+                <li>Developed a recommendation engine using collaborative filtering and deep learning</li>
+                <li>Achieved 25% improvement in recommendation accuracy</li>
+                <li>Technologies: Python, TensorFlow, Flask, MongoDB</li>
+              </ul>
+
+              <p className="font-bold">Full-Stack E-commerce Platform</p>
+              <ul className="list-disc ml-4 mb-2">
+                <li>Built a scalable e-commerce platform with microservices architecture</li>
+                <li>Implemented real-time inventory management and payment processing</li>
+                <li>Technologies: React, Node.js, Express, PostgreSQL, Docker</li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="text-lg font-bold text-yellow-400">SKILLS</h3>
+              <p className="border-b border-gray-600 mb-2"></p>
+              <p><span className="font-bold">Languages:</span> Python, JavaScript, TypeScript, Java, SQL</p>
+              <p><span className="font-bold">Frontend:</span> React, Next.js, HTML/CSS, Tailwind CSS, Redux</p>
+              <p><span className="font-bold">Backend:</span> Node.js, Express, Django, Flask, GraphQL</p>
+              <p><span className="font-bold">Databases:</span> MongoDB, PostgreSQL, MySQL, Redis</p>
+              <p><span className="font-bold">AI/ML:</span> TensorFlow, PyTorch, scikit-learn, NLP, Computer Vision</p>
+              <p><span className="font-bold">DevOps:</span> Docker, Kubernetes, AWS, GCP, CI/CD</p>
+            </div>
+
+            <div className="mt-4 text-center">
+              <p>Type <span className="text-yellow-400">portfolio</span> to visit my portfolio website for more details</p>
+            </div>
+          </div>
+        );
+        break;
+
+      case 'github':
+        output = <p>Opening GitHub profile...</p>;
+        window.open('https://github.com/yourusername', '_blank');
+        break;
+
+      case 'linkedin':
+        output = <p>Opening LinkedIn profile...</p>;
+        window.open('https://linkedin.com/in/yourusername', '_blank');
+        break;
+
+      case 'whoami':
+        output = (
+          <div>
+            <p className="text-xl font-bold text-green-400 mb-2">Vallepu Anil Sahith</p>
+            <p className="text-gray-300">Software Engineer & AI/ML Enthusiast</p>
+          </div>
+        );
+        break;
+
+      case '':
+        output = '';
+        break;
+
+      default:
+        output = (
+          <p className="text-red-500">
+            Command not found: {command}. Type <span className="text-yellow-400">help</span> to see available commands.
+          </p>
+        );
+    }
+
+    setHistory(prev => [...prev, { input: cmd, output }]);
+    setInput('');
+    setHistoryIndex(-1);
+  };
+
+  // Handle input submission
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    processCommand(input);
+  };
+
+  // Handle key navigation through command history
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (historyIndex < history.length - 1) {
+        const newIndex = historyIndex + 1;
+        setHistoryIndex(newIndex);
+        setInput(history[history.length - 1 - newIndex].input);
+      }
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (historyIndex > 0) {
+        const newIndex = historyIndex - 1;
+        setHistoryIndex(newIndex);
+        setInput(history[history.length - 1 - newIndex].input);
+      } else if (historyIndex === 0) {
+        setHistoryIndex(-1);
+        setInput('');
+      }
+    }
+  };
+
+  // Get theme-specific styles
+  const getThemeStyles = () => {
+    switch (osTheme) {
+      case 'windows':
+        return {
+          bg: 'bg-black',
+          text: 'text-white',
+          prompt: 'C:\\Users\\anil>',
+          fontFamily: 'font-mono',
+          headerBg: 'bg-blue-900',
+          headerText: 'text-white',
+          title: 'Command Prompt',
+        };
+      case 'mac':
+        return {
+          bg: 'bg-black',
+          text: 'text-green-400',
+          prompt: 'anil@macbook ~ %',
+          fontFamily: 'font-mono',
+          headerBg: 'bg-gray-200 dark:bg-gray-800',
+          headerText: 'text-gray-700 dark:text-gray-300',
+          title: 'brew — zsh',
+        };
+      case 'linux':
+      default:
+        return {
+          bg: 'bg-gray-900',
+          text: 'text-gray-100',
+          prompt: 'anil@ubuntu:~$',
+          fontFamily: 'font-mono',
+          headerBg: 'bg-gray-800',
+          headerText: 'text-gray-300',
+          title: 'Terminal - bash',
+        };
+    }
+  };
+
+  const themeStyles = getThemeStyles();
+
+  return (
+    <div className="relative w-full max-w-4xl mx-auto flex flex-col items-center">
+      <ThemeToggle currentTheme={osTheme} onThemeChange={setOsTheme} />
+      <motion.div
+        className={`w-full h-[65vh] overflow-hidden flex flex-col rounded-lg shadow-2xl terminal-3d ${themeStyles.bg} ${themeStyles.text} ${themeStyles.fontFamily}`}
+        onClick={focusInput}
+        initial={{ opacity: 0, y: 20, rotateX: 10 }}
+        animate={{ opacity: 1, y: 0, rotateX: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+        whileHover={{ scale: 1.01 }}
+      >
+        <TerminalHeader
+          title={themeStyles.title}
+          osTheme={osTheme}
+          bgColor={themeStyles.headerBg}
+          textColor={themeStyles.headerText}
+        />
+
+        {isLoaded ? (
+          <div
+            ref={terminalRef}
+            className="flex-grow overflow-y-auto p-4"
+          >
+            {history.map((item, index) => (
+              <div key={index} className="mb-2">
+                {item.input && (
+                  <TerminalPrompt input={item.input} prompt={themeStyles.prompt} />
+                )}
+                <TerminalOutput output={item.output} />
+              </div>
+            ))}
+
+            <form onSubmit={handleSubmit} className="flex items-center">
+              <div className={`mr-2 ${osTheme === 'mac' ? 'text-green-400' : osTheme === 'windows' ? 'text-white' : 'text-purple-400'}`}>
+                {themeStyles.prompt}
+              </div>
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                className="bg-transparent outline-none flex-grow"
+                autoFocus
+              />
+            </form>
+          </div>
+        ) : (
+          <div className="flex-grow flex items-center justify-center">
+            <div className="animate-pulse text-center">
+              <div className="text-lg">Initializing terminal...</div>
+              <div className="mt-2 text-sm text-gray-400">Please wait</div>
+            </div>
+          </div>
+        )}
+      </motion.div>
+    </div>
+  );
+};
+
+export default Terminal;
