@@ -2,13 +2,12 @@
 
 import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
-import { FaDownload, FaEye } from 'react-icons/fa';
+import { FaDownload, FaEye, FaTrophy, FaUsers } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const ResumePage = () => {
-  // Replace with your actual Google Drive resume link
-  const resumeUrl = 'https://drive.google.com/file/d/YOUR_RESUME_FILE_ID/view';
-  const resumeDownloadUrl = 'https://drive.google.com/uc?export=download&id=YOUR_RESUME_FILE_ID';
+  const resumeUrl = '/anil_ml_resme.pdf'; // Link to PDF in public folder
+  const resumeDownloadUrl = '/anil_ml_resme.pdf'; // Link to PDF in public folder for download
 
   return (
     <MainLayout>
@@ -47,88 +46,79 @@ const ResumePage = () => {
             <div className="mb-6">
               <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-400">VALLEPU ANIL SAHITH</h2>
               <p className="text-gray-700 dark:text-gray-300">Software Engineer | AI/ML Engineer | Data Scientist</p>
-              <p className="text-gray-600 dark:text-gray-400">your.email@example.com | +1 (123) 456-7890 | San Francisco, CA</p>
-              <p className="text-gray-600 dark:text-gray-400">github.com/yourusername | linkedin.com/in/yourusername</p>
+              <p className="text-gray-600 dark:text-gray-400">anilsahithvallepu@gmail.com | +91 8143400946 | India</p>
+              <p className="text-gray-600 dark:text-gray-400">
+                <a href="https://github.com/sahit1011" target="_blank" rel="noopener noreferrer" className="hover:underline">github.com/sahit1011</a> | 
+                <a href="https://www.linkedin.com/in/anilsahithvallepu" target="_blank" rel="noopener noreferrer" className="hover:underline"> linkedin.com/in/anilsahithvallepu</a>
+              </p>
             </div>
 
             <div className="mb-6">
               <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-700 pb-2 mb-3">SUMMARY</h3>
               <p className="text-gray-700 dark:text-gray-300">
-                Experienced software engineer with expertise in full-stack development, AI/ML, and data science.
-                Passionate about building scalable applications and implementing machine learning solutions to solve complex problems.
+                Aspiring Software Engineer with a B.Tech in Electrical and Electronics Engineering from NIT Warangal, specializing in AI/ML. 
+                Experienced in developing machine learning models, full-stack applications, and data processing pipelines through internships 
+                at Noccarc Robotics and Carelon Global Solutions. Proficient in Python, C++, JavaScript, and various AI/ML frameworks.
               </p>
             </div>
 
             <div className="mb-6">
               <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-700 pb-2 mb-3">EDUCATION</h3>
               <div className="mb-3">
-                <p className="font-bold text-gray-800 dark:text-gray-200">Master of Science in Computer Science</p>
-                <p className="text-gray-700 dark:text-gray-300">Stanford University | 2018 - 2020</p>
-                <p className="text-gray-600 dark:text-gray-400">GPA: 3.9/4.0 | Specialization in Artificial Intelligence</p>
+                <p className="font-bold text-gray-800 dark:text-gray-200">Bachelor of Technology (B.Tech), Electrical and Electronics Engineering</p>
+                <p className="text-gray-700 dark:text-gray-300">National Institute of Technology, Warangal (NITW) | Warangal, India</p>
+                <p className="text-gray-600 dark:text-gray-400">CGPA: 6.5</p>
               </div>
-
               <div>
-                <p className="font-bold text-gray-800 dark:text-gray-200">Bachelor of Technology in Computer Science</p>
-                <p className="text-gray-700 dark:text-gray-300">Indian Institute of Technology | 2014 - 2018</p>
-                <p className="text-gray-600 dark:text-gray-400">GPA: 3.8/4.0 | Minor in Mathematics</p>
+                <p className="font-bold text-gray-800 dark:text-gray-200">Intermediate SSC Class 12th</p>
+                <p className="text-gray-700 dark:text-gray-300">Chukka Ramaiah IIT Institute (Vijay Ratna Junior College) | Hyderabad, India</p>
+                <p className="text-gray-600 dark:text-gray-400">CGPA: 9.75</p>
               </div>
             </div>
 
             <div className="mb-6">
               <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-700 pb-2 mb-3">EXPERIENCE</h3>
-
-              <div className="mb-4">
-                <p className="font-bold text-gray-800 dark:text-gray-200">Senior Software Engineer | Tech Innovations Inc.</p>
-                <p className="italic text-gray-600 dark:text-gray-400 mb-2">Jan 2021 - Present</p>
-                <ul className="list-disc ml-5 text-gray-700 dark:text-gray-300">
-                  <li>Developed and maintained microservices architecture using Node.js and Python</li>
-                  <li>Implemented machine learning models for product recommendation system</li>
-                  <li>Led a team of 5 engineers for the development of a new data pipeline</li>
-                  <li>Reduced API response time by 40% through optimization techniques</li>
-                </ul>
-              </div>
-
-              <div>
-                <p className="font-bold text-gray-800 dark:text-gray-200">Software Engineer | DataTech Solutions</p>
-                <p className="italic text-gray-600 dark:text-gray-400 mb-2">Jun 2020 - Dec 2020</p>
-                <ul className="list-disc ml-5 text-gray-700 dark:text-gray-300">
-                  <li>Built RESTful APIs using Express.js and MongoDB</li>
-                  <li>Developed front-end components with React and Redux</li>
-                  <li>Implemented CI/CD pipelines using GitHub Actions</li>
-                </ul>
-              </div>
+              <p className="text-gray-700 dark:text-gray-300">
+                Detailed work experience, including roles at Noccarc Robotics and Carelon Global Solutions, 
+                can be found on the <a href="/experience" className="text-blue-500 hover:underline">Experience page</a>.
+              </p>
             </div>
 
             <div className="mb-6">
               <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-700 pb-2 mb-3">PROJECTS</h3>
+              <p className="text-gray-700 dark:text-gray-300">
+                Key projects including the Custom Stock Trend Predictor, Smart ATS Resume Tracker, Quantum Perceptron, 
+                and Medical Chat Bot are detailed on the <a href="/projects" className="text-blue-500 hover:underline">Projects page</a>.
+              </p>
+            </div>
 
-              <div className="mb-4">
-                <p className="font-bold text-gray-800 dark:text-gray-200">AI-Powered Recommendation System</p>
-                <ul className="list-disc ml-5 text-gray-700 dark:text-gray-300">
-                  <li>Developed a recommendation engine using collaborative filtering and deep learning</li>
-                  <li>Achieved 25% improvement in recommendation accuracy</li>
-                  <li>Technologies: Python, TensorFlow, Flask, MongoDB</li>
-                </ul>
-              </div>
+            <div className="mb-6">
+              <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-700 pb-2 mb-3 flex items-center">
+                <FaTrophy className="mr-3 text-blue-600 dark:text-blue-400" /> ACHIEVEMENTS
+              </h3>
+              <ul className="list-disc list-inside space-y-2 mt-2 pl-6 text-gray-700 dark:text-gray-300">
+                <li>Secured JEE Mains 99.3rd percentile.</li>
+                <li>Ranked within the top 100 projects at the NASA AMES Space Settlement Contest (2017).</li>
+                <li>Solved 300+ (Medium to Hard) DSA problems on Leetcode.</li>
+              </ul>
+            </div>
 
-              <div>
-                <p className="font-bold text-gray-800 dark:text-gray-200">Full-Stack E-commerce Platform</p>
-                <ul className="list-disc ml-5 text-gray-700 dark:text-gray-300">
-                  <li>Built a scalable e-commerce platform with microservices architecture</li>
-                  <li>Implemented real-time inventory management and payment processing</li>
-                  <li>Technologies: React, Node.js, Express, PostgreSQL, Docker</li>
-                </ul>
-              </div>
+            <div className="mb-6">
+              <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-700 pb-2 mb-3 flex items-center">
+                <FaUsers className="mr-3 text-blue-600 dark:text-blue-400" /> POSITIONS OF RESPONSIBILITY
+              </h3>
+              <ul className="list-disc list-inside space-y-2 mt-2 pl-6 text-gray-700 dark:text-gray-300">
+                <li>Member, Big Data, Analytics and Consulting Cell (BDACC), NIT Warangal (Aug 2022 - May 2023).</li>
+                <li>Captain, Inter-NIT Volleyball Team, NIT Warangal (Aug 2022 - May 2023).</li>
+              </ul>
             </div>
 
             <div>
               <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-700 pb-2 mb-3">SKILLS</h3>
-              <p className="text-gray-700 dark:text-gray-300"><span className="font-bold">Languages:</span> Python, JavaScript, TypeScript, Java, SQL</p>
-              <p className="text-gray-700 dark:text-gray-300"><span className="font-bold">Frontend:</span> React, Next.js, HTML/CSS, Tailwind CSS, Redux</p>
-              <p className="text-gray-700 dark:text-gray-300"><span className="font-bold">Backend:</span> Node.js, Express, Django, Flask, GraphQL</p>
-              <p className="text-gray-700 dark:text-gray-300"><span className="font-bold">Databases:</span> MongoDB, PostgreSQL, MySQL, Redis</p>
-              <p className="text-gray-700 dark:text-gray-300"><span className="font-bold">AI/ML:</span> TensorFlow, PyTorch, scikit-learn, NLP, Computer Vision</p>
-              <p className="text-gray-700 dark:text-gray-300"><span className="font-bold">DevOps:</span> Docker, Kubernetes, AWS, GCP, CI/CD</p>
+              <p className="text-gray-700 dark:text-gray-300">
+                A comprehensive list of technical skills including programming languages, web technologies, databases, AI/ML tools, 
+                and more is available on the <a href="/skills" className="text-blue-500 hover:underline">Skills page</a>.
+              </p>
             </div>
           </div>
         </motion.div>

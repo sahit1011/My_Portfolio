@@ -4,16 +4,16 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaAddressBook } from 'react-icons/fa';
 import CopyTooltip from '../ui/CopyTooltip';
-import ThemeToggle from '../theme/ThemeToggle'; // Import ThemeToggle
+import ThemeToggle from '../theme/ThemeToggle';
 import AnimatedNavLink from '../ui/AnimatedNavLink';
 import ExpandingText from '../ui/ExpandingText';
 
-// Import content management utilities
-import {
-  getPersonalInfo,
-  getNavigationInfo,
-  getGithubUrl,
-  getLinkedinUrl
+// Import the content management utilities
+import { 
+  getPersonalInfo, 
+  getNavigationInfo, 
+  getGithubUrl, 
+  getLinkedinUrl 
 } from '@/utils/content';
 
 const Navbar = () => {
@@ -22,7 +22,6 @@ const Navbar = () => {
   // Get content from the centralized content management system
   const personalInfo = getPersonalInfo();
   const navigation = getNavigationInfo();
-
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-blur-md py-4 transition-colors duration-300">
@@ -74,7 +73,7 @@ const Navbar = () => {
               className="text-gray-900 dark:text-gray-100 hover:text-purple-600 transition-colors duration-300 p-2"
               title="Contact Information"
             >
-              <FaAddressBook size={22} /> {/* Or FaUserCircle */}
+              <FaAddressBook size={22} />
             </button>
             {isContactDropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-50 ring-1 ring-black ring-opacity-5">
@@ -118,7 +117,7 @@ const Navbar = () => {
             )}
           </div>
 
-          <ThemeToggle /> {/* Add ThemeToggle here */}
+          <ThemeToggle />
 
           {/* Mobile menu button - to be implemented */}
           <button className="md:hidden p-2">
@@ -133,3 +132,30 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+/*
+CHANGES MADE TO USE CONTENT MANAGEMENT SYSTEM:
+
+1. Imported content utilities:
+   - getPersonalInfo() - for personal details
+   - getNavigationInfo() - for navigation labels
+   - getGithubUrl() and getLinkedinUrl() - for social links
+
+2. Replaced hardcoded values:
+   - personalInfo.displayName instead of "Anil Sahith"
+   - navigation.home, navigation.about, etc. instead of hardcoded text
+   - personalInfo.email and personalInfo.phone instead of hardcoded values
+   - getGithubUrl() and getLinkedinUrl() instead of manually constructed URLs
+
+3. Benefits:
+   - All content now comes from the centralized content.json file
+   - Easy to update personal info, navigation labels, and social links
+   - Type-safe with TypeScript interfaces
+   - Consistent data across all components
+
+To update content, simply modify src/data/content.json:
+- Change personalInfo.displayName to update the navbar title
+- Change navigation labels to update menu items
+- Change personalInfo.email/phone to update contact details
+- Change personalInfo.github/linkedin to update social links
+*/

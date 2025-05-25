@@ -1,0 +1,28 @@
+{
+  "projects": [
+    {
+      "id": 2,
+      "title": "Custom Stock Trend Predictor",
+      "description": "Designed a web-based tool using Flask for technical analysis of stocks, displaying future predicted curves and numerical stock data. Analyzed different models forecasting and predicting the most accurate future stock prices.",
+      "skills": ["Python", "Flask", "HTML", "CSS", "JavaScript", "Pandas", "Numpy", "Matplotlib", "Scikit-learn", "Keras"]
+    },
+    {
+      "id": 1,
+      "title": "Smart ATS Resume Tracker",
+      "description": "Developed a resume matching system integrating Google Gemini Pro Large Language Model (LLM) for concise analysis and percentage-based evaluation of candidate resumes against job descriptions, leading to a 50% improvement in candidate shortlisting.",
+      "skills": ["Python", "Streamlit", "pdf2image", "Google Gemini-Pro API"]
+    },
+    {
+      "id": 3,
+      "title": "Quantum Perceptron for Pattern Classification",
+      "description": "Implemented an Artificial Neuron on IBM’s Qiskit quantum simulator exploring its functionality and capabilities. Trained a 4 qubit perceptron using checkboard patterns for different numbers, evaluated its performance with various weight-input pairs and understand its behavior compared to a classical deep learning system.",
+      "skills": ["Python", "Numpy", "Matplotlib", "Gradio", "Qiskit", "Quantum Computing"]
+    },
+    {
+      "id": 4,
+      "title": "Medical Chat Bot",
+      "description": "Developed a medical chatbot allowing users to input medical and health-related queries, which are processed to understand the context and retrieve relevant information from a large language model.",
+      "skills": ["Python", "Flask", "Meta Llama2 LLM", "LangChain", "Pinecone Vector DB", "Large Language Models"]
+    }
+  ]
+}

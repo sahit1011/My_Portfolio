@@ -7,6 +7,7 @@ import TerminalHeader from './TerminalHeader';
 import TerminalPrompt from './TerminalPrompt';
 import TerminalOutput from './TerminalOutput';
 import ThemeToggle from './ThemeToggle';
+import ScanLines from './ScanLines';
 
 // Import skill icons
 import {
@@ -498,19 +499,69 @@ const Terminal: React.FC = () => {
 
   const themeStyles = getThemeStyles();
 
+  // Terminal mouse tracking state
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const terminalContainerRef = useRef<HTMLDivElement>(null);
+
+  // Handle mouse movement for 3D effect
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!terminalContainerRef.current) return;
+
+    const rect = terminalContainerRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    // Calculate normalized position (-1 to 1)
+    const normalizedX = (e.clientX - centerX) / (rect.width / 2);
+    const normalizedY = (e.clientY - centerY) / (rect.height / 2);
+
+    setMousePosition({ x: normalizedX * 2, y: normalizedY * 2 });
+  };
+
+  // Reset position when mouse leaves
+  const handleMouseLeave = () => {
+    setMousePosition({ x: 0, y: 0 });
+  };
+
   return (
-    <div className="relative w-full max-w-4xl mx-auto flex flex-col items-center">
+    <div
+      className="relative w-full max-w-4xl mx-auto flex flex-col items-center perspective-container"
+      ref={terminalContainerRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
       <ThemeToggle currentTheme={osTheme} onThemeChange={setOsTheme} />
-      {/* Only render the terminal content when it's fully loaded */}
+
+      {/* Enhanced 3D Terminal */}
       <motion.div
-        className={`w-full h-[65vh] overflow-hidden flex flex-col rounded-lg shadow-2xl terminal-3d ${themeStyles.bg} ${themeStyles.text} ${themeStyles.fontFamily}`}
+        className={`w-full h-[65vh] overflow-hidden flex flex-col rounded-lg terminal-3d gradient-shadow ${themeStyles.bg} ${themeStyles.text} ${themeStyles.fontFamily}`}
         onClick={focusInput}
         initial={{ opacity: 0, y: 20, rotateX: 10 }}
-        animate={{ opacity: 1, y: 0, rotateX: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-        whileHover={{ scale: 1.01 }}
+        animate={{
+          opacity: 1,
+          y: 0,
+          rotateX: -mousePosition.y * 3,
+          rotateY: mousePosition.x * 3,
+          boxShadow: `
+            0 20px 50px rgba(0, 0, 0, 0.3),
+            0 0 30px rgba(103, 232, 249, 0.1),
+            inset 0 0 15px rgba(255, 255, 255, 0.05)
+          `
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 300,
+          damping: 30,
+          mass: 0.5
+        }}
+        style={{
+          transformStyle: 'preserve-3d',
+        }}
       >
       <TerminalHeader osTheme={osTheme} />
+
+      {/* Add scan lines effect */}
+      <ScanLines opacity={osTheme === 'mac' ? 0.1 : 0.15} />
 
       {isLoaded ? (
         <div

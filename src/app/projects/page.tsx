@@ -1,211 +1,223 @@
+'use client';
+
 import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { FaGithub, FaExternalLinkAlt, FaCode } from 'react-icons/fa';
+import Card3D from '@/components/ui/Card3D';
+import ExpandingText from '@/components/ui/ExpandingText';
+import Button3D from '@/components/ui/Button3D';
+import SkillTag3D from '@/components/ui/SkillTag3D';
+import AnimatedHeading from '@/components/ui/AnimatedHeading';
 
-// Projects data
-const projects = [
-  {
-    id: 1,
-    title: 'AI-Powered Recommendation System',
-    description: 'A machine learning-based recommendation system that analyzes user behavior to provide personalized content suggestions. Implemented using collaborative filtering and neural networks.',
-    image: '/placeholder.jpg',
-    technologies: ['Python', 'TensorFlow', 'Flask', 'React', 'MongoDB'],
-    github: 'https://github.com/yourusername/recommendation-system',
-    demo: 'https://demo-recommendation.example.com',
-    featured: true,
-  },
-  {
-    id: 2,
-    title: 'E-Commerce Platform',
-    description: 'A full-stack e-commerce platform with features like product catalog, shopping cart, user authentication, payment processing, and order management.',
-    image: '/placeholder.jpg',
-    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Stripe API'],
-    github: 'https://github.com/yourusername/ecommerce-platform',
-    demo: 'https://demo-ecommerce.example.com',
-    featured: true,
-  },
-  {
-    id: 3,
-    title: 'Data Visualization Dashboard',
-    description: 'An interactive dashboard for visualizing complex datasets with customizable charts, filters, and real-time updates. Designed for business intelligence applications.',
-    image: '/placeholder.jpg',
-    technologies: ['D3.js', 'React', 'Node.js', 'PostgreSQL', 'WebSockets'],
-    github: 'https://github.com/yourusername/data-dashboard',
-    demo: 'https://demo-dashboard.example.com',
-    featured: true,
-  },
-  {
-    id: 4,
-    title: 'Natural Language Processing API',
-    description: 'A RESTful API for natural language processing tasks including sentiment analysis, entity recognition, and text classification using state-of-the-art models.',
-    image: '/placeholder.jpg',
-    technologies: ['Python', 'FastAPI', 'Hugging Face', 'Docker', 'Redis'],
-    github: 'https://github.com/yourusername/nlp-api',
-    demo: 'https://demo-nlp-api.example.com',
-    featured: false,
-  },
-  {
-    id: 5,
-    title: 'Task Management Application',
-    description: 'A productivity application for managing tasks, projects, and deadlines with features like drag-and-drop organization, reminders, and team collaboration.',
-    image: '/placeholder.jpg',
-    technologies: ['React', 'Redux', 'Firebase', 'Material UI', 'PWA'],
-    github: 'https://github.com/yourusername/task-manager',
-    demo: 'https://demo-task-manager.example.com',
-    featured: false,
-  },
-  {
-    id: 6,
-    title: 'Blockchain Voting System',
-    description: 'A secure and transparent voting system built on blockchain technology to ensure vote integrity and prevent fraud in elections.',
-    image: '/placeholder.jpg',
-    technologies: ['Solidity', 'Ethereum', 'Web3.js', 'React', 'Node.js'],
-    github: 'https://github.com/yourusername/blockchain-voting',
-    demo: 'https://demo-voting.example.com',
-    featured: false,
-  },
-];
+// Import content management utilities
+import { getProjects, getFeaturedProjects } from '@/utils/content';
 
 export default function ProjectsPage() {
-  // Separate featured projects
-  const featuredProjects = projects.filter(project => project.featured);
+  // Get projects from the centralized content management system
+  const projects = getProjects();
+  const featuredProjects = getFeaturedProjects();
   const otherProjects = projects.filter(project => !project.featured);
 
   return (
     <MainLayout>
       <section className="section container mx-auto px-4">
         <div className="text-center mb-12">
-          <h1 className="mb-4">
-            My <span className="gradient-text">Projects</span>
-          </h1>
-          <p className="text-xl max-w-3xl mx-auto text-dark-lighter dark:text-light-darker">
+          <AnimatedHeading
+            as="h1"
+            className="mb-4 text-5xl font-bold"
+            staggerLetters={true}
+            underlineWidth={0}
+            gradientColors={['#3b82f6', '#8b5cf6']}
+          >
+            My Projects
+          </AnimatedHeading>
+          <p className="text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
             A showcase of my work, personal projects, and contributions
           </p>
         </div>
 
         {/* Featured Projects */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-8 text-center">Featured Projects</h2>
+          <div className="text-center mb-8">
+            <AnimatedHeading
+              as="h2"
+              className="text-4xl font-bold inline-block"
+              staggerLetters={true}
+              underlineWidth={0}
+              gradientColors={['#3b82f6', '#8b5cf6']}
+            >
+              Featured Projects
+            </AnimatedHeading>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredProjects.map(project => (
-              <div key={project.id} className="card overflow-hidden flex flex-col h-full transform transition-transform hover:scale-105">
+              <Card3D
+                key={project.id}
+                className="overflow-hidden flex flex-col h-full bg-gray-100 dark:bg-gray-800 p-0 text-gray-800 dark:text-gray-100"
+                hoverScale={1.03}
+                mouseIntensity={0}
+                gradientShadow={false}
+                glowOnHover={false}
+              >
                 <div className="h-48 bg-gray-300 dark:bg-gray-700 relative">
-                  {/* Replace with actual project image */}
                   <div className="absolute inset-0 flex items-center justify-center text-dark dark:text-light">
                     Project Image
                   </div>
-                  {/* Uncomment when you have images */}
-                  {/* <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                  /> */}
                 </div>
 
                 <div className="p-6 flex-grow">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-dark-lighter dark:text-light-darker mb-4">
+                  <ExpandingText
+                    as="h3"
+                    className="text-xl font-bold mb-2"
+                    staggerChildren={true}
+                    expandScale={1.02}
+                    letterSpacing="0.01em"
+                    gradientColors={['#3b82f6', '#8b5cf6']}
+                  >
+                    {project.title}
+                  </ExpandingText>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4">
                     {project.description}
                   </p>
 
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.map((tech, index) => (
-                      <span
+                      <SkillTag3D
                         key={index}
-                        className="px-2 py-1 bg-light-darker dark:bg-dark-lighter rounded-full text-xs"
+                        className="text-xs"
                       >
                         {tech}
-                      </span>
+                      </SkillTag3D>
                     ))}
                   </div>
                 </div>
 
                 <div className="p-6 pt-0 flex justify-between">
-                  <a
+                  <Button3D
                     href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-accent hover:text-accent-dark transition-colors"
+                    variant="outline"
+                    size="sm"
+                    icon={<FaGithub />}
+                    className="bg-transparent"
                   >
-                    <FaGithub className="mr-1" /> Code
-                  </a>
-                  <a
+                    Code
+                  </Button3D>
+                  <Button3D
                     href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-accent hover:text-accent-dark transition-colors"
+                    variant="accent"
+                    size="sm"
+                    icon={<FaExternalLinkAlt />}
                   >
-                    <FaExternalLinkAlt className="mr-1" /> Demo
-                  </a>
+                    Demo
+                  </Button3D>
                 </div>
-              </div>
+              </Card3D>
             ))}
           </div>
         </div>
 
         {/* Other Projects */}
         <div>
-          <h2 className="text-3xl font-bold mb-8 text-center">Other Projects</h2>
+          <div className="text-center mb-8">
+            <AnimatedHeading
+              as="h2"
+              className="text-4xl font-bold inline-block"
+              staggerLetters={true}
+              underlineWidth={0}
+              gradientColors={['#3b82f6', '#8b5cf6']}
+            >
+              Other Projects
+            </AnimatedHeading>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {otherProjects.map(project => (
-              <div key={project.id} className="card p-6 flex flex-col h-full">
+              <Card3D
+                key={project.id}
+                className="p-6 flex flex-col h-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100"
+                hoverScale={1.02}
+                mouseIntensity={0}
+                gradientShadow={false}
+                glowOnHover={false}
+              >
                 <div className="flex items-center mb-4">
-                  <FaCode className="text-accent text-2xl mr-3" />
-                  <h3 className="text-xl font-bold">{project.title}</h3>
+                  <FaCode className="text-accent text-2xl mr-3 floating" />
+                  <ExpandingText
+                    as="h3"
+                    className="text-xl font-bold"
+                    staggerChildren={true}
+                    expandScale={1.02}
+                    letterSpacing="0.01em"
+                    gradientColors={['#8b5cf6', '#ec4899']}
+                  >
+                    {project.title}
+                  </ExpandingText>
                 </div>
 
-                <p className="text-dark-lighter dark:text-light-darker mb-4 flex-grow">
+                <p className="text-gray-700 dark:text-gray-300 mb-4 flex-grow">
                   {project.description}
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {project.technologies.slice(0, 3).map((tech, index) => (
-                    <span
+                    <SkillTag3D
                       key={index}
-                      className="px-2 py-1 bg-light-darker dark:bg-dark-lighter rounded-full text-xs"
+                      className="text-xs"
                     >
                       {tech}
-                    </span>
+                    </SkillTag3D>
                   ))}
                   {project.technologies.length > 3 && (
-                    <span className="px-2 py-1 bg-light-darker dark:bg-dark-lighter rounded-full text-xs">
+                    <SkillTag3D className="text-xs">
                       +{project.technologies.length - 3} more
-                    </span>
+                    </SkillTag3D>
                   )}
                 </div>
 
                 <div className="flex justify-between">
-                  <a
+                  <Button3D
                     href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-accent hover:text-accent-dark transition-colors"
+                    variant="outline"
+                    size="sm"
+                    icon={<FaGithub />}
+                    className="bg-transparent"
                   >
-                    <FaGithub className="mr-1" /> Code
-                  </a>
-                  <a
+                    Code
+                  </Button3D>
+                  <Button3D
                     href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center text-accent hover:text-accent-dark transition-colors"
+                    variant="accent"
+                    size="sm"
+                    icon={<FaExternalLinkAlt />}
                   >
-                    <FaExternalLinkAlt className="mr-1" /> Demo
-                  </a>
+                    Demo
+                  </Button3D>
                 </div>
-              </div>
+              </Card3D>
             ))}
           </div>
         </div>
 
         <div className="text-center mt-16">
-          <h2 className="text-2xl font-bold mb-4">Interested in collaborating?</h2>
-          <p className="text-lg max-w-2xl mx-auto mb-6 text-dark-lighter dark:text-light-darker">
+          <AnimatedHeading
+            as="h2"
+            className="text-2xl font-bold mb-4 inline-block"
+            staggerLetters={true}
+            underlineWidth={0}
+            gradientColors={['#3b82f6', '#8b5cf6']}
+          >
+            Interested in collaborating?
+          </AnimatedHeading>
+          <p className="text-lg max-w-2xl mx-auto mb-6 text-gray-700 dark:text-gray-300">
             I&apos;m always looking for new projects and challenges. Let&apos;s build something amazing together!
           </p>
-          <a href="/contact" className="btn btn-accent">
+          <Button3D
+            href="/contact"
+            variant="accent"
+            size="lg"
+            className="gradient-border"
+          >
             Get in Touch
-          </a>
+          </Button3D>
         </div>
       </section>
     </MainLayout>

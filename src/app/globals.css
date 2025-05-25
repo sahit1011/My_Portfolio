@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import 3D effects and animations */
+@import '../styles/3d-effects.css';
+
+@keyframes shrink {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+.animate-shrink {
+  animation: shrink 20s linear forwards;
+}
+
+@keyframes skillTagGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.skill-tag-gradient {
+  background: linear-gradient(90deg, #0f172a, #1e3a8a, #1e40af, #1e3a8a, #0f172a);
+  background-size: 300% 100%;
+  animation: skillTagGradient 8s ease infinite;
+  opacity: 0.4;
+}
+
 @layer base {
   body {
     @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;

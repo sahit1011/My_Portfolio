@@ -3,6 +3,7 @@
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
+import { getPersonalInfo } from '@/utils/content';
 
 // Import Terminal component dynamically with SSR disabled
 const Terminal = dynamic(() => import('@/components/terminal/Terminal'), {
@@ -13,6 +14,9 @@ export default function Home() {
   // States for handling loading and mounting
   const [mounted, setMounted] = useState(false);
   const [initialLoad, setInitialLoad] = useState(true);
+
+  // Get personal info from content management system
+  const personalInfo = getPersonalInfo();
 
   useEffect(() => {
     // Check if this is the first load
@@ -69,7 +73,7 @@ export default function Home() {
         transition={{ duration: 0.5, delay: 0.2 }}
       >
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-          Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">Anil&apos;s Portfolio</span>
+          Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">{personalInfo.displayName}&apos;s Portfolio</span>
         </h1>
 
         <motion.p

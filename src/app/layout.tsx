@@ -4,6 +4,8 @@ import { Fira_Code } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import ThemeToggle from "@/components/theme/ThemeToggle";
+import { FunFactProvider } from "@/context/FunFactContext";
+import FunFactToast from "@/components/ui/FunFactToast";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,7 +20,7 @@ const firaCode = Fira_Code({
 });
 
 export const metadata: Metadata = {
-  title: "Anil's Portfolio | Software Engineer & AI/ML Engineer",
+  title: "Anil Sahith Portfolio | Software Engineer & AI/ML Engineer",
   description: "Personal portfolio of Anil, a Software Engineer, AI/ML Engineer, and Data Scientist.",
   keywords: ["portfolio", "software engineer", "AI engineer", "ML engineer", "data scientist", "developer"],
 };
@@ -32,8 +34,11 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${firaCode.variable}`} suppressHydrationWarning>
       <body className="antialiased" suppressHydrationWarning>
         <ThemeProvider>
-          <ThemeToggle />
-          {children}
+          <FunFactProvider>
+            <ThemeToggle />
+            {children}
+            <FunFactToast />
+          </FunFactProvider>
         </ThemeProvider>
       </body>
     </html>

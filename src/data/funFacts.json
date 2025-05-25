@@ -1,0 +1,254 @@
+{
+  "facts": [
+    {
+      "id": 1,
+      "category": "psychology",
+      "text": "Smiling can actually make you feel happier, even if you're faking it. Your brain doesn't differentiate between a real and forced smile!"
+    },
+    {
+      "id": 2,
+      "category": "technology",
+      "text": "The first computer programmer was a woman named Ada Lovelace, who wrote the first algorithm for Charles Babbage's Analytical Engine in the 1840s."
+    },
+    {
+      "id": 3,
+      "category": "neuroscience",
+      "text": "Your brain generates enough electricity to power a small light bulb. That's why great ideas are often represented by a light bulb!"
+    },
+    {
+      "id": 4,
+      "category": "psychology",
+      "text": "The act of helping others has been shown to increase happiness levels more than spending money on yourself."
+    },
+    {
+      "id": 5,
+      "category": "technology",
+      "text": "The first website ever created is still online! You can visit it at info.cern.ch."
+    },
+    {
+      "id": 6,
+      "category": "neuroscience",
+      "text": "Your brain processes images 60,000 times faster than text, which is why visual portfolios can be so effective!"
+    },
+    {
+      "id": 7,
+      "category": "psychology",
+      "text": "Taking short breaks during work actually increases productivity rather than decreasing it."
+    },
+    {
+      "id": 8,
+      "category": "technology",
+      "text": "The term 'bug' in computing originated when a moth got trapped in a relay of the Harvard Mark II computer in 1947, causing it to malfunction."
+    },
+    {
+      "id": 9,
+      "category": "neuroscience",
+      "text": "Learning new skills creates new neural pathways in your brain, keeping it young and adaptable."
+    },
+    {
+      "id": 10,
+      "category": "psychology",
+      "text": "The 'flow state' (being completely absorbed in a challenging task) is one of the most satisfying psychological states humans can experience."
+    },
+    {
+      "id": 11,
+      "category": "technology",
+      "text": "The first computer mouse was made of wood and invented by Doug Engelbart in 1964."
+    },
+    {
+      "id": 12,
+      "category": "neuroscience",
+      "text": "Your brain is more active during sleep than during the day, consolidating memories and processing emotions."
+    },
+    {
+      "id": 13,
+      "category": "psychology",
+      "text": "Spending time in nature for just 20 minutes can significantly reduce stress hormone levels."
+    },
+    {
+      "id": 14,
+      "category": "technology",
+      "text": "The entire Apollo 11 mission that landed humans on the moon used less computing power than a modern smartphone."
+    },
+    {
+      "id": 15,
+      "category": "neuroscience",
+      "text": "Your brain can't actually multitask - it switches between tasks very quickly, giving the illusion of doing multiple things at once."
+    },
+    {
+      "id": 16,
+      "category": "psychology",
+      "text": "Expressing gratitude regularly has been linked to improved mental health and stronger relationships."
+    },
+    {
+      "id": 17,
+      "category": "technology",
+      "text": "The first email was sent by Ray Tomlinson in 1971, and the message was simply 'QWERTYUIOP'."
+    },
+    {
+      "id": 18,
+      "category": "neuroscience",
+      "text": "Your brain continues to develop new neurons throughout your life, a process called neurogenesis."
+    },
+    {
+      "id": 19,
+      "category": "psychology",
+      "text": "The 'spotlight effect' means we overestimate how much others notice our mistakes - they're usually too focused on themselves!"
+    },
+    {
+      "id": 20,
+      "category": "technology",
+      "text": "The first domain name ever registered was symbolics.com on March 15, 1985."
+    },
+    {
+      "id": 21,
+      "category": "neuroscience",
+      "text": "The human brain can store approximately 2.5 petabytes of information - equivalent to 3 million hours of TV shows!"
+    },
+    {
+      "id": 22,
+      "category": "psychology",
+      "text": "Laughter is contagious because of mirror neurons in our brains that activate when we see others experiencing emotions."
+    },
+    {
+      "id": 23,
+      "category": "technology",
+      "text": "The first tweet was sent by Jack Dorsey on March 21, 2006, and it said 'just setting up my twttr'."
+    },
+    {
+      "id": 24,
+      "category": "neuroscience",
+      "text": "Your brain uses about 20% of your body's total energy, despite being only 2% of your body weight."
+    },
+    {
+      "id": 25,
+      "category": "psychology",
+      "text": "The 'Tetris Effect' occurs when people devote so much time to an activity that it begins to pattern their thoughts and dreams."
+    },
+    {
+      "id": 26,
+      "category": "technology",
+      "text": "The first YouTube video was uploaded on April 23, 2005, titled 'Me at the zoo' and is still viewable today."
+    },
+    {
+      "id": 27,
+      "category": "neuroscience",
+      "text": "The human brain has approximately 86 billion neurons, each connected to thousands of other neurons."
+    },
+    {
+      "id": 28,
+      "category": "psychology",
+      "text": "The 'Ikea Effect' is a cognitive bias where people place higher value on things they partially created themselves."
+    },
+    {
+      "id": 29,
+      "category": "technology",
+      "text": "The first smartphone, called the Simon Personal Communicator, was created by IBM in 1992."
+    },
+    {
+      "id": 30,
+      "category": "neuroscience",
+      "text": "Your brain can't feel pain - surgeons can operate on a brain while the patient is awake!"
+    },
+    {
+      "id": 31,
+      "category": "psychology",
+      "text": "The 'Google Effect' shows that we're less likely to remember information we know we can easily find online."
+    },
+    {
+      "id": 32,
+      "category": "technology",
+      "text": "The first text message was sent on December 3, 1992, and it said 'Merry Christmas'."
+    },
+    {
+      "id": 33,
+      "category": "neuroscience",
+      "text": "The brain's 'default mode network' becomes active when you're daydreaming, and it's crucial for creativity."
+    },
+    {
+      "id": 34,
+      "category": "psychology",
+      "text": "The 'Dunning-Kruger Effect' is when people with limited knowledge overestimate their abilities, while experts tend to underestimate theirs."
+    },
+    {
+      "id": 35,
+      "category": "technology",
+      "text": "The first digital photograph was taken in 1957, almost 20 years before the invention of the first digital camera."
+    },
+    {
+      "id": 36,
+      "category": "neuroscience",
+      "text": "Your brain activity is as unique as your fingerprint - neuroscientists can identify you based on your brain waves."
+    },
+    {
+      "id": 37,
+      "category": "psychology",
+      "text": "The 'Zeigarnik Effect' means we remember uncompleted tasks better than completed ones - that's why cliffhangers work!"
+    },
+    {
+      "id": 38,
+      "category": "technology",
+      "text": "The first mobile phone call was made by Martin Cooper of Motorola on April 3, 1973, to his rival at Bell Labs."
+    },
+    {
+      "id": 39,
+      "category": "neuroscience",
+      "text": "Your brain's storage capacity is considered virtually unlimited - you're not likely to 'run out of space' for memories."
+    },
+    {
+      "id": 40,
+      "category": "psychology",
+      "text": "The 'Baader-Meinhof Phenomenon' occurs when something you recently learned suddenly appears everywhere - it's an illusion!"
+    },
+    {
+      "id": 41,
+      "category": "technology",
+      "text": "The first commercially available computer game was 'Pong,' released by Atari in 1972."
+    },
+    {
+      "id": 42,
+      "category": "neuroscience",
+      "text": "Your brain can generate about 23 watts of power when you're awake - enough to power a low-energy LED light."
+    },
+    {
+      "id": 43,
+      "category": "psychology",
+      "text": "The 'Pratfall Effect' shows that making small mistakes can actually make you more likable and relatable to others."
+    },
+    {
+      "id": 44,
+      "category": "technology",
+      "text": "The first social media site was Six Degrees, launched in 1997, allowing users to create profiles and list friends."
+    },
+    {
+      "id": 45,
+      "category": "neuroscience",
+      "text": "Your brain processes about 11 million bits of information every second, but you're only consciously aware of about 50 bits."
+    },
+    {
+      "id": 46,
+      "category": "psychology",
+      "text": "The 'Mere Exposure Effect' means we tend to like things more simply because we're familiar with them."
+    },
+    {
+      "id": 47,
+      "category": "technology",
+      "text": "The first emoji was created in 1999 by Shigetaka Kurita in Japan, and the original set had just 176 symbols."
+    },
+    {
+      "id": 48,
+      "category": "neuroscience",
+      "text": "Your brain's long-term memory storage is theoretically unlimited in capacity and duration."
+    },
+    {
+      "id": 49,
+      "category": "psychology",
+      "text": "The 'Peak-End Rule' shows we judge experiences based on how they felt at their peak and at their end, not the average of the whole experience."
+    },
+    {
+      "id": 50,
+      "category": "technology",
+      "text": "The first version of HTML had only 18 elements, compared to over 100 in modern HTML5."
+    }
+  ]
+}

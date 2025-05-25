@@ -1,6 +1,7 @@
 // Gemini API integration
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { logToFile, createAnalysisLogFile } from './logger';
+import projectsData from '@/data/projects.json';
 
 // Initialize the Gemini API with your API key
 const getGeminiAPI = () => {
@@ -20,11 +21,23 @@ interface SkillMatch {
   required: boolean;
 }
 
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  skills: string[];
+  image: string;
+  link: string;
+  github: string;
+  relevanceScore?: number;
+}
+
 interface ResumeAnalysisResult {
   overallMatch: number;
   skillsMatch: SkillMatch[];
   missingSkills: string[];
   candidateSummary: string;
+  recommendedProjects: Project[];
 }
 
 export async function analyzeJobDescription(jobDescription: string): Promise<ResumeAnalysisResult> {
@@ -185,11 +198,16 @@ export async function analyzeJobDescription(jobDescription: string): Promise<Res
       console.log(parsedMessage);
       await logToFile(parsedMessage, logFilename);
 
+      // Extract skills from the job description and find recommended projects
+      const extractedSkills = extractSkillsFromJobDescription(jobDescription);
+      const recommendedProjects = findRecommendedProjects(extractedSkills);
+
       const result = {
         overallMatch: jsonResponse.overallMatch || 70,
         skillsMatch: jsonResponse.skillsMatch || [],
         missingSkills: jsonResponse.missingSkills || [],
-        candidateSummary: jsonResponse.candidateSummary || "Anil Sahith appears to be a strong match for this position with a diverse skill set in software engineering, AI/ML, and data science. His experience with modern technologies and frameworks aligns well with the requirements of this role."
+        candidateSummary: jsonResponse.candidateSummary || "Anil Sahith appears to be a strong match for this position with a diverse skill set in software engineering, AI/ML, and data science. His experience with modern technologies and frameworks aligns well with the requirements of this role.",
+        recommendedProjects
       };
 
       const resultMessage = `🎉 Analysis complete! Results: ${JSON.stringify(result, null, 2)}`;
@@ -238,6 +256,9 @@ async function getSimulatedResponse(jobDescription: string, logFilename: string)
   await logToFile(extractedSkillsMessage, logFilename);
 
   // Generate a simulated response
+  // Find recommended projects based on the extracted skills
+  const recommendedProjects = findRecommendedProjects(skills);
+
   // Create the simulated response
   const result = {
     overallMatch: Math.floor(Math.random() * 30) + 65, // Random number between 65-95
@@ -248,7 +269,8 @@ async function getSimulatedResponse(jobDescription: string, logFilename: string)
     })),
     missingSkills: ['GraphQL', 'Kubernetes', 'Swift', 'Kotlin', 'Rust']
       .filter(() => Math.random() > 0.6), // Randomly include missing skills
-    candidateSummary: `Anil Sahith demonstrates strong expertise in ${skills.slice(0, 3).join(', ')} and other technologies relevant to this position. With a background in both software engineering and AI/ML, he brings a versatile skill set that would be valuable for this role. His experience with modern development frameworks and methodologies indicates he would adapt quickly to your team's environment.`
+    candidateSummary: `Anil Sahith demonstrates strong expertise in ${skills.slice(0, 3).join(', ')} and other technologies relevant to this position. With a background in both software engineering and AI/ML, he brings a versatile skill set that would be valuable for this role. His experience with modern development frameworks and methodologies indicates he would adapt quickly to your team's environment.`,
+    recommendedProjects
   };
 
   // Log the simulated response for debugging purposes
@@ -274,6 +296,14 @@ function extractSkillsFromJobDescription(jobDescription: string): string[] {
     'MongoDB', 'PostgreSQL', 'MySQL', 'Redis', 'Firebase',
     'AWS', 'Azure', 'GCP', 'Docker', 'Kubernetes', 'CI/CD',
     'Git', 'REST API', 'GraphQL', 'Microservices', 'DevOps',
+    'Machine Learning', 'AI', 'TensorFlow', 'PyTorch', 'NLP',
+    'Data Science', 'Data Analysis', 'Pandas', 'NumPy', 'Scikit-learn',
+    'Next.js', 'Express', 'Django', 'Flask', 'Spring Boot',
+    'Redux', 'Tailwind CSS', 'Bootstrap', 'Material UI', 'SASS',
+    'Blockchain', 'Smart Contracts', 'Solidity', 'Web3.js', 'Ethereum',
+    'Mobile Development', 'React Native', 'Flutter', 'iOS', 'Android',
+    'Testing', 'Jest', 'Mocha', 'Cypress', 'Selenium',
+    'Agile', 'Scrum', 'Kanban', 'Project Management', 'JIRA'
   ];
 
   // Filter skills that appear in the job description
@@ -287,6 +317,39 @@ function extractSkillsFromJobDescription(jobDescription: string): string[] {
   }
 
   return foundSkills;
+}
+
+// Function to find recommended projects based on job skills
+function findRecommendedProjects(jobSkills: string[]): Project[] {
+  const projects = projectsData.projects as Project[];
+
+  // Calculate relevance score for each project
+  const projectsWithScores = projects.map(project => {
+    // Count how many job skills match with project skills
+    const matchingSkills = project.skills.filter(skill =>
+      jobSkills.some(jobSkill =>
+        jobSkill.toLowerCase() === skill.toLowerCase()
+      )
+    );
+
+    // Calculate relevance score (percentage of job skills that match)
+    const relevanceScore = matchingSkills.length > 0
+      ? (matchingSkills.length / project.skills.length) * 100
+      : 0;
+
+    return {
+      ...project,
+      relevanceScore
+    };
+  });
+
+  // Sort projects by relevance score (descending)
+  const sortedProjects = projectsWithScores
+    .filter(project => project.relevanceScore > 0) // Only include projects with matching skills
+    .sort((a, b) => (b.relevanceScore || 0) - (a.relevanceScore || 0));
+
+  // Return top 3 most relevant projects
+  return sortedProjects.slice(0, 3);
 }
 
 // In a real implementation, you would also have functions for:

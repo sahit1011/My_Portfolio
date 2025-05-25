@@ -1,0 +1,323 @@
+{
+  "personalInfo": {
+    "name": "Vallepu Anil Sahith",
+    "displayName": "Anil Sahith",
+    "titles": [
+      "Software Engineer",
+      "AI/ML Engineer",
+      "Data Scientist"
+    ],
+    "email": "anilsahithvallepu@gmail.com",
+    "phone": "+91 8143400946",
+    "location": "India",
+    "github": "sahit1011",
+    "linkedin": "anilsahithvallepu",
+    "twitter": "",
+    "website": ""
+  },
+
+  "about": {
+    "greeting": "Hello, Myself",
+    "name": "Anil Sahith",
+    "roles": [
+      { "prefix": "I'm a ", "name": "Software Engineer" },
+      { "prefix": "I'm an ", "name": "AI/ML Engineer" },
+      { "prefix": "I'm a ", "name": "Data Scientist" }
+    ],
+    "bio": [
+      "With strong Computer Science concepts and an eye for detail, I enjoy creating effective solutions to challenging problems. I'm always excited to use new technologies to build impactful applications.",
+      "My interest in technology started with a fascination for how software can change industries and improve lives. I'm dedicated to learning and finding new ways to solve problems.",
+      "I'm particularly drawn to the dynamic and innovative nature of startup environments. My previous two company experiences were with startups, which I found incredibly rewarding. I'm also actively developing a few startup ideas of my own, including currently building a Doctor assistant app.",
+      "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge through technical writing and mentoring."
+    ],
+    "currentlyExploring": [
+      "Agentic AI",
+      "Quantum Computing",
+      "PQC (Post-Quantum Cryptography)"
+    ],
+    "education": "B.Tech EEE, NIT Warangal",
+    "experience": "2+ Professional Experiences (Internships & Freelancing)",
+    "technologies": "Proficient in 20+ Technologies"
+  },
+
+  "experience": [
+    {
+      "id": 1,
+      "title": "Freelance AI Developer",
+      "company": "ArcherReview",
+      "location": "Remote",
+      "period": "Apr 2025 - May 2025",
+      "description": [
+
+        "Built full-stack Next.js application with TypeScript, MongoDB, and real-time features including interactive drag-and-drop calendar, user authentication, progress analytics, and AI tutor integration serving personalized learning experiences.",
+        "Developed a sophisticated multi-agent AI system using Google Gemini API with specialized agents for monitoring student progress, adapting study plans, and coordinating remediation activities, resulting in 85% improvement over static educational platforms.",
+        "Implemented advanced adaptive learning algorithms combining constraint-based optimization with machine learning for dynamic study plan generation and spaced repetition scheduling based on individual performance patterns.",
+        "Created intelligent monitoring system that tracks user behavior, detects learning difficulties, and automatically adjusts content difficulty and scheduling using sentiment analysis and natural language processing."
+      ],
+      "skills": [ "Next.js", "TypeScript", "Python", "MongoDB", "Multi-agentic AI","Google Gemini API", "Machine Learning", "NLP", "Sentiment Analysis", "Progress Analytics", "AI Tutor Integration"]
+    },
+    {
+      "id": 2,
+      "title": "Junior AI Engineer",
+      "company": "Noccarc Robotics Pvt Ltd.",
+      "location": "Pune, Maharashtra",
+      "period": "Jun 2024 - Apr 2025",
+      "description": [
+        "Developed a real-time arrhythmia detection system for embedded patient monitors using a combined multi-channel hybrid model (CNN-GRU with separable convolutions, an attention layer) to generate predictive masks for 8+ arrhythmia classes, achieving over 95% accuracy.",
+        "System enables real-time detection of heart abnormalities, generating nearly 20+ distinct alarms via the model, facilitating immediate clinical decision-making and reducing response times in critical care settings.",
+        "Architecture includes data flow from ECG sensors, preprocessing, front-end display, back-end processing, and model inference pipelines for seamless embedded hardware operation.",
+        "Model inference occurs in real-time every 5 seconds, generating alarms if any abnormality is detected, all while consuming less than 10% of single-core CPU resources."
+      ],
+      "skills": ["Python", "Machine Learning", "Deep Learning", "CNN", "GRU", "Attention Mechanism", "Separable Convolutions", "TF-Lite", "Embedded Systems", "Real-time Processing", "CPU Optimization"]
+    },
+    {
+      "id": 3,
+      "title": "Summer Intern - AI/ML",
+      "company": "Carelon Global Solutions, (Elevance Healthcare)",
+      "location": "Bangalore, Karnataka",
+      "period": "Jun 2023 - Aug 2023",
+      "description": [
+        "Integrated PyTesseract (OCR), OpenCV (for image preprocessing), and YOLOv8 (for object detection) to extract text and identify regions of interest from EOBs (Explanation of Benefits) and RAs (Remittance Advice) for health insurances, processing ~700 documents/hour with 95% accuracy.",
+        "Implemented multi-threading and multi-processing techniques.",
+        "Delivered a comprehensive, scalable solution for automating data extraction, reducing processing time and cost by 90%."
+      ],
+      "skills": ["Python", "PyTesseract", "OpenCV", "YOLOv8", "OCR", "Computer Vision", "Multi-threading", "Multi-processing", "Healthcare IT", "EOB Processing", "RA Processing"]
+    }
+    
+    
+  ],
+
+  "education": [
+    {
+      "id": 1,
+      "degree": "B.Tech in Electrical and Electronics Engineering",
+      "institution": "National Institute of Technology (NIT) Warangal",
+      "location": "Warangal, Telangana",
+      "period": "2021 - 2025",
+      "gpa": "",
+      "achievements": []
+    }
+  ],
+
+  "skills": {
+    "programmingLanguages": [
+      { "name": "Python", "icon": "FaPython" },
+      { "name": "C++", "icon": "SiCplusplus" },
+      { "name": "JavaScript", "icon": "FaJs" },
+      { "name": "TypeScript", "icon": "SiTypescript" },
+      { "name": "SQL", "icon": "FaDatabase" },
+      { "name": "Matlab", "icon": "FaLaptopCode" }
+    ],
+    "webTechnologies": [
+      { "name": "HTML", "icon": "FaHtml5" },
+      { "name": "CSS", "icon": "FaCss3Alt" },
+      { "name": "React", "icon": "FaReact" },
+      { "name": "Next.js", "icon": "SiNextdotjs" },
+      { "name": "Node.js", "icon": "FaNodeJs" },
+      { "name": "Django", "icon": "SiDjango" },
+      { "name": "Flask", "icon": "SiFlask" },
+      { "name": "Streamlit", "icon": "FaPython" },
+      { "name": "Gradio", "icon": "FaPython" },
+      { "name": "Beautiful Soup", "icon": "FaCodeBranch" }
+    ],
+    "databasesAndCloud": [
+      { "name": "MySQL", "icon": "SiMysql" },
+      { "name": "PostgreSQL", "icon": "SiPostgresql" },
+      { "name": "SQLite", "icon": "SiSqlite" },
+      { "name": "MongoDB", "icon": "SiMongodb" },
+      { "name": "Redis", "icon": "SiRedis" },
+
+      { "name": "Pinecone", "icon": "FaDatabase" },
+      { "name": "Git", "icon": "FaGithub" },
+      { "name": "GCP", "icon": "FaGoogle" },
+      { "name": "AWS", "icon": "FaAws" },
+      { "name": "Docker", "icon": "FaDocker" },
+      { "name": "Kubernetes", "icon": "SiKubernetes" }
+    ],
+    "aiMl": [
+      { "name": "Deep Learning", "icon": "FaBrain" },
+      { "name": "Computer Vision", "icon": "FaBrain" },
+      { "name": "NLP", "icon": "FaBrain" },
+      { "name": "Agentic AI", "icon": "FaBrain" },
+      { "name": "Edge ML", "icon": "FaMicrochip" },
+      { "name": "TensorFlow", "icon": "SiTensorflow" },
+      { "name": "PyTorch", "icon": "SiPytorch" },
+      { "name": "Scikit-learn", "icon": "SiScikitlearn" },
+      
+      { "name": "LangChain", "icon": "FaBrain" },
+      { "name": "Hugging Face", "icon": "SiHuggingface" }
+
+  
+      
+    ],
+    "developerTools": [
+      { "name": "VS Code", "icon": "FaCode" },
+      { "name": "Spyder", "icon": "FaPython" },
+      { "name": "PyCharm", "icon": "FaPython" },
+      { "name": "Google Colab", "icon": "FaGoogle" },
+      { "name": "GitHub", "icon": "FaGithub" },
+      { "name": "Cursor", "icon": "FaLaptopCode" },
+      { "name": "Power BI", "icon": "FaChartBar" },
+      { "name": "Figma", "icon": "SiFigma" },
+      { "name": "Notion", "icon": "FaBrain" },
+      { "name": "Postman", "icon": "FaBrain" }
+    ],
+    "conceptsAndSystems": [
+      { "name": "System Design", "icon": "FaServer" },
+      { "name": "Computer Networks", "icon": "FaNetworkWired" },
+      { "name": "Embedded Systems", "icon": "FaMicrochip" },
+      { "name": "Data Structures & Algorithms", "icon": "FaCode" },
+      { "name": "Quantum Computing", "icon": "FaBrain" },
+      {"name": "Algorithmic Trading", "icon": "FaBrain"}
+    ]
+  },
+
+  "projects": [
+    {
+      "id": 1,
+      "title": "Custom Stock Trend Predictor",
+      "description": "Designed a web-based tool using Flask for technical analysis of stocks, displaying future predicted curves and numerical stock data. Analyzed different models forecasting and predicting the most accurate future stock prices.",
+      "image": "/placeholder.jpg",
+      "technologies": ["Python", "HTML", "CSS", "JavaScript", "Flask", "Pandas", "Numpy", "Matplotlib", "Scikit-learn", "Keras"],
+      "github": "https://github.com/sahit1011/custom-stock-trend-predictor",
+      "demo": "#",
+      "featured": true
+    },
+    {
+      "id": 2,
+      "title": "Smart ATS Resume Tracker",
+      "description": "Developed a resume matching system integrating Google Gemini Pro Large Language Model (LLM) for concise analysis and percentage-based evaluation of candidate resumes against job descriptions, leading to a 50% improvement in candidate shortlisting.",
+      "image": "/placeholder.jpg",
+      "technologies": ["Python", "Streamlit", "pdf2image", "Google Gemini-Pro API"],
+      "github": "#",
+      "demo": "#",
+      "featured": true
+    },
+    {
+      "id": 3,
+      "title": "Quantum Perceptron for Pattern Classification",
+      "description": "Implemented an Artificial Neuron on IBM's Qiskit quantum simulator exploring its functionality and capabilities. Trained a 4 qubit perceptron using checkboard patterns for different numbers, evaluated its performance with various weight-input pairs and understand its behavior compared to a classical deep learning system.",
+      "image": "/placeholder.jpg",
+      "technologies": ["Python", "Numpy", "Matplotlib", "Gradio", "Qiskit", "Quantum Computing"],
+      "github": "#",
+      "demo": "#",
+      "featured": true
+    },
+    {
+      "id": 4,
+      "title": "Medical Chat Bot",
+      "description": "Developed a medical chatbot allowing users to input medical and health-related queries, which are processed to understand the context and retrieve relevant information from a large language model.",
+      "image": "/placeholder.jpg",
+      "technologies": ["Python", "Flask", "Meta Llama2 LLM", "LangChain", "Pinecone Vector DB", "Large Language Models"],
+      "github": "#",
+      "demo": "#",
+      "featured": false
+    }
+  ],
+
+  "resume": {
+    "summary": "Experienced software engineer with expertise in full-stack development, AI/ML, and data science. Passionate about building scalable applications and implementing machine learning solutions to solve complex problems.",
+    "skills": {
+      "languages": "Python, JavaScript, TypeScript, Java, SQL",
+      "frontend": "React, Next.js, HTML/CSS, Tailwind CSS, Redux",
+      "backend": "Node.js, Express, Django, Flask, GraphQL",
+      "databases": "MongoDB, PostgreSQL, MySQL, Redis",
+      "aiMl": "TensorFlow, PyTorch, scikit-learn, NLP, Computer Vision",
+      "devOps": "Docker, Kubernetes, AWS, GCP, CI/CD"
+    }
+  },
+
+  "terminal": {
+    "welcomeMessage": "Welcome to Anil's Terminal Portfolio!",
+    "helpText": "Type help to see available commands.",
+    "themeText": "Use the OS icons in the top-right corner to change the terminal theme.",
+    "prompts": {
+      "windows": "C:\\Users\\anil>",
+      "mac": "anil@macbook ~ %",
+      "linux": "anil@ubuntu:~$"
+    },
+    "titles": {
+      "windows": "Command Prompt",
+      "mac": "brew — zsh",
+      "linux": "Terminal - bash"
+    },
+    "featuredProjects": [
+      "AI-powered recommendation system",
+      "Full-stack e-commerce platform",
+      "Data visualization dashboard"
+    ]
+  },
+
+  "contact": {
+    "heading": "Get in Touch",
+    "subheading": "Have a question or want to work together? Feel free to contact me!",
+    "availability": [
+      "Full-time positions",
+      "Contract work",
+      "Freelance projects",
+      "Consulting",
+      "Speaking engagements"
+    ],
+    "formLabels": {
+      "name": "Name",
+      "email": "Email",
+      "subject": "Subject",
+      "message": "Message",
+      "submit": "Send Message"
+    }
+  },
+
+  "meta": {
+    "title": "Anil Sahith Portfolio | Software Engineer & AI/ML Engineer",
+    "description": "Personal portfolio of Anil, a Software Engineer, AI/ML Engineer, and Data Scientist.",
+    "keywords": ["portfolio", "software engineer", "AI engineer", "ML engineer", "data scientist", "developer"]
+  },
+
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "projects": "Projects",
+    "skills": "Skills",
+    "aiResumeMatch": "AI Resume Match",
+    "contact": "Contact",
+    "resume": "Resume"
+  },
+
+  "footer": {
+    "description": "Software Engineer, AI/ML Engineer, and Data Scientist passionate about building innovative solutions.",
+    "quickLinks": {
+      "title": "Quick Links",
+      "links": [
+        { "name": "Home", "href": "/" },
+        { "name": "About", "href": "/about" },
+        { "name": "Experience", "href": "/experience" },
+        { "name": "Projects", "href": "/projects" },
+        { "name": "Skills", "href": "/skills" },
+        { "name": "Contact", "href": "/contact" },
+        { "name": "Resume", "href": "/resume" },
+        { "name": "AI Resume Match", "href": "/resume-parser" }
+      ]
+    },
+    "contactSection": {
+      "title": "Contact",
+      "email": "anilsahithvallepu@gmail.com",
+      "location": "Hyderabad, India",
+      "availability": "Available for freelance and full-time opportunities"
+    },
+    "socialLinks": {
+      "github": "https://github.com/sahit1011",
+      "linkedin": "https://www.linkedin.com/in/anil-sahith/",
+      "twitter": "",
+      "email": "mailto:anilsahithvallepu@gmail.com"
+    },
+    "copyright": "All rights reserved."
+  },
+
+  "loading": {
+    "title": "Anil Sahith's Portfolio",
+    "message": "Loading terminal environment...",
+    "refreshText": "If the page doesn't load automatically, please click the button below.",
+    "refreshButton": "Refresh Page"
+  }
+}
