@@ -8,12 +8,13 @@ interface CopyTooltipProps {
   text: string;
   label: React.ReactNode;
   id: string; // Unique identifier for this tooltip
+  isEmail?: boolean; // Whether this is an email to show Gmail link
 }
 
 // Global state to track which tooltip is currently open
 let activeTooltipId: string | null = null;
 
-const CopyTooltip: React.FC<CopyTooltipProps> = ({ text, label, id }) => {
+const CopyTooltip: React.FC<CopyTooltipProps> = ({ text, label, id, isEmail = false }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [copied, setCopied] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
@@ -23,6 +24,13 @@ const CopyTooltip: React.FC<CopyTooltipProps> = ({ text, label, id }) => {
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleGmailClick = () => {
+    if (isEmail) {
+      const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(text)}`;
+      window.open(gmailUrl, '_blank');
+    }
   };
 
   // Toggle tooltip visibility
@@ -93,17 +101,28 @@ const CopyTooltip: React.FC<CopyTooltipProps> = ({ text, label, id }) => {
             <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-white dark:border-b-gray-800"></div>
             <div className="flex items-center justify-between">
               <span className="text-gray-900 dark:text-gray-100">{text}</span>
-              <button
-                onClick={handleCopy}
-                className="ml-2 p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors duration-200"
-                title={copied ? "Copied!" : "Copy to clipboard"}
-              >
-                {copied ? (
-                  <FaCheck className="text-green-500" size={14} />
-                ) : (
-                  <FaCopy className="text-gray-500 dark:text-gray-400" size={14} />
+              <div className="flex items-center ml-2 space-x-1">
+                {isEmail && (
+                  <button
+                    onClick={handleGmailClick}
+                    className="px-2 py-1 text-xs bg-red-500 hover:bg-red-600 text-white rounded transition-colors duration-200"
+                    title="Open in Gmail"
+                  >
+                    Gmail
+                  </button>
                 )}
-              </button>
+                <button
+                  onClick={handleCopy}
+                  className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors duration-200"
+                  title={copied ? "Copied!" : "Copy to clipboard"}
+                >
+                  {copied ? (
+                    <FaCheck className="text-green-500" size={14} />
+                  ) : (
+                    <FaCopy className="text-gray-500 dark:text-gray-400" size={14} />
+                  )}
+                </button>
+              </div>
             </div>
           </motion.div>
         )}

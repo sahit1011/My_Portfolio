@@ -62,7 +62,7 @@ export default function ContactPage() {
         {/* Wrapper for the two-column layout, centered with max-width */}
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            
+
             {/* Left Column: Contact Information Block */}
             <div>
               <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
@@ -73,7 +73,15 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold">Email</h3>
-                    <p className="text-dark-lighter dark:text-light-darker">anilsahithvallepu@gmail.com</p>
+                    <a
+                      href="https://mail.google.com/mail/?view=cm&fs=1&to=anilsahithvallepu@gmail.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-dark-lighter dark:text-light-darker hover:text-accent transition-colors duration-300 cursor-pointer"
+                      title="Open in Gmail"
+                    >
+                      anilsahithvallepu@gmail.com
+                    </a>
                   </div>
                 </div>
                 <div className="flex items-start">

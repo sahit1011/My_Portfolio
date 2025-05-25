@@ -83,8 +83,8 @@
       ],
       "skills": ["Python", "PyTesseract", "OpenCV", "YOLOv8", "OCR", "Computer Vision", "Multi-threading", "Multi-processing", "Healthcare IT", "EOB Processing", "RA Processing"]
     }
-    
-    
+
+
   ],
 
   "education": [
@@ -143,12 +143,12 @@
       { "name": "TensorFlow", "icon": "SiTensorflow" },
       { "name": "PyTorch", "icon": "SiPytorch" },
       { "name": "Scikit-learn", "icon": "SiScikitlearn" },
-      
+
       { "name": "LangChain", "icon": "FaBrain" },
       { "name": "Hugging Face", "icon": "SiHuggingface" }
 
-  
-      
+
+
     ],
     "developerTools": [
       { "name": "VS Code", "icon": "FaCode" },
@@ -309,7 +309,7 @@
       "github": "https://github.com/sahit1011",
       "linkedin": "https://www.linkedin.com/in/anil-sahith/",
       "twitter": "",
-      "email": "mailto:anilsahithvallepu@gmail.com"
+      "email": "https://mail.google.com/mail/?view=cm&fs=1&to=anilsahithvallepu@gmail.com"
     },
     "copyright": "All rights reserved."
   },
