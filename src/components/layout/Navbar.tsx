@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaAddressBook } from 'react-icons/fa';
 import CopyTooltip from '../ui/CopyTooltip';
 import ThemeToggle from '../theme/ThemeToggle'; // Import ThemeToggle
@@ -18,10 +18,30 @@ import {
 
 const Navbar = () => {
   const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Get content from the centralized content management system
   const personalInfo = getPersonalInfo();
   const navigation = getNavigationInfo();
+
+  // Handle click outside to close dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsContactDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  // Toggle dropdown function
+  const toggleContactDropdown = () => {
+    setIsContactDropdownOpen(!isContactDropdownOpen);
+  };
 
 
   return (
@@ -67,14 +87,14 @@ const Navbar = () => {
           {/* Contact Dropdown */}
           <div
             className="relative"
-            onMouseEnter={() => setIsContactDropdownOpen(true)}
-            onMouseLeave={() => setIsContactDropdownOpen(false)}
+            ref={dropdownRef}
           >
             <button
-              className="text-gray-900 dark:text-gray-100 hover:text-purple-600 transition-colors duration-300 p-2"
+              onClick={toggleContactDropdown}
+              className="text-gray-900 dark:text-gray-100 hover:text-purple-600 transition-colors duration-300 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800"
               title="Contact Information"
             >
-              <FaAddressBook size={22} /> {/* Or FaUserCircle */}
+              <FaAddressBook size={22} />
             </button>
             {isContactDropdownOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-md shadow-lg py-1 z-50 ring-1 ring-black ring-opacity-5">
