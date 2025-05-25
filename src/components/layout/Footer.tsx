@@ -1,10 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 // Import content management utilities
-import { getPersonalInfo, getFooterInfo } from '@/utils/content';
+import {
+  getPersonalInfo,
+  getFooterInfo,
+  getGithubUrl,
+  getLinkedinUrl,
+  getEmail
+} from '@/utils/content';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,48 +29,33 @@ const Footer = () => {
               {footerInfo.description}
             </p>
             <div className="flex space-x-4">
-              {footerInfo.socialLinks.github && (
-                <a
-                  href={footerInfo.socialLinks.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-dark dark:text-light hover:text-accent transition-colors duration-300"
-                  title="GitHub"
-                >
-                  <FaGithub size={24} />
-                </a>
-              )}
-              {footerInfo.socialLinks.linkedin && (
-                <a
-                  href={footerInfo.socialLinks.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-dark dark:text-light hover:text-accent transition-colors duration-300"
-                  title="LinkedIn"
-                >
-                  <FaLinkedin size={24} />
-                </a>
-              )}
-              {footerInfo.socialLinks.twitter && (
-                <a
-                  href={footerInfo.socialLinks.twitter}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-dark dark:text-light hover:text-accent transition-colors duration-300"
-                  title="Twitter"
-                >
-                  <FaTwitter size={24} />
-                </a>
-              )}
-              {footerInfo.socialLinks.email && (
-                <a
-                  href={footerInfo.socialLinks.email}
-                  className="text-dark dark:text-light hover:text-accent transition-colors duration-300"
-                  title="Email"
-                >
-                  <FaEnvelope size={24} />
-                </a>
-              )}
+              <a
+                href={getGithubUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-dark dark:text-light hover:text-accent transition-colors duration-300"
+                title="GitHub"
+              >
+                <FaGithub size={24} />
+              </a>
+              <a
+                href={getLinkedinUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-dark dark:text-light hover:text-accent transition-colors duration-300"
+                title="LinkedIn"
+              >
+                <FaLinkedin size={24} />
+              </a>
+              <a
+                href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(getEmail())}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-dark dark:text-light hover:text-accent transition-colors duration-300"
+                title="Email"
+              >
+                <FaEnvelope size={24} />
+              </a>
             </div>
           </div>
 

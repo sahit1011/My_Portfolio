@@ -4,7 +4,19 @@ import React, { useState } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin } from 'react-icons/fa';
 
+// Import content management utilities
+import {
+  getPersonalInfo,
+  getContactInfo,
+  getGithubUrl,
+  getLinkedinUrl
+} from '@/utils/content';
+
 export default function ContactPage() {
+  // Get content from the centralized content management system
+  const personalInfo = getPersonalInfo();
+  const contactInfo = getContactInfo();
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -74,13 +86,13 @@ export default function ContactPage() {
                   <div>
                     <h3 className="text-lg font-semibold">Email</h3>
                     <a
-                      href="https://mail.google.com/mail/?view=cm&fs=1&to=anilsahithvallepu@gmail.com"
+                      href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(personalInfo.email)}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-dark-lighter dark:text-light-darker hover:text-accent transition-colors duration-300 cursor-pointer"
                       title="Open in Gmail"
                     >
-                      anilsahithvallepu@gmail.com
+                      {personalInfo.email}
                     </a>
                   </div>
                 </div>
@@ -90,7 +102,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold">Phone</h3>
-                    <p className="text-dark-lighter dark:text-light-darker">+91 8143400946</p>
+                    <p className="text-dark-lighter dark:text-light-darker">{personalInfo.phone}</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -99,7 +111,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold">Location</h3>
-                    <p className="text-dark-lighter dark:text-light-darker">India</p>
+                    <p className="text-dark-lighter dark:text-light-darker">{personalInfo.location}</p>
                   </div>
                 </div>
               </div>
@@ -108,7 +120,7 @@ export default function ContactPage() {
                 <h3 className="text-lg font-semibold mb-4">Connect with me</h3>
                 <div className="flex space-x-4">
                   <a
-                    href="https://github.com/sahit1011"
+                    href={getGithubUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-light-dark dark:bg-dark-light p-3 rounded-full text-dark dark:text-light hover:text-accent transition-colors duration-300"
@@ -116,7 +128,7 @@ export default function ContactPage() {
                     <FaGithub size={24} />
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/anilsahithvallepu"
+                    href={getLinkedinUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-light-dark dark:bg-dark-light p-3 rounded-full text-dark dark:text-light hover:text-accent transition-colors duration-300"
@@ -129,11 +141,9 @@ export default function ContactPage() {
               <div className="mt-8 p-6 bg-light-dark dark:bg-dark-light rounded-lg">
                 <h3 className="text-lg font-semibold mb-2">Available for</h3>
                 <ul className="list-disc list-inside space-y-2 text-dark-lighter dark:text-light-darker">
-                  <li>Full-time positions</li>
-                  <li>Contract work</li>
-                  <li>Freelance projects</li>
-                  <li>Consulting</li>
-                  <li>Speaking engagements</li>
+                  {contactInfo.availability.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
                 </ul>
               </div>
             </div>
