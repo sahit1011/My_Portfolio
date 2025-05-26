@@ -2,8 +2,9 @@
 
 import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
-import { FaGithub, FaExternalLinkAlt, FaCode } from 'react-icons/fa';
+import { FaGithub, FaCode, FaProjectDiagram } from 'react-icons/fa';
 import Card3D from '@/components/ui/Card3D';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import ExpandingText from '@/components/ui/ExpandingText';
 import Button3D from '@/components/ui/Button3D';
 import SkillTag3D from '@/components/ui/SkillTag3D';
@@ -59,40 +60,39 @@ export default function ProjectsPage() {
                 gradientShadow={false}
                 glowOnHover={false}
               >
-                <div className="h-48 bg-gray-300 dark:bg-gray-700 relative">
-                  <div className="absolute inset-0 flex items-center justify-center text-dark dark:text-light">
-                    Project Image
-                  </div>
+                <div className="h-48 bg-gradient-to-r from-blue-400/80 to-purple-500/80 dark:from-blue-600/70 dark:to-purple-700/70 relative flex items-center justify-center">
+                  <FaProjectDiagram className="text-white dark:text-gray-100 text-6xl opacity-90" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-50/20 to-purple-50/20 dark:from-blue-900/30 dark:to-purple-900/30"></div>
                 </div>
 
                 <div className="p-6 flex-grow">
-                  <ExpandingText
-                    as="h3"
-                    className="text-xl font-bold mb-2"
-                    staggerChildren={true}
-                    expandScale={1.02}
-                    letterSpacing="0.01em"
-                    gradientColors={['#3b82f6', '#8b5cf6']}
-                  >
+                  <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
                     {project.title}
-                  </ExpandingText>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, index) => (
-                      <SkillTag3D
-                        key={index}
-                        className="text-xs"
-                      >
-                        {tech}
-                      </SkillTag3D>
+                  </h3>
+                  <ul className="text-gray-700 dark:text-gray-300 mb-4 space-y-2">
+                    {project.description.map((point, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="text-accent mr-2 mt-1">•</span>
+                        <span>{point}</span>
+                      </li>
                     ))}
+                  </ul>
+
+                  <div className="mb-4 max-h-16 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
+                    <div className="flex flex-wrap gap-2">
+                      {project.technologies.map((tech, index) => (
+                        <SkillTag3D
+                          key={index}
+                          className="text-xs"
+                        >
+                          {tech}
+                        </SkillTag3D>
+                      ))}
+                    </div>
                   </div>
                 </div>
 
-                <div className="p-6 pt-0 flex justify-between">
+                <div className="p-6 pt-0 flex justify-center">
                   <Button3D
                     href={project.github}
                     variant="outline"
@@ -101,14 +101,6 @@ export default function ProjectsPage() {
                     className="bg-transparent"
                   >
                     Code
-                  </Button3D>
-                  <Button3D
-                    href={project.demo}
-                    variant="accent"
-                    size="sm"
-                    icon={<FaExternalLinkAlt />}
-                  >
-                    Demo
                   </Button3D>
                 </div>
               </Card3D>
@@ -141,39 +133,34 @@ export default function ProjectsPage() {
               >
                 <div className="flex items-center mb-4">
                   <FaCode className="text-accent text-2xl mr-3 floating" />
-                  <ExpandingText
-                    as="h3"
-                    className="text-xl font-bold"
-                    staggerChildren={true}
-                    expandScale={1.02}
-                    letterSpacing="0.01em"
-                    gradientColors={['#8b5cf6', '#ec4899']}
-                  >
+                  <h3 className="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
                     {project.title}
-                  </ExpandingText>
+                  </h3>
                 </div>
 
-                <p className="text-gray-700 dark:text-gray-300 mb-4 flex-grow">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.slice(0, 3).map((tech, index) => (
-                    <SkillTag3D
-                      key={index}
-                      className="text-xs"
-                    >
-                      {tech}
-                    </SkillTag3D>
+                <ul className="text-gray-700 dark:text-gray-300 mb-4 flex-grow space-y-1">
+                  {project.description.map((point, index) => (
+                    <li key={index} className="flex items-start">
+                      <span className="text-accent mr-2 mt-1 text-sm">•</span>
+                      <span className="text-sm">{point}</span>
+                    </li>
                   ))}
-                  {project.technologies.length > 3 && (
-                    <SkillTag3D className="text-xs">
-                      +{project.technologies.length - 3} more
-                    </SkillTag3D>
-                  )}
+                </ul>
+
+                <div className="mb-4 max-h-16 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, index) => (
+                      <SkillTag3D
+                        key={index}
+                        className="text-xs"
+                      >
+                        {tech}
+                      </SkillTag3D>
+                    ))}
+                  </div>
                 </div>
 
-                <div className="flex justify-between">
+                <div className="flex justify-center">
                   <Button3D
                     href={project.github}
                     variant="outline"
@@ -182,14 +169,6 @@ export default function ProjectsPage() {
                     className="bg-transparent"
                   >
                     Code
-                  </Button3D>
-                  <Button3D
-                    href={project.demo}
-                    variant="accent"
-                    size="sm"
-                    icon={<FaExternalLinkAlt />}
-                  >
-                    Demo
                   </Button3D>
                 </div>
               </Card3D>

@@ -57,11 +57,11 @@ export interface SkillCategory {
 export interface Project {
   id: number;
   title: string;
-  description: string;
+  description: string[];
   image: string;
   technologies: string[];
   github: string;
-  demo: string;
+  demo?: string;
   featured: boolean;
 }
 
@@ -188,7 +188,7 @@ export const getExperienceById = (id: number): Experience | undefined =>
 // Export the raw content data for direct access if needed
 export const rawContentData = contentData;
 
-export default {
+const contentUtils = {
   getPersonalInfo,
   getAboutInfo,
   getExperiences,
@@ -215,3 +215,5 @@ export default {
   getExperienceById,
   rawContentData
 };
+
+export default contentUtils;

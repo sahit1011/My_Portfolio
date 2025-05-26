@@ -130,9 +130,7 @@
       { "name": "Pinecone", "icon": "FaDatabase" },
       { "name": "Git", "icon": "FaGithub" },
       { "name": "GCP", "icon": "FaGoogle" },
-      { "name": "AWS", "icon": "FaAws" },
-      { "name": "Docker", "icon": "FaDocker" },
-      { "name": "Kubernetes", "icon": "SiKubernetes" }
+      { "name": "Docker", "icon": "FaDocker" }
     ],
     "aiMl": [
       { "name": "Deep Learning", "icon": "FaBrain" },
@@ -141,6 +139,7 @@
       { "name": "Agentic AI", "icon": "FaBrain" },
       { "name": "Edge ML", "icon": "FaMicrochip" },
       { "name": "TensorFlow", "icon": "SiTensorflow" },
+      { "name": "TF-Lite", "icon": "SiTensorflow" },
       { "name": "PyTorch", "icon": "SiPytorch" },
       { "name": "Scikit-learn", "icon": "SiScikitlearn" },
 
@@ -166,6 +165,7 @@
       { "name": "System Design", "icon": "FaServer" },
       { "name": "Computer Networks", "icon": "FaNetworkWired" },
       { "name": "Embedded Systems", "icon": "FaMicrochip" },
+      { "name": "IOT and Cloud Computing", "icon": "FaCloud" },
       { "name": "Data Structures & Algorithms", "icon": "FaCode" },
       { "name": "Quantum Computing", "icon": "FaBrain" },
       {"name": "Algorithmic Trading", "icon": "FaBrain"}
@@ -176,42 +176,68 @@
     {
       "id": 1,
       "title": "Custom Stock Trend Predictor",
-      "description": "Designed a web-based tool using Flask for technical analysis of stocks, displaying future predicted curves and numerical stock data. Analyzed different models forecasting and predicting the most accurate future stock prices.",
+      "description": [
+        "Web-based Flask tool for technical analysis with future stock price predictions",
+        "Analyzed multiple forecasting models to achieve most accurate predictions",
+        "Interactive dashboard displaying predicted curves and numerical stock data"
+      ],
       "image": "/placeholder.jpg",
       "technologies": ["Python", "HTML", "CSS", "JavaScript", "Flask", "Pandas", "Numpy", "Matplotlib", "Scikit-learn", "Keras"],
       "github": "https://github.com/sahit1011/custom-stock-trend-predictor",
-      "demo": "#",
-      "featured": true
+      "featured": false
     },
     {
       "id": 2,
-      "title": "Smart ATS Resume Tracker",
-      "description": "Developed a resume matching system integrating Google Gemini Pro Large Language Model (LLM) for concise analysis and percentage-based evaluation of candidate resumes against job descriptions, leading to a 50% improvement in candidate shortlisting.",
+      "title": "Dr. Assistant - AI-Powered Healthcare Solution",
+      "description": [
+        "Comprehensive AI-powered healthcare platform designed to streamline doctor workflows and reduce administrative burden in the Indian healthcare system.",
+        "Features voice-assisted EMR, AI-powered clinical note generation, intelligent scheduling, and seamless integration with India's ABDM health data network.",
+        "Helps doctors focus more on patient care and less on paperwork through advanced automation and AI assistance."
+      ],
       "image": "/placeholder.jpg",
-      "technologies": ["Python", "Streamlit", "pdf2image", "Google Gemini-Pro API"],
+      "technologies": ["React", "TypeScript", "Material UI", "Node.js", "Express", "PostgreSQL", "MongoDB", "Redis", "Python", "FastAPI", "TensorFlow", "Hugging Face", "Docker", "Kubernetes", "AWS"],
       "github": "#",
-      "demo": "#",
       "featured": true
     },
     {
       "id": 3,
-      "title": "Quantum Perceptron for Pattern Classification",
-      "description": "Implemented an Artificial Neuron on IBM's Qiskit quantum simulator exploring its functionality and capabilities. Trained a 4 qubit perceptron using checkboard patterns for different numbers, evaluated its performance with various weight-input pairs and understand its behavior compared to a classical deep learning system.",
+      "title": "Post-Quantum Crypto Simulator",
+      "description": [
+        "Real-time web app demonstrating RSA vs quantum-resistant algorithms (NTRU, Kyber)",
+        "Interactive chat with live encryption/decryption and attacker simulation mode",
+        "Educational visualizations showcasing post-quantum cryptography concepts"
+      ],
       "image": "/placeholder.jpg",
-      "technologies": ["Python", "Numpy", "Matplotlib", "Gradio", "Qiskit", "Quantum Computing"],
+      "technologies": ["Python", "Flask", "JavaScript", "Bootstrap", "RSA", "NTRU", "Kyber", "AES-GCM", "WebSocket", "PyCryptodome", "NumPy", "Post-Quantum Cryptography"],
       "github": "#",
-      "demo": "#",
-      "featured": true
+      "featured": false
     },
     {
       "id": 4,
-      "title": "Medical Chat Bot",
-      "description": "Developed a medical chatbot allowing users to input medical and health-related queries, which are processed to understand the context and retrieve relevant information from a large language model.",
+      "title": "Secured Health Prediction using FHE-ML",
+      "description": [
+        "Privacy-preserving health risk prediction system using Fully Homomorphic Encryption (FHE) to enable secure computation on sensitive medical data.",
+        "Advanced ML inference pipeline that performs predictions on encrypted health data without ever exposing sensitive patient information.",
+        "Comprehensive web interface for secure health metrics input and risk assessment."
+      ],
       "image": "/placeholder.jpg",
-      "technologies": ["Python", "Flask", "Meta Llama2 LLM", "LangChain", "Pinecone Vector DB", "Large Language Models"],
-      "github": "#",
-      "demo": "#",
-      "featured": false
+      "technologies": ["Python", "Flask", "FHE", "Machine Learning", "Privacy Computing", "Web Security"],
+      "github": "https://github.com/sahit1011/FHE_ML_health_prediction",
+      "featured": true
+    },
+    {
+      "id": 5,
+      "title": "TodoAI - AI-Powered Task Management Application",
+      "description": [
+        "AI powered Todo app, where you can directly manage your tasks with our AI agent by voice or text, without explicitly performing API calls from frontend.",
+        "Multi-agent AI system for task management through natural language conversations.",
+        "Two AI modes (Plan and Act) with web search integration via LangChain.",
+        "Modern React interface with real-time chat capabilities and FastAPI backend."
+      ],
+      "image": "/placeholder.jpg",
+      "technologies": ["React", "FastAPI", "Google Gemini-Pro API", "LangChain", "SQLite", "Vite"],
+      "github": "https://github.com/sahit1011/TodoAI",
+      "featured": true
     }
   ],
 

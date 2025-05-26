@@ -23,6 +23,7 @@ const ExpandingText: React.FC<ExpandingTextProps> = ({
   expandScale = 1.05,
   letterSpacing = '0.02em',
   gradientColors = ['#3b82f6', '#8b5cf6'],
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   animateGradient = true,
   textShadow = true,
   glowIntensity = 0.3,
@@ -40,6 +41,7 @@ const ExpandingText: React.FC<ExpandingTextProps> = ({
 
   // Text shadow based on gradient colors
   const shadowColor = gradientColors[0];
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const textShadowValue = textShadow
     ? `0 0 ${glowIntensity * 15}px ${shadowColor}`
     : 'none';
@@ -70,21 +72,9 @@ const ExpandingText: React.FC<ExpandingTextProps> = ({
             animate={isHovered ? {
               scale: expandScale,
               letterSpacing: letterSpacing,
-              color: 'transparent', // Keep transparent for gradient
-              textShadow: textShadowValue,
-              backgroundPosition: animateGradient ? '100% 50%' : '0% 50%',
-              WebkitFontSmoothing: 'antialiased',
-              MozOsxFontSmoothing: 'grayscale',
-              opacity: 1, // Ensure visibility
             } : {
               scale: 1,
               letterSpacing: '0em',
-              color: 'transparent', // Keep transparent for gradient
-              textShadow: 'none',
-              backgroundPosition: '0% 50%',
-              WebkitFontSmoothing: 'auto',
-              MozOsxFontSmoothing: 'auto',
-              opacity: 1, // Ensure visibility
             }}
             style={{
               // Ensure gradient properties are always applied
@@ -95,10 +85,10 @@ const ExpandingText: React.FC<ExpandingTextProps> = ({
             }}
             transition={{
               type: 'spring',
-              stiffness: 600, // Increased stiffness for faster animation
-              damping: 25,    // Reduced damping for faster animation
-              mass: 0.7,      // Reduced mass for faster animation
-              delay: index * 0.015, // Reduced delay for faster staggering
+              stiffness: 400,
+              damping: 30,
+              mass: 0.8,
+              delay: index * 0.02,
             }}
           >
             {letter === ' ' ? '\u00A0' : letter}
@@ -118,9 +108,9 @@ const ExpandingText: React.FC<ExpandingTextProps> = ({
       }}
       transition={{
         type: 'spring',
-        stiffness: 600, // Increased stiffness for faster animation
-        damping: 25,    // Reduced damping for faster animation
-        mass: 0.7,      // Reduced mass for faster animation
+        stiffness: 400,
+        damping: 30,
+        mass: 0.8,
       }}
       style={{
         display: 'inline-block',
@@ -141,18 +131,8 @@ const ExpandingText: React.FC<ExpandingTextProps> = ({
         }}
         animate={isHovered ? {
           color: 'transparent',
-          textShadow: textShadowValue,
-          backgroundPosition: animateGradient ? '100% 50%' : '0% 50%',
-          WebkitFontSmoothing: 'antialiased',
-          MozOsxFontSmoothing: 'grayscale',
-          opacity: 1, // Ensure visibility
         } : {
           color: 'currentColor',
-          textShadow: 'none',
-          backgroundPosition: '0% 50%',
-          WebkitFontSmoothing: 'auto',
-          MozOsxFontSmoothing: 'auto',
-          opacity: 1, // Ensure visibility
         }}
         transition={{
           duration: 0.3, // Faster animation

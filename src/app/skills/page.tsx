@@ -7,14 +7,14 @@ import {
   FaPython, FaJs, FaReact, FaHtml5, FaCss3Alt, FaNodeJs,
   FaDocker, FaGoogle, FaGithub, FaLaptopCode, FaChartBar,
   FaProjectDiagram, FaNetworkWired, FaMicrochip, FaCodeBranch,
-  FaRobot, FaLanguage, FaGraduationCap
+  FaRobot, FaLanguage, FaGraduationCap, FaAws, FaCloud
 } from 'react-icons/fa';
 import {
   SiTypescript, SiNextdotjs, SiDjango, SiFlask,
   SiTensorflow, SiPytorch, SiScikitlearn,
   SiPandas, SiMongodb, SiPostgresql, SiKubernetes,
   SiMysql, SiCplusplus, SiSqlite, SiNumpy,
-  SiFigma
+  SiFigma, SiRedis, SiHuggingface
 } from 'react-icons/si';
 import Card3D from '@/components/ui/Card3D';
 import AnimatedHeading from '@/components/ui/AnimatedHeading';
@@ -49,15 +49,19 @@ const iconMap: { [key: string]: React.ReactNode } = {
   SiPostgresql: <SiPostgresql className="text-blue-500" size={24} />,
   SiSqlite: <SiSqlite className="text-blue-400" size={24} />,
   SiMongodb: <SiMongodb className="text-green-500" size={24} />,
+  SiRedis: <SiRedis className="text-red-500" size={24} />,
   FaDocker: <FaDocker className="text-blue-400" size={24} />,
   SiKubernetes: <SiKubernetes className="text-blue-500" size={24} />,
   FaGithub: <FaGithub className="text-gray-700" size={24} />,
   FaGoogle: <FaGoogle className="text-blue-400" size={24} />,
+  FaAws: <FaAws className="text-orange-400" size={24} />,
+  FaCloud: <FaCloud className="text-blue-300" size={24} />,
 
   // AI/ML
   SiTensorflow: <SiTensorflow className="text-orange-500" size={24} />,
   SiPytorch: <SiPytorch className="text-red-500" size={24} />,
   SiScikitlearn: <SiScikitlearn className="text-orange-400" size={24} />,
+  SiHuggingface: <SiHuggingface className="text-yellow-400" size={24} />,
   SiPandas: <SiPandas className="text-blue-600" size={24} />,
   SiNumpy: <SiNumpy className="text-blue-500" size={24} />,
   FaChartBar: <FaChartBar className="text-green-500" size={24} />,
