@@ -126,11 +126,11 @@
   }
 
   .section {
-    @apply py-16 md:py-24;
+    @apply py-8 sm:py-12 md:py-16 lg:py-24;
   }
 
   .card {
-    @apply bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl;
+    @apply bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg p-4 sm:p-6 transition-all duration-300 hover:shadow-xl;
   }
 
   .btn {
@@ -203,4 +203,45 @@
 
 .dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
   background-color: rgba(75, 85, 99, 0.8);
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  /* Disable 3D effects on mobile for better performance */
+  .mouse-tracking-3d {
+    transform: none !important;
+  }
+
+  .terminal-3d:hover {
+    transform: translateY(-2px) !important;
+  }
+
+  /* Better touch targets */
+  .btn {
+    @apply px-4 py-3 text-base;
+    min-height: 44px; /* iOS recommended touch target size */
+  }
+
+  /* Improved text sizing for mobile */
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+
+  /* Better spacing for mobile */
+  .container {
+    @apply px-4;
+  }
+
+  /* Mobile-friendly grid adjustments */
+  .grid {
+    @apply gap-4;
+  }
 }

@@ -11,7 +11,7 @@
     "phone": "+91 8143400946",
     "location": "Hyderabad, India",
     "github": "sahit1011",
-    "linkedin": "anilsahithvallepu",
+    "linkedin": "anil-sahith",
     "twitter": "",
     "website": ""
   },
@@ -21,8 +21,9 @@
     "name": "Anil Sahith",
     "roles": [
       { "prefix": "I'm a ", "name": "Software Engineer" },
-      { "prefix": "I'm an ", "name": "AI/ML Engineer" },
-      { "prefix": "I'm a ", "name": "Data Scientist" }
+      { "prefix": "I'm a ", "name": "Data Scientist" },
+      { "prefix": "I'm an ", "name": "AI/ML Engineer" }
+      
     ],
     "bio": [
       "With strong Computer Science concepts and an eye for detail, I enjoy creating effective solutions to challenging problems. I'm always excited to use new technologies to build impactful applications.",
@@ -93,8 +94,7 @@
       "degree": "B.Tech in Electrical and Electronics Engineering",
       "institution": "National Institute of Technology (NIT) Warangal",
       "location": "Warangal, Telangana",
-      "period": "2021 - 2025",
-      "gpa": "",
+      "gpa": "6.5",
       "achievements": []
     }
   ],
@@ -158,7 +158,6 @@
       { "name": "Cursor", "icon": "FaLaptopCode" },
       { "name": "Power BI", "icon": "FaChartBar" },
       { "name": "Figma", "icon": "SiFigma" },
-      { "name": "Notion", "icon": "FaBrain" },
       { "name": "Postman", "icon": "FaBrain" }
     ],
     "conceptsAndSystems": [
@@ -167,8 +166,7 @@
       { "name": "Embedded Systems", "icon": "FaMicrochip" },
       { "name": "IOT and Cloud Computing", "icon": "FaCloud" },
       { "name": "Data Structures & Algorithms", "icon": "FaCode" },
-      { "name": "Quantum Computing", "icon": "FaBrain" },
-      {"name": "Algorithmic Trading", "icon": "FaBrain"}
+      { "name": "Quantum Computing", "icon": "FaBrain" }
     ]
   },
 

@@ -22,27 +22,27 @@ export default function ProjectsPage() {
   return (
     <MainLayout>
       <section className="section container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 sm:mb-12">
           <AnimatedHeading
             as="h1"
-            className="mb-4 text-5xl font-bold"
+            className="mb-4 text-3xl sm:text-4xl lg:text-5xl font-bold"
             staggerLetters={true}
             underlineWidth={0}
             gradientColors={['#3b82f6', '#8b5cf6']}
           >
             My Projects
           </AnimatedHeading>
-          <p className="text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
+          <p className="text-lg sm:text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
             A showcase of my work, personal projects, and contributions
           </p>
         </div>
 
         {/* Featured Projects */}
-        <div className="mb-16">
-          <div className="text-center mb-8">
+        <div className="mb-12 sm:mb-16">
+          <div className="text-center mb-6 sm:mb-8">
             <AnimatedHeading
               as="h2"
-              className="text-4xl font-bold inline-block"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold inline-block"
               staggerLetters={true}
               underlineWidth={0}
               gradientColors={['#3b82f6', '#8b5cf6']}
@@ -50,7 +50,7 @@ export default function ProjectsPage() {
               Featured Projects
             </AnimatedHeading>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {featuredProjects.map(project => (
               <Card3D
                 key={project.id}
@@ -60,13 +60,13 @@ export default function ProjectsPage() {
                 gradientShadow={false}
                 glowOnHover={false}
               >
-                <div className="h-48 bg-gradient-to-r from-blue-400/80 to-purple-500/80 dark:from-blue-600/70 dark:to-purple-700/70 relative flex items-center justify-center">
-                  <FaProjectDiagram className="text-white dark:text-gray-100 text-6xl opacity-90" />
+                <div className="h-40 sm:h-48 bg-gradient-to-r from-blue-400/80 to-purple-500/80 dark:from-blue-600/70 dark:to-purple-700/70 relative flex items-center justify-center">
+                  <FaProjectDiagram className="text-white dark:text-gray-100 text-4xl sm:text-6xl opacity-90" />
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-50/20 to-purple-50/20 dark:from-blue-900/30 dark:to-purple-900/30"></div>
                 </div>
 
-                <div className="p-6 flex-grow">
-                  <h3 className="text-xl font-bold mb-2 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                <div className="p-4 sm:p-6 flex-grow">
+                  <h3 className="text-lg sm:text-xl font-bold mb-2 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
                     {project.title}
                   </h3>
                   <ul className="text-gray-700 dark:text-gray-300 mb-4 space-y-2">
@@ -92,7 +92,7 @@ export default function ProjectsPage() {
                   </div>
                 </div>
 
-                <div className="p-6 pt-0 flex justify-center">
+                <div className="p-4 sm:p-6 pt-0 flex justify-center">
                   <Button3D
                     href={project.github}
                     variant="outline"
@@ -110,10 +110,10 @@ export default function ProjectsPage() {
 
         {/* Other Projects */}
         <div>
-          <div className="text-center mb-8">
+          <div className="text-center mb-6 sm:mb-8">
             <AnimatedHeading
               as="h2"
-              className="text-4xl font-bold inline-block"
+              className="text-2xl sm:text-3xl lg:text-4xl font-bold inline-block"
               staggerLetters={true}
               underlineWidth={0}
               gradientColors={['#3b82f6', '#8b5cf6']}
@@ -121,19 +121,19 @@ export default function ProjectsPage() {
               Other Projects
             </AnimatedHeading>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {otherProjects.map(project => (
               <Card3D
                 key={project.id}
-                className="p-6 flex flex-col h-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100"
+                className="p-4 sm:p-6 flex flex-col h-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100"
                 hoverScale={1.02}
                 mouseIntensity={0}
                 gradientShadow={false}
                 glowOnHover={false}
               >
                 <div className="flex items-center mb-4">
-                  <FaCode className="text-accent text-2xl mr-3 floating" />
-                  <h3 className="text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+                  <FaCode className="text-accent text-xl sm:text-2xl mr-3 floating" />
+                  <h3 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
                     {project.title}
                   </h3>
                 </div>
@@ -176,17 +176,17 @@ export default function ProjectsPage() {
           </div>
         </div>
 
-        <div className="text-center mt-16">
+        <div className="text-center mt-12 sm:mt-16">
           <AnimatedHeading
             as="h2"
-            className="text-2xl font-bold mb-4 inline-block"
+            className="text-xl sm:text-2xl font-bold mb-4 inline-block"
             staggerLetters={true}
             underlineWidth={0}
             gradientColors={['#3b82f6', '#8b5cf6']}
           >
             Interested in collaborating?
           </AnimatedHeading>
-          <p className="text-lg max-w-2xl mx-auto mb-6 text-gray-700 dark:text-gray-300">
+          <p className="text-base sm:text-lg max-w-2xl mx-auto mb-6 text-gray-700 dark:text-gray-300">
             I&apos;m always looking for new projects and challenges. Let&apos;s build something amazing together!
           </p>
           <Button3D

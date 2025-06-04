@@ -18,13 +18,14 @@ import {
 
 const Navbar = () => {
   const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   // Get content from the centralized content management system
   const personalInfo = getPersonalInfo();
   const navigation = getNavigationInfo();
 
-  // Handle click outside to close dropdown
+  // Handle click outside to close dropdown and mobile menu
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -38,9 +39,17 @@ const Navbar = () => {
     };
   }, []);
 
-  // Toggle dropdown function
+  // Toggle functions
   const toggleContactDropdown = () => {
     setIsContactDropdownOpen(!isContactDropdownOpen);
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
   };
 
 
@@ -145,14 +154,85 @@ const Navbar = () => {
 
           <ThemeToggle /> {/* Add ThemeToggle here */}
 
-          {/* Mobile menu button - to be implemented */}
-          <button className="md:hidden p-2">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          {/* Mobile menu button */}
+          <button
+            onClick={toggleMobileMenu}
+            className="md:hidden p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+            aria-label="Toggle mobile menu"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className={`h-6 w-6 transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-90' : ''}`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {isMobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
             </svg>
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+          <div className="px-4 py-2 space-y-1">
+            <Link
+              href="/"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              onClick={closeMobileMenu}
+            >
+              {navigation.home}
+            </Link>
+            <Link
+              href="/about"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              onClick={closeMobileMenu}
+            >
+              {navigation.about}
+            </Link>
+            <Link
+              href="/experience"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              onClick={closeMobileMenu}
+            >
+              {navigation.experience}
+            </Link>
+            <Link
+              href="/projects"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              onClick={closeMobileMenu}
+            >
+              {navigation.projects}
+            </Link>
+            <Link
+              href="/skills"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              onClick={closeMobileMenu}
+            >
+              {navigation.skills}
+            </Link>
+            <Link
+              href="/resume-parser"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              onClick={closeMobileMenu}
+            >
+              {navigation.aiResumeMatch}
+            </Link>
+            <Link
+              href="/contact"
+              className="block px-3 py-2 rounded-md text-base font-medium text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors duration-300"
+              onClick={closeMobileMenu}
+            >
+              {navigation.contact}
+            </Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
