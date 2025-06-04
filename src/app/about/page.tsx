@@ -277,7 +277,7 @@ export default function AboutPage() {
           </div>
 
           <div className="order-1 md:order-2 flex justify-center md:items-start">
-            <div className="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden md:-mt-60">
+            <div className="relative w-64 h-64 md:w-96 md:h-96 rounded-full overflow-hidden md:-mt-96">
               <Image
                 src="/images/1746994095136.jpg"
                 alt="Anil's Profile"
