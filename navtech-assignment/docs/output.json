@@ -1,0 +1,112 @@
+{
+    "address": {
+        "city": "thane",
+        "country": "ind",
+        "state": "mh"
+    },
+    "education_history": [
+        {
+            "degree": "bachelor of engineering - computers",
+            "from_date": " ",
+            "name": "rajiv gandhi institute of technology",
+            "to_date": " "
+        }
+    ],
+    "email": "xyz@gmail.com",
+    "first_name": "vijay",
+    "last_name": "pagare",
+    "phone": "+91889XXXXX28",
+    "skills": [
+        {
+            "skill": "javascript"
+        },
+        {
+            "skill": "typescript"
+        },
+        {
+            "skill": "react"
+        },
+        {
+            "skill": "nextjs"
+        },
+        {
+            "skill": "angular 2+"
+        },
+        {
+            "skill": "tailwindcss"
+        },
+        {
+            "skill": "html"
+        },
+        {
+            "skill": "css/scss"
+        },
+        {
+            "skill": "git"
+        },
+        {
+            "skill": "rest-apis using nodejs"
+        },
+        {
+            "skill": "linux"
+        },
+        {
+            "skill": "material & ant design"
+        },
+        {
+            "skill": "es6"
+        },
+        {
+            "skill": "redux"
+        },
+        {
+            "skill": "rxjs"
+        },
+        {
+            "skill": "apache echarts"
+        },
+        {
+            "skill": "d3.js"
+        },
+        {
+            "skill": "three.js"
+        },
+        {
+            "skill": "sockets"
+        },
+        {
+            "skill": "pwa"
+        }
+    ],
+    "summary": "A frontend-leaning software engineer with 4.5+ years of experience in building and maintaining high-quality saas products and web applications. Proven ability to work independently and as part of a team in fast-moving environments. Excellent problem-solver with an aptitude for troubleshooting and the ability to quickly master new skills. Currently working as a Software Engineer - Frontend at PROPELLOR.AI. Previously worked as a Software Engineer - Founder at ERAGAP VENTURES and as a Software Engineer - Frontend at FLEXILOANS. Also, founded and worked as a Lecturer at LUMINAIRE ACADEMY.",
+    "work_history": [
+        {
+            "company": "propellor.ai",
+            "description": "Architected, built and maintained business critical modules for a data unification and visualization platform. Introduced 20+ charts including sankey, wordcloud, heatmap, tree, bubble, Map - India and USA, with a few custom bar charts & tables. Built them using SVG, Canvas, and Open-source libraries like Apache Echarts, d3, ng-zorro, and ag-grid. Developed 10+ data sources by integrating 3rd party APIs from facebook, google, shopify, snapchat, etc. Built data connectors using forms and oAuth2 based approaches. Implemented features: ticketing system, billing service, user management, rich-text-editor enabled notes, admin panel, RBACs & Tier-Based User Restriction Service, chart alerts, dashboard and charting related - page & group filters, external share, save as pdf, slideshow mode. Stabilised the app by reducing the bugs by 90% within a quarter of joining and thereon maintained a <5% bug-to-new-feature ratio. Redesigned API responses by making proper use of cohesion and coupling concepts. Refactored the centralised state management service where RxJS leaks were prominent. Built a tracking service that could facilitate Root Cause Analysis for high-impact causing issues by logging the user actions, code flow, and modifications in the source-of-truth. Established an AWS pipeline for dev, stage, and prod environments to automate releases. Set up a release and signoff process in place. Enhanced the User Experience and Interface which led to a doubling of the average time spent on the app and improved demo-to-trial ratio. Prepared a UX + lighthouse report along with the design team wherein we identified some quick wins and established other long-term procedures as a part of design signoff process. Implemented driver.js for product demos instead of video onboarding, introduced setup guides, help, and getting started CTAs, brought in micro-interactions, changed the entire app theme along with the component library, and coordinated with designers for improved user messaging. Made sure we paid attention to details - alignments, spacing, color combos, adherence to design principles, etc. Took lighthouse accessibility and best practices scores to around 90 from below 60. Revamped the architecture of the core charting library and dashboard module to improve the first contentful paint time from 5s to 1.5s. Did so by modularising the code into smaller chunks (modules and components), refactored memory leaks, reduced unnecessary API calls, performed asset compression and caching + enabled CDNs. Implemented lazing loading and lazy rendering (render stuff only when necessary - strategic breaking down of the entire page into groups). Cleaned up redundant services, unused components, packages, images, and other assets. Led migration from angular v9 to v15 along with all its dependencies. Took the lighthouse performance score from around 25 to 70. Single-handedly leading the frontend development activities since Jan 2023. Active contributions in project planning and product discussions. Accustomed to working alongside the CEO, CTO along with fellow engineers and designers.",
+            "from_date": "08-01-2021",
+            "title": "software engineer - frontend",
+            "to_date": "12-12-2023"
+        },
+        {
+            "company": "eragap ventures",
+            "description": "Indie-hacked a portfolio of products and services as a solopreneur. Mostly worked on web-based saas tools, media initiatives, and client projects. Made multiple pivots: ecom, crypto, and content. Built ecom apps for a jewellery store and a paper florist using React/NextJS, TailwindCSS, Javascript, and Vercel. Developed a web app that provided legal documents service (wills & codicils). Built an SEO-rich blog app for creators that converted .md files to blog posts. Built a content automation platform (app + website) to help creators and marketers automate social media posts. Data once connected to Google Sheets would turn into ready-to-post images. Built a philosophy-based app like goodreads + inshorts app, later turned into a content-only product. Social media peak reached an average of 100K monthly impressions for 6 months.",
+            "from_date": " ",
+            "title": "software engineer - founder",
+            "to_date": "08-01-2021"
+        },
+        {
+            "company": "flexiloans",
+            "description": "Built a dynamic client onboarding and lead generation platform (JSON-based) that tailored itself to various user journeys depending upon the source of the lead and was integrated with Flexiloans' business partners like Gpay, Paypal, and Xiaomi. It was used by 6 lac SMEs per month. Awarded Employee of the Month twice. Features: KYC flow, Loans Profile Section, E-Nach/Ops flow.",
+            "from_date": "06-01-2019",
+            "title": "software engineer - frontend",
+            "to_date": " "
+        },
+        {
+            "company": "luminaire academy",
+            "description": "Bootstrapped an offline coaching institute during my college days. ARR: 15 lac. Roles: Teaching (physics), guest lecturing at other partner institutes (5+), mentoring Prime decision-making, marketing and revenue generation.",
+            "from_date": "01-01-2015",
+            "title": "lecturer - founder",
+            "to_date": "01-01-2019"
+        }
+    ]
+}

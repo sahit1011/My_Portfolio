@@ -1,0 +1,778 @@
+2025-06-12 17:08:19,296 - src.llm_providers.base_llm - ERROR - Gemini API key not found
+2025-06-12 17:08:19,296 - src.resume_parser - INFO - Gemini provider: Not available
+2025-06-12 17:08:19,296 - src.llm_providers.base_llm - ERROR - OpenAI API key not found
+2025-06-12 17:08:19,296 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-12 17:08:19,296 - src.resume_parser - INFO - OpenRouter provider: Not available
+2025-06-12 17:08:22,829 - src.llm_providers.base_llm - INFO - Enhanced transformer models initialized on cpu
+2025-06-12 17:08:22,829 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-12 17:08:25,744 - src.llm_providers.base_llm - INFO - Improved LayoutLM transformer models initialized on cpu
+2025-06-12 17:08:25,744 - src.resume_parser - INFO - Improved LayoutLM Transformer provider: Available
+2025-06-12 17:11:31,168 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-12 17:11:31,168 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-12 17:11:31,168 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-12 17:11:31,168 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-12 17:11:31,168 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-12 17:11:34,046 - src.llm_providers.base_llm - INFO - Enhanced transformer models initialized on cpu
+2025-06-12 17:11:34,046 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-12 17:11:37,139 - src.llm_providers.base_llm - INFO - Improved LayoutLM transformer models initialized on cpu
+2025-06-12 17:11:37,139 - src.resume_parser - INFO - Improved LayoutLM Transformer provider: Available
+2025-06-12 17:11:37,139 - src.resume_parser - INFO - Starting resume parsing: docs\resumes_for_testing\anil_ml_resme.pdf with openrouter
+2025-06-12 17:11:37,262 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:11:37,281 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:12:32,607 - src.llm_providers.base_llm - INFO - Received response from OpenRouter
+2025-06-12 17:12:32,607 - src.llm_providers.base_llm - INFO - Successfully extracted resume data using OpenRouter
+2025-06-12 17:12:32,607 - src.resume_parser - INFO - Successfully extracted resume data using openrouter
+2025-06-12 17:12:32,607 - src.resume_parser - INFO - Starting resume parsing: docs\resumes_for_testing\BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with openrouter
+2025-06-12 17:12:32,731 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:12:32,732 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:13:19,544 - src.llm_providers.base_llm - INFO - Received response from OpenRouter
+2025-06-12 17:13:19,544 - src.llm_providers.base_llm - INFO - Successfully extracted resume data using OpenRouter
+2025-06-12 17:13:19,544 - src.resume_parser - INFO - Successfully extracted resume data using openrouter
+2025-06-12 17:13:19,556 - src.resume_parser - INFO - Starting resume parsing: docs\resumes_for_testing\anil_ml_resme.pdf with smart_transformer
+2025-06-12 17:13:19,556 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:13:19,659 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:13:19,659 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:13:19,891 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:13:19,893 - src.llm_providers.base_llm - INFO - Improved extraction: 4760 chars vs 4760 chars
+2025-06-12 17:13:19,893 - src.llm_providers.base_llm - INFO - Using improved PDF extraction for better text quality
+2025-06-12 17:13:22,326 - src.llm_providers.base_llm - INFO - Successfully extracted resume data using enhanced transformers
+2025-06-12 17:13:22,326 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:13:22,326 - src.resume_parser - INFO - Starting resume parsing: docs\resumes_for_testing\anil_ml_resme.pdf with layoutlm_transformer
+2025-06-12 17:13:22,326 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:13:22,473 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:13:22,473 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:13:22,591 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:13:22,591 - src.llm_providers.improved_layoutlm_transformer - INFO - Improved LayoutLM extraction: 4760 chars vs 4760 chars
+2025-06-12 17:13:22,591 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Improved LayoutLM
+2025-06-12 17:13:24,769 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using improved LayoutLM transformers
+2025-06-12 17:13:24,769 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:14:07,292 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-12 17:14:07,292 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-12 17:14:07,292 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-12 17:14:07,292 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-12 17:14:07,292 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-12 17:14:09,962 - src.llm_providers.base_llm - INFO - Enhanced transformer models initialized on cpu
+2025-06-12 17:14:09,962 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-12 17:14:12,645 - src.llm_providers.base_llm - INFO - Improved LayoutLM transformer models initialized on cpu
+2025-06-12 17:14:12,646 - src.resume_parser - INFO - Improved LayoutLM Transformer provider: Available
+2025-06-12 17:14:12,647 - src.resume_parser - INFO - Starting resume parsing: docs\resumes_for_testing\anil_ml_resme.pdf with openrouter
+2025-06-12 17:14:12,793 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:14:12,805 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:15:03,265 - src.llm_providers.base_llm - INFO - Received response from OpenRouter
+2025-06-12 17:15:03,265 - src.llm_providers.base_llm - INFO - Successfully extracted resume data using OpenRouter
+2025-06-12 17:15:03,265 - src.resume_parser - INFO - Successfully extracted resume data using openrouter
+2025-06-12 17:15:03,268 - src.resume_parser - INFO - Starting resume parsing: docs\resumes_for_testing\BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with openrouter
+2025-06-12 17:15:03,390 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:15:03,398 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:15:23,303 - src.llm_providers.base_llm - INFO - Received response from OpenRouter
+2025-06-12 17:15:23,303 - src.llm_providers.base_llm - INFO - Successfully extracted resume data using OpenRouter
+2025-06-12 17:15:23,316 - src.resume_parser - INFO - Successfully extracted resume data using openrouter
+2025-06-12 17:15:23,316 - src.resume_parser - INFO - Starting resume parsing: docs\resumes_for_testing\anil_ml_resme.pdf with smart_transformer
+2025-06-12 17:15:23,316 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:15:23,452 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:15:23,452 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:15:23,678 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:15:23,678 - src.llm_providers.base_llm - INFO - Improved extraction: 4760 chars vs 4760 chars
+2025-06-12 17:15:23,678 - src.llm_providers.base_llm - INFO - Using improved PDF extraction for better text quality
+2025-06-12 17:15:26,222 - src.llm_providers.base_llm - INFO - Successfully extracted resume data using enhanced transformers
+2025-06-12 17:15:26,222 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:15:26,222 - src.resume_parser - INFO - Starting resume parsing: docs\resumes_for_testing\anil_ml_resme.pdf with layoutlm_transformer
+2025-06-12 17:15:26,222 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:15:26,361 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:15:26,363 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:15:26,498 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:15:26,498 - src.llm_providers.improved_layoutlm_transformer - INFO - Improved LayoutLM extraction: 4760 chars vs 4760 chars
+2025-06-12 17:15:26,498 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Improved LayoutLM
+2025-06-12 17:15:28,656 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using improved LayoutLM transformers
+2025-06-12 17:15:28,656 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:23:11,794 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-12 17:23:11,809 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-12 17:23:11,811 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-12 17:23:11,811 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-12 17:23:11,811 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-12 17:23:15,043 - src.llm_providers.base_llm - INFO - Enhanced Transformer V2 models initialized on cpu
+2025-06-12 17:23:15,043 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-12 17:23:18,392 - src.llm_providers.base_llm - INFO - Enhanced LayoutLM V2 transformer models initialized on cpu
+2025-06-12 17:23:18,392 - src.resume_parser - INFO - Improved LayoutLM Transformer provider: Available
+2025-06-12 17:23:18,392 - src.resume_parser - INFO - Starting resume parsing: docs\resumes_for_testing\anil_ml_resme.pdf with smart_transformer
+2025-06-12 17:23:18,392 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:23:18,525 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:23:18,540 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:23:18,675 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:23:18,691 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:23:24,390 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (NER): Nit Waranga
+2025-06-12 17:23:24,394 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: 814340 0946
+2025-06-12 17:23:24,406 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Education: No education section found
+2025-06-12 17:23:24,410 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Work: No work section found
+2025-06-12 17:23:24,410 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:23:24,411 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:23:24,412 - src.resume_parser - INFO - Starting resume parsing: docs\resumes_for_testing\BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with smart_transformer
+2025-06-12 17:23:24,413 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:23:24,556 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:23:24,556 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:23:24,673 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:23:24,673 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:23:26,158 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Name extraction failed - no valid name found
+2025-06-12 17:23:26,158 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: 939822 2755
+2025-06-12 17:23:26,161 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Education: No education section found
+2025-06-12 17:23:26,161 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Work: No work section found
+2025-06-12 17:23:26,161 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:23:26,163 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:23:26,164 - src.resume_parser - INFO - Starting resume parsing: docs\resumes_for_testing\anil_ml_resme.pdf with layoutlm_transformer
+2025-06-12 17:23:26,164 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:23:26,339 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:23:26,339 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:23:26,473 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:23:26,473 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 4760 chars vs 4760 chars
+2025-06-12 17:23:26,473 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:23:31,609 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (NER): Nit Waranga
+2025-06-12 17:23:31,609 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: 814340 0946
+2025-06-12 17:23:31,609 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found by keywords: 4760 chars
+2025-06-12 17:23:31,609 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 4760 chars
+2025-06-12 17:23:32,234 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Bachelor at Bachelor
+2025-06-12 17:23:32,264 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Intermediate at Feature Engineering
+2025-06-12 17:23:32,282 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: m. Tech at Data Engineering
+2025-06-12 17:23:32,290 - src.llm_providers.improved_layoutlm_transformer - WARNING - V2 Work: No dedicated work section found
+2025-06-12 17:23:32,312 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:23:32,335 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:23:32,739 - src.resume_parser - INFO - Starting resume parsing: docs\resumes_for_testing\BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with layoutlm_transformer
+2025-06-12 17:23:32,774 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:23:33,325 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:23:33,355 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:23:33,666 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:23:33,704 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 1509 chars vs 1509 chars
+2025-06-12 17:23:33,738 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:23:44,667 - src.llm_providers.improved_layoutlm_transformer - WARNING - V2 Name extraction failed - no valid name found
+2025-06-12 17:23:44,667 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: 939822 2755
+2025-06-12 17:23:44,671 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found by keywords: 1509 chars
+2025-06-12 17:23:44,671 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 1509 chars
+2025-06-12 17:23:44,675 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at Warangal
+2025-06-12 17:23:44,676 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Intermediate at Intermediate
+2025-06-12 17:23:44,677 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: SSC at Gouthami vidyanikethan high school
+2025-06-12 17:23:44,680 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Balaji Junior College at Balaji Junior College
+2025-06-12 17:23:44,680 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Gouthami vidyanikethan high school at 2016
+2025-06-12 17:23:44,705 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at in Civil Engineering
+2025-06-12 17:23:44,706 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at in Civil Engineering
+2025-06-12 17:23:44,713 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Intermediate at Intermediate
+2025-06-12 17:23:44,713 - src.llm_providers.improved_layoutlm_transformer - WARNING - V2 Work: No dedicated work section found
+2025-06-12 17:23:44,718 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:23:44,720 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:23:44,738 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-12 17:23:44,739 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-12 17:23:44,740 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-12 17:23:44,740 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-12 17:23:44,740 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-12 17:23:48,574 - src.llm_providers.base_llm - INFO - Enhanced Transformer V2 models initialized on cpu
+2025-06-12 17:23:48,574 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-12 17:23:52,659 - src.llm_providers.base_llm - INFO - Enhanced LayoutLM V2 transformer models initialized on cpu
+2025-06-12 17:23:52,659 - src.resume_parser - INFO - Improved LayoutLM Transformer provider: Available
+2025-06-12 17:23:52,659 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with openrouter
+2025-06-12 17:23:52,852 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:23:52,857 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:25:01,408 - src.llm_providers.base_llm - INFO - Received response from OpenRouter
+2025-06-12 17:25:01,408 - src.llm_providers.base_llm - INFO - Successfully extracted resume data using OpenRouter
+2025-06-12 17:25:01,408 - src.resume_parser - INFO - Successfully extracted resume data using openrouter
+2025-06-12 17:25:01,408 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with smart_transformer
+2025-06-12 17:25:01,408 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:25:01,534 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:25:01,534 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:25:01,713 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:25:01,717 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:25:07,123 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (NER): Nit Waranga
+2025-06-12 17:25:07,123 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: 814340 0946
+2025-06-12 17:25:07,139 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Education: No education section found
+2025-06-12 17:25:07,140 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Work: No work section found
+2025-06-12 17:25:07,140 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:25:07,141 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:25:07,141 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with layoutlm_transformer
+2025-06-12 17:25:07,142 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:25:07,321 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:25:07,325 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:25:07,455 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:25:07,463 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 4760 chars vs 4760 chars
+2025-06-12 17:25:07,463 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:25:13,479 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (NER): Nit Waranga
+2025-06-12 17:25:13,480 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: 814340 0946
+2025-06-12 17:25:13,488 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found by keywords: 4760 chars
+2025-06-12 17:25:13,489 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 4760 chars
+2025-06-12 17:25:13,980 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Bachelor at Bachelor
+2025-06-12 17:25:13,990 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Intermediate at Feature Engineering
+2025-06-12 17:25:13,991 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: m. Tech at Data Engineering
+2025-06-12 17:25:13,991 - src.llm_providers.improved_layoutlm_transformer - WARNING - V2 Work: No dedicated work section found
+2025-06-12 17:25:13,992 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:25:13,992 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:29:44,552 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-12 17:29:44,552 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-12 17:29:44,552 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-12 17:29:44,552 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-12 17:29:44,552 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-12 17:29:47,643 - src.llm_providers.base_llm - INFO - Enhanced Transformer V2 models initialized on cpu
+2025-06-12 17:29:47,643 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-12 17:29:50,943 - src.llm_providers.base_llm - INFO - Enhanced LayoutLM V2 transformer models initialized on cpu
+2025-06-12 17:29:50,947 - src.resume_parser - INFO - Improved LayoutLM Transformer provider: Available
+2025-06-12 17:29:50,947 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with smart_transformer
+2025-06-12 17:29:50,947 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:29:51,152 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:29:51,163 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:29:51,338 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:29:51,342 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:29:58,783 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (NER): Nit Waranga
+2025-06-12 17:29:58,786 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: 814340 0946
+2025-06-12 17:29:58,809 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Education: No education section found
+2025-06-12 17:29:58,813 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Work: No work section found
+2025-06-12 17:29:58,814 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:29:58,816 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:29:58,818 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with smart_transformer
+2025-06-12 17:29:58,819 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:29:59,000 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:29:59,000 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:29:59,152 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:29:59,156 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:30:01,023 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Name extraction failed - no valid name found
+2025-06-12 17:30:01,025 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: 939822 2755
+2025-06-12 17:30:01,033 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Education: No education section found
+2025-06-12 17:30:01,035 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Work: No work section found
+2025-06-12 17:30:01,035 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:30:01,035 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:30:01,042 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with layoutlm_transformer
+2025-06-12 17:30:01,042 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:30:01,249 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:30:01,265 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:30:01,418 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:30:01,418 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 4760 chars vs 4760 chars
+2025-06-12 17:30:01,418 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:30:08,339 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (NER): Nit Waranga
+2025-06-12 17:30:08,341 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: 814340 0946
+2025-06-12 17:30:08,347 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found by keywords: 4760 chars
+2025-06-12 17:30:08,347 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 4760 chars
+2025-06-12 17:30:08,737 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Bachelor at Bachelor
+2025-06-12 17:30:08,752 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Intermediate at Feature Engineering
+2025-06-12 17:30:08,753 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: m. Tech at Data Engineering
+2025-06-12 17:30:08,753 - src.llm_providers.improved_layoutlm_transformer - WARNING - V2 Work: No dedicated work section found
+2025-06-12 17:30:08,754 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:30:08,754 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:30:08,757 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with layoutlm_transformer
+2025-06-12 17:30:08,758 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:30:08,884 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:30:08,884 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:30:09,032 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:30:09,032 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 1509 chars vs 1509 chars
+2025-06-12 17:30:09,032 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:30:11,060 - src.llm_providers.improved_layoutlm_transformer - WARNING - V2 Name extraction failed - no valid name found
+2025-06-12 17:30:11,060 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: 939822 2755
+2025-06-12 17:30:11,069 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found by keywords: 1509 chars
+2025-06-12 17:30:11,069 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 1509 chars
+2025-06-12 17:30:11,074 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at Warangal
+2025-06-12 17:30:11,075 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Intermediate at Intermediate
+2025-06-12 17:30:11,076 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: SSC at Gouthami vidyanikethan high school
+2025-06-12 17:30:11,080 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Balaji Junior College at Balaji Junior College
+2025-06-12 17:30:11,080 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Gouthami vidyanikethan high school at 2016
+2025-06-12 17:30:11,106 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at in Civil Engineering
+2025-06-12 17:30:11,106 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at in Civil Engineering
+2025-06-12 17:30:11,113 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Intermediate at Intermediate
+2025-06-12 17:30:11,113 - src.llm_providers.improved_layoutlm_transformer - WARNING - V2 Work: No dedicated work section found
+2025-06-12 17:30:11,113 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:30:11,113 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:30:11,119 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-12 17:30:11,120 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-12 17:30:11,121 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-12 17:30:11,122 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-12 17:30:11,122 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-12 17:30:15,001 - src.llm_providers.base_llm - INFO - Enhanced Transformer V2 models initialized on cpu
+2025-06-12 17:30:15,001 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-12 17:30:20,559 - src.llm_providers.base_llm - INFO - Enhanced LayoutLM V2 transformer models initialized on cpu
+2025-06-12 17:30:20,561 - src.resume_parser - INFO - Improved LayoutLM Transformer provider: Available
+2025-06-12 17:30:20,561 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with openrouter
+2025-06-12 17:30:20,865 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:30:20,872 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:32:07,150 - src.llm_providers.base_llm - INFO - Received response from OpenRouter
+2025-06-12 17:32:07,151 - src.llm_providers.base_llm - INFO - Successfully extracted resume data using OpenRouter
+2025-06-12 17:32:07,155 - src.resume_parser - INFO - Successfully extracted resume data using openrouter
+2025-06-12 17:32:07,157 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with smart_transformer
+2025-06-12 17:32:07,159 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:32:07,397 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:32:07,397 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:32:07,527 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:32:07,527 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:32:12,406 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (NER): Nit Waranga
+2025-06-12 17:32:12,408 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: 814340 0946
+2025-06-12 17:32:12,416 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Education: No education section found
+2025-06-12 17:32:12,416 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Work: No work section found
+2025-06-12 17:32:12,418 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:32:12,418 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:32:12,419 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with layoutlm_transformer
+2025-06-12 17:32:12,419 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:32:12,607 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:32:12,607 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:32:12,725 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:32:12,741 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 4760 chars vs 4760 chars
+2025-06-12 17:32:12,741 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:32:18,686 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (NER): Nit Waranga
+2025-06-12 17:32:18,691 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: 814340 0946
+2025-06-12 17:32:18,700 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found by keywords: 4760 chars
+2025-06-12 17:32:18,700 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 4760 chars
+2025-06-12 17:32:19,214 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Bachelor at Bachelor
+2025-06-12 17:32:19,221 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Intermediate at Feature Engineering
+2025-06-12 17:32:19,221 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: m. Tech at Data Engineering
+2025-06-12 17:32:19,223 - src.llm_providers.improved_layoutlm_transformer - WARNING - V2 Work: No dedicated work section found
+2025-06-12 17:32:19,223 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:32:19,224 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:38:22,299 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-12 17:38:22,299 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-12 17:38:22,299 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-12 17:38:22,299 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-12 17:38:22,299 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-12 17:38:26,385 - src.llm_providers.base_llm - INFO - Enhanced Transformer V2 models initialized on cpu
+2025-06-12 17:38:26,385 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-12 17:38:30,360 - src.llm_providers.base_llm - INFO - Enhanced LayoutLM V2 transformer models initialized on cpu
+2025-06-12 17:38:30,362 - src.resume_parser - INFO - Improved LayoutLM Transformer provider: Available
+2025-06-12 17:38:30,366 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with smart_transformer
+2025-06-12 17:38:30,367 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:38:30,851 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:38:30,885 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:38:31,178 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:38:31,185 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:38:56,074 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (Vallepu pattern): Anil Sahith Vallepu
+2025-06-12 17:38:56,078 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: +91 814340 0946
+2025-06-12 17:38:56,102 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Education: No education section found
+2025-06-12 17:38:56,109 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Work: No work section found
+2025-06-12 17:38:56,110 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:38:56,110 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:38:56,116 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with smart_transformer
+2025-06-12 17:38:56,116 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:38:56,346 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:38:56,348 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:38:56,534 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:38:56,536 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:38:59,090 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (BANOTH pattern): BANOTH VAMSHI
+2025-06-12 17:38:59,091 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: 939822 2755
+2025-06-12 17:38:59,100 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Education: No education section found
+2025-06-12 17:38:59,102 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Work: No work section found
+2025-06-12 17:38:59,102 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:38:59,103 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:38:59,151 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with layoutlm_transformer
+2025-06-12 17:38:59,151 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:38:59,425 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:38:59,429 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:38:59,616 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:38:59,621 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 4760 chars vs 4760 chars
+2025-06-12 17:38:59,623 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:39:07,891 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (Vallepu pattern): Anil Sahith Vallepu
+2025-06-12 17:39:07,891 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: +91 814340 0946
+2025-06-12 17:39:07,907 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found by keywords: 4760 chars
+2025-06-12 17:39:07,908 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 4760 chars
+2025-06-12 17:39:08,420 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Bachelor at Bachelor
+2025-06-12 17:39:08,439 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Intermediate at Feature Engineering
+2025-06-12 17:39:08,440 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: m. Tech at Data Engineering
+2025-06-12 17:39:08,441 - src.llm_providers.improved_layoutlm_transformer - WARNING - V2 Work: No dedicated work section found
+2025-06-12 17:39:08,441 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:39:08,441 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:39:08,445 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with layoutlm_transformer
+2025-06-12 17:39:08,445 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:39:08,628 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:39:08,628 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:39:08,788 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:39:08,790 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 1509 chars vs 1509 chars
+2025-06-12 17:39:08,790 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:39:11,057 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (BANOTH pattern): BANOTH VAMSHI
+2025-06-12 17:39:11,058 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: 939822 2755
+2025-06-12 17:39:11,064 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found by keywords: 1509 chars
+2025-06-12 17:39:11,066 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 1509 chars
+2025-06-12 17:39:11,070 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at Warangal
+2025-06-12 17:39:11,072 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Intermediate at Intermediate
+2025-06-12 17:39:11,073 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: SSC at Gouthami vidyanikethan high school
+2025-06-12 17:39:11,078 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Balaji Junior College at Balaji Junior College
+2025-06-12 17:39:11,079 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Gouthami vidyanikethan high school at 2016
+2025-06-12 17:39:11,110 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at in Civil Engineering
+2025-06-12 17:39:11,110 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at in Civil Engineering
+2025-06-12 17:39:11,119 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Intermediate at Intermediate
+2025-06-12 17:39:11,120 - src.llm_providers.improved_layoutlm_transformer - WARNING - V2 Work: No dedicated work section found
+2025-06-12 17:39:11,121 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:39:11,122 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:39:11,126 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-12 17:39:11,126 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-12 17:39:11,127 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-12 17:39:11,128 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-12 17:39:11,128 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-12 17:39:15,760 - src.llm_providers.base_llm - INFO - Enhanced Transformer V2 models initialized on cpu
+2025-06-12 17:39:15,760 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-12 17:39:20,518 - src.llm_providers.base_llm - INFO - Enhanced LayoutLM V2 transformer models initialized on cpu
+2025-06-12 17:39:20,524 - src.resume_parser - INFO - Improved LayoutLM Transformer provider: Available
+2025-06-12 17:39:20,524 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with openrouter
+2025-06-12 17:39:20,750 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:39:20,750 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:39:59,386 - src.llm_providers.base_llm - INFO - Received response from OpenRouter
+2025-06-12 17:39:59,386 - src.llm_providers.base_llm - INFO - Successfully extracted resume data using OpenRouter
+2025-06-12 17:39:59,386 - src.resume_parser - INFO - Successfully extracted resume data using openrouter
+2025-06-12 17:39:59,386 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with smart_transformer
+2025-06-12 17:39:59,386 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:39:59,702 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:39:59,711 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:39:59,896 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:39:59,901 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:40:08,472 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (Vallepu pattern): Anil Sahith Vallepu
+2025-06-12 17:40:08,472 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: +91 814340 0946
+2025-06-12 17:40:08,488 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Education: No education section found
+2025-06-12 17:40:08,489 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Work: No work section found
+2025-06-12 17:40:08,489 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:40:08,489 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:40:08,490 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with layoutlm_transformer
+2025-06-12 17:40:08,491 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:40:08,749 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:40:08,758 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:40:08,971 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:40:08,975 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 4760 chars vs 4760 chars
+2025-06-12 17:40:08,975 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:40:17,112 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (Vallepu pattern): Anil Sahith Vallepu
+2025-06-12 17:40:17,113 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: +91 814340 0946
+2025-06-12 17:40:17,123 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found by keywords: 4760 chars
+2025-06-12 17:40:17,125 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 4760 chars
+2025-06-12 17:40:17,696 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Bachelor at Bachelor
+2025-06-12 17:40:17,696 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Intermediate at Feature Engineering
+2025-06-12 17:40:17,711 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: m. Tech at Data Engineering
+2025-06-12 17:40:17,712 - src.llm_providers.improved_layoutlm_transformer - WARNING - V2 Work: No dedicated work section found
+2025-06-12 17:40:17,712 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:40:17,713 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:42:58,580 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-12 17:42:58,590 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-12 17:42:58,591 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-12 17:42:58,591 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-12 17:42:58,591 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-12 17:43:01,492 - src.llm_providers.base_llm - INFO - Enhanced Transformer V2 models initialized on cpu
+2025-06-12 17:43:01,492 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-12 17:43:04,290 - src.llm_providers.base_llm - INFO - Enhanced LayoutLM V2 transformer models initialized on cpu
+2025-06-12 17:43:04,290 - src.resume_parser - INFO - Improved LayoutLM Transformer provider: Available
+2025-06-12 17:43:04,290 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with smart_transformer
+2025-06-12 17:43:04,290 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:43:04,546 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:43:04,546 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:43:04,674 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:43:04,690 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:43:10,894 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (Vallepu pattern): Anil Sahith Vallepu
+2025-06-12 17:43:10,896 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: +91 814340 0946
+2025-06-12 17:43:10,917 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Education: No education section found
+2025-06-12 17:43:10,920 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Work: No work section found
+2025-06-12 17:43:10,921 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:43:10,922 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:43:10,925 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with smart_transformer
+2025-06-12 17:43:10,925 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:43:11,108 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:43:11,112 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:43:11,272 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:43:11,272 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:43:12,988 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (BANOTH pattern): BANOTH VAMSHI
+2025-06-12 17:43:12,988 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: 939822 2755
+2025-06-12 17:43:13,004 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Education: No education section found
+2025-06-12 17:43:13,011 - src.llm_providers.enhanced_transformer_llm - WARNING - V2 Work: No work section found
+2025-06-12 17:43:13,011 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:43:13,011 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:43:13,013 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with layoutlm_transformer
+2025-06-12 17:43:13,013 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:43:13,188 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:43:13,188 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:43:13,338 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:43:13,338 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 4760 chars vs 4760 chars
+2025-06-12 17:43:13,348 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:43:19,584 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (Vallepu pattern): Anil Sahith Vallepu
+2025-06-12 17:43:19,585 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: +91 814340 0946
+2025-06-12 17:43:19,598 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found by keywords: 4760 chars
+2025-06-12 17:43:19,598 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 4760 chars
+2025-06-12 17:43:20,002 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Bachelor at Bachelor
+2025-06-12 17:43:20,009 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Intermediate at Feature Engineering
+2025-06-12 17:43:20,009 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: m. Tech at Data Engineering
+2025-06-12 17:43:20,009 - src.llm_providers.improved_layoutlm_transformer - WARNING - V2 Work: No dedicated work section found
+2025-06-12 17:43:20,011 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:43:20,011 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:43:20,012 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with layoutlm_transformer
+2025-06-12 17:43:20,013 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:43:20,118 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:43:20,118 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:43:20,236 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:43:20,236 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 1509 chars vs 1509 chars
+2025-06-12 17:43:20,236 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:43:21,882 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (BANOTH pattern): BANOTH VAMSHI
+2025-06-12 17:43:21,882 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: 939822 2755
+2025-06-12 17:43:21,887 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found by keywords: 1509 chars
+2025-06-12 17:43:21,887 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 1509 chars
+2025-06-12 17:43:21,892 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at Warangal
+2025-06-12 17:43:21,892 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Intermediate at Intermediate
+2025-06-12 17:43:21,892 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: SSC at Gouthami vidyanikethan high school
+2025-06-12 17:43:21,895 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Balaji Junior College at Balaji Junior College
+2025-06-12 17:43:21,895 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Gouthami vidyanikethan high school at 2016
+2025-06-12 17:43:21,921 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at in Civil Engineering
+2025-06-12 17:43:21,922 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at in Civil Engineering
+2025-06-12 17:43:21,927 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Intermediate at Intermediate
+2025-06-12 17:43:21,927 - src.llm_providers.improved_layoutlm_transformer - WARNING - V2 Work: No dedicated work section found
+2025-06-12 17:43:21,927 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:43:21,927 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:47:02,723 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-12 17:47:02,739 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-12 17:47:02,739 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-12 17:47:02,739 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-12 17:47:02,739 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-12 17:47:06,952 - src.llm_providers.base_llm - INFO - Enhanced Transformer V2 models initialized on cpu
+2025-06-12 17:47:06,953 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-12 17:47:10,837 - src.llm_providers.base_llm - INFO - Enhanced LayoutLM V2 transformer models initialized on cpu
+2025-06-12 17:47:10,839 - src.resume_parser - INFO - Improved LayoutLM Transformer provider: Available
+2025-06-12 17:47:10,841 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with smart_transformer
+2025-06-12 17:47:10,841 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:47:11,193 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:47:11,193 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:47:11,396 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:47:11,398 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:47:20,181 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (Vallepu pattern): Anil Sahith Vallepu
+2025-06-12 17:47:20,182 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: +91 814340 0946
+2025-06-12 17:47:20,204 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education section found with header: Education
+2025-06-12 17:47:20,206 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education found: Bachelor of Technology (B. Tech), Electrical and Electronics Engineering at National Institute of Technology, Warangal (NITW) Warangal, India ()
+2025-06-12 17:47:20,298 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education found: Bachelor of Technology at (B. Tech), Electrical and Electronics Engineering; CGPA: 6.5 ()
+2025-06-12 17:47:20,301 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Work section found with header: Work Experience
+2025-06-12 17:47:20,548 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:47:20,549 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:47:20,550 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with smart_transformer
+2025-06-12 17:47:20,551 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:47:20,738 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:47:20,738 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:47:20,938 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:47:20,938 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:47:23,137 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (BANOTH pattern): BANOTH VAMSHI
+2025-06-12 17:47:23,137 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: 939822 2755
+2025-06-12 17:47:23,137 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education section found with header: Education
+2025-06-12 17:47:23,201 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education found: Intermediate at Balaji Junior College (2019)
+2025-06-12 17:47:23,204 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education found: SSC at Gouthami vidyanikethan high school (2017)
+2025-06-12 17:47:23,205 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education found: in Civil Engineering, providing me with a solid foundation in the principles of structural and transportation engineering. Education B. Tech in Civil Engineering, National Institute of Technology, Warangal 2019 – 2023 CGPA: 5.8 Intermediate, Balaji Junior College 2017 – 2019 Percentage: 88% SSC, Gouthami vidyanikethan high school 2016 – 2017 CGPA: 8.5 Projects Lateral Load Capacity of Battery Pile under Different Structural Design using Geosynthetic Reinforced Soil, National Institute of Technology, Warangal January 2023 – May 2023 at B. Tech ()
+2025-06-12 17:47:23,206 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Work section found with header: Experience
+2025-06-12 17:47:23,330 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:47:23,330 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:47:23,332 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with layoutlm_transformer
+2025-06-12 17:47:23,332 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:47:23,527 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:47:23,527 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:47:23,703 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:47:23,710 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 4760 chars vs 4760 chars
+2025-06-12 17:47:23,710 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:47:31,254 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (Vallepu pattern): Anil Sahith Vallepu
+2025-06-12 17:47:31,254 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: +91 814340 0946
+2025-06-12 17:47:31,260 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found with header: Education
+2025-06-12 17:47:31,260 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 4552 chars
+2025-06-12 17:47:31,734 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Bachelor at Bachelor
+2025-06-12 17:47:31,734 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Intermediate at Feature Engineering
+2025-06-12 17:47:31,734 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: m. Tech at Data Engineering
+2025-06-12 17:47:31,734 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work section found with header: Work Experience
+2025-06-12 17:47:31,745 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work section found: 3791 chars
+2025-06-12 17:47:31,764 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work found: (Elevance Healthcare) Ju at enabling seamless operation on embedded hardware. • Carelon Global Solutions
+2025-06-12 17:47:31,850 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:47:31,850 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:47:31,850 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with layoutlm_transformer
+2025-06-12 17:47:31,850 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:47:32,017 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:47:32,018 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:47:32,150 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:47:32,150 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 1509 chars vs 1509 chars
+2025-06-12 17:47:32,150 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:47:34,202 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (BANOTH pattern): BANOTH VAMSHI
+2025-06-12 17:47:34,202 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: 939822 2755
+2025-06-12 17:47:34,216 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found with header: Education
+2025-06-12 17:47:34,217 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 1453 chars
+2025-06-12 17:47:34,222 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at Warangal
+2025-06-12 17:47:34,223 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Intermediate at Intermediate
+2025-06-12 17:47:34,223 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: SSC at Gouthami vidyanikethan high school
+2025-06-12 17:47:34,227 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Balaji Junior College at Balaji Junior College
+2025-06-12 17:47:34,227 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Gouthami vidyanikethan high school at 2016
+2025-06-12 17:47:34,255 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at in Civil Engineering
+2025-06-12 17:47:34,255 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: B. Tech at in Civil Engineering
+2025-06-12 17:47:34,264 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Degree from Intermediate at Intermediate
+2025-06-12 17:47:34,267 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work section found with header: Experience
+2025-06-12 17:47:34,269 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work section found: 1403 chars
+2025-06-12 17:47:34,350 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:47:34,350 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:50:35,274 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-12 17:50:35,274 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-12 17:50:35,274 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-12 17:50:35,274 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-12 17:50:35,274 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-12 17:50:38,950 - src.llm_providers.base_llm - INFO - Enhanced Transformer V2 models initialized on cpu
+2025-06-12 17:50:38,953 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-12 17:50:42,536 - src.llm_providers.base_llm - INFO - Enhanced LayoutLM V2 transformer models initialized on cpu
+2025-06-12 17:50:42,536 - src.resume_parser - INFO - Improved LayoutLM Transformer provider: Available
+2025-06-12 17:50:42,536 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with smart_transformer
+2025-06-12 17:50:42,536 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:50:42,836 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:50:42,852 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:50:43,019 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:50:43,019 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:50:51,343 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (Vallepu pattern): Anil Sahith Vallepu
+2025-06-12 17:50:51,345 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: +91 814340 0946
+2025-06-12 17:50:51,371 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education section found with header: Education
+2025-06-12 17:50:51,373 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education found: Bachelor of Technology (B. Tech) at National Institute of Technology, Warangal (NITW) Warangal, India ()
+2025-06-12 17:50:51,452 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Work section found with header: Work Experience
+2025-06-12 17:50:51,455 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Work found: Full-Stack ML Intern Pune, Maharashtra at Noccarc Robotics Pvt Ltd. (Jun 2024 - Present)
+2025-06-12 17:50:51,513 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Work found: Summer Intern - AI/ML Bangalore, Karnataka at Carelon Global Solutions, (Jun 2023 - Aug 2023)
+2025-06-12 17:50:51,691 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:50:51,693 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:50:51,695 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with smart_transformer
+2025-06-12 17:50:51,695 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:50:51,933 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:50:51,949 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:50:52,133 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:50:52,150 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:50:54,295 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (BANOTH pattern): BANOTH VAMSHI
+2025-06-12 17:50:54,299 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: 939822 2755
+2025-06-12 17:50:54,305 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education section found with header: Education
+2025-06-12 17:50:54,305 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education found: Intermediate at Balaji Junior College (2019)
+2025-06-12 17:50:54,344 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Work section found with header: Experience
+2025-06-12 17:50:54,432 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:50:54,432 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:50:54,432 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with layoutlm_transformer
+2025-06-12 17:50:54,432 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:50:54,599 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:50:54,599 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:50:54,749 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:50:54,749 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 4760 chars vs 4760 chars
+2025-06-12 17:50:54,749 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:51:03,205 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (Vallepu pattern): Anil Sahith Vallepu
+2025-06-12 17:51:03,207 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: +91 814340 0946
+2025-06-12 17:51:03,218 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found with header: Education
+2025-06-12 17:51:03,219 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 4552 chars
+2025-06-12 17:51:03,221 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Bachelor of Technology (B. Tech) at National Institute of Technology, Warangal (NITW) Warangal, India ()
+2025-06-12 17:51:03,306 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work section found with header: Work Experience
+2025-06-12 17:51:03,306 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work section found: 3791 chars
+2025-06-12 17:51:03,306 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work found: Full-Stack ML Intern Pune, Maharashtra at Noccarc Robotics Pvt Ltd. (Jun 2024 - Present)
+2025-06-12 17:51:03,365 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work found: Summer Intern - AI/ML Bangalore, Karnataka at Carelon Global Solutions, (Jun 2023 - Aug 2023)
+2025-06-12 17:51:03,504 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:51:03,506 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:51:03,506 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with layoutlm_transformer
+2025-06-12 17:51:03,506 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:51:03,662 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:51:03,662 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:51:03,812 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:51:03,812 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 1509 chars vs 1509 chars
+2025-06-12 17:51:03,812 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:51:05,919 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (BANOTH pattern): BANOTH VAMSHI
+2025-06-12 17:51:05,919 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: 939822 2755
+2025-06-12 17:51:05,925 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found with header: Education
+2025-06-12 17:51:05,925 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 1453 chars
+2025-06-12 17:51:05,926 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Intermediate at Balaji Junior College (2019)
+2025-06-12 17:51:05,973 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work section found with header: Experience
+2025-06-12 17:51:05,973 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work section found: 1403 chars
+2025-06-12 17:51:06,093 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:51:06,094 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:51:32,505 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-12 17:51:32,505 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-12 17:51:32,505 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-12 17:51:32,505 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-12 17:51:32,505 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-12 17:51:36,184 - src.llm_providers.base_llm - INFO - Enhanced Transformer V2 models initialized on cpu
+2025-06-12 17:51:36,184 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-12 17:51:39,766 - src.llm_providers.base_llm - INFO - Enhanced LayoutLM V2 transformer models initialized on cpu
+2025-06-12 17:51:39,766 - src.resume_parser - INFO - Improved LayoutLM Transformer provider: Available
+2025-06-12 17:51:39,766 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with smart_transformer
+2025-06-12 17:51:39,766 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:51:39,931 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:51:39,948 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:51:40,133 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:51:40,150 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:51:48,264 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (Vallepu pattern): Anil Sahith Vallepu
+2025-06-12 17:51:48,264 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: +91 814340 0946
+2025-06-12 17:51:48,285 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education section found with header: Education
+2025-06-12 17:51:48,296 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education found: Bachelor of Technology (B. Tech) at National Institute of Technology, Warangal (NITW) Warangal, India ()
+2025-06-12 17:51:48,369 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Work section found with header: Work Experience
+2025-06-12 17:51:48,371 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Work found: Full-Stack ML Intern Pune, Maharashtra at Noccarc Robotics Pvt Ltd. (Jun 2024 - Present)
+2025-06-12 17:51:48,431 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Work found: Summer Intern - AI/ML Bangalore, Karnataka at Carelon Global Solutions, (Jun 2023 - Aug 2023)
+2025-06-12 17:51:48,564 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:51:48,564 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:51:48,564 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with smart_transformer
+2025-06-12 17:51:48,564 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:51:48,763 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:51:48,763 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:51:48,963 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:51:48,963 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:51:51,016 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (BANOTH pattern): BANOTH VAMSHI
+2025-06-12 17:51:51,016 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: 939822 2755
+2025-06-12 17:51:51,026 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education section found with header: Education
+2025-06-12 17:51:51,026 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education found: Intermediate at Balaji Junior College (2019)
+2025-06-12 17:51:51,081 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Work section found with header: Experience
+2025-06-12 17:51:51,226 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:51:51,227 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:51:51,250 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with layoutlm_transformer
+2025-06-12 17:51:51,252 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:51:51,530 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:51:51,530 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:51:51,730 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:51:51,730 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 4760 chars vs 4760 chars
+2025-06-12 17:51:51,745 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:51:59,762 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (Vallepu pattern): Anil Sahith Vallepu
+2025-06-12 17:51:59,762 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: +91 814340 0946
+2025-06-12 17:51:59,769 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found with header: Education
+2025-06-12 17:51:59,769 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 4552 chars
+2025-06-12 17:51:59,769 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Bachelor of Technology (B. Tech) at National Institute of Technology, Warangal (NITW) Warangal, India ()
+2025-06-12 17:51:59,844 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work section found with header: Work Experience
+2025-06-12 17:51:59,844 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work section found: 3791 chars
+2025-06-12 17:51:59,844 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work found: Full-Stack ML Intern Pune, Maharashtra at Noccarc Robotics Pvt Ltd. (Jun 2024 - Present)
+2025-06-12 17:51:59,902 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work found: Summer Intern - AI/ML Bangalore, Karnataka at Carelon Global Solutions, (Jun 2023 - Aug 2023)
+2025-06-12 17:52:00,060 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:52:00,060 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:52:00,060 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/BANOTH-VAMSHI-FlowCV-Resume-20240131.pdf with layoutlm_transformer
+2025-06-12 17:52:00,060 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:52:00,263 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:52:00,263 - src.resume_parser - INFO - Extracted 1509 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:52:00,420 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:52:00,436 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 1509 chars vs 1509 chars
+2025-06-12 17:52:00,436 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:52:02,748 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (BANOTH pattern): BANOTH VAMSHI
+2025-06-12 17:52:02,749 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: 939822 2755
+2025-06-12 17:52:02,754 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found with header: Education
+2025-06-12 17:52:02,755 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 1453 chars
+2025-06-12 17:52:02,755 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Intermediate at Balaji Junior College (2019)
+2025-06-12 17:52:02,795 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work section found with header: Experience
+2025-06-12 17:52:02,799 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work section found: 1403 chars
+2025-06-12 17:52:02,904 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:52:02,905 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
+2025-06-12 17:52:02,914 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-12 17:52:02,914 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-12 17:52:02,915 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-12 17:52:02,916 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-12 17:52:02,916 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-12 17:52:12,930 - huggingface_hub.utils._http - WARNING - '(ReadTimeoutError("HTTPSConnectionPool(host='huggingface.co', port=443): Read timed out. (read timeout=10)"), '(Request ID: 852ac021-b9d9-4741-a524-6e2deb623cbc)')' thrown while requesting HEAD https://huggingface.co/dbmdz/bert-large-cased-finetuned-conll03-english/resolve/main/tokenizer_config.json
+2025-06-12 17:52:16,337 - src.llm_providers.base_llm - INFO - Enhanced Transformer V2 models initialized on cpu
+2025-06-12 17:52:16,337 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-12 17:52:20,594 - src.llm_providers.base_llm - INFO - Enhanced LayoutLM V2 transformer models initialized on cpu
+2025-06-12 17:52:20,594 - src.resume_parser - INFO - Improved LayoutLM Transformer provider: Available
+2025-06-12 17:52:20,594 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with openrouter
+2025-06-12 17:52:20,903 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:52:20,907 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:53:10,248 - src.llm_providers.base_llm - INFO - Received response from OpenRouter
+2025-06-12 17:53:10,248 - src.llm_providers.base_llm - INFO - Successfully extracted resume data using OpenRouter
+2025-06-12 17:53:10,248 - src.resume_parser - INFO - Successfully extracted resume data using openrouter
+2025-06-12 17:53:10,248 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with smart_transformer
+2025-06-12 17:53:10,248 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:53:10,542 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:53:10,542 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:53:10,702 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:53:10,706 - src.llm_providers.enhanced_transformer_llm - INFO - Enhanced Transformer V2: Using improved text extraction
+2025-06-12 17:53:18,884 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Name found (Vallepu pattern): Anil Sahith Vallepu
+2025-06-12 17:53:18,886 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Phone found: +91 814340 0946
+2025-06-12 17:53:18,906 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education section found with header: Education
+2025-06-12 17:53:18,907 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Education found: Bachelor of Technology (B. Tech) at National Institute of Technology, Warangal (NITW) Warangal, India ()
+2025-06-12 17:53:18,984 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Work section found with header: Work Experience
+2025-06-12 17:53:18,984 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Work found: Full-Stack ML Intern Pune, Maharashtra at Noccarc Robotics Pvt Ltd. (Jun 2024 - Present)
+2025-06-12 17:53:19,051 - src.llm_providers.enhanced_transformer_llm - INFO - V2 Work found: Summer Intern - AI/ML Bangalore, Karnataka at Carelon Global Solutions, (Jun 2023 - Aug 2023)
+2025-06-12 17:53:19,218 - src.llm_providers.enhanced_transformer_llm - INFO - Successfully extracted resume data using Enhanced Transformer V2
+2025-06-12 17:53:19,219 - src.resume_parser - INFO - Successfully extracted resume data using smart_transformer
+2025-06-12 17:53:19,220 - src.resume_parser - INFO - Starting resume parsing: docs/resumes_for_testing/anil_ml_resme.pdf with layoutlm_transformer
+2025-06-12 17:53:19,220 - src.resume_parser - INFO - Using ImprovedSmartPDFProcessor for enhanced models
+2025-06-12 17:53:19,426 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:53:19,426 - src.resume_parser - INFO - Extracted 4760 characters from resume using ImprovedSmartPDFProcessor
+2025-06-12 17:53:19,632 - src.file_processors.improved_smart_pdf_processor - INFO - Ultimate extraction: Using improved pdfplumber
+2025-06-12 17:53:19,642 - src.llm_providers.improved_layoutlm_transformer - INFO - Enhanced V2 extraction: 4760 chars vs 4760 chars
+2025-06-12 17:53:19,642 - src.llm_providers.improved_layoutlm_transformer - INFO - Using improved PDF extraction for Enhanced LayoutLM V2
+2025-06-12 17:53:27,759 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Name found (Vallepu pattern): Anil Sahith Vallepu
+2025-06-12 17:53:27,759 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Phone found: +91 814340 0946
+2025-06-12 17:53:27,768 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found with header: Education
+2025-06-12 17:53:27,768 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education section found: 4552 chars
+2025-06-12 17:53:27,771 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Education found: Bachelor of Technology (B. Tech) at National Institute of Technology, Warangal (NITW) Warangal, India ()
+2025-06-12 17:53:27,837 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work section found with header: Work Experience
+2025-06-12 17:53:27,838 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work section found: 3791 chars
+2025-06-12 17:53:27,838 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work found: Full-Stack ML Intern Pune, Maharashtra at Noccarc Robotics Pvt Ltd. (Jun 2024 - Present)
+2025-06-12 17:53:27,890 - src.llm_providers.improved_layoutlm_transformer - INFO - V2 Work found: Summer Intern - AI/ML Bangalore, Karnataka at Carelon Global Solutions, (Jun 2023 - Aug 2023)
+2025-06-12 17:53:28,030 - src.llm_providers.improved_layoutlm_transformer - INFO - Successfully extracted resume data using Enhanced LayoutLM V2
+2025-06-12 17:53:28,030 - src.resume_parser - INFO - Successfully extracted resume data using layoutlm_transformer
