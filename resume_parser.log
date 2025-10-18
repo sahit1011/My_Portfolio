@@ -1,0 +1,80 @@
+2025-06-11 01:43:19,812 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-11 01:43:19,814 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-11 01:43:19,814 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-11 01:43:19,815 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-11 01:43:19,817 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-11 01:43:27,702 - src.llm_providers.base_llm - INFO - Transformer models initialized on cpu
+2025-06-11 01:43:27,702 - src.resume_parser - INFO - Transformer provider: Available
+2025-06-11 01:43:34,975 - src.llm_providers.base_llm - INFO - Enhanced transformer models initialized on cpu
+2025-06-11 01:43:34,975 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-11 01:43:39,468 - src.llm_providers.base_llm - INFO - LayoutLM NER pipeline initialized on cpu
+2025-06-11 01:43:39,468 - src.resume_parser - INFO - Enhanced LayoutLM Transformer provider: Available
+2025-06-11 01:43:39,486 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-11 01:43:39,488 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-11 01:43:39,497 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-11 01:43:39,502 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-11 01:43:39,503 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-11 01:43:50,708 - src.llm_providers.base_llm - INFO - Transformer models initialized on cpu
+2025-06-11 01:43:50,711 - src.resume_parser - INFO - Transformer provider: Available
+2025-06-11 01:44:02,898 - src.llm_providers.base_llm - INFO - Enhanced transformer models initialized on cpu
+2025-06-11 01:44:02,903 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-11 01:44:06,486 - src.llm_providers.base_llm - INFO - LayoutLM NER pipeline initialized on cpu
+2025-06-11 01:44:06,486 - src.resume_parser - INFO - Enhanced LayoutLM Transformer provider: Available
+2025-06-11 01:44:06,488 - src.resume_parser - INFO - Starting resume parsing: docs/sample_resume.pdf with smart_transformer
+2025-06-11 01:44:06,490 - src.resume_parser - INFO - Starting resume parsing: docs/sample_resume.pdf with layoutlm_transformer
+2025-06-11 03:17:27,152 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-11 03:17:27,152 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-11 03:17:27,157 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-11 03:17:27,160 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-11 03:17:27,162 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-11 03:17:34,661 - src.llm_providers.base_llm - INFO - Transformer models initialized on cpu
+2025-06-11 03:17:34,664 - src.resume_parser - INFO - Transformer provider: Available
+2025-06-11 03:17:41,795 - src.llm_providers.base_llm - INFO - Enhanced transformer models initialized on cpu
+2025-06-11 03:17:41,797 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-11 03:17:45,697 - src.llm_providers.base_llm - INFO - LayoutLM NER pipeline initialized on cpu
+2025-06-11 03:17:45,698 - src.resume_parser - INFO - Enhanced LayoutLM Transformer provider: Available
+2025-06-11 17:31:34,309 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-11 17:31:34,310 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-11 17:31:34,311 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-11 17:31:34,311 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-11 17:31:34,311 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-11 17:31:46,454 - src.llm_providers.base_llm - INFO - Transformer models initialized on cpu
+2025-06-11 17:31:46,456 - src.resume_parser - INFO - Transformer provider: Available
+2025-06-11 17:31:54,297 - src.llm_providers.base_llm - INFO - Enhanced transformer models initialized on cpu
+2025-06-11 17:31:54,301 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-11 17:32:00,331 - src.llm_providers.base_llm - INFO - LayoutLM NER pipeline initialized on cpu
+2025-06-11 17:32:00,332 - src.resume_parser - INFO - Enhanced LayoutLM Transformer provider: Available
+2025-06-11 17:32:00,344 - src.resume_parser - INFO - Starting resume parsing: C:\Users\krish\OneDrive\Desktop\My_Portfolio\navtech-assignment\temp_test_resume.txt with openrouter
+2025-06-11 17:32:01,016 - src.resume_parser - ERROR - Failed to extract text from file: Unsupported file format: .txt
+2025-06-11 17:34:19,544 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-11 17:34:19,551 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-11 17:34:19,551 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-11 17:34:19,551 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-11 17:34:19,551 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-11 17:34:26,304 - src.llm_providers.base_llm - INFO - Transformer models initialized on cpu
+2025-06-11 17:34:26,304 - src.resume_parser - INFO - Transformer provider: Available
+2025-06-11 17:34:35,085 - src.llm_providers.base_llm - INFO - Enhanced transformer models initialized on cpu
+2025-06-11 17:34:35,088 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-11 17:34:39,621 - src.llm_providers.base_llm - INFO - LayoutLM NER pipeline initialized on cpu
+2025-06-11 17:34:39,622 - src.resume_parser - INFO - Enhanced LayoutLM Transformer provider: Available
+2025-06-11 17:34:39,624 - src.resume_parser - INFO - Starting resume parsing: navtech-assignment/docs/sample_resume.pdf with openrouter
+2025-06-11 17:34:41,168 - src.resume_parser - INFO - Extracted 5900 characters from resume
+2025-06-11 17:35:05,756 - src.llm_providers.base_llm - INFO - Received response from OpenRouter
+2025-06-11 17:35:05,763 - src.llm_providers.base_llm - INFO - Successfully extracted resume data using OpenRouter
+2025-06-11 17:35:05,768 - src.resume_parser - INFO - Successfully extracted resume data using openrouter
+2025-06-11 17:35:05,889 - src.llm_providers.base_llm - INFO - Gemini model initialized successfully
+2025-06-11 17:35:05,895 - src.resume_parser - INFO - Gemini provider: Available
+2025-06-11 17:35:05,895 - src.llm_providers.base_llm - ERROR - Failed to initialize OpenAI client: Client.__init__() got an unexpected keyword argument 'proxies'
+2025-06-11 17:35:05,897 - src.resume_parser - INFO - OpenAI provider: Not available
+2025-06-11 17:35:05,897 - src.resume_parser - INFO - OpenRouter provider: Available
+2025-06-11 17:35:14,493 - src.llm_providers.base_llm - INFO - Transformer models initialized on cpu
+2025-06-11 17:35:14,501 - src.resume_parser - INFO - Transformer provider: Available
+2025-06-11 17:35:23,346 - src.llm_providers.base_llm - INFO - Enhanced transformer models initialized on cpu
+2025-06-11 17:35:23,349 - src.resume_parser - INFO - Enhanced Smart Transformer provider: Available
+2025-06-11 17:35:28,694 - src.llm_providers.base_llm - INFO - LayoutLM NER pipeline initialized on cpu
+2025-06-11 17:35:28,698 - src.resume_parser - INFO - Enhanced LayoutLM Transformer provider: Available
+2025-06-11 17:35:28,704 - src.resume_parser - INFO - Starting resume parsing: C:\Users\krish\OneDrive\Desktop\My_Portfolio\navtech-assignment\temp_uploaded_resume.pdf with openrouter
+2025-06-11 17:35:29,525 - src.resume_parser - INFO - Extracted 5900 characters from resume
+2025-06-11 17:36:01,280 - src.llm_providers.base_llm - INFO - Received response from OpenRouter
+2025-06-11 17:36:01,314 - src.llm_providers.base_llm - INFO - Successfully extracted resume data using OpenRouter
+2025-06-11 17:36:01,351 - src.resume_parser - INFO - Successfully extracted resume data using openrouter
