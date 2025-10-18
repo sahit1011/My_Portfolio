@@ -1,7 +1,19 @@
 // Gemini API integration
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { logToFile, createAnalysisLogFile } from './logger';
-import projectsData from '@/data/projects.json';
+import {
+  getPersonalInfo,
+  getExperiences,
+  getEducation,
+  getSkills,
+  getProjects,
+  getResumeInfo,
+  Project
+} from './content';
+
+// OpenRouter API integration
+const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
+const OPENROUTER_MODEL = 'deepseek/deepseek-chat';
 
 // Initialize the Gemini API with your API key
 const getGeminiAPI = () => {
@@ -15,36 +27,277 @@ const getGeminiAPI = () => {
   return new GoogleGenerativeAI(apiKey);
 };
 
+// Function to generate comprehensive resume content from portfolio data
+function generateResumeContent(): string {
+   const personalInfo = getPersonalInfo();
+   const experiences = getExperiences();
+   const education = getEducation();
+   const projects = getProjects();
+
+  let resumeContent = `${personalInfo.name}\n`;
+  resumeContent += `${personalInfo.titles.join(' | ')}\n\n`;
+
+  // Add detailed skills from content.json
+  const allSkills = getSkills();
+  resumeContent += '\nDETAILED TECHNICAL SKILLS:\n';
+  Object.entries(allSkills).forEach(([category, skillList]) => {
+    const skillNames = skillList.map(s => s.name).join(', ');
+    resumeContent += `- ${category.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}: ${skillNames}\n`;
+  });
+  resumeContent += '\n';
+
+  // Experience section
+  resumeContent += 'EXPERIENCE:\n';
+  experiences.forEach(exp => {
+    resumeContent += `${exp.title} | ${exp.company}\n`;
+    resumeContent += `${exp.period}\n`;
+    exp.description.forEach(desc => {
+      resumeContent += `- ${desc}\n`;
+    });
+    resumeContent += `Skills: ${exp.skills.join(', ')}\n\n`;
+  });
+
+  // Education section
+  resumeContent += 'EDUCATION:\n';
+  education.forEach(edu => {
+    resumeContent += `${edu.degree}\n`;
+    resumeContent += `${edu.institution} | ${edu.location}\n`;
+    if (edu.gpa) resumeContent += `GPA: ${edu.gpa}\n`;
+    resumeContent += '\n';
+  });
+
+  // Projects section
+  resumeContent += 'PROJECTS:\n';
+  projects.forEach(project => {
+    resumeContent += `${project.title}\n`;
+    project.description.forEach(desc => {
+      resumeContent += `- ${desc}\n`;
+    });
+    resumeContent += `Technologies: ${project.technologies.join(', ')}\n`;
+    if (project.github && project.github !== '#') {
+      resumeContent += `GitHub: ${project.github}\n`;
+    }
+    resumeContent += '\n';
+  });
+
+  return resumeContent;
+}
+
+// Define the resume content
+const resumeContent = generateResumeContent();
+
+// Function to create the analysis prompt
+function createAnalysisPrompt(jobDescription: string): string {
+  const personalInfo = getPersonalInfo();
+  const experiences = getExperiences();
+  const projects = getProjects();
+
+  // Create a comprehensive context about the candidate
+  const candidateContext = `
+CANDIDATE PROFILE:
+Name: ${personalInfo.name}
+Titles: ${personalInfo.titles.join(', ')}
+Location: ${personalInfo.location}
+Email: ${personalInfo.email}
+
+PROFESSIONAL SUMMARY:
+${getResumeInfo().summary}
+
+KEY EXPERIENCES:
+${experiences.map(exp => `- ${exp.title} at ${exp.company} (${exp.period}): ${exp.description.join(' ')}`).join('\n')}
+
+NOTABLE PROJECTS:
+${projects.slice(0, 5).map(proj => `- ${proj.title}: ${proj.description.join(' ')} (Tech: ${proj.technologies.join(', ')})`).join('\n')}
+
+FULL RESUME DETAILS:
+${resumeContent}
+
+CANDIDATE PREFERENCES:
+- Work Arrangement: Prefers remote/hybrid work arrangements. Open to on-site work only in Bangalore or Hyderabad.
+- Location Flexibility: Based in India, prefers work-from-home or hybrid setups for optimal work-life balance.
+- Experience Level: 1+ years through internships and freelance projects.
+`;
+
+  return `
+    You are an expert AI recruiter specializing in technical roles. You have access to a comprehensive candidate profile including their real work experience, projects, and skills.
+
+    CANDIDATE CONTEXT:
+    ${candidateContext}
+
+    JOB DESCRIPTION:
+    ${jobDescription}
+
+    TASK: Analyze how well this candidate matches the job description using the weighted scoring framework below.
+
+    ANALYSIS FRAMEWORK (Weights):
+    - TECHNICAL SKILLS MATCH (40%): Average match percentage across all job-required skills found in candidate's profile
+    - EXPERIENCE LEVEL MATCH (25%): Alignment between candidate's 1+ years experience and job requirements
+    - LOCATION & WORK PREFERENCE MATCH (20%): How well job arrangements match candidate preferences
+    - PROJECT PORTFOLIO RELEVANCE (10%): How well projects demonstrate required skills
+    - CULTURAL/ROLE FIT (5%): Overall alignment with role expectations
+
+    SCORING GUIDELINES:
+    Experience Level Matching (candidate has 1+ years from internships/freelance):
+    - Junior roles (0-1 years required): 85-100% match
+    - Mid-level roles (1-3 years required): 60-80% match
+    - Senior roles (4+ years required): 40-60% match
+    - If JD emphasizes potential over experience: 90-100% match
+
+    Work Arrangement Matching:
+    - Remote/hybrid jobs: 90-100% match (+bonus)
+    - On-site in Bangalore/Hyderabad: 70-85% match
+    - On-site outside preferred locations: 30-50% match (-penalty)
+    - Unclear location requirements: 70% default match
+
+    ANALYSIS REQUIREMENTS:
+    1. Extract all technical skills, tools, and technologies from the job description
+    2. Determine experience level requirements from JD (junior/mid/senior or years specified)
+    3. Analyze work arrangement preferences (remote/hybrid/on-site) and location requirements
+    4. For each extracted skill, evaluate match percentage based on candidate's actual experience/projects
+    5. Calculate weighted overall match score
+    6. Include warnings only for significant mismatches:
+       - Experience mismatch: Only if JD requires 3+ years OR candidate experience match <= 80%
+       - Work preference mismatch: Only if job requires on-site outside Bangalore/Hyderabad
+    7. Select 2-4 most relevant project IDs that demonstrate required skills
+
+    Return your analysis in the following JSON format without any markdown formatting or explanations:
+    {
+      "overallMatch": number between 0-100,
+      "matchBreakdown": {
+        "technicalSkills": number between 0-100,
+        "experienceLevel": number between 0-100,
+        "locationPreference": number between 0-100,
+        "projectRelevance": number between 0-100
+      },
+      "warnings": [
+        "Specific warnings only for significant mismatches"
+      ],
+      "skillsMatch": [
+        {
+          "skill": "skill name from job description",
+          "match": number between 0-100,
+          "required": boolean
+        }
+      ],
+      "missingSkills": ["skills required by job but absent from candidate profile"],
+      "candidateSummary": "2-3 sentence factual summary of candidate's skills and experience",
+      "recommendedProjectIds": [1, 2, 3]
+    }
+
+    IMPORTANT: Base analysis strictly on candidate's documented 1+ years experience. Return ONLY the JSON object.
+  `;
+}
+
+// Function to call OpenRouter API as fallback
+async function callOpenRouterAPI(prompt: string, logFilename: string): Promise<string> {
+  const openRouterApiKey = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY;
+
+  if (!openRouterApiKey) {
+    const noApiKeyMessage = "⚠️ OpenRouter API key not found, cannot use fallback";
+    console.log(noApiKeyMessage);
+    await logToFile(noApiKeyMessage, logFilename);
+    throw new Error("OpenRouter API key not set");
+  }
+
+  const openRouterMessage = "🔄🔄🔄 FALLING BACK TO OPENROUTER API 🔄🔄🔄";
+  console.log("\n" + openRouterMessage);
+  await logToFile(openRouterMessage, logFilename);
+
+  try {
+    const response = await fetch(OPENROUTER_API_URL, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${openRouterApiKey}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
+        'X-Title': 'Resume Parser Service'
+      },
+      body: JSON.stringify({
+        model: OPENROUTER_MODEL,
+        messages: [
+          {
+            role: 'user',
+            content: prompt
+          }
+        ],
+        temperature: 0.7,
+        max_tokens: 2000
+      })
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`OpenRouter API error: ${response.status} ${response.statusText} - ${errorText}`);
+    }
+
+    const data = await response.json();
+    const text = data.choices[0]?.message?.content;
+
+    if (!text) {
+      throw new Error("No response content from OpenRouter API");
+    }
+
+    const successMessage = "✅ Received response from OpenRouter API";
+    console.log(successMessage);
+    await logToFile(successMessage, logFilename);
+
+    return text;
+  } catch (error) {
+    const errorMessage = `❌ OpenRouter API call failed: ${error}`;
+    console.error(errorMessage);
+    await logToFile(errorMessage, logFilename);
+    throw error;
+  }
+}
+
+// Function to clean and parse LLM response
+function cleanAndParseResponse(text: string): ResumeAnalysisResult {
+  let cleanText = text;
+
+  // Remove markdown code block formatting if present
+  if (text.includes('```json')) {
+    cleanText = text.replace(/```json\n|```/g, '');
+  } else if (text.includes('```')) {
+    cleanText = text.replace(/```\n|```/g, '');
+  }
+
+  // Remove any other markdown formatting or text before/after the JSON
+  const jsonMatch = cleanText.match(/\{[\s\S]*\}/);
+  if (jsonMatch) {
+    cleanText = jsonMatch[0];
+  }
+
+  return JSON.parse(cleanText) as ResumeAnalysisResult;
+}
+
 interface SkillMatch {
   skill: string;
   match: number;
   required: boolean;
 }
 
-interface Project {
-  id: number;
-  title: string;
-  description: string;
-  skills: string[];
-  image: string;
-  link: string;
-  github: string;
-  relevanceScore?: number;
+
+interface MatchBreakdown {
+  technicalSkills: number;
+  experienceLevel: number;
+  locationPreference: number;
+  projectRelevance: number;
 }
 
 interface ResumeAnalysisResult {
   overallMatch: number;
+  matchBreakdown: MatchBreakdown;
+  warnings: string[];
   skillsMatch: SkillMatch[];
   missingSkills: string[];
   candidateSummary: string;
   recommendedProjects: Project[];
+  recommendedProjectIds?: number[];
 }
 
 export async function analyzeJobDescription(jobDescription: string): Promise<ResumeAnalysisResult> {
-  // Create a new log file for this analysis session
   const logFilename = await createAnalysisLogFile();
 
-  // Log the start of the analysis
   const startMessage = "🔍🔍🔍 STARTING JOB DESCRIPTION ANALYSIS 🔍🔍🔍";
   console.log("\n\n" + startMessage);
   await logToFile(startMessage, logFilename);
@@ -53,194 +306,194 @@ export async function analyzeJobDescription(jobDescription: string): Promise<Res
   console.log(lengthMessage);
   await logToFile(lengthMessage, logFilename);
 
+  // Create the prompt once
+  const prompt = createAnalysisPrompt(jobDescription);
+
+  // Log the full resume context being sent to LLM
+  const resumeContextMessage = "📄📄📄 FULL RESUME CONTEXT BEING SENT TO LLM 📄📄📄";
+  console.log("\n\n" + resumeContextMessage);
+  await logToFile(resumeContextMessage, logFilename);
+  console.log("==================================================");
+  console.log(resumeContent);
+  await logToFile(resumeContent, logFilename);
+  console.log("==================================================");
+  console.log("📄📄📄 END RESUME CONTEXT 📄📄📄\n\n");
+
+  // Log the complete prompt being sent to LLM
+  const promptLogMessage = "🤖🤖🤖 COMPLETE PROMPT BEING SENT TO LLM 🤖🤖🤖";
+  console.log("\n\n" + promptLogMessage);
+  await logToFile(promptLogMessage, logFilename);
+  console.log("==================================================");
+  console.log(prompt);
+  await logToFile(prompt, logFilename);
+  console.log("==================================================");
+  console.log("🤖🤖🤖 END COMPLETE PROMPT 🤖🤖🤖\n\n");
+
   // Get the Gemini API instance
   const genAI = getGeminiAPI();
 
-  // If API key is not set, fall back to simulated response
-  if (!genAI) {
-    const noApiKeyMessage = "⚠️⚠️⚠️ NO API KEY FOUND - USING SIMULATED RESPONSE ⚠️⚠️⚠️";
-    console.log(noApiKeyMessage);
-    await logToFile(noApiKeyMessage, logFilename);
-    return getSimulatedResponse(jobDescription, logFilename);
+  // Try Gemini API first
+  if (genAI) {
+    const apiKeyFoundMessage = "✅ Gemini API key found, attempting Gemini API call";
+    console.log(apiKeyFoundMessage);
+    await logToFile(apiKeyFoundMessage, logFilename);
+
+    try {
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+
+      const sendingPromptMessage = "🚀 Sending prompt to Gemini API...";
+      console.log("\n" + sendingPromptMessage);
+      await logToFile(sendingPromptMessage, logFilename);
+
+      const result = await model.generateContent(prompt);
+
+      const receivedResponseMessage = "✅ Received response from Gemini API";
+      console.log(receivedResponseMessage);
+      await logToFile(receivedResponseMessage, logFilename);
+
+      const response = result.response;
+      const text = response.text();
+
+      const rawResponseStartMessage = "🤖🤖🤖 RAW GEMINI RESPONSE START 🤖🤖🤖";
+      console.log("\n\n" + rawResponseStartMessage);
+      await logToFile(rawResponseStartMessage, logFilename);
+      console.log("==================================================");
+      console.log(text);
+      await logToFile(text, logFilename);
+      console.log("==================================================");
+      console.log("🤖🤖🤖 RAW GEMINI RESPONSE END 🤖🤖🤖\n\n");
+
+      try {
+        const jsonResponse = cleanAndParseResponse(text);
+        const parsedMessage = "✅ Successfully parsed Gemini JSON response";
+        console.log(parsedMessage);
+        await logToFile(parsedMessage, logFilename);
+
+        const extractedSkills = extractSkillsFromJobDescription(jobDescription);
+        const allProjects = getProjects();
+
+        // Use LLM-recommended projects if available, otherwise fall back to skill-based matching
+        let recommendedProjects: Project[] = [];
+        if (jsonResponse.recommendedProjectIds && jsonResponse.recommendedProjectIds.length > 0) {
+          const foundProjects = jsonResponse.recommendedProjectIds
+            .map((id: number) => allProjects.find((p: Project) => p.id === id))
+            .filter((p): p is Project => p !== undefined) as Project[];
+          recommendedProjects = foundProjects;
+        } else {
+          recommendedProjects = findRecommendedProjects(extractedSkills);
+        }
+
+        const result = {
+          overallMatch: jsonResponse.overallMatch || 70,
+          matchBreakdown: jsonResponse.matchBreakdown || {
+            technicalSkills: 70,
+            experienceLevel: 70,
+            locationPreference: 70,
+            projectRelevance: 70
+          },
+          warnings: jsonResponse.warnings || [],
+          skillsMatch: jsonResponse.skillsMatch || [],
+          missingSkills: jsonResponse.missingSkills || [],
+          candidateSummary: jsonResponse.candidateSummary || "Anil Sahith appears to be a strong match for this position.",
+          recommendedProjects
+        };
+
+        console.log("🎉 Gemini analysis complete! Returning results.");
+        await logToFile(`🎉 Analysis complete! Results: ${JSON.stringify(result, null, 2)}`, logFilename);
+
+        return result;
+      } catch (parseError) {
+        const parseErrorMessage = `⚠️ Failed to parse Gemini response: ${parseError}`;
+        console.warn(parseErrorMessage);
+        await logToFile(parseErrorMessage, logFilename);
+        // Continue to OpenRouter fallback
+      }
+    } catch (error) {
+      const geminiErrorMessage = `⚠️ Gemini API error: ${error}`;
+      console.warn(geminiErrorMessage);
+      await logToFile(geminiErrorMessage, logFilename);
+      // Continue to OpenRouter fallback
+    }
+  } else {
+    const noGeminiKeyMessage = "⚠️ No Gemini API key found";
+    console.log(noGeminiKeyMessage);
+    await logToFile(noGeminiKeyMessage, logFilename);
   }
 
-  const apiKeyFoundMessage = "✅ API key found, proceeding with Gemini API call";
-  console.log(apiKeyFoundMessage);
-  await logToFile(apiKeyFoundMessage, logFilename);
-
+  // Try OpenRouter as fallback
   try {
-    // Get the generative model
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+    const openRouterFallbackMessage = "🔄 Attempting OpenRouter fallback...";
+    console.log(openRouterFallbackMessage);
+    await logToFile(openRouterFallbackMessage, logFilename);
 
-    // Define the resume content (this would be your actual resume)
-    const resumeContent = `
-      VALLEPU ANIL SAHITH
-      Software Engineer | AI/ML Engineer | Data Scientist
+    const openRouterText = await callOpenRouterAPI(prompt, logFilename);
 
-      SKILLS:
-      - Languages: Python, JavaScript, TypeScript, Java, SQL
-      - Frontend: React, Next.js, HTML/CSS, Tailwind CSS, Redux
-      - Backend: Node.js, Express, Django, Flask, GraphQL
-      - Databases: MongoDB, PostgreSQL, MySQL, Redis
-      - AI/ML: TensorFlow, PyTorch, scikit-learn, NLP, Computer Vision
-      - DevOps: Docker, Kubernetes, AWS, GCP, CI/CD
-
-      EXPERIENCE:
-      Senior Software Engineer | Tech Innovations Inc.
-      Jan 2021 - Present
-      - Developed and maintained microservices architecture using Node.js and Python
-      - Implemented machine learning models for product recommendation system
-      - Led a team of 5 engineers for the development of a new data pipeline
-      - Reduced API response time by 40% through optimization techniques
-
-      Software Engineer | DataTech Solutions
-      Jun 2020 - Dec 2020
-      - Built RESTful APIs using Express.js and MongoDB
-      - Developed front-end components with React and Redux
-      - Implemented CI/CD pipelines using GitHub Actions
-
-      EDUCATION:
-      Master of Science in Computer Science
-      Stanford University | 2018 - 2020
-
-      Bachelor of Technology in Computer Science
-      Indian Institute of Technology | 2014 - 2018
-    `;
-
-    // Create the prompt for Gemini
-    const prompt = `
-      You are an AI assistant that helps analyze job descriptions and compare them to a candidate's resume.
-
-      JOB DESCRIPTION:
-      ${jobDescription}
-
-      RESUME:
-      ${resumeContent}
-
-      Please analyze how well the candidate's skills and experience match the job description.
-      Return your analysis in the following JSON format without any markdown formatting, explanations, or code blocks:
-      {
-        "overallMatch": number between 0-100 representing overall match percentage,
-        "skillsMatch": [
-          {
-            "skill": "skill name",
-            "match": number between 0-100 representing match percentage,
-            "required": boolean indicating if the skill is required for the job
-          }
-        ],
-        "missingSkills": ["skill1", "skill2"],
-        "candidateSummary": "A positive, personalized summary (2-3 sentences) of how well Anil Sahith's profile fits this job role. Highlight his strengths and relevance to impress the recruiter."
-      }
-
-      IMPORTANT: Return ONLY the raw JSON object. Do not include any markdown formatting. Do not include any explanations before or after the JSON. The response should start with { and end with }.
-    `;
-
-    // Generate content
-    const sendingPromptMessage = "🚀 Sending prompt to Gemini API...";
-    console.log("\n" + sendingPromptMessage);
-    await logToFile(sendingPromptMessage, logFilename);
-
-    // Log the prompt for debugging
-    await logToFile("PROMPT SENT TO API:\n" + prompt, logFilename);
-
-    const result = await model.generateContent(prompt);
-
-    const receivedResponseMessage = "✅ Received response from Gemini API";
-    console.log(receivedResponseMessage);
-    await logToFile(receivedResponseMessage, logFilename);
-
-    const response = result.response;
-    const text = response.text();
-
-    // Debug output to see the raw LLM response
-    const rawResponseStartMessage = "🤖🤖🤖 RAW LLM RESPONSE START 🤖🤖🤖";
+    const rawResponseStartMessage = "🤖🤖🤖 RAW OPENROUTER RESPONSE START 🤖🤖🤖";
     console.log("\n\n" + rawResponseStartMessage);
     await logToFile(rawResponseStartMessage, logFilename);
+    console.log("==================================================");
+    console.log(openRouterText);
+    await logToFile(openRouterText, logFilename);
+    console.log("==================================================");
+    console.log("🤖🤖🤖 RAW OPENROUTER RESPONSE END 🤖🤖🤖\n\n");
 
-    const separator = "==================================================";
-    console.log(separator);
-    await logToFile(separator, logFilename);
-
-    console.log(text);
-    await logToFile(text, logFilename);
-
-    console.log(separator);
-    await logToFile(separator, logFilename);
-
-    const rawResponseEndMessage = "🤖🤖🤖 RAW LLM RESPONSE END 🤖🤖🤖\n\n";
-    console.log(rawResponseEndMessage);
-    await logToFile(rawResponseEndMessage, logFilename);
-
-    // The raw LLM response is logged above for debugging purposes
-
-    // Parse the JSON response
     try {
-      // Clean up the response if it contains markdown formatting
-      let cleanText = text;
-
-      // Remove markdown code block formatting if present
-      if (text.includes('```json')) {
-        cleanText = text.replace(/```json\n|```/g, '');
-      }
-
-      // Remove any other markdown formatting or text before/after the JSON
-      const jsonMatch = cleanText.match(/\{[\s\S]*\}/);
-      if (jsonMatch) {
-        cleanText = jsonMatch[0];
-      }
-
-      const cleanedTextMessage = `🔧 Cleaned text for parsing: ${cleanText}`;
-      console.log(cleanedTextMessage);
-      await logToFile(cleanedTextMessage, logFilename);
-
-      const jsonResponse = JSON.parse(cleanText);
-      const parsedMessage = "✅ Successfully parsed JSON response";
+      const jsonResponse = cleanAndParseResponse(openRouterText);
+      const parsedMessage = "✅ Successfully parsed OpenRouter JSON response";
       console.log(parsedMessage);
       await logToFile(parsedMessage, logFilename);
 
-      // Extract skills from the job description and find recommended projects
       const extractedSkills = extractSkillsFromJobDescription(jobDescription);
-      const recommendedProjects = findRecommendedProjects(extractedSkills);
+      const allProjects = getProjects();
+
+      // Use LLM-recommended projects if available, otherwise fall back to skill-based matching
+      let recommendedProjects: Project[] = [];
+      if (jsonResponse.recommendedProjectIds && jsonResponse.recommendedProjectIds.length > 0) {
+        const foundProjects = jsonResponse.recommendedProjectIds
+          .map((id: number) => allProjects.find((p: Project) => p.id === id))
+          .filter((p: Project | undefined): p is Project => p !== undefined);
+        recommendedProjects = foundProjects;
+      } else {
+        recommendedProjects = findRecommendedProjects(extractedSkills);
+      }
 
       const result = {
         overallMatch: jsonResponse.overallMatch || 70,
+        matchBreakdown: jsonResponse.matchBreakdown || {
+          technicalSkills: 70,
+          experienceLevel: 70,
+          locationPreference: 70,
+          projectRelevance: 70
+        },
+        warnings: jsonResponse.warnings || [],
         skillsMatch: jsonResponse.skillsMatch || [],
         missingSkills: jsonResponse.missingSkills || [],
-        candidateSummary: jsonResponse.candidateSummary || "Anil Sahith appears to be a strong match for this position with a diverse skill set in software engineering, AI/ML, and data science. His experience with modern technologies and frameworks aligns well with the requirements of this role.",
+        candidateSummary: jsonResponse.candidateSummary || "Anil Sahith appears to be a strong match for this position.",
         recommendedProjects
       };
 
-      const resultMessage = `🎉 Analysis complete! Results: ${JSON.stringify(result, null, 2)}`;
-      console.log("🎉 Analysis complete! Returning results.");
-      await logToFile(resultMessage, logFilename);
+      console.log("🎉 OpenRouter analysis complete! Returning results.");
+      await logToFile(`🎉 OpenRouter analysis complete! Results: ${JSON.stringify(result, null, 2)}`, logFilename);
 
       return result;
     } catch (parseError) {
-      const parseErrorMessage = `❌❌❌ ERROR PARSING GEMINI API RESPONSE: ${parseError}`;
-      console.error(parseErrorMessage);
+      const parseErrorMessage = `⚠️ Failed to parse OpenRouter response: ${parseError}`;
+      console.warn(parseErrorMessage);
       await logToFile(parseErrorMessage, logFilename);
-
-      const rawResponseMessage = `Raw response: ${text}`;
-      console.log(rawResponseMessage);
-      await logToFile(rawResponseMessage, logFilename);
-
-      const fallbackMessage = "⚠️ Falling back to simulated response";
-      console.log(fallbackMessage);
-      await logToFile(fallbackMessage, logFilename);
-
-      return getSimulatedResponse(jobDescription, logFilename);
+      // Continue to simulated response
     }
-  } catch (error) {
-    const apiErrorMessage = `❌❌❌ ERROR CALLING GEMINI API: ${error}`;
-    console.error(apiErrorMessage);
-    await logToFile(apiErrorMessage, logFilename);
-
-    const fallbackMessage = "⚠️ Falling back to simulated response";
-    console.log(fallbackMessage);
-    await logToFile(fallbackMessage, logFilename);
-
-    return getSimulatedResponse(jobDescription, logFilename);
+  } catch (openRouterError) {
+    const openRouterErrorMessage = `⚠️ OpenRouter fallback failed: ${openRouterError}`;
+    console.warn(openRouterErrorMessage);
+    await logToFile(openRouterErrorMessage, logFilename);
+    // Continue to simulated response
   }
+
+  // Final fallback: simulated response
+  const fallbackMessage = "⚠️ All API methods failed, using simulated response";
+  console.log(fallbackMessage);
+  await logToFile(fallbackMessage, logFilename);
+  return getSimulatedResponse(jobDescription, logFilename);
 }
 
 // Fallback function to get a simulated response
@@ -249,47 +502,40 @@ async function getSimulatedResponse(jobDescription: string, logFilename: string)
   console.log("\n\n" + simulatedResponseMessage);
   await logToFile(simulatedResponseMessage, logFilename);
 
-  // Extract skills from job description
   const skills = extractSkillsFromJobDescription(jobDescription);
-  const extractedSkillsMessage = `🔍 Extracted skills from job description: ${JSON.stringify(skills)}`;
+  const extractedSkillsMessage = `🔍 Extracted skills: ${JSON.stringify(skills)}`;
   console.log(extractedSkillsMessage);
   await logToFile(extractedSkillsMessage, logFilename);
 
-  // Generate a simulated response
-  // Find recommended projects based on the extracted skills
   const recommendedProjects = findRecommendedProjects(skills);
 
-  // Create the simulated response
   const result = {
-    overallMatch: Math.floor(Math.random() * 30) + 65, // Random number between 65-95
+    overallMatch: Math.floor(Math.random() * 30) + 65,
+    matchBreakdown: {
+      technicalSkills: Math.floor(Math.random() * 40) + 60,
+      experienceLevel: Math.floor(Math.random() * 40) + 60,
+      locationPreference: Math.floor(Math.random() * 40) + 60,
+      projectRelevance: Math.floor(Math.random() * 40) + 60
+    },
+    warnings: [],
     skillsMatch: skills.map(skill => ({
       skill,
-      match: Math.floor(Math.random() * 40) + 60, // Random number between 60-100
-      required: Math.random() > 0.5, // Randomly mark as required
+      match: Math.floor(Math.random() * 40) + 60,
+      required: Math.random() > 0.5,
     })),
     missingSkills: ['GraphQL', 'Kubernetes', 'Swift', 'Kotlin', 'Rust']
-      .filter(() => Math.random() > 0.6), // Randomly include missing skills
-    candidateSummary: `Anil Sahith demonstrates strong expertise in ${skills.slice(0, 3).join(', ')} and other technologies relevant to this position. With a background in both software engineering and AI/ML, he brings a versatile skill set that would be valuable for this role. His experience with modern development frameworks and methodologies indicates he would adapt quickly to your team's environment.`,
+      .filter(() => Math.random() > 0.6),
+    candidateSummary: `Anil Sahith demonstrates strong expertise in ${skills.slice(0, 3).join(', ')} and other technologies relevant to this position. With a background in both software engineering and AI/ML, he brings a versatile skill set that would be valuable for this role.`,
     recommendedProjects
   };
 
-  // Log the simulated response for debugging purposes
-  const responseMessage = `💻 SIMULATED RESPONSE: ${JSON.stringify(result, null, 2)}`;
-  console.log(responseMessage);
-  await logToFile(responseMessage, logFilename);
-
-  const successMessage = "🎉 Simulated response generated successfully!";
-  console.log(successMessage);
-  await logToFile(successMessage, logFilename);
+  console.log("🎉 Simulated response generated successfully!");
+  await logToFile(`💻 SIMULATED RESPONSE: ${JSON.stringify(result, null, 2)}`, logFilename);
 
   return result;
 }
 
-// Helper function to extract skills from job description
 function extractSkillsFromJobDescription(jobDescription: string): string[] {
-  // In a real implementation, this would use NLP or the Gemini API to extract skills
-  // For now, we'll check for common tech skills in the job description
-
   const commonSkills = [
     'React', 'Angular', 'Vue', 'JavaScript', 'TypeScript', 'Node.js',
     'Python', 'Java', 'C#', 'PHP', 'Ruby', 'Go', 'Rust',
@@ -306,12 +552,10 @@ function extractSkillsFromJobDescription(jobDescription: string): string[] {
     'Agile', 'Scrum', 'Kanban', 'Project Management', 'JIRA'
   ];
 
-  // Filter skills that appear in the job description
   const foundSkills = commonSkills.filter(skill =>
     jobDescription.toLowerCase().includes(skill.toLowerCase())
   );
 
-  // If no skills found, return a default set
   if (foundSkills.length === 0) {
     return ['React', 'JavaScript', 'Node.js', 'MongoDB', 'AWS'];
   }
@@ -319,22 +563,19 @@ function extractSkillsFromJobDescription(jobDescription: string): string[] {
   return foundSkills;
 }
 
-// Function to find recommended projects based on job skills
 function findRecommendedProjects(jobSkills: string[]): Project[] {
-  const projects = projectsData.projects as Project[];
+  const projects = getProjects();
 
-  // Calculate relevance score for each project
   const projectsWithScores = projects.map(project => {
-    // Count how many job skills match with project skills
-    const matchingSkills = project.skills.filter(skill =>
+    const projectSkills = project.technologies || [];
+    const matchingSkills = projectSkills.filter(skill =>
       jobSkills.some(jobSkill =>
         jobSkill.toLowerCase() === skill.toLowerCase()
       )
     );
 
-    // Calculate relevance score (percentage of job skills that match)
     const relevanceScore = matchingSkills.length > 0
-      ? (matchingSkills.length / project.skills.length) * 100
+      ? (matchingSkills.length / projectSkills.length) * 100
       : 0;
 
     return {
@@ -343,17 +584,10 @@ function findRecommendedProjects(jobSkills: string[]): Project[] {
     };
   });
 
-  // Sort projects by relevance score (descending)
   const sortedProjects = projectsWithScores
-    .filter(project => project.relevanceScore > 0) // Only include projects with matching skills
+    .filter(project => project.relevanceScore > 0)
     .sort((a, b) => (b.relevanceScore || 0) - (a.relevanceScore || 0));
 
-  // Return top 3 most relevant projects
   return sortedProjects.slice(0, 3);
 }
 
-// In a real implementation, you would also have functions for:
-// - Setting up the Gemini API client
-// - Handling API errors and rate limiting
-// - Caching responses
-// - Processing and formatting the API responses
