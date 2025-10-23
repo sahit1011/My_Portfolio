@@ -1,5 +1,5 @@
 import { useRef, ReactNode, MouseEvent } from 'react';
-import './SpotlightCard.css';
+import './SpotLightCard.css';
 
 interface SpotlightCardProps {
   children: ReactNode;
