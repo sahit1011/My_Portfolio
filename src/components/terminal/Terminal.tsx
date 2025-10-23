@@ -61,6 +61,7 @@ const Terminal: React.FC = () => {
     // Auto-scroll to bottom on initial render
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+      terminalRef.current.scrollLeft = 0; // Ensure horizontal scroll is at start
     }
 
     // Log for debugging
@@ -83,6 +84,7 @@ const Terminal: React.FC = () => {
     // Auto-scroll to bottom on initial render
     if (terminalRef.current) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+      terminalRef.current.scrollLeft = 0; // Ensure horizontal scroll is at start
     }
   }, []);
 
@@ -90,6 +92,7 @@ const Terminal: React.FC = () => {
   useEffect(() => {
     if (terminalRef.current && isLoaded) {
       terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+      terminalRef.current.scrollLeft = 0; // Ensure horizontal scroll is at start
     }
   }, [history, isLoaded]);
 
@@ -516,7 +519,7 @@ const Terminal: React.FC = () => {
 
       {/* Terminal */}
       <motion.div
-        className={`w-full h-[50vh] sm:h-[60vh] md:h-[65vh] overflow-hidden flex flex-col rounded-lg terminal-3d ${themeStyles.bg} ${themeStyles.text} ${themeStyles.fontFamily}`}
+        className={`w-full h-[50vh] sm:h-[60vh] md:h-[65vh] overflow-hidden flex flex-col rounded-lg terminal-3d ${themeStyles.bg} ${themeStyles.text} ${themeStyles.fontFamily} overflow-x-hidden`}
         onClick={focusInput}
         initial={{ opacity: 0, y: 20 }}
         animate={{
@@ -543,7 +546,7 @@ const Terminal: React.FC = () => {
       {isLoaded ? (
         <div
           ref={terminalRef}
-          className="flex-grow overflow-y-auto p-4"
+          className="flex-grow overflow-y-auto overflow-x-hidden p-4"
         >
           {history.map((item, index) => (
             <div key={index} className="mb-2">
