@@ -4,9 +4,10 @@ import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import Card3D from '@/components/ui/Card3D';
-import AnimatedHeading from '@/components/ui/AnimatedHeading';
+// import AnimatedHeading from '@/components/ui/AnimatedHeading';
 import Button3D from '@/components/ui/Button3D';
 import ShinyText from '@/components/ShinyText';
+import ExpandingText from '@/components/ui/ExpandingText';
 
 // Import content management utilities
 import { getExperiences } from '@/utils/content';
@@ -19,15 +20,6 @@ export default function ExperiencePage() {
     <MainLayout>
       <section className="section container mx-auto px-4">
         <div className="text-center mb-16">
-          <AnimatedHeading
-            as="h1"
-            className="mb-4 text-5xl font-bold"
-            staggerLetters={true}
-            underlineWidth={0}
-            gradientColors={['#3b82f6', '#8b5cf6']}
-          >
-            Work Experience
-          </AnimatedHeading>
           {/* <p className="text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
             My professional journey and the companies I&apos;ve had the pleasure to work with
           </p> */}
@@ -63,14 +55,21 @@ export default function ExperiencePage() {
                     glowOnHover={false}
                   >
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-2 mb-4">
-                      <AnimatedHeading
-                        as="h3"
-                        className="text-2xl font-bold"
-                        staggerLetters={false}
-                        gradientColors={['#3b82f6', '#8b5cf6']}
-                      >
-                        {exp.title}
-                      </AnimatedHeading>
+                      <div className="relative">
+                        <ExpandingText
+                          as="h3"
+                          className="text-2xl font-bold"
+                          gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+                          expandScale={1.03}
+                          letterSpacing="0.03em"
+                          textShadow={true}
+                          glowIntensity={0.4}
+                        >
+                          {exp.title}
+                        </ExpandingText>
+                        {/* Underline animation */}
+                        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
+                      </div>
                       <span className="px-3 py-1 bg-accent text-white rounded-full text-sm">
                         {exp.company}
                       </span>
@@ -111,15 +110,21 @@ export default function ExperiencePage() {
         </div>
 
         <div className="text-center mt-16">
-          <AnimatedHeading
-            as="h2"
-            className="text-3xl font-bold mb-4"
-            staggerLetters={true}
-            underlineWidth={0}
-            gradientColors={['#3b82f6', '#8b5cf6']}
-          >
-            Looking for new opportunities
-          </AnimatedHeading>
+          <div className="relative mb-4 inline-block">
+            <ExpandingText
+              as="h2"
+              className="text-3xl font-bold"
+              gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+              expandScale={1.03}
+              letterSpacing="0.03em"
+              textShadow={true}
+              glowIntensity={0.4}
+            >
+              Looking for new opportunities
+            </ExpandingText>
+            {/* Underline animation */}
+            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
+          </div>
           <p className="text-lg max-w-2xl mx-auto mb-6 text-gray-700 dark:text-gray-300">
             I&apos;m always open to discussing new projects, opportunities, and collaborations.
           </p>

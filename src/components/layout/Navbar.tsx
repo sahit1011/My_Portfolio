@@ -1,29 +1,27 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaAddressBook, FaHome, FaUser, FaBriefcase, FaCode, FaFileAlt, FaProjectDiagram } from 'react-icons/fa';
-import CopyTooltip from '../ui/CopyTooltip';
+import { FaAddressBook, FaHome, FaUser, FaBriefcase, FaCode, FaFileAlt, FaProjectDiagram } from 'react-icons/fa';
+// import CopyTooltip from '../ui/CopyTooltip';
 import ExpandingText from '../ui/ExpandingText';
 import ShinyText from '../ShinyText';
 
 // Import content management utilities
 import {
-  getPersonalInfo,
+  // getPersonalInfo,
   getNavigationInfo,
-  getGithubUrl,
-  getLinkedinUrl
+  // getGithubUrl,
+  // getLinkedinUrl
 } from '@/utils/content';
 
 const Navbar = () => {
-  const [isContactDropdownOpen, setIsContactDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   // Get content from the centralized content management system
-  const personalInfo = getPersonalInfo();
+  // const personalInfo = getPersonalInfo();
   const navigation = getNavigationInfo();
 
   // Navigation items with icons
@@ -38,21 +36,18 @@ const Navbar = () => {
 
   // Get current page title
   const getCurrentPageTitle = () => {
+    if (pathname === '/contact') return navigation.contact;
     const currentItem = navItems.find(item => item.href === pathname);
     return currentItem ? currentItem.label : 'Home';
   };
 
-  // Handle click outside to close dropdown and mobile menu
+  // Handle click outside to close mobile menu
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsContactDropdownOpen(false);
-      }
       // Close mobile menu if clicking outside
       const mobileMenu = document.querySelector('.md\\:hidden.fixed.top-20.right-6');
       if (mobileMenu && !mobileMenu.contains(event.target as Node) && !(event.target as Element).closest('.absolute.top-6.right-6')) {
         setIsMobileMenuOpen(false);
-        setIsContactDropdownOpen(false);
       }
     };
 
@@ -63,10 +58,6 @@ const Navbar = () => {
   }, []);
 
   // Toggle functions
-  const toggleContactDropdown = () => {
-    setIsContactDropdownOpen(!isContactDropdownOpen);
-  };
-
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
@@ -119,12 +110,12 @@ const Navbar = () => {
           })}
           {/* Contact Icon */}
           <div className="relative group">
-            <button
-              onClick={toggleContactDropdown}
+            <Link
+              href="/contact"
               className="flex items-center justify-center w-10 h-10 rounded-full hover:bg-white/20 dark:hover:bg-gray-700/20 transition-all duration-300 hover:scale-110"
             >
               <FaAddressBook size={20} className="text-gray-600 dark:text-gray-400 transition-colors duration-300" />
-            </button>
+            </Link>
             {/* Tooltip for Contact */}
             <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-50">
               <ShinyText
@@ -134,51 +125,6 @@ const Navbar = () => {
                 Contact
               </ShinyText>
             </div>
-            {isContactDropdownOpen && (
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white/30 dark:bg-gray-800/30 backdrop-blur-lg rounded-md shadow-xl py-1 z-50 border border-white/15 dark:border-gray-700/15">
-                <div className="px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-white/10 dark:hover:bg-gray-700/10 transition-colors duration-150">
-                  <CopyTooltip
-                    id="email-tooltip-desktop"
-                    text={personalInfo.email}
-                    isEmail={true}
-                    label={
-                      <div className="flex items-center">
-                        <FaEnvelope size={16} className="mr-3" /> Email
-                      </div>
-                    }
-                  />
-                </div>
-                <div className="px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-white/10 dark:hover:bg-gray-700/10 transition-colors duration-150">
-                  <CopyTooltip id="phone-tooltip-desktop" text={personalInfo.phone} label={
-                     <div className="flex items-center">
-                      <FaPhone size={16} className="mr-3" /> Phone
-                    </div>
-                  } />
-                </div>
-                <a
-                  href={getGithubUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-white/10 dark:hover:bg-gray-700/10 transition-colors duration-150"
-                  title="GitHub"
-                >
-                  <div className="flex items-center">
-                    <FaGithub size={16} className="mr-3" /> GitHub
-                  </div>
-                </a>
-                <a
-                  href={getLinkedinUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-white/10 dark:hover:bg-gray-700/10 transition-colors duration-150"
-                  title="LinkedIn"
-                >
-                  <div className="flex items-center">
-                    <FaLinkedin size={16} className="mr-3" /> LinkedIn
-                  </div>
-                </a>
-              </div>
-            )}
           </div>
         </div>
       </div>
@@ -233,60 +179,15 @@ const Navbar = () => {
                 })}
 
                 {/* Contact Icon */}
-                <div className="relative" ref={dropdownRef}>
-                  <button
-                    onClick={toggleContactDropdown}
+                <div className="relative">
+                  <Link
+                    href="/contact"
                     className="flex items-center w-full px-3 py-2 rounded-md text-gray-900 dark:text-gray-100 hover:bg-white/20 dark:hover:bg-gray-700/20 transition-all duration-300"
-                    title="Contact Information"
+                    onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <FaAddressBook size={18} className="mr-3 text-gray-600 dark:text-gray-400 transition-colors duration-300" />
                     <span className="text-sm font-medium">Contact</span>
-                  </button>
-                  {isContactDropdownOpen && (
-                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-white/30 dark:bg-gray-800/30 backdrop-blur-lg rounded-md shadow-xl py-1 z-50 border border-white/15 dark:border-gray-700/15">
-                      <div className="px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-white/10 dark:hover:bg-gray-700/10 transition-colors duration-150">
-                        <CopyTooltip
-                          id="email-tooltip-dropdown"
-                          text={personalInfo.email}
-                          isEmail={true}
-                          label={
-                            <div className="flex items-center">
-                              <FaEnvelope size={16} className="mr-3" /> Email
-                            </div>
-                          }
-                        />
-                      </div>
-                      <div className="px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-white/10 dark:hover:bg-gray-700/10 transition-colors duration-150">
-                        <CopyTooltip id="phone-tooltip-dropdown" text={personalInfo.phone} label={
-                           <div className="flex items-center">
-                            <FaPhone size={16} className="mr-3" /> Phone
-                          </div>
-                        } />
-                      </div>
-                      <a
-                        href={getGithubUrl()}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-white/10 dark:hover:bg-gray-700/10 transition-colors duration-150"
-                        title="GitHub"
-                      >
-                        <div className="flex items-center">
-                          <FaGithub size={16} className="mr-3" /> GitHub
-                        </div>
-                      </a>
-                      <a
-                        href={getLinkedinUrl()}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-white/10 dark:hover:bg-gray-700/10 transition-colors duration-150"
-                        title="LinkedIn"
-                      >
-                        <div className="flex items-center">
-                          <FaLinkedin size={16} className="mr-3" /> LinkedIn
-                        </div>
-                      </a>
-                    </div>
-                  )}
+                  </Link>
                 </div>
 
               </div>

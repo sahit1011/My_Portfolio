@@ -17,8 +17,10 @@ import {
   SiFigma, SiRedis, SiHuggingface
 } from 'react-icons/si';
 import Card3D from '@/components/ui/Card3D';
-import AnimatedHeading from '@/components/ui/AnimatedHeading';
+// import AnimatedHeading from '@/components/ui/AnimatedHeading';
 import Button3D from '@/components/ui/Button3D';
+import ShinyText from '@/components/ShinyText';
+import ExpandingText from '@/components/ui/ExpandingText';
 
 
 // Import content management utilities
@@ -146,17 +148,10 @@ export default function SkillsPage() {
     <MainLayout>
       <section className="section container mx-auto px-4">
         <div className="text-center mb-12">
-          <AnimatedHeading
-            as="h1"
-            className="mb-4 text-5xl font-bold"
-            staggerLetters={true}
-            underlineWidth={0}
-            gradientColors={['#3b82f6', '#8b5cf6']}
-          >
-            My Skills
-          </AnimatedHeading>
-          <p className="text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
-            A comprehensive overview of my technical skills and expertise based on my resume.
+          <p className="text-xl max-w-3xl mx-auto">
+            <ShinyText>
+              A comprehensive overview of my technical skills and expertise based on my resume.
+            </ShinyText>
           </p>
         </div>
 
@@ -171,14 +166,21 @@ export default function SkillsPage() {
             >
               <div className="text-center mb-6">
                 {category.icon}
-                <AnimatedHeading
-                  as="h2"
-                  className="text-2xl font-bold"
-                  staggerLetters={false}
-                  gradientColors={['#3b82f6', '#8b5cf6']}
-                >
-                  {category.title}
-                </AnimatedHeading>
+                <div className="relative inline-block">
+                  <ExpandingText
+                    as="h2"
+                    className="text-2xl font-bold"
+                    gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+                    expandScale={1.03}
+                    letterSpacing="0.03em"
+                    textShadow={true}
+                    glowIntensity={0.4}
+                  >
+                    {category.title}
+                  </ExpandingText>
+                  {/* Underline animation */}
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
+                </div>
               </div>
 
               <div>
@@ -191,15 +193,21 @@ export default function SkillsPage() {
         </div>
 
         <div className="mt-16 text-center">
-          <AnimatedHeading
-            as="h2"
-            className="text-3xl font-bold mb-4"
-            staggerLetters={true}
-            underlineWidth={0}
-            gradientColors={['#3b82f6', '#8b5cf6']}
-          >
-            Continuous Learning
-          </AnimatedHeading>
+          <div className="relative mb-4 inline-block">
+            <ExpandingText
+              as="h2"
+              className="text-3xl font-bold"
+              gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+              expandScale={1.03}
+              letterSpacing="0.03em"
+              textShadow={true}
+              glowIntensity={0.4}
+            >
+              Continuous Learning
+            </ExpandingText>
+            {/* Underline animation */}
+            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
+          </div>
           <p className="text-lg max-w-2xl mx-auto mb-6 text-gray-700 dark:text-gray-300">
             I&apos;m constantly expanding my skill set and staying up-to-date with the latest technologies.
             {/* Original learning: Rust, WebAssembly, and advanced MLOps. Can be updated if needed. */}

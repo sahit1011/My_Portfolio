@@ -3,7 +3,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
-import { FaGraduationCap, FaBriefcase, FaLaptopCode, FaEye, FaLightbulb } from 'react-icons/fa';
+import { FaGraduationCap, FaBriefcase, FaLaptopCode, FaEye, FaLightbulb, FaGithub, FaLinkedinIn } from 'react-icons/fa';
 import { SiReact, SiNextdotjs, SiJavascript, SiNodedotjs, SiTailwindcss, SiPython, SiTensorflow, SiPytorch, SiScikitlearn, SiPandas, SiOpenai, SiFlask, SiStreamlit, SiPostgresql, SiMongodb, SiNumpy, SiScipy, SiFigma, SiPostman, SiPycharm } from 'react-icons/si';
 import { VscCode } from 'react-icons/vsc';
 import Image from 'next/image';
@@ -14,7 +14,7 @@ import GradualBlur from '@/components/GradualBlur';
 import SpotlightCard from '@/components/SpotLightCard';
 
 // Import content management utilities
-import { getAboutInfo } from '@/utils/content';
+import { getAboutInfo, getPersonalInfo } from '@/utils/content';
 
 export default function AboutPage() {
   const [typedLine1, setTypedLine1] = useState('');
@@ -31,6 +31,7 @@ export default function AboutPage() {
 
   // Get content from the centralized content management system
   const aboutInfo = getAboutInfo();
+  const personalInfo = getPersonalInfo();
   const line1Config = useMemo(() => ({ text: aboutInfo.greeting + " ", gradientPart: aboutInfo.name }), [aboutInfo.greeting, aboutInfo.name]);
   const roles = aboutInfo.roles;
 
@@ -295,25 +296,76 @@ export default function AboutPage() {
                 >
                   <a
                     href="/resume"
-                    className="inline-flex items-center px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white font-medium rounded-lg transition-all duration-300"
+                    className="inline-flex items-center px-6 py-3 bg-purple-700 text-white font-medium rounded-lg transition-all duration-300"
                   >
                     <FaEye className="mr-2" /> View Resume
                   </a>
                 </Card3D>
 
                 <Card3D
-                  className="inline-block"
+                  className="inline-block mr-4"
                   hoverScale={1.05}
                   gradientShadow={false}
                   glowOnHover={false}
                 >
                   <a
                     href="/contact"
-                    className="inline-flex items-center px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white font-medium rounded-lg border border-gray-700 transition-all duration-300"
+                    className="inline-flex items-center px-6 py-3 bg-gray-700 text-white font-medium rounded-lg transition-all duration-300"
                   >
                     Contact
                   </a>
                 </Card3D>
+
+                {/* Social Icons */}
+                <div className="flex gap-4">
+                  <a
+                    href={`https://github.com/${personalInfo.github}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-white font-medium transition-all duration-300 hover:opacity-80"
+                  >
+                    <Card3D
+                      className="inline-block"
+                      hoverScale={1.05}
+                      gradientShadow={false}
+                      glowOnHover={false}
+                    >
+                      <div className="p-3 bg-gray-800 rounded-lg">
+                        <FaGithub className="text-xl" />
+                      </div>
+                    </Card3D>
+                    <ShinyText
+                      speed={3}
+                      className="text-base text-gray-300"
+                    >
+                      GitHub
+                    </ShinyText>
+                  </a>
+
+                  <a
+                    href={`https://linkedin.com/in/${personalInfo.linkedin}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-white font-medium transition-all duration-300 hover:opacity-80"
+                  >
+                    <Card3D
+                      className="inline-block"
+                      hoverScale={1.05}
+                      gradientShadow={false}
+                      glowOnHover={false}
+                    >
+                      <div className="p-3 bg-blue-700 rounded-lg">
+                        <FaLinkedinIn className="text-xl" />
+                      </div>
+                    </Card3D>
+                    <ShinyText
+                      speed={3}
+                      className="text-base text-gray-300"
+                    >
+                      LinkedIn
+                    </ShinyText>
+                  </a>
+                </div>
               </div>
 
             </div>

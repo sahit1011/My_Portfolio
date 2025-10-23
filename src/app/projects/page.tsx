@@ -7,8 +7,9 @@ import { FaGithub} from 'react-icons/fa';
 import Card3D from '@/components/ui/Card3D';
 import Button3D from '@/components/ui/Button3D';
 import SkillTag3D from '@/components/ui/SkillTag3D';
-import AnimatedHeading from '@/components/ui/AnimatedHeading';
+// import AnimatedHeading from '@/components/ui/AnimatedHeading';
 import ShinyText from '@/components/ShinyText';
+import ExpandingText from '@/components/ui/ExpandingText';
 
 // Import content management utilities
 import { getProjects, getFeaturedProjects } from '@/utils/content';
@@ -23,15 +24,6 @@ export default function ProjectsPage() {
     <MainLayout>
       <section className="section container mx-auto px-4">
         <div className="text-center mb-8 sm:mb-12">
-          <AnimatedHeading
-            as="h1"
-            className="mb-4 text-3xl sm:text-4xl lg:text-5xl font-bold"
-            staggerLetters={true}
-            underlineWidth={0}
-            gradientColors={['#3b82f6', '#8b5cf6']}
-          >
-            My Projects
-          </AnimatedHeading>
           <p className="text-lg sm:text-xl max-w-3xl mx-auto">
             <ShinyText>
               A showcase of my work, personal projects, and contributions
@@ -41,16 +33,22 @@ export default function ProjectsPage() {
 
         {/* Featured Projects */}
         <div className="mb-12 sm:mb-16">
-          <div className="text-center mb-6 sm:mb-8">
-            <AnimatedHeading
-              as="h2"
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold inline-block"
-              staggerLetters={true}
-              underlineWidth={0}
-              gradientColors={['#3b82f6', '#8b5cf6']}
-            >
-              Featured Projects
-            </AnimatedHeading>
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="relative inline-block">
+              <ExpandingText
+                as="h2"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold"
+                gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+                expandScale={1.03}
+                letterSpacing="0.03em"
+                textShadow={true}
+                glowIntensity={0.4}
+              >
+                Featured Projects
+              </ExpandingText>
+              {/* Underline animation */}
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
+            </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {featuredProjects.map(project => (
@@ -117,16 +115,22 @@ export default function ProjectsPage() {
 
         {/* Other Projects */}
         <div>
-          <div className="text-center mb-6 sm:mb-8">
-            <AnimatedHeading
-              as="h2"
-              className="text-2xl sm:text-3xl lg:text-4xl font-bold inline-block"
-              staggerLetters={true}
-              underlineWidth={0}
-              gradientColors={['#3b82f6', '#8b5cf6']}
-            >
-              Other Projects
-            </AnimatedHeading>
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="relative inline-block">
+              <ExpandingText
+                as="h2"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold"
+                gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+                expandScale={1.03}
+                letterSpacing="0.03em"
+                textShadow={true}
+                glowIntensity={0.4}
+              >
+                Other Projects
+              </ExpandingText>
+              {/* Underline animation */}
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
+            </div>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {otherProjects.map(project => (
@@ -190,15 +194,21 @@ export default function ProjectsPage() {
         </div>
 
         <div className="text-center mt-12 sm:mt-16">
-          <AnimatedHeading
-            as="h2"
-            className="text-xl sm:text-2xl font-bold mb-4 inline-block"
-            staggerLetters={true}
-            underlineWidth={0}
-            gradientColors={['#3b82f6', '#8b5cf6']}
-          >
-            Interested in collaborating?
-          </AnimatedHeading>
+          <div className="relative mb-4 inline-block">
+            <ExpandingText
+              as="h2"
+              className="text-xl sm:text-2xl font-bold"
+              gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+              expandScale={1.03}
+              letterSpacing="0.03em"
+              textShadow={true}
+              glowIntensity={0.4}
+            >
+              Interested in collaborating?
+            </ExpandingText>
+            {/* Underline animation */}
+            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
+          </div>
           <p className="text-base sm:text-lg max-w-2xl mx-auto mb-6 text-gray-700 dark:text-gray-300">
             I&apos;m always looking for new projects and challenges. Let&apos;s build something amazing together!
           </p>

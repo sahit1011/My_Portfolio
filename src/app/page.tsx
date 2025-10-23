@@ -104,15 +104,10 @@ export default function Home() {
       {/* Only render the terminal when we're on the client side */}
       {mounted && <Terminal />}
 
-      <motion.div
-        className="mt-6 text-sm text-gray-300"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
-      >
+      <div className="mt-6 text-sm text-gray-300">
         <p>Type <span className="text-purple-400 font-mono">help</span> to see available commands</p>
         <p>Type <span className="text-purple-400 font-mono">portfolio</span> to skip to the main portfolio</p>
-      </motion.div>
+      </div>
     </div>
   );
 }

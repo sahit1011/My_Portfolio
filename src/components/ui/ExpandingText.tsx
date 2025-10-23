@@ -24,7 +24,7 @@ const ExpandingText: React.FC<ExpandingTextProps> = ({
   letterSpacing = '0.02em',
   gradientColors = ['#3b82f6', '#8b5cf6'],
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  animateGradient = true,
+  // animateGradient = true,
   textShadow = true,
   glowIntensity = 0.3,
   staggerChildren = false,
@@ -32,7 +32,7 @@ const ExpandingText: React.FC<ExpandingTextProps> = ({
   const [isHovered, setIsHovered] = useState(false);
 
   // Create gradient string from colors array
-  const gradientString = `linear-gradient(90deg, ${gradientColors.join(', ')})`;
+  // const gradientString = `linear-gradient(90deg, ${gradientColors.join(', ')})`;
   const Component = motion[as] as React.ComponentType<HTMLMotionProps<'div'>>;
 
   // For staggered text animation
@@ -60,12 +60,7 @@ const ExpandingText: React.FC<ExpandingTextProps> = ({
             key={index}
             initial={{
               display: 'inline-block',
-              backgroundImage: gradientString,
-              backgroundSize: '200% 100%',
-              backgroundPosition: '0% 50%',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              color: 'transparent', // Start with transparent for gradient effect
+              color: 'currentColor',
               textShadow: 'none',
               opacity: 1,
             }}
@@ -75,13 +70,6 @@ const ExpandingText: React.FC<ExpandingTextProps> = ({
             } : {
               scale: 1,
               letterSpacing: '0em',
-            }}
-            style={{
-              // Ensure gradient properties are always applied
-              backgroundImage: gradientString,
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              color: 'transparent',
             }}
             transition={{
               type: 'spring',
@@ -120,23 +108,8 @@ const ExpandingText: React.FC<ExpandingTextProps> = ({
     >
       <motion.span
         className="expanding-text-inner"
-        initial={{
-          backgroundImage: gradientString,
-          backgroundSize: '200% 100%',
-          backgroundPosition: '0% 50%',
-          WebkitBackgroundClip: 'text',
-          backgroundClip: 'text',
+        style={{
           color: 'currentColor',
-          textShadow: 'none',
-        }}
-        animate={isHovered ? {
-          color: 'transparent',
-        } : {
-          color: 'currentColor',
-        }}
-        transition={{
-          duration: 0.3, // Faster animation
-          ease: [0.19, 1.0, 0.22, 1.0], // Ease out expo
         }}
       >
         {children}
