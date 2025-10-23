@@ -20,7 +20,7 @@
     "greeting": "Hello, Myself",
     "name": "Sahith 👋",
     "roles": [
-      { "prefix": "I'm an ", "name": "AI Engineer" },
+      { "prefix": "I'm a ", "name": "Software Engineer" },
       { "prefix": "I'm a ", "name": "Data Scientist" },
       { "prefix": "I'm an ", "name": "AI/ML Engineer" }
 
