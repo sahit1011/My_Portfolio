@@ -12,20 +12,12 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Default to dark theme
+  // Set consistent dark theme
   const [theme, setTheme] = useState<Theme>('dark');
 
-  // Initialize theme from localStorage or system preference
+  // Initialize to dark theme only
   useEffect(() => {
-    const storedTheme = localStorage.getItem('theme') as Theme | null;
-
-    if (storedTheme) {
-      setTheme(storedTheme);
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
-    } else {
-      setTheme('light');
-    }
+    setTheme('dark');
   }, []);
 
   // Update HTML class when theme changes
@@ -42,7 +34,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+    // Keep theme consistent - no toggle functionality
+    setTheme('dark');
   };
 
   return (

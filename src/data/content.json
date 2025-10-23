@@ -18,12 +18,12 @@
 
   "about": {
     "greeting": "Hello, Myself",
-    "name": "Anil Sahith",
+    "name": "Sahith 👋",
     "roles": [
-      { "prefix": "I'm a ", "name": "Software Engineer" },
+      { "prefix": "I'm an ", "name": "AI Engineer" },
       { "prefix": "I'm a ", "name": "Data Scientist" },
       { "prefix": "I'm an ", "name": "AI/ML Engineer" }
-      
+
     ],
     "bio": [
       "With strong Computer Science concepts and an eye for detail, I enjoy creating effective solutions to challenging problems. I'm always excited to use new technologies to build impactful applications.",

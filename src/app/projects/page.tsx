@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import MainLayout from '@/components/layout/MainLayout';
-import { FaGithub, FaCode, FaProjectDiagram } from 'react-icons/fa';
+import { FaGithub} from 'react-icons/fa';
 import Card3D from '@/components/ui/Card3D';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import ExpandingText from '@/components/ui/ExpandingText';
 import Button3D from '@/components/ui/Button3D';
 import SkillTag3D from '@/components/ui/SkillTag3D';
 import AnimatedHeading from '@/components/ui/AnimatedHeading';
+import ShinyText from '@/components/ShinyText';
 
 // Import content management utilities
 import { getProjects, getFeaturedProjects } from '@/utils/content';
@@ -32,8 +32,10 @@ export default function ProjectsPage() {
           >
             My Projects
           </AnimatedHeading>
-          <p className="text-lg sm:text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
-            A showcase of my work, personal projects, and contributions
+          <p className="text-lg sm:text-xl max-w-3xl mx-auto">
+            <ShinyText>
+              A showcase of my work, personal projects, and contributions
+            </ShinyText>
           </p>
         </div>
 
@@ -60,9 +62,14 @@ export default function ProjectsPage() {
                 gradientShadow={false}
                 glowOnHover={false}
               >
-                <div className="h-40 sm:h-48 bg-gradient-to-r from-blue-400/80 to-purple-500/80 dark:from-blue-600/70 dark:to-purple-700/70 relative flex items-center justify-center">
-                  <FaProjectDiagram className="text-white dark:text-gray-100 text-4xl sm:text-6xl opacity-90" />
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-50/20 to-purple-50/20 dark:from-blue-900/30 dark:to-purple-900/30"></div>
+                <div className="h-40 sm:h-48 relative">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={400}
+                    height={200}
+                    className="w-full h-full object-cover rounded-t-lg"
+                  />
                 </div>
 
                 <div className="p-4 sm:p-6 flex-grow">
@@ -132,7 +139,13 @@ export default function ProjectsPage() {
                 glowOnHover={false}
               >
                 <div className="flex items-center mb-4">
-                  <FaCode className="text-accent text-xl sm:text-2xl mr-3 floating" />
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    width={64}
+                    height={64}
+                    className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover mr-3 border-2 border-accent"
+                  />
                   <h3 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
                     {project.title}
                   </h3>

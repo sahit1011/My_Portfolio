@@ -4,6 +4,8 @@ import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { getPersonalInfo } from '@/utils/content';
+import Squares from '@/components/Squares';
+import ShinyText from '@/components/ShinyText';
 
 // Import Terminal component dynamically with SSR disabled
 const Terminal = dynamic(() => import('@/components/terminal/Terminal'), {
@@ -45,7 +47,7 @@ export default function Home() {
   // Show loading screen on initial load
   if (initialLoad) {
     return (
-      <div className="fixed inset-0 flex items-center justify-center bg-gradient-to-b from-gray-900 via-black to-gray-900 z-50">
+      <div className="fixed inset-0 flex items-center justify-center z-50">
         <div className="text-center p-8 max-w-md">
           <h1 className="text-4xl font-bold mb-6 text-white">
             <span className="text-blue-500">Anil Sahith</span>&apos;s Portfolio
@@ -65,7 +67,14 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 via-black to-gray-900 p-4 perspective-1000">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-black via-gray-900 to-black p-4 sm:p-6 md:p-8 perspective-1000 relative">
+      <Squares
+        speed={0.5}
+        squareSize={40}
+        direction='diagonal'
+        borderColor='rgb(39,30,55)'
+        hoverFillColor='rgb(120,120,120)'
+      />
       <motion.div
         className="text-center mb-6"
         initial={{ opacity: 0, y: -20 }}
@@ -76,14 +85,20 @@ export default function Home() {
           Welcome to <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600">{personalInfo.displayName}&apos;s Portfolio</span>
         </h1>
 
-        <motion.p
+        <motion.div
           className="text-base md:text-lg text-gray-300"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          Interact with the terminal below to explore my portfolio
-        </motion.p>
+          <ShinyText
+            disabled={false}
+            speed={3}
+            className="custom-class"
+          >
+            Interact with the terminal below to explore my portfolio
+          </ShinyText>
+        </motion.div>
       </motion.div>
 
       {/* Only render the terminal when we're on the client side */}

@@ -1,12 +1,20 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaLightbulb, FaTimes, FaBan } from 'react-icons/fa';
 import { useFunFact } from '@/context/FunFactContext';
 
 const FunFactToast: React.FC = () => {
   const { currentFact, showFact, dismissFact, disableAllFacts } = useFunFact();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   if (!currentFact) return null;
 
@@ -14,11 +22,11 @@ const FunFactToast: React.FC = () => {
     <AnimatePresence>
       {showFact && (
         <motion.div
-          initial={{ opacity: 0, x: 50, y: 0 }}
+          initial={isMobile ? { opacity: 0, x: 50, y: 0 } : { opacity: 0, x: 0, y: -50 }}
           animate={{ opacity: 1, x: 0, y: 0 }}
-          exit={{ opacity: 0, x: 20, y: 0 }}
+          exit={isMobile ? { opacity: 0, x: 20, y: 0 } : { opacity: 0, x: 0, y: -20 }}
           transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-          className="fixed top-1/3 right-4 w-[400px] bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden z-50"
+          className={`fixed ${isMobile ? 'top-1/3 right-4' : 'top-4 right-4'} w-[400px] bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden z-50`}
           role="alert"
           aria-live="polite"
         >

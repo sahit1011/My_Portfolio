@@ -36,7 +36,8 @@ const Terminal: React.FC = () => {
     <>
       <p className="text-green-400">Welcome to Anil&apos;s Terminal Portfolio!</p>
       <p className="mt-2">Type <span className="text-yellow-400">help</span> to see available commands.</p>
-      <p className="mt-2">Use the OS icons in the top-right corner to change the terminal theme.</p>
+      <p className="mt-2">Type <span className="text-yellow-400">portfolio</span> to skip to the main portfolio.</p>
+      {/* <p className="mt-2">Use the OS icons in the top-right corner to change the terminal theme.</p> */}
     </>
   );
 
@@ -44,7 +45,7 @@ const Terminal: React.FC = () => {
   const [input, setInput] = useState('');
   const [history, setHistory] = useState<Command[]>([{ input: '', output: welcomeMessage }]);
   const [historyIndex, setHistoryIndex] = useState(-1);
-  const [osTheme, setOsTheme] = useState<OSTheme>('linux');
+  const [osTheme, setOsTheme] = useState<OSTheme>('windows');
   const [isLoaded] = useState(true); // Start with loaded=true for immediate rendering
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalRef = useRef<HTMLDivElement>(null);
@@ -289,23 +290,21 @@ const Terminal: React.FC = () => {
         output = (
           <div>
             <p className="font-bold text-accent-light">Contact Information:</p>
-            <p className="mt-1"><span className="text-yellow-400">Email:</span> your.email@example.com</p>
-            <p><span className="text-yellow-400">LinkedIn:</span> linkedin.com/in/yourusername</p>
-            <p><span className="text-yellow-400">GitHub:</span> github.com/yourusername</p>
+            <p className="mt-1"><span className="text-yellow-400">Email:</span> anilsahithvallepu@gmail.com</p>
+            <p><span className="text-yellow-400">LinkedIn:</span> linkedin.com/in/anil-sahith</p>
+            <p><span className="text-yellow-400">GitHub:</span> github.com/sahit1011</p>
             <p><span className="text-yellow-400">Twitter:</span> twitter.com/yourusername</p>
           </div>
         );
         break;
 
       case 'clear':
-        setHistory([]);
+        setHistory([{ input: '', output: welcomeMessage }]);
         return;
 
       case 'portfolio':
-        output = <p>Redirecting to portfolio...</p>;
-        setTimeout(() => {
-          router.push('/about');
-        }, 1000);
+        output = <p>Opening portfolio page...</p>;
+        router.push('/about');
         break;
 
       case 'resume':
@@ -314,8 +313,8 @@ const Terminal: React.FC = () => {
             <div className="mb-4">
               <h2 className="text-xl font-bold text-blue-400">VALLEPU ANIL SAHITH</h2>
               <p>Software Engineer | AI/ML Engineer | Data Scientist</p>
-              <p>your.email@example.com | +1 (123) 456-7890 | San Francisco, CA</p>
-              <p>github.com/yourusername | linkedin.com/in/yourusername</p>
+              <p>anilsahithvallepu@gmail.com | +91 8143400946 | Hyderabad, INDIA</p>
+              <p>github.com/sahit1011 | linkedin.com/in/anil-sahith</p>
             </div>
 
             <div className="mb-4">
@@ -398,12 +397,12 @@ const Terminal: React.FC = () => {
 
       case 'github':
         output = <p>Opening GitHub profile...</p>;
-        window.open('https://github.com/yourusername', '_blank');
+        window.open('https://github.com/sahit1011', '_blank');
         break;
 
       case 'linkedin':
         output = <p>Opening LinkedIn profile...</p>;
-        window.open('https://linkedin.com/in/yourusername', '_blank');
+        window.open('https://linkedin.com/in/anil-sahith', '_blank');
         break;
 
       case 'whoami':
@@ -499,49 +498,30 @@ const Terminal: React.FC = () => {
 
   const themeStyles = getThemeStyles();
 
-  // Terminal mouse tracking state
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const terminalContainerRef = useRef<HTMLDivElement>(null);
-
-  // Handle mouse movement for 3D effect
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!terminalContainerRef.current) return;
-
-    const rect = terminalContainerRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    // Calculate normalized position (-1 to 1)
-    const normalizedX = (e.clientX - centerX) / (rect.width / 2);
-    const normalizedY = (e.clientY - centerY) / (rect.height / 2);
-
-    setMousePosition({ x: normalizedX * 2, y: normalizedY * 2 });
+  // Handle input focus
+  const handleInputFocus = () => {
+    // Focus handling if needed
   };
 
-  // Reset position when mouse leaves
-  const handleMouseLeave = () => {
-    setMousePosition({ x: 0, y: 0 });
+  // Handle input blur
+  const handleInputBlur = () => {
+    // Blur handling if needed
   };
 
   return (
     <div
-      className="relative w-full max-w-4xl mx-auto flex flex-col items-center perspective-container"
-      ref={terminalContainerRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
+      className="relative w-full max-w-4xl mx-auto flex flex-col items-center perspective-container px-4 sm:px-6 md:px-8"
     >
       <ThemeToggle currentTheme={osTheme} onThemeChange={setOsTheme} />
 
-      {/* Enhanced 3D Terminal */}
+      {/* Terminal */}
       <motion.div
-        className={`w-full h-[65vh] overflow-hidden flex flex-col rounded-lg terminal-3d gradient-shadow ${themeStyles.bg} ${themeStyles.text} ${themeStyles.fontFamily}`}
+        className={`w-full h-[50vh] sm:h-[60vh] md:h-[65vh] overflow-hidden flex flex-col rounded-lg terminal-3d ${themeStyles.bg} ${themeStyles.text} ${themeStyles.fontFamily}`}
         onClick={focusInput}
-        initial={{ opacity: 0, y: 20, rotateX: 10 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{
           opacity: 1,
           y: 0,
-          rotateX: -mousePosition.y * 3,
-          rotateY: mousePosition.x * 3,
           boxShadow: `
             0 20px 50px rgba(0, 0, 0, 0.3),
             0 0 30px rgba(103, 232, 249, 0.1),
@@ -553,9 +533,6 @@ const Terminal: React.FC = () => {
           stiffness: 300,
           damping: 30,
           mass: 0.5
-        }}
-        style={{
-          transformStyle: 'preserve-3d',
         }}
       >
       <TerminalHeader osTheme={osTheme} />
@@ -587,6 +564,8 @@ const Terminal: React.FC = () => {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
+              onFocus={handleInputFocus}
+              onBlur={handleInputBlur}
               className="bg-transparent outline-none flex-grow"
               autoFocus
             />

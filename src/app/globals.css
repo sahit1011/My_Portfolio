@@ -30,6 +30,42 @@
   }
 }
 
+@keyframes roamingGradient {
+  0% {
+    background-position: 0% 0%, 100% 0%, 50% 0%, 0% 50%;
+  }
+  10% {
+    background-position: 5% 3%, 95% 2%, 55% 1%, 5% 55%;
+  }
+  20% {
+    background-position: 15% 8%, 85% 7%, 45% 4%, 15% 60%;
+  }
+  30% {
+    background-position: 25% 12%, 75% 11%, 60% 6%, 25% 65%;
+  }
+  40% {
+    background-position: 35% 18%, 65% 16%, 40% 9%, 35% 70%;
+  }
+  50% {
+    background-position: 40% 20%, 60% 20%, 50% 10%, 45% 75%;
+  }
+  60% {
+    background-position: 35% 18%, 65% 16%, 60% 12%, 35% 70%;
+  }
+  70% {
+    background-position: 25% 12%, 75% 11%, 45% 8%, 25% 65%;
+  }
+  80% {
+    background-position: 15% 8%, 85% 7%, 55% 5%, 15% 60%;
+  }
+  90% {
+    background-position: 5% 3%, 95% 2%, 40% 2%, 5% 55%;
+  }
+  100% {
+    background-position: 0% 0%, 100% 0%, 50% 0%, 0% 50%;
+  }
+}
+
 .skill-tag-gradient {
   background: linear-gradient(90deg, #0f172a, #1e3a8a, #1e40af, #1e3a8a, #0f172a);
   background-size: 300% 100%;

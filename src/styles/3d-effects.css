@@ -268,3 +268,116 @@
   opacity: 1;
   transform: scale(1);
 }
+
+/* Enhanced Profile Image Effects */
+.profile-image-container {
+  position: relative;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.profile-image {
+  position: relative;
+  border-radius: 1rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: translateZ(0);
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+.profile-image:hover {
+  transform: translateY(-8px) rotateX(5deg) rotateY(-5deg) scale(1.05);
+  box-shadow:
+    0 35px 60px -12px rgba(0, 0, 0, 0.25),
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+/* Animated outline effect */
+.profile-image::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 1.25rem;
+  background: linear-gradient(
+    45deg,
+    #667eea 0%,
+    #764ba2 25%,
+    #f093fb 50%,
+    #f5576c 75%,
+    #4facfe 100%
+  );
+  background-size: 400% 400%;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.4s ease;
+  animation: gradientShift 4s ease infinite;
+}
+
+.profile-image:hover::before {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 3D Shadow layers */
+.profile-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1rem;
+  background: linear-gradient(
+    135deg,
+    rgba(103, 232, 249, 0.3) 0%,
+    rgba(103, 232, 249, 0.1) 50%,
+    rgba(103, 232, 249, 0) 100%
+  );
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: -1;
+  filter: blur(20px);
+  transform: translateZ(-10px) scale(0.9);
+}
+
+.profile-image:hover::after {
+  opacity: 1;
+  transform: translateZ(-10px) scale(1.1);
+  filter: blur(25px);
+}
+
+/* Floating animation for profile image */
+.profile-image.floating {
+  animation: gentleFloat 6s ease-in-out infinite;
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0px) translateZ(0); }
+  50% { transform: translateY(-15px) translateZ(10px); }
+}
+
+/* Pulse effect on hover */
+.profile-image.pulse-on-hover:hover {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .8;
+  }
+}

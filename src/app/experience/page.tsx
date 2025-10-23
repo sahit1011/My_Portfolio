@@ -6,6 +6,7 @@ import { FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
 import Card3D from '@/components/ui/Card3D';
 import AnimatedHeading from '@/components/ui/AnimatedHeading';
 import Button3D from '@/components/ui/Button3D';
+import ShinyText from '@/components/ShinyText';
 
 // Import content management utilities
 import { getExperiences } from '@/utils/content';
@@ -27,8 +28,13 @@ export default function ExperiencePage() {
           >
             Work Experience
           </AnimatedHeading>
-          <p className="text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
+          {/* <p className="text-xl max-w-3xl mx-auto text-gray-700 dark:text-gray-300">
             My professional journey and the companies I&apos;ve had the pleasure to work with
+          </p> */}
+          <p className="text-xl max-w-3xl mx-auto">
+            <ShinyText>
+              My professional journey and the companies I&apos;ve had the pleasure to work with
+            </ShinyText>
           </p>
         </div>
 

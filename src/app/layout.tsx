@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import { Fira_Code } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
-import ThemeToggle from "@/components/theme/ThemeToggle";
 import { FunFactProvider } from "@/context/FunFactContext";
 import FunFactToast from "@/components/ui/FunFactToast";
 
@@ -35,7 +34,6 @@ export default function RootLayout({
       <body className="antialiased" suppressHydrationWarning>
         <ThemeProvider>
           <FunFactProvider>
-            <ThemeToggle />
             {children}
             <FunFactToast />
           </FunFactProvider>
