@@ -8,6 +8,8 @@ interface Button3DProps {
   children: React.ReactNode;
   className?: string;
   href?: string;
+  target?: string;
+  rel?: string;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
   variant?: 'primary' | 'secondary' | 'accent' | 'outline';
@@ -22,6 +24,8 @@ const Button3D: React.FC<Button3DProps> = ({
   children,
   className = '',
   href,
+  target,
+  rel,
   onClick,
   type = 'button',
   variant = 'primary',
@@ -99,7 +103,7 @@ const Button3D: React.FC<Button3DProps> = ({
         whileTap={disabled ? {} : "tap"}
         variants={buttonVariants}
       >
-        <Link href={href} className={buttonClasses} onClick={disabled ? (e) => e.preventDefault() : undefined}>
+        <Link href={href} target={target} rel={rel} className={buttonClasses} onClick={disabled ? (e) => e.preventDefault() : undefined}>
           {content}
         </Link>
       </motion.div>

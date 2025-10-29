@@ -23,6 +23,30 @@
       "title": "Medical Chat Bot",
       "description": "Developed a medical chatbot allowing users to input medical and health-related queries, which are processed to understand the context and retrieve relevant information from a large language model.",
       "skills": ["Python", "Flask", "Meta Llama2 LLM", "LangChain", "Pinecone Vector DB", "Large Language Models"]
+    },
+    {
+      "id": 5,
+      "title": "HSN Code Classification System",
+      "description": "Developed an intelligent HSN (Harmonized System Nomenclature) Code Classification System using Retrieval-Augmented Generation (RAG) and Knowledge Graphs. The system will help businesses accurately identify correct 8-digit HSN codes for products, addressing the challenges of complex hierarchies, similar product descriptions, and lack of domain expertise.",
+      "skills": ["Python", "Pandas", "NumPy", "PyPDF2", "pdfplumber", "NetworkX", "Neo4j", "FAISS", "ChromaDB", "OpenAI Ada", "Sentence Transformers", "OpenAI GPT", "OpenRouter API", "Retrieval-Augmented Generation", "Knowledge Graphs"]
+    },
+    {
+      "id": 6,
+      "title": "AI-Resume-Parser",
+      "description": "Production-ready resume parser extracting structured information from PDF, DOC, DOCX, and TXT files using state-of-the-art LLM providers and transformer models. Supports multiple file formats with Google Colab testing, structured JSON output, and multiple LLM providers including OpenRouter, Google Gemini, OpenAI GPT, and local transformers.",
+      "skills": ["Python", "OpenRouter API", "Google Gemini API", "OpenAI GPT", "Transformers", "LayoutLM", "BERT", "DeepSeek R1", "PDF Processing", "Document Parsing", "LLM Integration", "Google Colab"]
+    },
+    {
+      "id": 7,
+      "title": "Medical FAQ RAG Chatbot",
+      "description": "Retrieval-Augmented Generation (RAG) chatbot for medical FAQs providing accurate, context-aware answers to patient queries using a knowledge base of medical information. Built with FAISS vector database, OpenAI GPT-3.5-turbo, and Streamlit interface for easy deployment and interaction.",
+      "skills": ["Python", "FAISS", "OpenAI GPT-3.5-turbo", "OpenAI text-embedding-ada-002", "Sentence Transformers", "Streamlit", "Pandas", "Retrieval-Augmented Generation", "Vector Database", "Medical AI"]
+    },
+    {
+      "id": 8,
+      "title": "NLP Pinecone Agent",
+      "description": "Intelligent agent that converts natural language queries into Pinecone-compatible JSON filters for vector database search. Features robust date query processing, multi-LLM fallback, and comprehensive operator support. Uses hybrid approach combining LLM processing with rule-based fallbacks for reliable query conversion.",
+      "skills": ["Python", "Flask", "OpenRouter API", "Pinecone", "OpenAI Embeddings", "Sentence Transformers", "NLP", "Vector Database", "JSON Filters", "Multi-LLM Fallback"]
     }
   ]
 }

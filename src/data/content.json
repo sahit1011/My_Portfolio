@@ -26,7 +26,7 @@
 
     ],
     "bio": [
-      "With strong Computer Science concepts and an eye for detail, I enjoy creating effective solutions to challenging problems. I'm always excited to use new technologies to build impactful applications.",
+      "With strong Math, Computer Science concepts and an eye for detail, I enjoy creating effective solutions to challenging problems. I'm always excited to use new technologies to build impactful applications.",
       "My interest in technology started with a fascination for how software can change industries and improve lives. I'm dedicated to learning and finding new ways to solve problems.",
       "I'm particularly drawn to the dynamic and innovative nature of startup environments. My previous two company experiences were with startups, which I found incredibly rewarding. I'm also actively developing a few startup ideas of my own, including currently building a Doctor assistant app.",
       "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge through technical writing and mentoring."
@@ -171,61 +171,118 @@
   },
 
   "projects": [
+    
     {
       "id": 1,
-      "title": "Custom Stock Trend Predictor",
+      "title": "Mini AI Analyst as a Service",
+      "shortDescription": "A comprehensive full-stack application that transforms CSV data analysis into an intelligent, automated experience",
       "description": [
-        "Web-based Flask tool for technical analysis with future stock price predictions",
-        "Analyzed multiple forecasting models to achieve most accurate predictions",
-        "Interactive dashboard displaying predicted curves and numerical stock data"
+        "Comprehensive full-stack application transforming CSV data analysis into intelligent automated experience",
+        "Upload CSV files, get instant statistical insights, train ML models, and generate predictions",
+        "Professional web interface designed for data scientists and analysts with advanced features",
+        "Statistical distributions, correlation matrices, categorical insights, and data quality assessment",
+        "Intelligent AutoML with automated model selection, training, and evaluation"
+      ],
+      "image": "/images/mini-ai-as-analyst-image.png",
+      "technologies": ["React", "Next.js", "TypeScript", "Tailwind CSS", "FastAPI", "PostgreSQL", "SQLAlchemy", "Pandas", "Scikit-learn", "XGBoost", "Docker"],
+      "github": "https://github.com/sahit1011/Full-Stack-MiniAI-As-A-Service",
+      "demo": "#",
+      "featured": true
+    },
+    
+    {
+      "id": 2,
+      "title": "SlackBot Content Creation Assistant",
+      "description": [
+        "Sophisticated AI-powered workflow automation tool",
+        "Designed to streamline the content research and planning process",
+        "For content teams, SEO specialists, and digital marketers",
+        "By integrating directly into Slack, the bot eliminates hours of manual keyword research, competitive analysis, and content planning, reducing a multi-day process to minutes"
       ],
       "image": "/placeholder.jpg",
-      "technologies": ["Python", "HTML", "CSS", "JavaScript", "Flask", "Pandas", "Numpy", "Matplotlib", "Scikit-learn", "Keras"],
-      "github": "https://github.com/sahit1011/custom-stock-trend-predictor",
+      "technologies": ["Python", "Slack API", "Brave Search API/SerAPI", "Groq LLM", "Sentence Transformers", "Supabase", "Redis", "SendGrid"],
+      "github": "#",
+      "demo": "#",
       "featured": false
     },
     {
-      "id": 2,
-      "title": "Dr. Assistant - AI-Powered Healthcare Solution",
-      "description": [
-        "Comprehensive AI-powered healthcare platform designed to streamline doctor workflows and reduce administrative burden in the Indian healthcare system.",
-        "Features voice-assisted EMR, AI-powered clinical note generation, intelligent scheduling, and seamless integration with India's ABDM health data network.",
-        "Helps doctors focus more on patient care and less on paperwork through advanced automation and AI assistance."
-      ],
-      "image": "/placeholder.jpg",
-      "technologies": ["React", "TypeScript", "Material UI", "Node.js", "Express", "PostgreSQL", "MongoDB", "Redis", "Python", "FastAPI", "TensorFlow", "Hugging Face", "Docker", "Kubernetes", "AWS"],
-      "github": "#",
-      "featured": true
-    },
-    {
       "id": 3,
-      "title": "Post-Quantum Crypto Simulator",
+      "title": "AI Trip Planner",
       "description": [
-        "Real-time web app demonstrating RSA vs quantum-resistant algorithms (NTRU, Kyber)",
-        "Interactive chat with live encryption/decryption and attacker simulation mode",
-        "Educational visualizations showcasing post-quantum cryptography concepts"
+        "Hybrid AI travel assistant combining vector search, knowledge graphs, and LLMs",
+        "45% faster response times through async parallelization",
+        "Personalized Vietnam travel recommendations with AI insights",
+        "Advanced AI capabilities with chain-of-thought prompting, intent analysis, query understanding, and multi-hop graph traversal for rich context"
       ],
       "image": "/placeholder.jpg",
-      "technologies": ["Python", "Flask", "JavaScript", "Bootstrap", "RSA", "NTRU", "Kyber", "AES-GCM", "WebSocket", "PyCryptodome", "NumPy", "Post-Quantum Cryptography"],
+      "technologies": ["Python", "Pinecone", "Neo4j", "OpenAI", "Async Programming", "Vector Search", "Knowledge Graphs", "LLMs"],
       "github": "#",
+      "demo": "#",
       "featured": false
     },
     {
       "id": 4,
-      "title": "Secured Health Prediction using FHE-ML",
+      "title": "HSN Code Classification System",
       "description": [
-        "Privacy-preserving health risk prediction system using Fully Homomorphic Encryption (FHE) to enable secure computation on sensitive medical data.",
-        "Advanced ML inference pipeline that performs predictions on encrypted health data without ever exposing sensitive patient information.",
-        "Comprehensive web interface for secure health metrics input and risk assessment."
+        "Developed an intelligent HSN Code Classification System using advanced AI techniques.",
+        "Implements RAG and Knowledge Graphs for accurate classification.",
+        "Helps businesses identify correct 8-digit HSN codes for various products.",
+        "Addresses challenges of complex hierarchies, similar descriptions, and domain expertise gaps."
       ],
       "image": "/placeholder.jpg",
-      "technologies": ["Python", "Flask", "FHE", "Machine Learning", "Privacy Computing", "Web Security"],
-      "github": "https://github.com/sahit1011/FHE_ML_health_prediction",
-      "featured": true
+      "technologies": ["Python", "Pandas", "NumPy", "PyPDF2", "NetworkX", "FAISS", "OpenAI Ada", "Sentence Transformers", "OpenAI GPT", "OpenRouter API", "Retrieval-Augmented Generation", "Knowledge Graphs"],
+      "github": "#",
+      "demo": "#",
+      "featured": false
+    },
+    {
+      "id": 10,
+      "title": "AI Resume Parser",
+      "description": [
+        "Production-ready resume parser for PDF, DOC, DOCX, and TXT files.",
+        "Uses state-of-the-art LLM providers including OpenRouter, Google Gemini, and OpenAI GPT.",
+        "Supports local transformers (BERT/LayoutLM) for offline processing with structured JSON output.",
+        "Features Google Colab notebook for easy testing and multiple file format support."
+      ],
+      "image": "/placeholder.jpg",
+      "technologies": ["Python", "OpenRouter API", "Google Gemini API", "OpenAI GPT", "Transformers", "LayoutLM", "BERT", "DeepSeek R1", "PDF Processing", "Document Parsing", "LLM Integration", "Google Colab"],
+      "github": "#",
+      "demo": "#",
+      "featured": false
+    },
+    {
+      "id": 11,
+      "title": "Medical FAQ RAG Chatbot",
+      "description": [
+        "Retrieval-Augmented Generation (RAG) chatbot for medical FAQs.",
+        "Provides accurate, context-aware answers to patient queries using medical knowledge base.",
+        "Built with FAISS vector database and OpenAI GPT-3.5-turbo for efficient retrieval.",
+        "Features Streamlit interface for easy deployment and user interaction."
+      ],
+      "image": "/placeholder.jpg",
+      "technologies": ["Python", "FAISS", "OpenAI GPT-3.5-turbo", "OpenAI text-embedding-ada-002", "Sentence Transformers", "Streamlit", "Pandas", "Retrieval-Augmented Generation", "Vector Database", "Medical AI"],
+      "github": "#",
+      "demo": "#",
+      "featured": false
+    },
+    {
+      "id": 12,
+      "title": "NLP Pinecone Agent",
+      "description": [
+        "Intelligent agent that converts natural language queries into Pinecone-compatible JSON filters.",
+        "Features robust date query processing, multi-LLM fallback, and comprehensive operator support.",
+        "Uses hybrid approach combining LLM processing with rule-based fallbacks.",
+        "Enables precise vector database search through natural language interfaces."
+      ],
+      "image": "/placeholder.jpg",
+      "technologies": ["Python", "Flask", "OpenRouter API", "Pinecone", "OpenAI Embeddings", "Sentence Transformers", "NLP", "Vector Database", "JSON Filters", "Multi-LLM Fallback"],
+      "github": "#",
+      "demo": "#",
+      "featured": false
     },
     {
       "id": 5,
-      "title": "TodoAI - AI-Powered Task Management Application",
+      "title": "TodoAI",
       "description": [
         "AI powered Todo app, where you can directly manage your tasks with our AI agent by voice or text, without explicitly performing API calls from frontend.",
         "Multi-agent AI system for task management through natural language conversations.",
@@ -233,10 +290,73 @@
         "Modern React interface with real-time chat capabilities and FastAPI backend."
       ],
       "image": "/placeholder.jpg",
-      "technologies": ["React", "FastAPI", "Google Gemini-Pro API", "LangChain", "SQLite", "Vite"],
+      "technologies": ["React",  "Vite", "FastAPI", "Google Gemini-Pro API", "LangChain", "SQLite"],
       "github": "https://github.com/sahit1011/TodoAI",
+      "demo": "#",
+      "featured": false
+    },
+    {
+      "id": 6,
+      "title": "Secured Health Prediction using FHE-ML",
+      "description": [
+        "Privacy-preserving health risk prediction using Fully Homomorphic Encryption (FHE)",
+        "ML inference on encrypted data without exposing sensitive information",
+        "Web interface for secure health metrics input and risk assessment",
+        "Advanced privacy computing with homomorphic encryption techniques"
+      ],
+      "image": "/placeholder.jpg",
+      "technologies": ["Python", "Flask", "FHE", "Machine Learning", "Privacy Computing", "Web Security"],
+      "github": "https://github.com/sahit1011/FHE_ML_health_prediction",
+      "demo": "#",
+      "featured": false
+    },
+    {
+      "id": 7,
+      "title": "Post-Quantum Crypto Simulator",
+      "description": [
+        "Real-time web app comparing RSA vs quantum-resistant algorithms (NTRU, Kyber)",
+        "Interactive chat with live encryption/decryption and attacker simulation",
+        "Educational visualizations of post-quantum cryptography concepts",
+        "Comprehensive security analysis and performance comparisons"
+      ],
+      "image": "/placeholder.jpg",
+      "technologies": ["Python", "Flask", "JavaScript", "Bootstrap", "RSA", "NTRU", "Kyber", "AES-GCM", "WebSocket", "PyCryptodome", "NumPy", "Post-Quantum Cryptography"],
+      "github": "#",
+      "demo": "#",
+      "featured": false
+    },
+    
+    {
+      "id": 8,
+      "title": "Dr. Assistant - AI-Powered Healthcare Solution",
+      "shortDescription": "Dr. Assistant is an AI-powered application designed to streamline doctor workflows, reduce administrative burden, and improve patient care in the Indian healthcare system",
+      "description": [
+        "Comprehensive AI-powered healthcare platform designed to streamline doctor workflows and reduce administrative burden in the Indian healthcare system.",
+        "Features voice-assisted EMR, AI-powered clinical note generation, intelligent scheduling, and seamless integration with India's ABDM health data network.",
+        "Helps doctors focus more on patient care and less on paperwork through advanced automation and AI assistance."
+      ],
+      "image": "/images/medi-quick-image.png",
+      "technologies": ["React", "TypeScript", "Material UI", "Node.js", "Express", "PostgreSQL", "MongoDB", "Redis", "Python", "FastAPI", "TensorFlow", "Hugging Face", "Docker", "Kubernetes", "AWS"],
+      "github": "#",
+      "demo": "#",
+      "featured": true
+    },
+    {
+      "id": 9,
+      "title": "Dynamic AI Exam-Prep App",
+      "shortDescription": "An AI-powered adaptive learning platform I built to revolutionize exam preparation",
+      "description": [
+        "Developed an AI-powered adaptive study calendar application using a custom dynamic AI agent orchestration system to personalize the preparation for the NCLEX exam.",
+        "Implemented real-time student performance analytics, intelligent scheduling of calendars, and contextual AI chatbot tutoring to maximize learning outcomes.",
+        "It features Dynamic, AI-powered study plan that adapts to student performance; Optional diagnostic assessment for personalized learning; Interactive calendar with flexible scheduling; AI tutor for contextual help and remediation."],
+      "image": "/images/archerreview-image.png",
+      "technologies": ["Next.js", "TypeScript", "Tailwind CSS", "Chart.js", "MongoDB", "Google Generative AI", "OpenRouter", "Custom Agent Orchestration", "Adaptive Learning"],
+      "github": "https://github.com/sahit1011/Archerreview-Lite",
+      "demo": "#",
       "featured": true
     }
+    
+    
   ],
 
   "resume": {

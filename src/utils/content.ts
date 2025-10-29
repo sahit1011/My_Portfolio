@@ -57,6 +57,7 @@ export interface SkillCategory {
 export interface Project {
   id: number;
   title: string;
+  shortDescription?: string;
   description: string[];
   image: string;
   technologies: string[];
