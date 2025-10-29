@@ -26,7 +26,7 @@ const FunFactToast: React.FC = () => {
           animate={{ opacity: 1, x: 0, y: 0 }}
           exit={isMobile ? { opacity: 0, x: 20, y: 0 } : { opacity: 0, x: 0, y: 20 }}
           transition={{ type: 'spring', damping: 20, stiffness: 300 }}
-          className={`fixed ${isMobile ? 'top-1/3 right-4' : 'bottom-10 right-4'} w-[400px] bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden z-50`}
+          className={`fixed ${isMobile ? 'bottom-10 right-4 left-4 w-auto max-w-[calc(100vw-2rem)]' : 'bottom-10 right-4 w-[400px]'} bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden z-50`}
           role="alert"
           aria-live="polite"
         >

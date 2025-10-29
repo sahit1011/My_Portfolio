@@ -88,6 +88,17 @@ const Terminal: React.FC = () => {
     }
   }, []);
 
+  // Focus input when terminal is clicked
+  const focusInput = () => {
+    if (inputRef.current && isLoaded) {
+      inputRef.current.focus();
+    }
+    // Reset horizontal scroll on mobile to prevent text truncation
+    if (terminalRef.current) {
+      terminalRef.current.scrollLeft = 0;
+    }
+  };
+
   // Auto-scroll to bottom when history changes
   useEffect(() => {
     if (terminalRef.current && isLoaded) {
@@ -96,12 +107,6 @@ const Terminal: React.FC = () => {
     }
   }, [history, isLoaded]);
 
-  // Focus input on terminal click
-  const focusInput = () => {
-    if (inputRef.current && isLoaded) {
-      inputRef.current.focus();
-    }
-  };
 
   // Process commands
   const processCommand = (cmd: string) => {
@@ -213,7 +218,7 @@ const Terminal: React.FC = () => {
             {/* Database & Data */}
             <div>
               <p className="font-semibold text-blue-400 mb-1">Database & Data:</p>
-              <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 ml-4">
                 <div className="flex items-center gap-2">
                   <SiMongodb className="text-green-500" size={18} /> MongoDB
                 </div>
@@ -235,7 +240,7 @@ const Terminal: React.FC = () => {
             {/* AI & Machine Learning */}
             <div>
               <p className="font-semibold text-pink-400 mb-1">AI & Machine Learning:</p>
-              <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 ml-4">
                 <div className="flex items-center gap-2">
                   <SiTensorflow className="text-orange-500" size={18} /> TensorFlow
                 </div>
@@ -254,7 +259,7 @@ const Terminal: React.FC = () => {
             {/* DevOps & Cloud */}
             <div>
               <p className="font-semibold text-blue-400 mb-1">DevOps & Cloud:</p>
-              <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 ml-4">
                 <div className="flex items-center gap-2">
                   <FaDocker className="text-blue-400" size={18} /> Docker
                 </div>

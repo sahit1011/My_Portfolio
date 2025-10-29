@@ -8,7 +8,7 @@ interface TerminalOutputProps {
 
 const TerminalOutput: React.FC<TerminalOutputProps> = ({ output }) => {
   return (
-    <div className="ml-4 mt-1">
+    <div className="ml-4 mt-1 break-words">
       {output}
     </div>
   );

@@ -175,7 +175,7 @@
     {
       "id": 1,
       "title": "Mini AI Analyst as a Service",
-      "shortDescription": "A comprehensive full-stack application that transforms CSV data analysis into an intelligent, automated experience",
+      "shortDescription": "A comprehensive full-stack application that transforms CSV data analysis into an intelligent, automated experience and model development using different ML algorithms along with AI-generated insights",
       "description": [
         "Comprehensive full-stack application transforming CSV data analysis into intelligent automated experience",
         "Upload CSV files, get instant statistical insights, train ML models, and generate predictions",
@@ -344,9 +344,9 @@
     {
       "id": 9,
       "title": "Dynamic AI Exam-Prep App",
-      "shortDescription": "An AI-powered adaptive learning platform I built to revolutionize exam preparation",
+      "shortDescription": "An AI-powered adaptive learning platform I built to revolutionize exam preparation, personalizing students learining journey",
       "description": [
-        "Developed an AI-powered adaptive study calendar application using a custom dynamic AI agent orchestration system to personalize the preparation for the NCLEX exam.",
+        "Developed an AI-powered adaptive study calendar application using a custom Multi-Agent Orchestration System to personalize the preparation for the NCLEX exam.",
         "Implemented real-time student performance analytics, intelligent scheduling of calendars, and contextual AI chatbot tutoring to maximize learning outcomes.",
         "It features Dynamic, AI-powered study plan that adapts to student performance; Optional diagnostic assessment for personalized learning; Interactive calendar with flexible scheduling; AI tutor for contextual help and remediation."],
       "image": "/images/archerreview-image.png",

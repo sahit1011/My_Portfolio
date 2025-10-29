@@ -149,7 +149,7 @@ export default function ProjectCarousel({ projects, onVideoModalOpen }: ProjectC
 
       {/* Dots Indicator and Navigation */}
       {projects.length > cardsToShow && (
-        <div className="flex justify-center items-center mt-12 space-x-6">
+        <div className="flex justify-center items-center mt-8 space-x-6">
           <button
             onClick={prevSlide}
             className="bg-white dark:bg-gray-800 rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-200 border border-gray-200 dark:border-gray-700 hover:scale-110"

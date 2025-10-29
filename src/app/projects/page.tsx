@@ -198,7 +198,7 @@ export default function ProjectsPage() {
         </div>
 
         {/* Other Projects */}
-        <div className="mt-20 sm:mt-24">
+        <div className="mt-32 sm:mt-36">
           <div className="text-center mb-8 sm:mb-12">
             <div className="relative inline-block">
               <ExpandingText
