@@ -201,7 +201,7 @@
       ],
       "image": "/placeholder.jpg",
       "technologies": ["Python", "Slack API", "Brave Search API/SerAPI", "Groq LLM", "Sentence Transformers", "Supabase", "Redis", "SendGrid"],
-      "github": "#",
+      "github": "https://github.com/sahit1011/SlackBot-Content-Creation-Assistant",
       "demo": "#",
       "featured": false
     },
@@ -216,7 +216,7 @@
       ],
       "image": "/placeholder.jpg",
       "technologies": ["Python", "Pinecone", "Neo4j", "OpenAI", "Async Programming", "Vector Search", "Knowledge Graphs", "LLMs"],
-      "github": "#",
+      "github": "https://github.com/sahit1011/AI-Trip-Planner-Vietnam",
       "demo": "#",
       "featured": false
     },
@@ -231,7 +231,7 @@
       ],
       "image": "/placeholder.jpg",
       "technologies": ["Python", "Pandas", "NumPy", "PyPDF2", "NetworkX", "FAISS", "OpenAI Ada", "Sentence Transformers", "OpenAI GPT", "OpenRouter API", "Retrieval-Augmented Generation", "Knowledge Graphs"],
-      "github": "#",
+      "github": "https://github.com/sahit1011/HSN_RAG_KnowGraph",
       "demo": "#",
       "featured": false
     },
@@ -246,7 +246,7 @@
       ],
       "image": "/placeholder.jpg",
       "technologies": ["Python", "OpenRouter API", "Google Gemini API", "OpenAI GPT", "Transformers", "LayoutLM", "BERT", "DeepSeek R1", "PDF Processing", "Document Parsing", "LLM Integration", "Google Colab"],
-      "github": "#",
+      "github": "https://github.com/sahit1011/AI_Resume_Parser",
       "demo": "#",
       "featured": false
     },
@@ -261,7 +261,7 @@
       ],
       "image": "/placeholder.jpg",
       "technologies": ["Python", "FAISS", "OpenAI GPT-3.5-turbo", "OpenAI text-embedding-ada-002", "Sentence Transformers", "Streamlit", "Pandas", "Retrieval-Augmented Generation", "Vector Database", "Medical AI"],
-      "github": "#",
+      "github": "https://github.com/sahit1011/Medical_FAQ_RAG",
       "demo": "#",
       "featured": false
     },
@@ -276,7 +276,7 @@
       ],
       "image": "/placeholder.jpg",
       "technologies": ["Python", "Flask", "OpenRouter API", "Pinecone", "OpenAI Embeddings", "Sentence Transformers", "NLP", "Vector Database", "JSON Filters", "Multi-LLM Fallback"],
-      "github": "#",
+      "github": "https://github.com/sahit1011/NLP-Pinecone-Agent",
       "demo": "#",
       "featured": false
     },
@@ -321,7 +321,7 @@
       ],
       "image": "/placeholder.jpg",
       "technologies": ["Python", "Flask", "JavaScript", "Bootstrap", "RSA", "NTRU", "Kyber", "AES-GCM", "WebSocket", "PyCryptodome", "NumPy", "Post-Quantum Cryptography"],
-      "github": "#",
+      "github": "https://github.com/sahit1011/Post-Quantum_Crypto_Simluator",
       "demo": "#",
       "featured": false
     },
@@ -337,7 +337,7 @@
       ],
       "image": "/images/medi-quick-image.png",
       "technologies": ["React", "TypeScript", "Material UI", "Node.js", "Express", "PostgreSQL", "MongoDB", "Redis", "Python", "FastAPI", "TensorFlow", "Hugging Face", "Docker", "Kubernetes", "AWS"],
-      "github": "#",
+      "github": "https://github.com/sahit1011/MediQuickAI",
       "demo": "#",
       "featured": true
     },
