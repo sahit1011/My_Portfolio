@@ -6,8 +6,8 @@ import { FaDownload, FaEye, FaTrophy, FaUsers } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const ResumePage = () => {
-  const resumeUrl = '/anilsahith-resume-aiml.pdf'; // Link to PDF in public folder
-  const resumeDownloadUrl = '/anilsahith-resume-aiml.pdf'; // Link to PDF in public folder for download
+  const resumeUrl = '/Anil_Sahith_Resume.pdf'; // Link to PDF in public folder
+  const resumeDownloadUrl = '/Anil_Sahith_Resume.pdf'; // Link to PDF in public folder for download
 
   return (
     <MainLayout>
