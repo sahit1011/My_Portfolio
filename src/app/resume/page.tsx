@@ -6,8 +6,8 @@ import { FaDownload, FaEye, FaTrophy, FaUsers } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const ResumePage = () => {
-  const resumeUrl = '/Anil_Sahith_Resume.pdf'; // Link to PDF in public folder
-  const resumeDownloadUrl = '/Anil_Sahith_Resume.pdf'; // Link to PDF in public folder for download
+  const resumeUrl = '/Anil_Sahith_Resume_v2.pdf'; // Link to PDF in public folder
+  const resumeDownloadUrl = '/Anil_Sahith_Resume_v2.pdf'; // Link to PDF in public folder for download
 
   return (
     <MainLayout>
@@ -34,7 +34,7 @@ const ResumePage = () => {
             <motion.a
               href={resumeDownloadUrl}
               className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-500 to-teal-400 text-white rounded-lg hover:from-blue-600 hover:to-teal-500 shadow-md hover:shadow-lg transition-all duration-300"
-              download="Anil_Sahith_Resume.pdf"
+              download="Anil_Sahith_Resume_v2.pdf"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
