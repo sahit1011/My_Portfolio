@@ -371,9 +371,9 @@ export default function AboutPage() {
             </div>
 
             {/* Right: Profile Image */}
-            <div className="flex justify-center lg:justify-center items-center" style={{ marginTop: '-2rem', marginLeft: '-2rem' }}>
+            <div className="flex justify-center lg:justify-center items-center mt-8 lg:-mt-8 lg:-ml-8">
               <Card3D
-                className="w-full max-w-xs profile-image-container"
+                className="w-full max-w-[200px] sm:max-w-[240px] lg:max-w-xs profile-image-container"
                 hoverScale={1.02}
                 gradientShadow={true}
                 glowOnHover={true}

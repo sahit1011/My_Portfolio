@@ -14,17 +14,28 @@ This guide covers what works and what needs adjustment when deploying to Vercel.
 
 ## ⚠️ Limitations on Vercel
 
-### 1. File System Logging
+### 1. Function Timeout Limits
+- **Issue**: Vercel has different timeout limits based on plan:
+  - **Hobby Plan**: 10 seconds maximum
+  - **Pro Plan**: 60 seconds maximum
+- **Impact**: Long-running API calls (like OpenRouter analysis) may timeout on Hobby plan
+- **Solution**: 
+  - Code is optimized with reduced `max_tokens` (3000 instead of 4000) to speed up responses
+  - Added timeout handling with clear error messages
+  - Consider upgrading to Pro plan for longer analyses
+  - Users can try shorter job descriptions if timeout occurs
+
+### 2. File System Logging
 - **Issue**: Vercel serverless functions have a read-only filesystem (except `/tmp`)
 - **Impact**: File-based logging to `logs/` directory won't work
 - **Solution**: Logging is automatically disabled in production, uses console.log instead
 
-### 2. PDF/File Extraction
+### 3. PDF/File Extraction
 - **Issue**: Command-line tools (`pdftotext`, `antiword`, `docx2txt`) are not available
 - **Impact**: File upload feature for job descriptions won't work
 - **Solution**: Users should use URL or text input instead
 
-### 3. Temporary Files
+### 4. Temporary Files
 - **Issue**: `/tmp` directory is available but ephemeral (cleared between invocations)
 - **Impact**: File processing might have issues
 - **Solution**: File upload is disabled/limited in production
