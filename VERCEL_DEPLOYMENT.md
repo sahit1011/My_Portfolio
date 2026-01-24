@@ -35,7 +35,7 @@ This guide covers what works and what needs adjustment when deploying to Vercel.
 Set these in your Vercel project dashboard (Settings → Environment Variables):
 
 ```
-NEXT_PUBLIC_OPENROUTER_API_KEY=sk-or-v1-your-key-here
+OPENROUTER_API_KEY=sk-or-v1-your-key-here
 NEXT_PUBLIC_GEMINI_API_KEY=your-gemini-key-here (optional)
 NEXT_PUBLIC_SITE_URL=https://your-domain.vercel.app
 ```

@@ -14,12 +14,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const openRouterApiKey = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY;
+    const openRouterApiKey = process.env.OPENROUTER_API_KEY;
 
     if (!openRouterApiKey) {
       console.error('OpenRouter API key not found in environment variables');
       return NextResponse.json(
-        { error: 'OpenRouter API key not configured. Please set NEXT_PUBLIC_OPENROUTER_API_KEY in .env.local' },
+        { error: 'OpenRouter API key not configured. Please set OPENROUTER_API_KEY in environment variables' },
         { status: 500 }
       );
     }
