@@ -8,6 +8,7 @@ import TerminalPrompt from './TerminalPrompt';
 import TerminalOutput from './TerminalOutput';
 import ThemeToggle from './ThemeToggle';
 import ScanLines from './ScanLines';
+import { getPersonalInfo, getExperiences, getEducation, getResumeInfo, getProjects } from '@/utils/content';
 
 // Import skill icons
 import {
@@ -316,91 +317,90 @@ const Terminal: React.FC = () => {
         break;
 
       case 'resume':
-        output = (
-          <div className="font-mono text-sm">
-            <div className="mb-4">
-              <h2 className="text-xl font-bold text-blue-400">VALLEPU ANIL SAHITH</h2>
-              <p>Software Engineer | AI/ML Engineer | Data Scientist</p>
-              <p>anilsahithvallepu@gmail.com | +91 8143400946 | Hyderabad, INDIA</p>
-              <p>github.com/sahit1011 | linkedin.com/in/anil-sahith</p>
+        {
+          const personalInfo = getPersonalInfo();
+          const experience = getExperiences();
+          const education = getEducation();
+          const resumeInfo = getResumeInfo();
+          const projects = getProjects();
+          const featuredProjects = projects.filter(p => p.featured).slice(0, 2);
+
+          output = (
+            <div className="font-mono text-sm">
+              <div className="mb-4">
+                <h2 className="text-xl font-bold text-blue-400">{personalInfo.name.toUpperCase()}</h2>
+                <p>{personalInfo.titles.join(' | ')}</p>
+                <p>{personalInfo.email} | {personalInfo.phone} | {personalInfo.location}</p>
+                <p>github.com/{personalInfo.github} | linkedin.com/in/{personalInfo.linkedin}</p>
+              </div>
+
+              <div className="mb-4">
+                <h3 className="text-lg font-bold text-yellow-400">SUMMARY</h3>
+                <p className="border-b border-gray-600 mb-2"></p>
+                <p>{resumeInfo.summary}</p>
+              </div>
+
+              <div className="mb-4">
+                <h3 className="text-lg font-bold text-yellow-400">EDUCATION</h3>
+                <p className="border-b border-gray-600 mb-2"></p>
+                {education.map((edu, idx) => (
+                  <div key={idx} className={idx < education.length - 1 ? 'mb-2' : ''}>
+                    <p className="font-bold">{edu.degree}</p>
+                    <p>{edu.institution} | {edu.period}</p>
+                    {edu.gpa && <p>{edu.gpa}</p>}
+                  </div>
+                ))}
+              </div>
+
+              <div className="mb-4">
+                <h3 className="text-lg font-bold text-yellow-400">EXPERIENCE</h3>
+                <p className="border-b border-gray-600 mb-2"></p>
+                {experience.map((exp, idx) => (
+                  <div key={idx} className={idx < experience.length - 1 ? 'mb-4' : ''}>
+                    <p className="font-bold">{exp.title} | {exp.company}</p>
+                    <p className="italic">{exp.period} | {exp.location}</p>
+                    <ul className="list-disc ml-4 mt-1">
+                      {exp.description.map((desc, descIdx) => (
+                        <li key={descIdx} className="mb-1">{desc}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mb-4">
+                <h3 className="text-lg font-bold text-yellow-400">PROJECTS</h3>
+                <p className="border-b border-gray-600 mb-2"></p>
+                {featuredProjects.map((project, idx) => (
+                  <div key={idx} className={idx < featuredProjects.length - 1 ? 'mb-4' : ''}>
+                    <p className="font-bold">{project.title}</p>
+                    <ul className="list-disc ml-4 mt-1">
+                      {project.description.slice(0, 2).map((desc, descIdx) => (
+                        <li key={descIdx} className="mb-1">{desc}</li>
+                      ))}
+                      <li>Technologies: {project.technologies.slice(0, 5).join(', ')}</li>
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-yellow-400">SKILLS</h3>
+                <p className="border-b border-gray-600 mb-2"></p>
+                <p><span className="font-bold">Languages:</span> {resumeInfo.skills.languages}</p>
+                <p><span className="font-bold">Frontend:</span> {resumeInfo.skills.frontend}</p>
+                <p><span className="font-bold">Backend:</span> {resumeInfo.skills.backend}</p>
+                <p><span className="font-bold">Databases:</span> {resumeInfo.skills.databases}</p>
+                <p><span className="font-bold">AI/ML:</span> {resumeInfo.skills.aiMl}</p>
+                <p><span className="font-bold">DevOps:</span> {resumeInfo.skills.devOps}</p>
+              </div>
+
+              <div className="mt-4 text-center">
+                <p>Type <span className="text-yellow-400">portfolio</span> to visit my portfolio website for more details</p>
+              </div>
             </div>
-
-            <div className="mb-4">
-              <h3 className="text-lg font-bold text-yellow-400">SUMMARY</h3>
-              <p className="border-b border-gray-600 mb-2"></p>
-              <p>Experienced software engineer with expertise in full-stack development, AI/ML, and data science.
-              Passionate about building scalable applications and implementing machine learning solutions to solve complex problems.</p>
-            </div>
-
-            <div className="mb-4">
-              <h3 className="text-lg font-bold text-yellow-400">EDUCATION</h3>
-              <p className="border-b border-gray-600 mb-2"></p>
-              <p className="font-bold">Master of Science in Computer Science</p>
-              <p>Stanford University | 2018 - 2020</p>
-              <p className="mb-2">GPA: 3.9/4.0 | Specialization in Artificial Intelligence</p>
-
-              <p className="font-bold">Bachelor of Technology in Computer Science</p>
-              <p>Indian Institute of Technology | 2014 - 2018</p>
-              <p>GPA: 3.8/4.0 | Minor in Mathematics</p>
-            </div>
-
-            <div className="mb-4">
-              <h3 className="text-lg font-bold text-yellow-400">EXPERIENCE</h3>
-              <p className="border-b border-gray-600 mb-2"></p>
-
-              <p className="font-bold">Senior Software Engineer | Tech Innovations Inc.</p>
-              <p className="italic">Jan 2021 - Present</p>
-              <ul className="list-disc ml-4 mb-2">
-                <li>Developed and maintained microservices architecture using Node.js and Python</li>
-                <li>Implemented machine learning models for product recommendation system</li>
-                <li>Led a team of 5 engineers for the development of a new data pipeline</li>
-                <li>Reduced API response time by 40% through optimization techniques</li>
-              </ul>
-
-              <p className="font-bold">Software Engineer | DataTech Solutions</p>
-              <p className="italic">Jun 2020 - Dec 2020</p>
-              <ul className="list-disc ml-4 mb-2">
-                <li>Built RESTful APIs using Express.js and MongoDB</li>
-                <li>Developed front-end components with React and Redux</li>
-                <li>Implemented CI/CD pipelines using GitHub Actions</li>
-              </ul>
-            </div>
-
-            <div className="mb-4">
-              <h3 className="text-lg font-bold text-yellow-400">PROJECTS</h3>
-              <p className="border-b border-gray-600 mb-2"></p>
-
-              <p className="font-bold">AI-Powered Recommendation System</p>
-              <ul className="list-disc ml-4 mb-2">
-                <li>Developed a recommendation engine using collaborative filtering and deep learning</li>
-                <li>Achieved 25% improvement in recommendation accuracy</li>
-                <li>Technologies: Python, TensorFlow, Flask, MongoDB</li>
-              </ul>
-
-              <p className="font-bold">Full-Stack E-commerce Platform</p>
-              <ul className="list-disc ml-4 mb-2">
-                <li>Built a scalable e-commerce platform with microservices architecture</li>
-                <li>Implemented real-time inventory management and payment processing</li>
-                <li>Technologies: React, Node.js, Express, PostgreSQL, Docker</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-bold text-yellow-400">SKILLS</h3>
-              <p className="border-b border-gray-600 mb-2"></p>
-              <p><span className="font-bold">Languages:</span> Python, JavaScript, TypeScript, Java, SQL</p>
-              <p><span className="font-bold">Frontend:</span> React, Next.js, HTML/CSS, Tailwind CSS, Redux</p>
-              <p><span className="font-bold">Backend:</span> Node.js, Express, Django, Flask, GraphQL</p>
-              <p><span className="font-bold">Databases:</span> MongoDB, PostgreSQL, MySQL, Redis</p>
-              <p><span className="font-bold">AI/ML:</span> TensorFlow, PyTorch, scikit-learn, NLP, Computer Vision</p>
-              <p><span className="font-bold">DevOps:</span> Docker, Kubernetes, AWS, GCP, CI/CD</p>
-            </div>
-
-            <div className="mt-4 text-center">
-              <p>Type <span className="text-yellow-400">portfolio</span> to visit my portfolio website for more details</p>
-            </div>
-          </div>
-        );
+          );
+        }
         break;
 
       case 'github':
@@ -414,12 +414,15 @@ const Terminal: React.FC = () => {
         break;
 
       case 'whoami':
-        output = (
-          <div>
-            <p className="text-xl font-bold text-green-400 mb-2">Vallepu Anil Sahith</p>
-            <p className="text-gray-300">Software Engineer & AI/ML Enthusiast</p>
-          </div>
-        );
+        {
+          const personalInfo = getPersonalInfo();
+          output = (
+            <div>
+              <p className="text-xl font-bold text-green-400 mb-2">{personalInfo.name}</p>
+              <p className="text-gray-300">{personalInfo.titles.join(' & ')}</p>
+            </div>
+          );
+        }
         break;
 
       case '':
