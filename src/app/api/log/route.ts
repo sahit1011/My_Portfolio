@@ -3,13 +3,29 @@ import fs from 'fs';
 import path from 'path';
 
 // Create logs directory if it doesn't exist
-const logsDir = path.join(process.cwd(), 'logs');
-if (!fs.existsSync(logsDir)) {
+// Note: On Vercel/serverless, file system is read-only except /tmp
+// Logging will fall back to console.log in production
+const isVercel = process.env.VERCEL === '1';
+const logsDir = isVercel ? '/tmp/logs' : path.join(process.cwd(), 'logs');
+
+if (!isVercel) {
+  if (!fs.existsSync(logsDir)) {
+    try {
+      fs.mkdirSync(logsDir, { recursive: true });
+      console.log(`Created logs directory at ${logsDir}`);
+    } catch (error) {
+      console.error(`Failed to create logs directory: ${error}`);
+    }
+  }
+} else {
+  // On Vercel, try to create /tmp/logs if possible
   try {
-    fs.mkdirSync(logsDir, { recursive: true });
-    console.log(`Created logs directory at ${logsDir}`);
-  } catch (error) {
-    console.error(`Failed to create logs directory: ${error}`);
+    if (!fs.existsSync('/tmp/logs')) {
+      fs.mkdirSync('/tmp/logs', { recursive: true });
+    }
+  } catch {
+    // Silently fail - logging will use console.log instead
+    console.log('File logging not available on Vercel, using console.log');
   }
 }
 
@@ -29,13 +45,20 @@ export async function POST(request: NextRequest) {
     const timestamp = `[${date.toISOString()}]`;
     const logEntry = `${timestamp} ${message}\n`;
     
-    // Append to the log file
-    fs.appendFileSync(logFilePath, logEntry);
+    try {
+      // Try to append to log file
+      fs.appendFileSync(logFilePath, logEntry);
+    } catch {
+      // On Vercel or if file system fails, use console.log instead
+      console.log(`[LOG:${filename || 'default'}] ${message}`);
+    }
     
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error('Error logging to file:', error);
-    return NextResponse.json({ error: 'Failed to log message' }, { status: 500 });
+    // Even if file logging fails, log to console
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.log(`[LOG ERROR] Failed to log message: ${errorMessage}`);
+    return NextResponse.json({ success: true }); // Return success to not break the flow
   }
 }
 
@@ -52,21 +75,38 @@ export async function GET(request: NextRequest) {
       // Create the file with a header
       const logFilePath = path.join(logsDir, filename);
       const header = `=== AI RESUME MATCH ANALYSIS LOG - ${date.toLocaleString()} ===\n\n`;
-      fs.writeFileSync(logFilePath, header);
+      
+      try {
+        fs.writeFileSync(logFilePath, header);
+      } catch {
+        // On Vercel, file logging might not work, but we still return filename
+        // The logging will use console.log instead
+        console.log(`[LOG CREATE] ${filename} - File logging not available, using console`);
+      }
       
       return NextResponse.json({ filename });
     } else if (action === 'list') {
       // List all log files
-      const files = fs.readdirSync(logsDir)
-        .filter(file => file.endsWith('.log'))
-        .map(file => ({
-          name: file,
-          path: `/logs/${file}`,
-          created: fs.statSync(path.join(logsDir, file)).birthtime
-        }))
-        .sort((a, b) => b.created.getTime() - a.created.getTime());
-      
-      return NextResponse.json({ files });
+      try {
+        if (!fs.existsSync(logsDir)) {
+          return NextResponse.json({ files: [] }); // Return empty if directory doesn't exist
+        }
+        
+        const files = fs.readdirSync(logsDir)
+          .filter(file => file.endsWith('.log'))
+          .map(file => ({
+            name: file,
+            path: `/logs/${file}`,
+            created: fs.statSync(path.join(logsDir, file)).birthtime
+          }))
+          .sort((a, b) => b.created.getTime() - a.created.getTime());
+        
+        return NextResponse.json({ files });
+      } catch {
+        // On Vercel, file listing might not work
+        console.log('File listing not available on Vercel');
+        return NextResponse.json({ files: [] });
+      }
     }
     
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });

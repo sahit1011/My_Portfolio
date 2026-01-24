@@ -66,18 +66,32 @@ export async function POST(request: NextRequest) {
       }
       
       return NextResponse.json({ text });
-    } catch (error) {
+    } catch (error: unknown) {
       console.error('Error extracting text:', error);
       
-      // Fallback: If the command-line tools fail, return a helpful message
-      return NextResponse.json({ 
-        text: `[File content could not be automatically extracted. Please copy and paste the job description manually.]
-
-File name: ${fileName}
-File type: ${fileExt.toUpperCase()}
-
-Note: For best results, please copy the text directly from the job description and paste it in the text input tab.`
-      });
+      // Return an error response instead of error text as content
+      // This prevents the error message from being used as job description
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      
+      // Check if it's a missing tool error
+      if (errorMessage.includes('command not found') || errorMessage.includes('pdftotext')) {
+        return NextResponse.json(
+          { 
+            error: 'PDF extraction tool not available. Please install poppler-utils (pdftotext) or copy and paste the job description text directly.',
+            suggestion: 'For best results, copy the text from the job description and paste it in the text input tab.'
+          },
+          { status: 500 }
+        );
+      }
+      
+      // For other errors, return a generic error
+      return NextResponse.json(
+        { 
+          error: 'Failed to extract text from file. Please try copying and pasting the text directly.',
+          suggestion: 'Copy the job description text and paste it in the text input tab for best results.'
+        },
+        { status: 500 }
+      );
     }
   } catch (error) {
     console.error('Error processing file:', error);

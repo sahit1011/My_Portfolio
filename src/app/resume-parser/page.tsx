@@ -1,5 +1,3 @@
-
-
 'use client';
 
 import React, { useState, useCallback } from 'react';
@@ -27,6 +25,9 @@ import {
   FaChevronUp
 } from 'react-icons/fa';
 import { analyzeJobDescription } from '@/utils/geminiApi';
+import Card3D from '@/components/ui/Card3D';
+import Button3D from '@/components/ui/Button3D';
+import ExpandingText from '@/components/ui/ExpandingText';
 
 type InputMethod = 'text' | 'url' | 'file';
 
@@ -147,9 +148,23 @@ export default function ResumeParserPage() {
       }
 
       const data = await response.json();
+      
+      // Check if the API returned an error
+      if (data.error) {
+        setError(data.error + (data.suggestion ? ` ${data.suggestion}` : ''));
+        return null;
+      }
+      
+      // Validate that we got actual content, not an error message
+      if (!data.text || data.text.includes('[File content could not be automatically extracted')) {
+        setError('Failed to extract text from file. Please copy and paste the job description text directly.');
+        return null;
+      }
+      
       return data.text;
-    } catch (err) {
-      setError('Failed to extract text from file. Please try a different file or input method.');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to extract text from file';
+      setError(`${errorMessage}. Please try copying and pasting the text directly.`);
       console.error(err);
       return null;
     } finally {
@@ -211,7 +226,14 @@ export default function ResumeParserPage() {
             setIsLoading(false);
             return;
           }
+          // Validate that we got actual content, not an error message
+          if (urlText.includes('[File content could not be automatically extracted')) {
+            setError('Failed to extract job description from URL. Please try copying and pasting the text directly.');
+            setIsLoading(false);
+            return;
+          }
           textToAnalyze = urlText;
+          console.log('Job description from URL (length):', urlText.length);
           break;
 
         case 'file':
@@ -225,15 +247,58 @@ export default function ResumeParserPage() {
             setIsLoading(false);
             return;
           }
+          // Validate that we got actual content, not an error message
+          if (fileText.includes('[File content could not be automatically extracted')) {
+            setError('Failed to extract text from file. Please try copying and pasting the text directly.');
+            setIsLoading(false);
+            return;
+          }
+          
+          // Validate that uploaded file is a job description, not a resume
+          const resumeIndicators = [
+            'portfolio:', 'linkedin:', 'github:', 'professional summary',
+            'experience', 'education', 'skills', 'projects', 'achievements',
+            'anilsahithvallepu@gmail.com', 'sahit1011', 'anil-sahith',
+            'vallepu anil sahith', 'resume', 'cv', 'curriculum vitae',
+            'software engineer | ai/ml engineer', 'nit warangal', 'matters.ai',
+            'noccarc robotics', 'carelon global solutions'
+          ];
+          const fileTextLower = fileText.toLowerCase();
+          const isResume = resumeIndicators.some(indicator => 
+            fileTextLower.includes(indicator.toLowerCase())
+          );
+          
+          if (isResume) {
+            setError('It looks like you uploaded your resume instead of a job description. Please upload the job description file, or use the URL or text input to provide the job description.');
+            setIsLoading(false);
+            return;
+          }
+          
           textToAnalyze = fileText;
+          console.log('Job description from file (length):', fileText.length);
           break;
       }
 
+      // Validate textToAnalyze before sending
+      if (!textToAnalyze || textToAnalyze.trim().length < 50) {
+        setError('Job description is too short or invalid. Please provide a complete job description.');
+        setIsLoading(false);
+        return;
+      }
+
+      console.log('Sending job description to analysis (length):', textToAnalyze.length);
       // Call our utility function to analyze the job description
       const analysisResult = await analyzeJobDescription(textToAnalyze);
       setResults(analysisResult);
-    } catch (err) {
-      setError('Failed to analyze job description. Please try again.');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Failed to analyze job description. Please try again.';
+      
+      // Check if it's an API key error
+      if (errorMessage.includes('API key') || errorMessage.includes('NEXT_PUBLIC_GEMINI_API_KEY')) {
+        setError('API key not configured. Please set NEXT_PUBLIC_GEMINI_API_KEY in your .env.local file. The system will attempt to use fallback methods.');
+      } else {
+        setError(errorMessage);
+      }
       console.error(err);
     } finally {
       setIsLoading(false);
@@ -414,23 +479,16 @@ export default function ResumeParserPage() {
               )}
 
               <div className="flex justify-center">
-                <motion.button
+                <Button3D
                   type="submit"
-                  className="px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg font-medium flex items-center justify-center w-1/2 shadow-lg hover:shadow-xl transition-shadow"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  variant="accent"
+                  size="lg"
                   disabled={isLoading || isUrlFetching || isFileProcessing}
+                  icon={isLoading ? <FaSpinner className="animate-spin" /> : <FaUpload />}
+                  className="w-1/2 gradient-border"
                 >
-                  {isLoading ? (
-                    <>
-                      <FaSpinner className="animate-spin mr-2" /> Analyzing...
-                    </>
-                  ) : (
-                    <>
-                      <FaUpload className="mr-2" /> Check Profile Match
-                    </>
-                  )}
-                </motion.button>
+                  {isLoading ? 'Analyzing...' : 'Check Profile Match'}
+                </Button3D>
               </div>
             </form>
           </div>
@@ -445,94 +503,137 @@ export default function ResumeParserPage() {
                 className="space-y-6"
               >
                 {/* Header with Actions */}
-                <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 flex justify-between items-center">
-                  <div>
-                    <h2 className="text-2xl font-bold mb-2">Analysis Results</h2>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">Complete profile analysis for your job opening</p>
+                <Card3D
+                  className="p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl"
+                  hoverScale={1.005}
+                  gradientShadow={false}
+                  glowOnHover={false}
+                >
+                  <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                    <div>
+                      <div className="relative inline-block mb-2">
+                        <ExpandingText
+                          as="h2"
+                          className="text-2xl font-bold"
+                          gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+                          expandScale={1.02}
+                        >
+                          Analysis Results
+                        </ExpandingText>
+                        <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+                      </div>
+                      <p className="text-sm text-gray-300">Complete profile analysis for your job opening</p>
+                    </div>
+                    <div className="flex gap-3">
+                      <Button3D
+                        onClick={() => window.print()}
+                        variant="outline"
+                        size="md"
+                        icon={<FaPrint />}
+                      >
+                        Print
+                      </Button3D>
+                      <Button3D
+                        variant="primary"
+                        size="md"
+                        icon={<FaDownload />}
+                      >
+                        Export PDF
+                      </Button3D>
+                    </div>
                   </div>
-                  <div className="flex gap-3">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg flex items-center gap-2 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-                      onClick={() => window.print()}
-                    >
-                      <FaPrint /> Print
-                    </motion.button>
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-4 py-2 bg-blue-600 text-white rounded-lg flex items-center gap-2 hover:bg-blue-700 transition-colors"
-                    >
-                      <FaDownload /> Export PDF
-                    </motion.button>
-                  </div>
-                </div>
+                </Card3D>
 
                 {/* Overall Match Score - Hero Section */}
                 <motion.div
                   initial={{ scale: 0.9, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ delay: 0.2 }}
-                  className={`bg-gradient-to-br from-${matchLevel.color}-50 to-${matchLevel.color}-100 dark:from-gray-800 dark:to-gray-800 rounded-lg shadow-lg p-8`}
                 >
+                  <Card3D
+                    className={`p-8 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl ${matchLevel ? matchLevel.bg : ''}`}
+                    hoverScale={1.005}
+                    gradientShadow={false}
+                    glowOnHover={false}
+                  >
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-4">
-                      <div className={`w-16 h-16 rounded-full ${matchLevel.bg} flex items-center justify-center`}>
+                      <div className={`w-16 h-16 rounded-full ${matchLevel?.bg || ''} flex items-center justify-center`}>
                         {results.overallMatch >= 75 ? (
-                          <FaCheckCircle className={`text-3xl ${matchLevel.text}`} />
+                          <FaCheckCircle className={`text-3xl ${matchLevel?.text || ''}`} />
                         ) : results.overallMatch >= 60 ? (
-                          <FaExclamationTriangle className={`text-3xl ${matchLevel.text}`} />
+                          <FaExclamationTriangle className={`text-3xl ${matchLevel?.text || ''}`} />
                         ) : (
-                          <FaTimesCircle className={`text-3xl ${matchLevel.text}`} />
+                          <FaTimesCircle className={`text-3xl ${matchLevel?.text || ''}`} />
                         )}
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-100">{matchLevel.label}</h3>
-                        <p className="text-gray-600 dark:text-gray-400">Overall Candidate Compatibility</p>
+                        <h3 className="text-2xl font-bold text-gray-200">{matchLevel?.label || ''}</h3>
+                        <p className="text-gray-300">Overall Candidate Compatibility</p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className={`text-6xl font-bold ${matchLevel.text}`}>{results.overallMatch}%</div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Match Score</div>
+                      <div className={`text-6xl font-bold ${matchLevel?.text || ''}`}>{results.overallMatch}%</div>
+                      <div className="text-sm text-gray-300 mt-1">Match Score</div>
                     </div>
                   </div>
 
                   {/* Match Breakdown */}
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                    <div className="bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600">
+                    <Card3D
+                      className="bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/20"
+                      hoverScale={1.02}
+                      gradientShadow={false}
+                      glowOnHover={false}
+                    >
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{results.matchBreakdown.technicalSkills}%</div>
-                        <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Tech Skills Match</div>
+                        <div className="text-2xl font-bold text-blue-400">{results.matchBreakdown.technicalSkills}%</div>
+                        <div className="text-xs text-gray-300 mt-1">Tech Skills Match</div>
                       </div>
-                    </div>
-                    <div className="bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600">
+                    </Card3D>
+                    <Card3D
+                      className="bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/20"
+                      hoverScale={1.02}
+                      gradientShadow={false}
+                      glowOnHover={false}
+                    >
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-green-600 dark:text-green-400">{results.matchBreakdown.experienceLevel}%</div>
-                        <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Experience Level Match</div>
+                        <div className="text-2xl font-bold text-green-400">{results.matchBreakdown.experienceLevel}%</div>
+                        <div className="text-xs text-gray-300 mt-1">Experience Level Match</div>
                       </div>
-                    </div>
-                    <div className="bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600">
+                    </Card3D>
+                    <Card3D
+                      className="bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/20"
+                      hoverScale={1.02}
+                      gradientShadow={false}
+                      glowOnHover={false}
+                    >
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">{results.matchBreakdown.locationPreference}%</div>
-                        <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Location & Work Pref Match</div>
+                        <div className="text-2xl font-bold text-purple-400">{results.matchBreakdown.locationPreference}%</div>
+                        <div className="text-xs text-gray-300 mt-1">Location & Work Pref Match</div>
                       </div>
-                    </div>
-                    <div className="bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600">
+                    </Card3D>
+                    <Card3D
+                      className="bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/20"
+                      hoverScale={1.02}
+                      gradientShadow={false}
+                      glowOnHover={false}
+                    >
                       <div className="text-center">
-                        <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">{results.matchBreakdown.projectRelevance}%</div>
-                        <div className="text-xs text-gray-600 dark:text-gray-400 mt-1">Project Portfolio Relevance</div>
+                        <div className="text-2xl font-bold text-orange-400">{results.matchBreakdown.projectRelevance}%</div>
+                        <div className="text-xs text-gray-300 mt-1">Project Portfolio Relevance</div>
                       </div>
-                    </div>
+                    </Card3D>
                   </div>
 
                   {/* Candidate Summary */}
-                  <div className={`${matchLevel.bg} rounded-lg p-4 border ${matchLevel.border}`}>
+                  <div className={`${matchLevel?.bg || ''} rounded-lg p-4 border ${matchLevel?.border || ''} backdrop-blur-sm`}>
                     <div className="flex items-start gap-3">
-                      <FaLightbulb className={`text-xl ${matchLevel.text} mt-1 flex-shrink-0`} />
-                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed italic">&quot;{results.candidateSummary}&quot;</p>
+                      <FaLightbulb className={`text-xl ${matchLevel?.text || ''} mt-1 flex-shrink-0`} />
+                      <p className="text-gray-200 leading-relaxed italic">&quot;{results.candidateSummary}&quot;</p>
                     </div>
                   </div>
+                  </Card3D>
                 </motion.div>
 
                 {/* Skills Match Section */}
@@ -540,8 +641,13 @@ export default function ResumeParserPage() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
                 >
+                  <Card3D
+                    className="bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl overflow-hidden"
+                    hoverScale={1.005}
+                    gradientShadow={false}
+                    glowOnHover={false}
+                  >
                   <button
                     onClick={() => toggleSection('skills')}
                     className="w-full p-6 flex justify-between items-center transition-colors"
@@ -603,6 +709,7 @@ export default function ResumeParserPage() {
                       </motion.div>
                     )}
                   </AnimatePresence>
+                  </Card3D>
                 </motion.div>
 
                 {/* Missing Skills Section */}
@@ -611,8 +718,13 @@ export default function ResumeParserPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
                   >
+                    <Card3D
+                      className="bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl overflow-hidden"
+                      hoverScale={1.005}
+                      gradientShadow={false}
+                      glowOnHover={false}
+                    >
                     <button
                       onClick={() => toggleSection('missing')}
                       className="w-full p-6 flex justify-between items-center transition-colors"
@@ -639,8 +751,8 @@ export default function ResumeParserPage() {
                           className="border-t border-gray-200 dark:border-gray-700"
                         >
                           <div className="p-6">
-                            <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mb-4">
-                              <p className="text-sm text-gray-700 dark:text-gray-300">
+                            <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 mb-4 backdrop-blur-sm">
+                              <p className="text-sm text-gray-200">
                                 These skills were mentioned in your job description but not prominently featured in the candidate&apos;s profile. 
                                 Consider discussing these during the interview or as training opportunities.
                               </p>
@@ -652,10 +764,10 @@ export default function ResumeParserPage() {
                                   initial={{ opacity: 0, x: -10 }}
                                   animate={{ opacity: 1, x: 0 }}
                                   transition={{ delay: index * 0.05 }}
-                                  className="flex items-center gap-3 bg-white dark:bg-gray-700 rounded-lg p-3 border border-gray-200 dark:border-gray-600"
+                                  className="flex items-center gap-3 bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-lg p-3 border border-white/20"
                                 >
-                                  <div className="w-2 h-2 rounded-full bg-yellow-500"></div>
-                                  <span className="text-gray-700 dark:text-gray-300">{skill}</span>
+                                  <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
+                                  <span className="text-gray-200">{skill}</span>
                                 </motion.div>
                               ))}
                             </div>
@@ -663,6 +775,7 @@ export default function ResumeParserPage() {
                         </motion.div>
                       )}
                     </AnimatePresence>
+                    </Card3D>
                   </motion.div>
                 )}
 
@@ -672,8 +785,13 @@ export default function ResumeParserPage() {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.5 }}
-                    className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
                   >
+                    <Card3D
+                      className="bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl overflow-hidden"
+                      hoverScale={1.005}
+                      gradientShadow={false}
+                      glowOnHover={false}
+                    >
                     <button
                       onClick={() => toggleSection('projects')}
                       className="w-full p-6 flex justify-between items-center transition-colors"
@@ -714,7 +832,7 @@ export default function ResumeParserPage() {
                                   initial={{ opacity: 0, y: 20 }}
                                   animate={{ opacity: 1, y: 0 }}
                                   transition={{ delay: idx * 0.1 }}
-                                  className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-700 dark:to-gray-750 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow border border-gray-200 dark:border-gray-600"
+                                  className="bg-white/10 dark:bg-white/5 backdrop-blur-sm rounded-lg overflow-hidden border border-white/20 hover:border-white/30 transition-all"
                                 >
                                   {project.relevanceScore && (
                                     <div className="bg-gradient-to-r from-purple-500 to-blue-500 px-4 py-2 flex items-center justify-between">
@@ -749,6 +867,7 @@ export default function ResumeParserPage() {
                         </motion.div>
                       )}
                     </AnimatePresence>
+                    </Card3D>
                   </motion.div>
                 )}
 
@@ -757,8 +876,13 @@ export default function ResumeParserPage() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.6 }}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden"
                 >
+                  <Card3D
+                    className="bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl overflow-hidden"
+                    hoverScale={1.005}
+                    gradientShadow={false}
+                    glowOnHover={false}
+                  >
                   <button
                     onClick={() => toggleSection('insights')}
                     className="w-full p-6 flex justify-between items-center transition-colors"
@@ -785,14 +909,14 @@ export default function ResumeParserPage() {
                         className="border-t border-gray-200 dark:border-gray-700"
                       >
                         <div className="p-6">
-                          <div className={`${matchLevel.bg} border-l-4 ${matchLevel.border} rounded-lg p-6 mb-6`}>
+                          <div className={`${matchLevel?.bg || ''} border-l-4 ${matchLevel?.border || ''} rounded-lg p-6 mb-6`}>
                             <div className="flex items-start gap-4">
-                              <FaLightbulb className={`text-2xl ${matchLevel.text} mt-1 flex-shrink-0`} />
+                              <FaLightbulb className={`text-2xl ${matchLevel?.text || ''} mt-1 flex-shrink-0`} />
                               <div>
-                                <h4 className="font-bold text-lg mb-2 text-gray-800 dark:text-gray-100">Overall Assessment</h4>
-                                <p className="text-gray-700 dark:text-gray-300 mb-3">
+                                <h4 className="font-bold text-lg mb-2 text-gray-200">Overall Assessment</h4>
+                                <p className="text-gray-300 mb-3">
                                   Anil Sahith is a
-                                  <span className={`font-bold ${matchLevel.text}`}>
+                                  <span className={`font-bold ${matchLevel?.text || ''}`}>
                                     {results.overallMatch >= 85 ? ' excellent ' :
                                      results.overallMatch >= 75 ? ' strong ' :
                                      results.overallMatch >= 65 ? ' good ' :
@@ -870,6 +994,7 @@ export default function ResumeParserPage() {
                       </motion.div>
                     )}
                   </AnimatePresence>
+                  </Card3D>
                 </motion.div>
               </motion.div>
             )}

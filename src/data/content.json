@@ -12,6 +12,7 @@
     "location": "Hyderabad, India",
     "github": "sahit1011",
     "linkedin": "anil-sahith",
+    "portfolio": "https://anil-portfolio-chi.vercel.app",
     "twitter": "",
     "website": ""
   },
@@ -44,57 +45,51 @@
   "experience": [
     {
       "id": 1,
-      "title": "Freelance AI Developer",
-      "company": "ArcherReview",
-      "location": "Remote",
-      "period": "Apr 2025 - May 2025",
+      "title": "Software Engineer - AI/ML",
+      "company": "Matters.AI",
+      "location": "Bangalore, Karnataka",
+      "period": "Dec 2025 - Current",
       "description": [
-
-        "Built full-stack Next.js application with TypeScript, MongoDB, and real-time features including interactive drag-and-drop calendar, user authentication, progress analytics, and AI tutor integration serving personalized learning experiences.",
-        "Developed a sophisticated multi-agent AI system using Google Gemini API with specialized agents for monitoring student progress, adapting study plans, and coordinating remediation activities, resulting in 85% improvement over static educational platforms.",
-        "Implemented advanced adaptive learning algorithms combining constraint-based optimization with machine learning for dynamic study plan generation and spaced repetition scheduling based on individual performance patterns.",
-        "Created intelligent monitoring system that tracks user behavior, detects learning difficulties, and automatically adjusts content difficulty and scheduling using sentiment analysis and natural language processing."
+        "Worked on a production-grade data processing system handling massive datasets (unstructured & structured) using Dask for distributed parallel execution and a hybrid extraction engine for PII/PHI detection, integrating VLM and LLM models for image extraction, entity classification, and post-verification.",
+        "Designed and deployed a 'Universal Rate Limiter' proxy service (Redis Streams + AsyncIO) on a GKE cluster (Google Kubernetes engine), decoupling upstream ingestion (up to 10k RPS) from throttled downstream Modal AI inference (200 RPS), achieving ~0.01% failure rates and P95/99 latency of ~10-15s under peak batch processing loads via adaptive controllers. Infrastructure includes Redis on AWS ElastiCache with monitoring via New Relic (CubeAPM).",
+        "Optimized NER and VLM model deployment for improved overall throughput and CPU-GPU utilization through A/B testing, achieving optimal cost efficiency on the Modal platform while maintaining strict SLA guarantees."
       ],
-      "skills": [ "Next.js", "TypeScript", "Python", "MongoDB", "Multi-agentic AI","Google Gemini API", "Machine Learning", "NLP", "Sentiment Analysis", "Progress Analytics", "AI Tutor Integration"]
+      "skills": ["Python", "Dask", "Redis Streams", "AsyncIO", "GKE", "Kubernetes", "Modal", "VLM", "LLM", "NER", "AWS ElastiCache", "New Relic", "A/B Testing", "SLA", "PII/PHI Detection"]
     },
     {
       "id": 2,
-      "title": "Junior AI Engineer",
-      "company": "Noccarc Robotics Pvt Ltd.",
+      "title": "AI/ML Engineer",
+      "company": "Noccarc Robotics Pvt Ltd",
       "location": "Pune, Maharashtra",
       "period": "Jun 2024 - Apr 2025",
       "description": [
-        "Developed a real-time arrhythmia detection system for embedded patient monitors using a combined multi-channel hybrid model (CNN-GRU with separable convolutions, an attention layer) to generate predictive masks for 8+ arrhythmia classes, achieving over 95% accuracy.",
-        "System enables real-time detection of heart abnormalities, generating nearly 20+ distinct alarms via the model, facilitating immediate clinical decision-making and reducing response times in critical care settings.",
-        "Architecture includes data flow from ECG sensors, preprocessing, front-end display, back-end processing, and model inference pipelines for seamless embedded hardware operation.",
-        "Model inference occurs in real-time every 5 seconds, generating alarms if any abnormality is detected, all while consuming less than 10% of single-core CPU resources."
+        "Architected a real-time arrhythmia detection system for embedded patient monitoring devices using deep learning, established an end-to-end data pipeline from sensor integration to frontend visualization with automated alarm generation across 20+ distinct classifications for critical heart abnormalities, reducing clinical response times in ICUs.",
+        "Implemented a hybrid neural network combining ResNet, CBAM attention mechanism, and GRU layers with separable convolutions for efficient edge deployment, achieving ~300ms latency on a patient monitor(edge-device) while processing ECG data every 5 seconds and consuming under 12% single-core CPU resources."
       ],
-      "skills": ["Python", "Machine Learning", "Deep Learning", "CNN", "GRU", "Attention Mechanism", "Separable Convolutions", "TF-Lite", "Embedded Systems", "Real-time Processing", "CPU Optimization"]
+      "skills": ["Python", "Deep Learning", "ResNet", "CBAM", "GRU", "Separable Convolutions", "Edge ML", "Embedded Systems", "Real-time Processing", "ECG Processing", "Computer Vision"]
     },
     {
       "id": 3,
       "title": "Summer Intern - AI/ML",
-      "company": "Carelon Global Solutions, (Elevance Healthcare)",
+      "company": "Carelon Global Solutions (Elevance Healthcare)",
       "location": "Bangalore, Karnataka",
       "period": "Jun 2023 - Aug 2023",
       "description": [
-        "Integrated PyTesseract (OCR), OpenCV (for image preprocessing), and YOLOv8 (for object detection) to extract text and identify regions of interest from EOBs (Explanation of Benefits) and RAs (Remittance Advice) for health insurances, processing ~700 documents/hour with 95% accuracy.",
-        "Implemented multi-threading and multi-processing techniques.",
-        "Delivered a comprehensive, scalable solution for automating data extraction, reducing processing time and cost by 90%."
+        "Automated document processing pipeline using computer vision and deep learning to extract and classify data from 700+ documents per hour with 95% accuracy; deployed an end-to-end OCR solution using PyTesseract for text extraction, OpenCV for image preprocessing, and YOLOv8 object detection for region identification.",
+        "Accelerated processing performance through multi-threading and multi-processing techniques, reducing document processing time by 90% and decreasing operational costs, delivered a production-ready solution by integrating with existing data workflows for scalable enterprise document management."
       ],
-      "skills": ["Python", "PyTesseract", "OpenCV", "YOLOv8", "OCR", "Computer Vision", "Multi-threading", "Multi-processing", "Healthcare IT", "EOB Processing", "RA Processing"]
+      "skills": ["Python", "PyTesseract", "OpenCV", "YOLOv8", "OCR", "Computer Vision", "Multi-threading", "Multi-processing", "Healthcare IT", "Document Processing", "Deep Learning"]
     }
-
-
   ],
 
   "education": [
     {
       "id": 1,
-      "degree": "B.Tech in Electrical and Electronics Engineering",
+      "degree": "Bachelor of Technology in Electrical and Electronics Engineering",
       "institution": "National Institute of Technology (NIT) Warangal",
-      "location": "Warangal, Telangana",
-      "gpa": "6.5",
+      "location": "Warangal, India",
+      "period": "May 2024",
+      "gpa": "",
       "achievements": []
     }
   ],
@@ -360,14 +355,14 @@
   ],
 
   "resume": {
-    "summary": "Experienced software engineer with expertise in full-stack development, AI/ML, and data science. Passionate about building scalable applications and implementing machine learning solutions to solve complex problems.",
+    "summary": "Software Engineer with strong Math and CS foundations, specializing in AI/ML systems and production-grade deployment. Proven expertise in developing and optimizing deep learning models, LLM applications, and RAG systems. Skilled in building low-latency inference pipelines, on-device model optimization, and scalable data architectures.",
     "skills": {
-      "languages": "Python, JavaScript, TypeScript, Java, SQL",
-      "frontend": "React, Next.js, HTML/CSS, Tailwind CSS, Redux",
-      "backend": "Node.js, Express, Django, Flask, GraphQL",
-      "databases": "MongoDB, PostgreSQL, MySQL, Redis",
-      "aiMl": "TensorFlow, PyTorch, scikit-learn, NLP, Computer Vision",
-      "devOps": "Docker, Kubernetes, AWS, GCP, CI/CD"
+      "languages": "Python, C++, JavaScript, TypeScript, SQL",
+      "frontend": "React.js, Next.js, HTML/CSS, Tailwind CSS",
+      "backend": "Node.js, Django, Flask, FastAPI, WebSockets, Temporal, Kafka, ZeroMQ",
+      "databases": "MySQL, PostgreSQL, MongoDB, Redis, Pinecone, MinIO",
+      "aiMl": "TensorFlow, PyTorch, Scikit-learn, PySpark, OpenCV, NLP, LLMs, VLMs, RL, RAG",
+      "devOps": "AWS, GCP, Docker, K8, Modal, Supabase"
     }
   },
 

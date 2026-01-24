@@ -11,16 +11,15 @@ import {
   Project
 } from './content';
 
-// OpenRouter API integration
-const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const OPENROUTER_MODEL = 'deepseek/deepseek-chat';
+// OpenRouter API integration - moved to server-side API route
+// These constants are no longer used as we call /api/analyze-resume instead
 
 // Initialize the Gemini API with your API key
 const getGeminiAPI = () => {
   const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 
   if (!apiKey) {
-    console.error("Gemini API key is not set. Please set NEXT_PUBLIC_GEMINI_API_KEY in your .env.local file.");
+    console.warn("Gemini API key is not set. Please set NEXT_PUBLIC_GEMINI_API_KEY in your .env.local file.");
     return null;
   }
 
@@ -87,6 +86,50 @@ function generateResumeContent(): string {
 const resumeContent = generateResumeContent();
 
 // Function to create the analysis prompt
+// Function to validate if text is a job description
+function isValidJobDescription(text: string): { isValid: boolean; reason?: string } {
+  if (!text || text.trim().length < 50) {
+    return { isValid: false, reason: 'Job description is too short or empty' };
+  }
+
+  // Check for resume indicators (should NOT be present in a job description)
+  const resumeIndicators = [
+    'portfolio:', 'linkedin:', 'github:', 'professional summary',
+    'anilsahithvallepu@gmail.com', 'sahit1011', 'anil-sahith',
+    'vallepu anil sahith', 'resume', 'cv', 'curriculum vitae',
+    'software engineer | ai/ml engineer', 'nit warangal', 'matters.ai',
+    'noccarc robotics', 'carelon global solutions'
+  ];
+  
+  const textLower = text.toLowerCase();
+  const hasResumeIndicators = resumeIndicators.some(indicator => 
+    textLower.includes(indicator.toLowerCase())
+  );
+  
+  if (hasResumeIndicators) {
+    return { isValid: false, reason: 'The provided text appears to be a resume, not a job description' };
+  }
+
+  // Check for job description indicators (should be present)
+  const jobDescriptionIndicators = [
+    'job description', 'job requirements', 'qualifications', 'responsibilities',
+    'we are looking for', 'required skills', 'must have', 'nice to have',
+    'position:', 'role:', 'apply', 'candidate should', 'the ideal candidate',
+    'about the role', 'what you\'ll do', 'what we need', 'requirements:'
+  ];
+  
+  const hasJobIndicators = jobDescriptionIndicators.some(indicator => 
+    textLower.includes(indicator.toLowerCase())
+  );
+  
+  if (!hasJobIndicators && text.length < 200) {
+    // If it's short and has no job indicators, it might not be a valid JD
+    return { isValid: false, reason: 'The text does not appear to be a valid job description. Please provide a complete job posting with requirements and responsibilities.' };
+  }
+
+  return { isValid: true };
+}
+
 function createAnalysisPrompt(jobDescription: string): string {
   const personalInfo = getPersonalInfo();
   const experiences = getExperiences();
@@ -121,11 +164,27 @@ CANDIDATE PREFERENCES:
   return `
     You are an expert AI recruiter specializing in technical roles. You have access to a comprehensive candidate profile including their real work experience, projects, and skills.
 
+    IMPORTANT VALIDATION: Before proceeding with analysis, verify that the JOB DESCRIPTION section below contains a valid job posting with requirements, responsibilities, and qualifications. If it appears to be a resume, candidate profile, or invalid content, you MUST return an error response instead of analysis.
+
     CANDIDATE CONTEXT:
     ${candidateContext}
 
     JOB DESCRIPTION:
     ${jobDescription}
+
+    VALIDATION CHECK: First, verify the job description is valid:
+    - Does it contain job requirements, responsibilities, or qualifications?
+    - Is it clearly a job posting and NOT a resume or candidate profile?
+    - Is it substantial enough (at least 100+ characters of meaningful content)?
+    
+    If the job description is INVALID, return this JSON format:
+    {
+      "error": true,
+      "errorMessage": "The provided text does not appear to be a valid job description. Please provide a complete job posting with requirements and responsibilities.",
+      "suggestion": "Please copy and paste the full job description from the job posting, including requirements, responsibilities, and qualifications."
+    }
+
+    If the job description is VALID, proceed with the analysis task below.
 
     TASK: Analyze how well this candidate matches the job description using the weighted scoring framework below.
 
@@ -188,50 +247,29 @@ CANDIDATE PREFERENCES:
   `;
 }
 
-// Function to call OpenRouter API as fallback
+// Function to call OpenRouter API as fallback (via server-side API route)
 async function callOpenRouterAPI(prompt: string, logFilename: string): Promise<string> {
-  const openRouterApiKey = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY;
-
-  if (!openRouterApiKey) {
-    const noApiKeyMessage = "⚠️ OpenRouter API key not found, cannot use fallback";
-    console.log(noApiKeyMessage);
-    await logToFile(noApiKeyMessage, logFilename);
-    throw new Error("OpenRouter API key not set");
-  }
-
   const openRouterMessage = "🔄🔄🔄 FALLING BACK TO OPENROUTER API 🔄🔄🔄";
   console.log("\n" + openRouterMessage);
   await logToFile(openRouterMessage, logFilename);
 
   try {
-    const response = await fetch(OPENROUTER_API_URL, {
+    // Call our server-side API route instead of calling OpenRouter directly
+    const response = await fetch('/api/analyze-resume', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${openRouterApiKey}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000',
-        'X-Title': 'Resume Parser Service'
       },
-      body: JSON.stringify({
-        model: OPENROUTER_MODEL,
-        messages: [
-          {
-            role: 'user',
-            content: prompt
-          }
-        ],
-        temperature: 0.7,
-        max_tokens: 2000
-      })
+      body: JSON.stringify({ prompt })
     });
 
     if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`OpenRouter API error: ${response.status} ${response.statusText} - ${errorText}`);
+      const errorData = await response.json();
+      throw new Error(`OpenRouter API error: ${response.status} ${response.statusText} - ${errorData.error || errorData.details || 'Unknown error'}`);
     }
 
     const data = await response.json();
-    const text = data.choices[0]?.message?.content;
+    const text = data.text;
 
     if (!text) {
       throw new Error("No response content from OpenRouter API");
@@ -250,7 +288,50 @@ async function callOpenRouterAPI(prompt: string, logFilename: string): Promise<s
   }
 }
 
-// Function to clean and parse LLM response
+// Function to fix truncated JSON by closing open structures
+function fixTruncatedJSON(jsonString: string): string {
+  let fixed = jsonString.trim();
+  
+  // Count open/close braces and brackets
+  const openBraces = (fixed.match(/\{/g) || []).length;
+  let closeBraces = (fixed.match(/\}/g) || []).length;
+  const openBrackets = (fixed.match(/\[/g) || []).length;
+  let closeBrackets = (fixed.match(/\]/g) || []).length;
+  
+  // If we're in the middle of a string, try to close it
+  // Check if the last non-whitespace character is inside quotes
+  const lastChar = fixed.trim().slice(-1);
+  if (lastChar !== '"' && lastChar !== '}' && lastChar !== ']') {
+    // We might be in the middle of a string or value
+    // If we're in an array and the last thing is an object, close it
+    const lastOpenBrace = fixed.lastIndexOf('{');
+    const lastOpenBracket = fixed.lastIndexOf('[');
+    
+    if (lastOpenBrace > lastOpenBracket && openBraces > closeBraces) {
+      // Remove any trailing incomplete content after last complete object
+      const lastCompleteObject = fixed.lastIndexOf('}');
+      if (lastCompleteObject > 0) {
+        fixed = fixed.substring(0, lastCompleteObject + 1);
+      }
+    }
+  }
+  
+  // Close any open arrays
+  while (openBrackets > closeBrackets) {
+    fixed += ']';
+    closeBrackets++;
+  }
+  
+  // Close any open objects
+  while (openBraces > closeBraces) {
+    fixed += '}';
+    closeBraces++;
+  }
+  
+  return fixed;
+}
+
+// Function to clean and parse LLM response with truncation handling
 function cleanAndParseResponse(text: string): ResumeAnalysisResult {
   let cleanText = text;
 
@@ -267,7 +348,81 @@ function cleanAndParseResponse(text: string): ResumeAnalysisResult {
     cleanText = jsonMatch[0];
   }
 
-  return JSON.parse(cleanText) as ResumeAnalysisResult;
+  // Try to parse the JSON
+  try {
+    return JSON.parse(cleanText) as ResumeAnalysisResult;
+  } catch (error: unknown) {
+    // If parsing fails, try to fix truncated JSON
+    const errorMessage = error instanceof Error ? error.message : 'Unknown parsing error';
+    console.warn('Initial JSON parse failed, attempting to fix truncated JSON:', errorMessage);
+    
+    try {
+      const fixedJson = fixTruncatedJSON(cleanText);
+      const parsed = JSON.parse(fixedJson) as ResumeAnalysisResult;
+      
+      // Validate and fill in missing required fields
+      if (!parsed.overallMatch) parsed.overallMatch = 70;
+      if (!parsed.matchBreakdown) {
+        parsed.matchBreakdown = {
+          technicalSkills: 70,
+          experienceLevel: 70,
+          locationPreference: 70,
+          projectRelevance: 70
+        };
+      }
+      if (!parsed.warnings) parsed.warnings = [];
+      if (!parsed.skillsMatch) parsed.skillsMatch = [];
+      if (!parsed.missingSkills) parsed.missingSkills = [];
+      if (!parsed.candidateSummary) parsed.candidateSummary = "Analysis completed with partial data.";
+      if (!parsed.recommendedProjects) parsed.recommendedProjects = [];
+      
+      console.log('Successfully parsed fixed/truncated JSON');
+      return parsed;
+    } catch (fixError: unknown) {
+      // If fixing also fails, try to extract partial data
+      const fixErrorMessage = fixError instanceof Error ? fixError.message : 'Unknown error';
+      console.error('Failed to fix truncated JSON:', fixErrorMessage);
+      
+      // Try to extract at least the overall match and basic structure
+      const overallMatchMatch = cleanText.match(/"overallMatch"\s*:\s*(\d+)/);
+      const overallMatch = overallMatchMatch ? parseInt(overallMatchMatch[1]) : 70;
+      
+      // Extract skills match array (even if incomplete)
+      const skillsMatchStart = cleanText.indexOf('"skillsMatch"');
+      const skillsMatch: SkillMatch[] = [];
+      if (skillsMatchStart > 0) {
+        const skillsArrayStart = cleanText.indexOf('[', skillsMatchStart);
+        if (skillsArrayStart > 0) {
+          // Try to extract complete skill objects
+          const skillPattern = /\{\s*"skill"\s*:\s*"([^"]+)"\s*,\s*"match"\s*:\s*(\d+)\s*,\s*"required"\s*:\s*(true|false)\s*\}/g;
+          let match;
+          while ((match = skillPattern.exec(cleanText)) !== null) {
+            skillsMatch.push({
+              skill: match[1],
+              match: parseInt(match[2]),
+              required: match[3] === 'true'
+            });
+          }
+        }
+      }
+      
+      // Return partial result
+      return {
+        overallMatch,
+        matchBreakdown: {
+          technicalSkills: 70,
+          experienceLevel: 70,
+          locationPreference: 70,
+          projectRelevance: 70
+        },
+        warnings: ['Response was truncated, showing partial analysis'],
+        skillsMatch,
+        missingSkills: [],
+        candidateSummary: "Analysis completed with partial data due to response truncation.",
+        recommendedProjects: []
+      };
+    }
+  }
 }
 
 interface SkillMatch {
@@ -293,6 +448,9 @@ interface ResumeAnalysisResult {
   candidateSummary: string;
   recommendedProjects: Project[];
   recommendedProjectIds?: number[];
+  error?: boolean;
+  errorMessage?: string;
+  suggestion?: string;
 }
 
 export async function analyzeJobDescription(jobDescription: string): Promise<ResumeAnalysisResult> {
@@ -302,9 +460,39 @@ export async function analyzeJobDescription(jobDescription: string): Promise<Res
   console.log("\n\n" + startMessage);
   await logToFile(startMessage, logFilename);
 
+  // Validate that we have actual job description content, not an error message
+  if (!jobDescription || jobDescription.trim().length < 50) {
+    const errorMsg = "❌ Job description is too short or empty";
+    console.error(errorMsg);
+    await logToFile(errorMsg, logFilename);
+    throw new Error("Job description is too short or empty. Please provide a complete job description.");
+  }
+
+  // Check if the job description is actually an error message from file extraction
+  if (jobDescription.includes('[File content could not be automatically extracted')) {
+    const errorMsg = "❌ Job description appears to be an error message, not actual content";
+    console.error(errorMsg);
+    await logToFile(errorMsg, logFilename);
+    throw new Error("Failed to extract job description. Please copy and paste the job description text directly.");
+  }
+
+  // Validate job description using our validation function
+  const validation = isValidJobDescription(jobDescription);
+  if (!validation.isValid) {
+    const errorMsg = `❌ Job description validation failed: ${validation.reason}`;
+    console.error(errorMsg);
+    await logToFile(errorMsg, logFilename);
+    throw new Error(validation.reason || "Invalid job description. Please provide a complete job posting with requirements and responsibilities.");
+  }
+
   const lengthMessage = `Job description length: ${jobDescription.length} characters`;
   console.log(lengthMessage);
   await logToFile(lengthMessage, logFilename);
+  
+  // Log first 200 characters of job description for debugging
+  const previewMessage = `Job description preview: ${jobDescription.substring(0, 200)}...`;
+  console.log(previewMessage);
+  await logToFile(previewMessage, logFilename);
 
   // Create the prompt once
   const prompt = createAnalysisPrompt(jobDescription);
@@ -365,6 +553,15 @@ export async function analyzeJobDescription(jobDescription: string): Promise<Res
 
       try {
         const jsonResponse = cleanAndParseResponse(text);
+        
+        // Check if LLM returned an error response
+        if (jsonResponse.error === true) {
+          const errorMsg = `❌ LLM validation error: ${jsonResponse.errorMessage || 'Invalid job description'}`;
+          console.error(errorMsg);
+          await logToFile(errorMsg, logFilename);
+          throw new Error(jsonResponse.errorMessage || 'The provided text does not appear to be a valid job description. Please provide a complete job posting with requirements and responsibilities.');
+        }
+        
         const parsedMessage = "✅ Successfully parsed Gemini JSON response";
         console.log(parsedMessage);
         await logToFile(parsedMessage, logFilename);
@@ -439,9 +636,26 @@ export async function analyzeJobDescription(jobDescription: string): Promise<Res
 
     try {
       const jsonResponse = cleanAndParseResponse(openRouterText);
-      const parsedMessage = "✅ Successfully parsed OpenRouter JSON response";
+      
+      // Check if LLM returned an error response
+      if (jsonResponse.error === true) {
+        const errorMsg = `❌ LLM validation error: ${jsonResponse.errorMessage || 'Invalid job description'}`;
+        console.error(errorMsg);
+        await logToFile(errorMsg, logFilename);
+        throw new Error(jsonResponse.errorMessage || 'The provided text does not appear to be a valid job description. Please provide a complete job posting with requirements and responsibilities.');
+      }
+      
+      const parsedMessage = jsonResponse.warnings?.includes('Response was truncated') 
+        ? "✅ Successfully parsed OpenRouter JSON response (recovered from truncation)"
+        : "✅ Successfully parsed OpenRouter JSON response";
       console.log(parsedMessage);
       await logToFile(parsedMessage, logFilename);
+      
+      if (jsonResponse.warnings?.includes('Response was truncated')) {
+        const truncationWarning = "⚠️ Note: Response was truncated but partial data was successfully extracted";
+        console.warn(truncationWarning);
+        await logToFile(truncationWarning, logFilename);
+      }
 
       const extractedSkills = extractSkillsFromJobDescription(jobDescription);
       const allProjects = getProjects();

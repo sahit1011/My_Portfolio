@@ -41,25 +41,25 @@ export default function ProjectsPage() {
     <MainLayout>
       {/* Video Modal */}
       {videoModal.isOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-gray-800 rounded-lg max-w-5xl w-full max-h-[95vh] overflow-y-auto">
-            <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{videoModal.title}</h3>
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white/10 dark:bg-white/5 backdrop-blur-xl border border-white/20 rounded-xl max-w-5xl w-full max-h-[95vh] overflow-y-auto shadow-2xl">
+            <div className="flex justify-between items-center p-4 md:p-6 border-b border-white/20">
+              <h3 className="text-lg md:text-xl font-semibold text-gray-200">{videoModal.title}</h3>
               <button
                 onClick={closeVideoModal}
-                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
+                className="text-gray-300 hover:text-white transition-colors p-2 hover:bg-white/10 rounded-lg"
               >
                 <FaTimes size={20} />
               </button>
             </div>
-            <div className="p-4">
+            <div className="p-4 md:p-6">
               <div className="flex justify-center">
-                <div className="aspect-video max-h-[50vh] w-full max-w-4xl">
+                <div className="aspect-video max-h-[50vh] w-full max-w-4xl rounded-lg overflow-hidden border border-white/20">
                   {videoModal.videoUrl.includes('.mp4') ? (
                     <video
                       src={videoModal.videoUrl}
                       title={videoModal.title}
-                      className="w-full h-full rounded-lg"
+                      className="w-full h-full"
                       controls
                       autoPlay
                     >
@@ -69,7 +69,7 @@ export default function ProjectsPage() {
                     <iframe
                       src={videoModal.videoUrl}
                       title={videoModal.title}
-                      className="w-full h-full rounded-lg"
+                      className="w-full h-full"
                       allowFullScreen
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     ></iframe>
@@ -78,11 +78,11 @@ export default function ProjectsPage() {
               </div>
               {videoModal.description && videoModal.description.length > 0 && (
                 <div className="mt-6 max-w-4xl mx-auto">
-                  <h4 className="text-lg font-semibold mb-3 text-gray-900 dark:text-white text-center">Project Description</h4>
-                  <ul className="text-gray-700 dark:text-gray-300 space-y-2">
+                  <h4 className="text-lg font-semibold mb-3 text-gray-200 text-center">Project Description</h4>
+                  <ul className="text-gray-300 space-y-2">
                     {videoModal.description.map((point, index) => (
                       <li key={index} className="flex items-start">
-                        <span className="text-accent mr-2 mt-1">•</span>
+                        <span className="text-purple-400 mr-2 mt-1">•</span>
                         <span>{point}</span>
                       </li>
                     ))}

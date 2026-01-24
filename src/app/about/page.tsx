@@ -372,49 +372,56 @@ export default function AboutPage() {
 
             {/* Right: Profile Image */}
             <div className="flex justify-center lg:justify-center items-center" style={{ marginTop: '-2rem', marginLeft: '-2rem' }}>
-              <div className="w-full max-w-md profile-image-container" style={{ transform: 'scale(0.8)', transformOrigin: 'center' }}>
-                <Image
-                  src="/images/1746994095136.jpg"
-                  alt={aboutInfo.name}
-                  width={400}
-                  height={400}
-                  className="profile-image rounded-2xl object-cover"
-                  priority
-                />
-              </div>
+              <Card3D
+                className="w-full max-w-xs profile-image-container"
+                hoverScale={1.02}
+                gradientShadow={true}
+                glowOnHover={true}
+              >
+                <div className="relative overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
+                  <Image
+                    src="/images/updated_profile_pic_v2.png"
+                    alt={aboutInfo.name}
+                    width={300}
+                    height={300}
+                    className="profile-image rounded-2xl object-cover w-full h-auto"
+                    priority
+                  />
+                </div>
+              </Card3D>
             </div>
           </div>
 
           {/* Info Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <SpotlightCard className="custom-spotlight-card flex flex-col items-center justify-center p-6 bg-gray-900/50 backdrop-blur-sm border border-gray-800 text-gray-100 h-48 rounded-xl" spotlightColor="rgba(255, 255, 255, 0.2)">
-              <FaGraduationCap className="text-5xl text-purple-500 mb-3" />
-              <h3 className="text-lg font-bold mb-2">Education</h3>
-              <p className="text-center text-sm text-gray-400">
+            <SpotlightCard className="custom-spotlight-card flex flex-col items-center justify-center p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 text-gray-200 h-48 rounded-xl" spotlightColor="rgba(139, 92, 246, 0.3)">
+              <FaGraduationCap className="text-5xl text-purple-400 mb-3" />
+              <h3 className="text-lg font-bold mb-2 text-gray-200">Education</h3>
+              <p className="text-center text-sm text-gray-300">
                 {aboutInfo.education}
               </p>
             </SpotlightCard>
 
-            <SpotlightCard className="custom-spotlight-card flex flex-col items-center justify-center p-6 bg-gray-900/50 backdrop-blur-sm border border-gray-800 text-gray-100 h-48 rounded-xl" spotlightColor="rgba(255, 255, 255, 0.2)">
-              <FaBriefcase className="text-5xl text-blue-500 mb-3" />
-              <h3 className="text-lg font-bold mb-2">Experience</h3>
-              <p className="text-center text-sm text-gray-400">
+            <SpotlightCard className="custom-spotlight-card flex flex-col items-center justify-center p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 text-gray-200 h-48 rounded-xl" spotlightColor="rgba(59, 130, 246, 0.3)">
+              <FaBriefcase className="text-5xl text-blue-400 mb-3" />
+              <h3 className="text-lg font-bold mb-2 text-gray-200">Experience</h3>
+              <p className="text-center text-sm text-gray-300">
                 {aboutInfo.experience}
               </p>
             </SpotlightCard>
 
-            <SpotlightCard className="custom-spotlight-card flex flex-col items-center justify-center p-6 bg-gray-900/50 backdrop-blur-sm border border-gray-800 text-gray-100 h-48 rounded-xl" spotlightColor="rgba(255, 255, 255, 0.2)">
-              <FaLaptopCode className="text-5xl text-green-500 mb-3" />
-              <h3 className="text-lg font-bold mb-2">Technologies</h3>
-              <p className="text-center text-sm text-gray-400">
+            <SpotlightCard className="custom-spotlight-card flex flex-col items-center justify-center p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 text-gray-200 h-48 rounded-xl" spotlightColor="rgba(34, 197, 94, 0.3)">
+              <FaLaptopCode className="text-5xl text-green-400 mb-3" />
+              <h3 className="text-lg font-bold mb-2 text-gray-200">Technologies</h3>
+              <p className="text-center text-sm text-gray-300">
                 {aboutInfo.technologies}
               </p>
             </SpotlightCard>
 
-            <SpotlightCard className="custom-spotlight-card flex flex-col items-center justify-center p-6 bg-gray-900/50 backdrop-blur-sm border border-gray-800 text-gray-100 h-48 rounded-xl" spotlightColor="rgba(255, 255, 255, 0.2)">
+            <SpotlightCard className="custom-spotlight-card flex flex-col items-center justify-center p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 text-gray-200 h-48 rounded-xl" spotlightColor="rgba(250, 204, 21, 0.3)">
               <FaLightbulb className="text-5xl text-yellow-400 mb-3" />
-              <h3 className="text-lg font-bold mb-2">Exploring</h3>
-              <p className="text-center text-sm text-gray-400">
+              <h3 className="text-lg font-bold mb-2 text-gray-200">Exploring</h3>
+              <p className="text-center text-sm text-gray-300">
                 {aboutInfo.currentlyExploring.join(', ')}
               </p>
             </SpotlightCard>

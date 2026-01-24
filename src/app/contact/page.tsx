@@ -3,6 +3,11 @@
 import React, { useState } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin } from 'react-icons/fa';
+import Card3D from '@/components/ui/Card3D';
+import Button3D from '@/components/ui/Button3D';
+import ExpandingText from '@/components/ui/ExpandingText';
+import ShinyText from '@/components/ShinyText';
+import SpotlightCard from '@/components/SpotLightCard';
 
 // Import content management utilities
 import {
@@ -63,106 +68,203 @@ export default function ContactPage() {
     <MainLayout>
       <section className="section container mx-auto px-4">
         <div className="text-center mb-12">
-          <h1 className="mb-4">
-            Get in <span className="gradient-text">Touch</span>
-          </h1>
-          <p className="text-xl max-w-3xl mx-auto text-dark-lighter dark:text-light-darker">
-            Have a question or want to work together? Feel free to contact me!
+          <div className="relative inline-block mb-6">
+            <ExpandingText
+              as="h1"
+              className="text-4xl md:text-5xl font-bold"
+              gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+              expandScale={1.03}
+              letterSpacing="0.03em"
+              textShadow={true}
+              glowIntensity={0.4}
+            >
+              Get in Touch
+            </ExpandingText>
+            <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
+          </div>
+          <p className="text-xl max-w-3xl mx-auto text-gray-300">
+            <ShinyText speed={3}>
+              Have a question or want to work together? Feel free to contact me!
+            </ShinyText>
           </p>
         </div>
 
         {/* Wrapper for the two-column layout, centered with max-width */}
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 
             {/* Left Column: Contact Information Block */}
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="bg-accent p-3 rounded-full text-white mr-4 shrink-0">
-                    <FaEnvelope />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold">Email</h3>
+            <div className="space-y-6">
+              <Card3D
+                className="p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl"
+                hoverScale={1.005}
+                gradientShadow={false}
+                glowOnHover={false}
+              >
+                <div className="relative inline-block mb-6">
+                  <ExpandingText
+                    as="h2"
+                    className="text-2xl font-bold"
+                    gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+                    expandScale={1.02}
+                  >
+                    Contact Information
+                  </ExpandingText>
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+                </div>
+                
+                <div className="space-y-6">
+                  <Card3D
+                    className="p-4 bg-white/5 dark:bg-white/3 backdrop-blur-sm border border-white/10 rounded-lg"
+                    hoverScale={1.003}
+                    gradientShadow={false}
+                    glowOnHover={false}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="bg-gradient-to-r from-purple-600 to-blue-500 p-3 rounded-full text-white shrink-0">
+                        <FaEnvelope />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-200 mb-1">Email</h3>
+                        <a
+                          href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(personalInfo.email)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-purple-400 hover:text-purple-300 transition-colors duration-300"
+                          title="Open in Gmail"
+                        >
+                          {personalInfo.email}
+                        </a>
+                      </div>
+                    </div>
+                  </Card3D>
+
+                  <Card3D
+                    className="p-4 bg-white/5 dark:bg-white/3 backdrop-blur-sm border border-white/10 rounded-lg"
+                    hoverScale={1.003}
+                    gradientShadow={false}
+                    glowOnHover={false}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="bg-gradient-to-r from-blue-500 to-teal-400 p-3 rounded-full text-white shrink-0">
+                        <FaPhone />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-200 mb-1">Phone</h3>
+                        <p className="text-gray-300">{personalInfo.phone}</p>
+                      </div>
+                    </div>
+                  </Card3D>
+
+                  <Card3D
+                    className="p-4 bg-white/5 dark:bg-white/3 backdrop-blur-sm border border-white/10 rounded-lg"
+                    hoverScale={1.003}
+                    gradientShadow={false}
+                    glowOnHover={false}
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="bg-gradient-to-r from-teal-400 to-green-500 p-3 rounded-full text-white shrink-0">
+                        <FaMapMarkerAlt />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-semibold text-gray-200 mb-1">Location</h3>
+                        <p className="text-gray-300">{personalInfo.location}</p>
+                      </div>
+                    </div>
+                  </Card3D>
+                </div>
+              </Card3D>
+
+              <Card3D
+                className="p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl"
+                hoverScale={1.005}
+                gradientShadow={false}
+                glowOnHover={false}
+              >
+                <h3 className="text-lg font-semibold mb-4 text-gray-200">Connect with me</h3>
+                <div className="flex gap-4">
+                  <Card3D
+                    className="inline-block"
+                    hoverScale={1.1}
+                    gradientShadow={false}
+                    glowOnHover={false}
+                  >
                     <a
-                      href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(personalInfo.email)}`}
+                      href={getGithubUrl()}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-dark-lighter dark:text-light-darker hover:text-accent transition-colors duration-300 cursor-pointer"
-                      title="Open in Gmail"
+                      className="bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 p-4 rounded-full text-gray-300 hover:text-white transition-colors duration-300 flex items-center justify-center"
                     >
-                      {personalInfo.email}
+                      <FaGithub size={24} />
                     </a>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="bg-accent p-3 rounded-full text-white mr-4 shrink-0">
-                    <FaPhone />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold">Phone</h3>
-                    <p className="text-dark-lighter dark:text-light-darker">{personalInfo.phone}</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="bg-accent p-3 rounded-full text-white mr-4 shrink-0">
-                    <FaMapMarkerAlt />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold">Location</h3>
-                    <p className="text-dark-lighter dark:text-light-darker">{personalInfo.location}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-8">
-                <h3 className="text-lg font-semibold mb-4">Connect with me</h3>
-                <div className="flex space-x-4">
-                  <a
-                    href={getGithubUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-light-dark dark:bg-dark-light p-3 rounded-full text-dark dark:text-light hover:text-accent transition-colors duration-300"
+                  </Card3D>
+                  <Card3D
+                    className="inline-block"
+                    hoverScale={1.1}
+                    gradientShadow={false}
+                    glowOnHover={false}
                   >
-                    <FaGithub size={24} />
-                  </a>
-                  <a
-                    href={getLinkedinUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-light-dark dark:bg-dark-light p-3 rounded-full text-dark dark:text-light hover:text-accent transition-colors duration-300"
-                  >
-                    <FaLinkedin size={24} />
-                  </a>
+                    <a
+                      href={getLinkedinUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 p-4 rounded-full text-gray-300 hover:text-white transition-colors duration-300 flex items-center justify-center"
+                    >
+                      <FaLinkedin size={24} />
+                    </a>
+                  </Card3D>
                 </div>
-              </div>
+              </Card3D>
 
-              <div className="mt-8 p-6 bg-light-dark dark:bg-dark-light rounded-lg">
-                <h3 className="text-lg font-semibold mb-2">Available for</h3>
-                <ul className="list-disc list-inside space-y-2 text-dark-lighter dark:text-light-darker">
+              <SpotlightCard
+                className="p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl"
+                spotlightColor="rgba(139, 92, 246, 0.3)"
+              >
+                <h3 className="text-lg font-semibold mb-4 text-gray-200">Available for</h3>
+                <ul className="space-y-2 text-gray-300">
                   {contactInfo.availability.map((item, index) => (
-                    <li key={index}>{item}</li>
+                    <li key={index} className="flex items-start gap-2">
+                      <span className="text-purple-400 mt-1">•</span>
+                      <span>{item}</span>
+                    </li>
                   ))}
                 </ul>
-              </div>
+              </SpotlightCard>
             </div>
 
             {/* Right Column: Contact Form */}
-            <div>
-              <h2 className="text-2xl font-bold mb-6">Send Me a Message</h2>
+            <Card3D
+              className="p-6 md:p-8 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl"
+              hoverScale={1.005}
+              gradientShadow={false}
+              glowOnHover={false}
+            >
+              <div className="relative inline-block mb-6">
+                <ExpandingText
+                  as="h2"
+                  className="text-2xl font-bold"
+                  gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+                  expandScale={1.02}
+                >
+                  Send Me a Message
+                </ExpandingText>
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+              </div>
+
               {submitStatus && (
-                <div className={`p-4 mb-6 rounded-lg ${
-                  submitStatus.success ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' :
-                  'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200'
+                <div className={`p-4 mb-6 rounded-lg backdrop-blur-sm border ${
+                  submitStatus.success 
+                    ? 'bg-green-500/20 text-green-300 border-green-500/30' 
+                    : 'bg-red-500/20 text-red-300 border-red-500/30'
                 }`}
                 >
                   {submitStatus.message}
                 </div>
               )}
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
-                  <label htmlFor="name" className="block mb-2 font-medium">
+                  <label htmlFor="name" className="block mb-2 font-medium text-gray-200">
                     Your Name
                   </label>
                   <input
@@ -172,12 +274,12 @@ export default function ContactPage() {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 border border-light-darker dark:border-dark-lighter focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full px-4 py-3 rounded-lg bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                     placeholder="John Doe"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block mb-2 font-medium">
+                  <label htmlFor="email" className="block mb-2 font-medium text-gray-200">
                     Your Email
                   </label>
                   <input
@@ -187,12 +289,12 @@ export default function ContactPage() {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 border border-light-darker dark:border-dark-lighter focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full px-4 py-3 rounded-lg bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                     placeholder="john@example.com"
                   />
                 </div>
                 <div>
-                  <label htmlFor="subject" className="block mb-2 font-medium">
+                  <label htmlFor="subject" className="block mb-2 font-medium text-gray-200">
                     Subject
                   </label>
                   <select
@@ -201,17 +303,17 @@ export default function ContactPage() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 border border-light-darker dark:border-dark-lighter focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full px-4 py-3 rounded-lg bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 text-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                   >
-                    <option value="">Select a subject</option>
-                    <option value="Job Opportunity">Job Opportunity</option>
-                    <option value="Project Inquiry">Project Inquiry</option>
-                    <option value="Collaboration">Collaboration</option>
-                    <option value="Other">Other</option>
+                    <option value="" className="bg-gray-800">Select a subject</option>
+                    <option value="Job Opportunity" className="bg-gray-800">Job Opportunity</option>
+                    <option value="Project Inquiry" className="bg-gray-800">Project Inquiry</option>
+                    <option value="Collaboration" className="bg-gray-800">Collaboration</option>
+                    <option value="Other" className="bg-gray-800">Other</option>
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="message" className="block mb-2 font-medium">
+                  <label htmlFor="message" className="block mb-2 font-medium text-gray-200">
                     Your Message
                   </label>
                   <textarea
@@ -221,19 +323,22 @@ export default function ContactPage() {
                     onChange={handleChange}
                     required
                     rows={6}
-                    className="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 border border-light-darker dark:border-dark-lighter focus:outline-none focus:ring-2 focus:ring-accent"
+                    className="w-full px-4 py-3 rounded-lg bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all resize-none"
                     placeholder="Hello, I'd like to talk about..."
                   ></textarea>
                 </div>
-                <button
+                <Button3D
                   type="submit"
                   disabled={isSubmitting}
-                  className="btn btn-accent w-full"
+                  variant="accent"
+                  size="lg"
+                  fullWidth
+                  className="gradient-border"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
-                </button>
+                </Button3D>
               </form>
-            </div>
+            </Card3D>
           </div>
         </div>
       </section>

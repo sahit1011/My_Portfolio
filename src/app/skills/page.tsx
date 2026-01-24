@@ -159,7 +159,7 @@ export default function SkillsPage() {
           {skillCategories.map(category => (
             <Card3D
               key={category.id}
-              className="p-6 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 h-full"
+              className="p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 text-gray-800 dark:text-gray-100 h-full"
               hoverScale={1.03}
               gradientShadow={false}
               glowOnHover={false}

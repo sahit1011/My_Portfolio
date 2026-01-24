@@ -33,7 +33,7 @@ export default function ExperiencePage() {
         <div className="max-w-4xl mx-auto">
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-accent"></div>
+            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-500 via-blue-500 to-pink-500"></div>
 
             {/* Experience items */}
             {experiences.map((exp, index) => (
@@ -44,13 +44,13 @@ export default function ExperiencePage() {
                 }`}
               >
                 {/* Timeline dot */}
-                <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-accent border-4 border-light dark:border-dark"></div>
+                <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 border-4 border-white/20 dark:border-gray-900 shadow-lg z-10"></div>
 
                 {/* Content */}
                 <div className="ml-10 md:ml-0">
                   <Card3D
-                    className="p-6 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100"
-                    hoverScale={1.03}
+                    className="p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 text-gray-200"
+                    hoverScale={1.005}
                     gradientShadow={false}
                     glowOnHover={false}
                   >
@@ -70,25 +70,25 @@ export default function ExperiencePage() {
                         {/* Underline animation */}
                         <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
                       </div>
-                      <span className="px-3 py-1 bg-accent text-white rounded-full text-sm">
+                      <span className="px-4 py-1.5 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-full text-sm font-medium shadow-lg">
                         {exp.company}
                       </span>
                     </div>
 
-                  <div className="flex flex-col sm:flex-row gap-4 mb-4 text-gray-700 dark:text-gray-300">
+                  <div className="flex flex-col sm:flex-row gap-4 mb-4 text-gray-300">
                     <div className="flex items-center">
-                      <FaCalendarAlt className="mr-2 text-accent" />
+                      <FaCalendarAlt className="mr-2 text-purple-400" />
                       {exp.period}
                     </div>
                     <div className="flex items-center">
-                      <FaMapMarkerAlt className="mr-2 text-accent" />
+                      <FaMapMarkerAlt className="mr-2 text-purple-400" />
                       {exp.location}
                     </div>
                   </div>
 
-                  <ul className="list-disc list-outside pl-5 mb-4 text-gray-700 dark:text-gray-300 text-left">
+                  <ul className="list-disc list-outside pl-5 mb-4 text-gray-300 text-left space-y-2">
                     {exp.description.map((item, i) => (
-                      <li key={i}>{item}</li>
+                      <li key={i} className="leading-relaxed">{item}</li>
                     ))}
                   </ul>
 
@@ -96,7 +96,7 @@ export default function ExperiencePage() {
                     {exp.skills.map((tech, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 bg-light-darker dark:bg-dark-lighter rounded-full text-sm hover:scale-105 transition-transform"
+                        className="px-3 py-1.5 bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 rounded-full text-sm hover:scale-105 hover:border-purple-400/50 transition-all"
                       >
                         <span className="gradient-text">{tech}</span>
                       </span>
@@ -125,8 +125,10 @@ export default function ExperiencePage() {
             {/* Underline animation */}
             <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
           </div>
-          <p className="text-lg max-w-2xl mx-auto mb-6 text-gray-700 dark:text-gray-300">
-            I&apos;m always open to discussing new projects, opportunities, and collaborations.
+          <p className="text-lg max-w-2xl mx-auto mb-6 text-gray-300">
+            <ShinyText speed={3}>
+              I&apos;m always open to discussing new projects, opportunities, and collaborations.
+            </ShinyText>
           </p>
           <Button3D
             href="/contact"

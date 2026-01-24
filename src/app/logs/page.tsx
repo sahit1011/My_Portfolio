@@ -4,6 +4,10 @@ import React, { useState, useEffect } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { motion } from 'framer-motion';
 import { FaFile, FaDownload, FaSpinner, FaLock, FaUnlock } from 'react-icons/fa';
+import Card3D from '@/components/ui/Card3D';
+import Button3D from '@/components/ui/Button3D';
+import ExpandingText from '@/components/ui/ExpandingText';
+import ShinyText from '@/components/ShinyText';
 
 interface LogFile {
   name: string;
@@ -77,38 +81,73 @@ export default function LogsPage() {
 
   return (
     <MainLayout>
-      <div className="container mx-auto px-4 py-12">
+      <section className="section container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           className="max-w-6xl mx-auto"
         >
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="text-3xl md:text-4xl font-bold gradient-text">Analysis Logs</h1>
-            {isAuthenticated && (
-              <button
-                onClick={handleLogout}
-                className="flex items-center px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition-colors duration-300"
+          <div className="flex justify-between items-center mb-12">
+            <div className="relative inline-block">
+              <ExpandingText
+                as="h1"
+                className="text-3xl md:text-4xl font-bold"
+                gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+                expandScale={1.03}
+                letterSpacing="0.03em"
+                textShadow={true}
+                glowIntensity={0.4}
               >
-                <FaUnlock className="mr-2" /> Logout
-              </button>
+                Analysis Logs
+              </ExpandingText>
+              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
+            </div>
+            {isAuthenticated && (
+              <Button3D
+                onClick={handleLogout}
+                variant="outline"
+                size="md"
+                icon={<FaUnlock />}
+                className="border-red-500 text-red-500 hover:bg-red-500 hover:text-white"
+              >
+                Logout
+              </Button3D>
             )}
           </div>
 
           {!isAuthenticated ? (
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 max-w-md mx-auto">
+            <Card3D
+              className="p-8 md:p-12 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl max-w-md mx-auto"
+              hoverScale={1.01}
+              gradientShadow={true}
+              glowOnHover={true}
+            >
               <div className="flex justify-center mb-6">
-                <FaLock className="text-5xl text-gray-400 dark:text-gray-500" />
+                <div className="bg-gradient-to-r from-purple-600 to-blue-500 p-6 rounded-full">
+                  <FaLock className="text-5xl text-white" />
+                </div>
               </div>
-              <h2 className="text-2xl font-bold text-center mb-6">Developer Access Only</h2>
-              <p className="text-gray-600 dark:text-gray-400 text-center mb-6">
-                This page contains debugging logs and is only accessible to the developer.
+              <div className="relative inline-block mb-6 w-full">
+                <ExpandingText
+                  as="h2"
+                  className="text-2xl font-bold text-center"
+                  gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+                  expandScale={1.02}
+                >
+                  Developer Access Only
+                </ExpandingText>
+                <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+              </div>
+              <p className="text-gray-300 text-center mb-8">
+                <ShinyText speed={3}>
+                  This page contains debugging logs and is only accessible to the developer.
+                </ShinyText>
               </p>
 
-              <form onSubmit={handleLogin} className="space-y-4">
+              <form onSubmit={handleLogin} className="space-y-6">
                 <div>
-                  <label htmlFor="password" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  <label htmlFor="password" className="block text-sm font-medium text-gray-200 mb-2">
                     Password
                   </label>
                   <input
@@ -116,109 +155,146 @@ export default function LogsPage() {
                     id="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                    className="w-full px-4 py-3 rounded-lg bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
                     placeholder="Enter developer password"
                     required
                   />
                 </div>
 
                 {error && (
-                  <div className="text-red-600 dark:text-red-400 text-sm">
+                  <div className="p-3 bg-red-500/20 text-red-300 border border-red-500/30 rounded-lg text-sm">
                     {error}
                   </div>
                 )}
 
-                <button
+                <Button3D
                   type="submit"
-                  className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300 flex items-center justify-center"
+                  variant="accent"
+                  size="lg"
+                  fullWidth
+                  icon={<FaLock />}
+                  className="gradient-border"
                 >
-                  <FaLock className="mr-2" /> Unlock Access
-                </button>
+                  Unlock Access
+                </Button3D>
               </form>
-            </div>
+            </Card3D>
           ) : (
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-              <h2 className="text-xl font-semibold mb-4">Log Files</h2>
-
-              {isLoading && !selectedLog ? (
-                <div className="flex justify-center items-center py-8">
-                  <FaSpinner className="animate-spin text-blue-500 text-2xl" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Log Files List */}
+              <Card3D
+                className="p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl"
+                hoverScale={1.01}
+                gradientShadow={true}
+                glowOnHover={true}
+              >
+                <div className="relative inline-block mb-6">
+                  <ExpandingText
+                    as="h2"
+                    className="text-xl font-bold"
+                    gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+                    expandScale={1.02}
+                  >
+                    Log Files
+                  </ExpandingText>
+                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
                 </div>
-              ) : logs.length === 0 ? (
-                <p className="text-gray-500 dark:text-gray-400 py-4">No log files found</p>
-              ) : (
-                <ul className="space-y-2">
-                  {logs.map((log) => (
-                    <li key={log.name}>
-                      <button
-                        onClick={() => viewLog(log.name)}
-                        className={`w-full text-left px-3 py-2 rounded-md flex items-center ${
-                          selectedLog === log.name
-                            ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300'
-                            : 'hover:bg-gray-100 dark:hover:bg-gray-700/30'
-                        }`}
-                      >
-                        <FaFile className="mr-2" />
-                        <div className="overflow-hidden">
-                          <div className="truncate">{log.name}</div>
-                          <div className="text-xs text-gray-500 dark:text-gray-400">
-                            {new Date(log.created).toLocaleString()}
-                          </div>
-                        </div>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              )}
 
-              <div className="mt-4">
-                <button
+                {isLoading && !selectedLog ? (
+                  <div className="flex justify-center items-center py-8">
+                    <FaSpinner className="animate-spin text-purple-400 text-2xl" />
+                  </div>
+                ) : logs.length === 0 ? (
+                  <p className="text-gray-400 py-4 text-center">No log files found</p>
+                ) : (
+                  <ul className="space-y-2 mb-4">
+                    {logs.map((log) => (
+                      <li key={log.name}>
+                        <button
+                          onClick={() => viewLog(log.name)}
+                          className={`w-full text-left px-3 py-2 rounded-lg flex items-center transition-all ${
+                            selectedLog === log.name
+                              ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
+                              : 'bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300'
+                          }`}
+                        >
+                          <FaFile className="mr-2 shrink-0" />
+                          <div className="overflow-hidden min-w-0">
+                            <div className="truncate font-medium">{log.name}</div>
+                            <div className="text-xs text-gray-400 mt-1">
+                              {new Date(log.created).toLocaleString()}
+                            </div>
+                          </div>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                <Button3D
                   onClick={fetchLogs}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-300"
+                  variant="outline"
+                  size="sm"
+                  fullWidth
+                  className="mt-4"
                 >
                   Refresh Logs
-                </button>
-              </div>
-            </div>
+                </Button3D>
+              </Card3D>
 
-            <div className="md:col-span-2 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
-              <div className="border-b border-gray-200 dark:border-gray-700 px-6 py-3 flex justify-between items-center">
-                <h2 className="text-xl font-semibold">
-                  {selectedLog ? selectedLog : 'Log Content'}
-                </h2>
-                {selectedLog && (
-                  <a
-                    href={`/logs/${selectedLog}`}
-                    download
-                    className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
-                  >
-                    <FaDownload />
-                  </a>
-                )}
-              </div>
+              {/* Log Content Viewer */}
+              <Card3D
+                className="md:col-span-2 p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 rounded-xl"
+                hoverScale={1.01}
+                gradientShadow={true}
+                glowOnHover={true}
+              >
+                <div className="border-b border-white/10 pb-4 mb-4 flex justify-between items-center">
+                  <div className="relative inline-block">
+                    <ExpandingText
+                      as="h2"
+                      className="text-xl font-bold"
+                      gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+                      expandScale={1.02}
+                    >
+                      {selectedLog ? selectedLog : 'Log Content'}
+                    </ExpandingText>
+                    {selectedLog && (
+                      <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+                    )}
+                  </div>
+                  {selectedLog && (
+                    <a
+                      href={`/logs/${selectedLog}`}
+                      download
+                      className="text-purple-400 hover:text-purple-300 transition-colors"
+                    >
+                      <FaDownload size={20} />
+                    </a>
+                  )}
+                </div>
 
-              <div className="p-6">
-                {isLoading && selectedLog ? (
-                  <div className="flex justify-center items-center py-8">
-                    <FaSpinner className="animate-spin text-blue-500 text-2xl" />
-                  </div>
-                ) : selectedLog ? (
-                  <pre className="bg-gray-50 dark:bg-gray-900 p-4 rounded-md overflow-auto max-h-[600px] text-sm">
-                    {logContent}
-                  </pre>
-                ) : (
-                  <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-                    Select a log file to view its content
-                  </div>
-                )}
-              </div>
+                <div className="min-h-[400px]">
+                  {isLoading && selectedLog ? (
+                    <div className="flex justify-center items-center py-16">
+                      <FaSpinner className="animate-spin text-purple-400 text-3xl" />
+                    </div>
+                  ) : selectedLog ? (
+                    <pre className="bg-black/30 backdrop-blur-sm p-4 rounded-lg overflow-auto max-h-[600px] text-sm text-gray-300 font-mono border border-white/10">
+                      {logContent}
+                    </pre>
+                  ) : (
+                    <div className="text-center py-16 text-gray-400">
+                      <FaFile className="text-5xl mx-auto mb-4 opacity-50" />
+                      <p>Select a log file to view its content</p>
+                    </div>
+                  )}
+                </div>
+              </Card3D>
             </div>
-          </div>
           )}
         </motion.div>
-      </div>
+      </section>
     </MainLayout>
   );
 }

@@ -22,10 +22,11 @@ const ExpandingText: React.FC<ExpandingTextProps> = ({
   as = 'span',
   expandScale = 1.05,
   letterSpacing = '0.02em',
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   gradientColors = ['#3b82f6', '#8b5cf6'],
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  // animateGradient = true,
   textShadow = true,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   glowIntensity = 0.3,
   staggerChildren = false,
 }) => {
@@ -39,12 +40,11 @@ const ExpandingText: React.FC<ExpandingTextProps> = ({
   const isString = typeof children === 'string';
   const letters = isString ? children.toString().split('') : null;
 
-  // Text shadow based on gradient colors
-  const shadowColor = gradientColors[0];
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const textShadowValue = textShadow
-    ? `0 0 ${glowIntensity * 15}px ${shadowColor}`
-    : 'none';
+  // Text shadow based on gradient colors (currently not used but kept for future use)
+  // const shadowColor = gradientColors[0];
+  // const textShadowValue = textShadow
+  //   ? `0 0 ${glowIntensity * 15}px ${shadowColor}`
+  //   : 'none';
 
   // If using staggered animation and the content is a simple string
   if (staggerChildren && letters) {
