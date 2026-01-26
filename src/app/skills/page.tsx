@@ -1,13 +1,14 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import {
   FaCode, FaServer, FaDatabase, FaTools, FaBrain,
   FaPython, FaJs, FaReact, FaHtml5, FaCss3Alt, FaNodeJs,
   FaDocker, FaGoogle, FaGithub, FaLaptopCode, FaChartBar,
   FaProjectDiagram, FaNetworkWired, FaMicrochip, FaCodeBranch,
-  FaRobot, FaLanguage, FaGraduationCap, FaAws, FaCloud
+  FaRobot, FaLanguage, FaGraduationCap, FaAws, FaCloud,
+  FaChevronDown
 } from 'react-icons/fa';
 import {
   SiTypescript, SiNextdotjs, SiDjango, SiFlask,
@@ -140,6 +141,75 @@ const SkillItem = ({ name, iconName }: { name: string; iconName: string }) => {
   );
 };
 
+// Skill Category Card Component
+const SkillCategoryCard = ({ category }: { category: ReturnType<typeof getSkillCategories>[0] }) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const handleScrollDown = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({
+        top: 200,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  return (
+    <Card3D
+      className="p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 text-gray-800 dark:text-gray-100 h-full"
+      hoverScale={1.03}
+      gradientShadow={false}
+      glowOnHover={false}
+    >
+      <div className="text-center mb-6">
+        {category.icon}
+        <div className="relative inline-block">
+          <ExpandingText
+            as="h2"
+            className="text-2xl font-bold"
+            gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
+            expandScale={1.03}
+            letterSpacing="0.03em"
+            textShadow={true}
+            glowIntensity={0.4}
+          >
+            {category.title}
+          </ExpandingText>
+          {/* Underline animation */}
+          <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
+        </div>
+      </div>
+
+      <div className="relative">
+        <div 
+          ref={scrollContainerRef}
+          className="max-h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200 dark:scrollbar-thumb-gray-600 dark:scrollbar-track-gray-800 pb-8"
+        >
+          <div className="grid grid-cols-1 gap-3">
+            {category.skills.map((skill, index) => (
+              <SkillItem key={index} name={skill.name} iconName={skill.icon} />
+            ))}
+          </div>
+        </div>
+        {category.skills.length > 7 && (
+          <div className="absolute bottom-0 left-0 right-0">
+            <div className="bg-gradient-to-t from-white dark:from-gray-800 via-white/80 dark:via-gray-800/80 to-transparent h-16 w-full flex items-end justify-center pb-2">
+              <button
+                onClick={handleScrollDown}
+                className="flex flex-col items-center gap-1 cursor-pointer hover:opacity-80 transition-opacity group"
+                aria-label="Scroll down for more skills"
+              >
+                <span className="text-xs text-gray-500 dark:text-gray-400 font-medium group-hover:text-gray-700 dark:group-hover:text-gray-300">Scroll for more</span>
+                <FaChevronDown className="text-gray-500 dark:text-gray-400 animate-bounce group-hover:text-gray-700 dark:group-hover:text-gray-300" size={18} />
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    </Card3D>
+  );
+};
+
 export default function SkillsPage() {
   // Get skill categories from content management system
   const skillCategories = getSkillCategories();
@@ -157,38 +227,7 @@ export default function SkillsPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {skillCategories.map(category => (
-            <Card3D
-              key={category.id}
-              className="p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 text-gray-800 dark:text-gray-100 h-full"
-              hoverScale={1.03}
-              gradientShadow={false}
-              glowOnHover={false}
-            >
-              <div className="text-center mb-6">
-                {category.icon}
-                <div className="relative inline-block">
-                  <ExpandingText
-                    as="h2"
-                    className="text-2xl font-bold"
-                    gradientColors={['#3b82f6', '#8b5cf6', '#ec4899']}
-                    expandScale={1.03}
-                    letterSpacing="0.03em"
-                    textShadow={true}
-                    glowIntensity={0.4}
-                  >
-                    {category.title}
-                  </ExpandingText>
-                  {/* Underline animation */}
-                  <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
-                </div>
-              </div>
-
-              <div>
-                {category.skills.map((skill, index) => (
-                  <SkillItem key={index} name={skill.name} iconName={skill.icon} />
-                ))}
-              </div>
-            </Card3D>
+            <SkillCategoryCard key={category.id} category={category} />
           ))}
         </div>
 

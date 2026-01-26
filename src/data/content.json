@@ -113,7 +113,11 @@
       { "name": "Flask", "icon": "SiFlask" },
       { "name": "Streamlit", "icon": "FaPython" },
       { "name": "Gradio", "icon": "FaPython" },
-      { "name": "Beautiful Soup", "icon": "FaCodeBranch" }
+      { "name": "Beautiful Soup", "icon": "FaCodeBranch" },
+      { "name": "Kafka", "icon": "FaDatabase" },
+      { "name": "ZeroMQ", "icon": "FaNetworkWired" },
+      { "name": "Temporal", "icon": "FaClock" },
+      { "name": "WebSockets", "icon": "FaNetworkWired" }
     ],
     "databasesAndCloud": [
       { "name": "MySQL", "icon": "SiMysql" },
@@ -121,25 +125,37 @@
       { "name": "SQLite", "icon": "SiSqlite" },
       { "name": "MongoDB", "icon": "SiMongodb" },
       { "name": "Redis", "icon": "SiRedis" },
-
+      { "name": "MinIO", "icon": "FaDatabase" },
       { "name": "Pinecone", "icon": "FaDatabase" },
+      { "name": "Supabase", "icon": "FaDatabase" },
+      
+      { "name": "AWS", "icon": "FaAws" },
+      
       { "name": "Git", "icon": "FaGithub" },
       { "name": "GCP", "icon": "FaGoogle" },
-      { "name": "Docker", "icon": "FaDocker" }
+      { "name": "Docker", "icon": "FaDocker" },
+      { "name": "Kubernetes", "icon": "SiKubernetes" }
     ],
     "aiMl": [
       { "name": "Deep Learning", "icon": "FaBrain" },
       { "name": "Computer Vision", "icon": "FaBrain" },
       { "name": "NLP", "icon": "FaBrain" },
-      { "name": "Agentic AI", "icon": "FaBrain" },
+      
       { "name": "Edge ML", "icon": "FaMicrochip" },
       { "name": "TensorFlow", "icon": "SiTensorflow" },
       { "name": "TF-Lite", "icon": "SiTensorflow" },
       { "name": "PyTorch", "icon": "SiPytorch" },
       { "name": "Scikit-learn", "icon": "SiScikitlearn" },
+      { "name": "PySpark", "icon": "SiPyspark" },
 
       { "name": "LangChain", "icon": "FaBrain" },
-      { "name": "Hugging Face", "icon": "SiHuggingface" }
+      { "name": "Hugging Face", "icon": "SiHuggingface" },
+      { "name": "VLMs", "icon": "FaBrain" },
+      { "name": "RL", "icon": "FaBrain" },
+      { "name": "RAG", "icon": "FaBrain" },
+      { "name": "LLMs", "icon": "FaBrain" },
+      { "name": "Agentic AI", "icon": "FaBrain" }
+      
 
 
 
