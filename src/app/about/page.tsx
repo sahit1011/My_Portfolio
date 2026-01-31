@@ -372,23 +372,20 @@ export default function AboutPage() {
 
             {/* Right: Profile Image */}
             <div className="flex justify-center lg:justify-center items-center mt-8 lg:-mt-8 lg:-ml-8">
-              <Card3D
-                className="w-full max-w-[200px] sm:max-w-[240px] lg:max-w-xs profile-image-container"
-                hoverScale={1.02}
-                gradientShadow={true}
-                glowOnHover={true}
-              >
-                <div className="relative overflow-hidden rounded-2xl border border-white/20 shadow-2xl">
-                  <Image
-                    src="/images/updated_profile_pic_v2.png"
-                    alt={aboutInfo.name}
-                    width={300}
-                    height={300}
-                    className="profile-image rounded-2xl object-cover w-full h-auto"
-                    priority
-                  />
-                </div>
-              </Card3D>
+              <Image
+                src="/images/image.png"
+                alt={aboutInfo.name}
+                width={300}
+                height={300}
+                className="rounded-2xl object-cover max-w-[200px] sm:max-w-[240px] lg:max-w-xs w-full h-auto transition-transform duration-500 ease-in-out hover:scale-110"
+                style={{ 
+                  clipPath: 'inset(0 0 5% 0)',
+                  border: 'none',
+                  outline: 'none',
+                  boxShadow: 'none'
+                }}
+                priority
+              />
             </div>
           </div>
 

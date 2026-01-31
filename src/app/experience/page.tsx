@@ -49,13 +49,18 @@ export default function ExperiencePage() {
                 {/* Content */}
                 <div className="ml-10 md:ml-0">
                   <Card3D
-                    className="p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 text-gray-200"
+                    className="relative p-6 bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 text-gray-200"
                     hoverScale={1.005}
                     gradientShadow={false}
                     glowOnHover={false}
                   >
-                    <div className="flex flex-col md:flex-row items-start md:items-center gap-2 mb-4">
-                      <div className="relative">
+                    {/* Company name in top-right corner */}
+                    <span className="absolute top-4 right-4 px-4 py-1.5 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-full text-sm font-medium shadow-lg z-10">
+                      {exp.company}
+                    </span>
+                    
+                    <div className="mb-4 text-left" style={{ paddingRight: '140px' }}>
+                      <div className="relative inline-block">
                         <ExpandingText
                           as="h3"
                           className="text-2xl font-bold"
@@ -70,9 +75,6 @@ export default function ExperiencePage() {
                         {/* Underline animation */}
                         <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 animate-pulse"></div>
                       </div>
-                      <span className="px-4 py-1.5 bg-gradient-to-r from-purple-600 to-blue-500 text-white rounded-full text-sm font-medium shadow-lg">
-                        {exp.company}
-                      </span>
                     </div>
 
                   <div className="flex flex-col sm:flex-row gap-4 mb-4 text-gray-300">
