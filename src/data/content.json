@@ -267,6 +267,19 @@
       "featured": false
     },
     {
+      "id": 13,
+      "title": "Resume Screening Tool with RAG",
+      "description": [
+        "Built a full-stack resume screening platform that parses resumes and job descriptions, computes match scores, and surfaces candidate-fit insights.",
+        "Implemented a RAG pipeline with semantic retrieval, vector search, and context-aware candidate Q&A using fallback LLM and vector database architecture."
+      ],
+      "image": "/placeholder.jpg",
+      "technologies": ["React", "TypeScript", "Vite", "Tailwind CSS", "Express.js", "Axios", "Pinecone", "Chroma", "OpenAI", "Ollama", "RAG"],
+      "github": "https://github.com/sahit1011/Resume-Screener-Tool",
+      "demo": "#",
+      "featured": false
+    },
+    {
       "id": 11,
       "title": "Medical FAQ RAG Chatbot",
       "description": [

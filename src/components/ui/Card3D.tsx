@@ -27,7 +27,7 @@ const Card3D: React.FC<Card3DProps> = ({
 
   // Simplified version - no mouse tracking, just simple scale effect
   return (
-    <div className="perspective-container">
+    <div className="perspective-container h-full w-full">
       <motion.div
         className={baseClasses}
         whileHover={{

@@ -76,11 +76,11 @@ export default function ProjectCarousel({ projects, onVideoModalOpen }: ProjectC
           {projects.map((project) => (
             <div
               key={project.id}
-              className={`flex-shrink-0 px-3`}
+              className="flex-shrink-0 px-3 h-full flex"
               style={{ width: `${100 / cardsToShow}%` }}
             >
               <Card3D
-                className="p-4 sm:p-6 flex flex-col h-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100"
+                className="w-full p-4 sm:p-6 flex flex-col h-full bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100"
                 hoverScale={1.02}
                 mouseIntensity={0}
                 gradientShadow={false}
