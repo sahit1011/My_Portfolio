@@ -103,21 +103,18 @@
       { "name": "SQL", "icon": "FaDatabase" },
       { "name": "Matlab", "icon": "FaLaptopCode" }
     ],
-    "webTechnologies": [
-      { "name": "HTML", "icon": "FaHtml5" },
-      { "name": "CSS", "icon": "FaCss3Alt" },
-      { "name": "React", "icon": "FaReact" },
+    "backend": [
       { "name": "Next.js", "icon": "SiNextdotjs" },
-      { "name": "Node.js", "icon": "FaNodeJs" },
+      { "name": "Node.js", "icon": "SiNodedotjs" },
       { "name": "Django", "icon": "SiDjango" },
       { "name": "Flask", "icon": "SiFlask" },
-      { "name": "Streamlit", "icon": "FaPython" },
-      { "name": "Gradio", "icon": "FaPython" },
-      { "name": "Beautiful Soup", "icon": "FaCodeBranch" },
-      { "name": "Kafka", "icon": "FaDatabase" },
-      { "name": "ZeroMQ", "icon": "FaNetworkWired" },
-      { "name": "Temporal", "icon": "FaClock" },
-      { "name": "WebSockets", "icon": "FaNetworkWired" }
+      { "name": "FastAPI", "icon": "SiFastapi" },
+      { "name": "WebSockets", "icon": "FaNetworkWired" },
+      { "name": "ZeroMQ", "icon": "CustomZeroMQ" },
+      { "name": "RabbitMQ", "icon": "SiRabbitmq" },
+      { "name": "Kafka", "icon": "SiApachekafka" },
+      { "name": "Redis Streams", "icon": "SiRedis" },
+      { "name": "TensorZero", "icon": "CustomTensorZero" }
     ],
     "databasesAndCloud": [
       { "name": "MySQL", "icon": "SiMysql" },
@@ -125,16 +122,22 @@
       { "name": "SQLite", "icon": "SiSqlite" },
       { "name": "MongoDB", "icon": "SiMongodb" },
       { "name": "Redis", "icon": "SiRedis" },
-      { "name": "MinIO", "icon": "FaDatabase" },
-      { "name": "Pinecone", "icon": "FaDatabase" },
-      { "name": "Supabase", "icon": "FaDatabase" },
+      { "name": "MinIO", "icon": "SiMinio" },
+      { "name": "Pinecone", "icon": "CustomPinecone" },
+      { "name": "Supabase", "icon": "SiSupabase" },
       
       { "name": "AWS", "icon": "FaAws" },
       
       { "name": "Git", "icon": "FaGithub" },
       { "name": "GCP", "icon": "FaGoogle" },
       { "name": "Docker", "icon": "FaDocker" },
-      { "name": "Kubernetes", "icon": "SiKubernetes" }
+      { "name": "Kubernetes", "icon": "SiKubernetes" },
+      { "name": "ArgoCD", "icon": "SiArgo" },
+      { "name": "GitHub Actions", "icon": "SiGithubactions" },
+      { "name": "Prometheus", "icon": "SiPrometheus" },
+      { "name": "Grafana", "icon": "SiGrafana" },
+      { "name": "Temporal", "icon": "SiTemporal" },
+      { "name": "CubeAPM", "icon": "CustomCubeAPM" }
     ],
     "aiMl": [
       { "name": "Deep Learning", "icon": "FaBrain" },
@@ -145,6 +148,8 @@
       { "name": "TensorFlow", "icon": "SiTensorflow" },
       { "name": "TF-Lite", "icon": "SiTensorflow" },
       { "name": "PyTorch", "icon": "SiPytorch" },
+      { "name": "ONNX", "icon": "SiOnnx" },
+      { "name": "TensorRT", "icon": "SiNvidia" },
       { "name": "Scikit-learn", "icon": "SiScikitlearn" },
       { "name": "PySpark", "icon": "SiPyspark" },
 
@@ -375,9 +380,9 @@
     "skills": {
       "languages": "Python, C++, JavaScript, TypeScript, SQL",
       "frontend": "React.js, Next.js, HTML/CSS, Tailwind CSS",
-      "backend": "Node.js, Django, Flask, FastAPI, WebSockets, Temporal, Kafka, ZeroMQ",
+      "backend": "Next.js, Node.js, Django, Flask, FastAPI, WebSockets, ZeroMQ, RabbitMQ, Kafka, Redis Streams, TensorZero",
       "databases": "MySQL, PostgreSQL, MongoDB, Redis, Pinecone, MinIO",
-      "aiMl": "TensorFlow, PyTorch, Scikit-learn, PySpark, OpenCV, NLP, LLMs, VLMs, RL, RAG",
+      "aiMl": "TensorFlow, PyTorch, ONNX, TensorRT, Scikit-learn, PySpark, OpenCV, NLP, LLMs, VLMs, RL, RAG",
       "devOps": "AWS, GCP, Docker, K8, Modal, Supabase"
     }
   },
