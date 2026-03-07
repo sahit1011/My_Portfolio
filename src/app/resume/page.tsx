@@ -11,8 +11,8 @@ import SpotlightCard from '@/components/SpotLightCard';
 import ShinyText from '@/components/ShinyText';
 
 const ResumePage = () => {
-  const resumeUrl = '/sahith_resume_ai.pdf';
-  const resumeDownloadUrl = '/sahith_resume_ai.pdf';
+  const resumeUrl = '/anil-resume-ai.pdf';
+  const resumeDownloadUrl = '/anil-resume-ai.pdf';
 
   return (
     <MainLayout>
