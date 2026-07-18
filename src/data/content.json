@@ -527,8 +527,7 @@
       ],
       "github": "https://github.com/sahit1011/MediQuickAI",
       "featured": true,
-      "image": "/images/medi-quick-image.png",
-      "demoVideo": "/videos/mediquick.mp4"
+      "image": "/images/medi-quick-image.png"
     },
     {
       "id": 7,
@@ -598,8 +597,7 @@
         "Vite"
       ],
       "github": "https://github.com/sahit1011/TodoAI",
-      "featured": true,
-      "demoVideo": "/videos/todoai.mp4"
+      "featured": true
     },
     {
       "id": 1,
