@@ -55,7 +55,7 @@ export default function CommandPalette() {
     ];
     const pages: Cmd[] = [
       { id: 'match', label: 'AI Resume Match', group: 'Pages', icon: <FaRobot />, keywords: 'jd job fit', run: () => go('/resume-match') },
-      { id: 'resume', label: 'Résumé (PDF)', group: 'Pages', icon: <FaFilePdf />, keywords: 'cv download', run: () => openUrl('/anil_ml_resme.pdf') },
+      { id: 'resume', label: 'Résumé (PDF)', group: 'Pages', icon: <FaFilePdf />, keywords: 'cv download', run: () => openUrl('/resume_anil_sahith.pdf') },
     ];
     const projects: Cmd[] = getProjects().map((p) => ({
       id: `proj-${p.id}`,

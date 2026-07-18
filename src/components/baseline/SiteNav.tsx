@@ -104,7 +104,7 @@ export default function SiteNav({ home = true }: { home?: boolean }) {
               AI&nbsp;Match
             </Link>
             <a
-              href="/anil_ml_resme.pdf"
+              href="/resume_anil_sahith.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="ml-1 rounded-lg border border-hair px-4 py-2 font-mono text-sm text-ink transition-colors duration-200 hover:border-signal/50 hover:text-signal"
@@ -144,7 +144,7 @@ export default function SiteNav({ home = true }: { home?: boolean }) {
               AI Resume Match
             </Link>
             <a
-              href="/anil_ml_resme.pdf"
+              href="/resume_anil_sahith.pdf"
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}

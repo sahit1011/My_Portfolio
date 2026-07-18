@@ -9,8 +9,8 @@ import { getPersonalInfo, getGithubUrl, getLinkedinUrl } from '@/utils/content';
 
 const ResumePage = () => {
   const personalInfo = getPersonalInfo();
-  const resumeUrl = '/anil_ml_resme.pdf'; // Link to PDF in public folder
-  const resumeDownloadUrl = '/anil_ml_resme.pdf'; // Link to PDF in public folder for download
+  const resumeUrl = '/resume_anil_sahith.pdf'; // Link to PDF in public folder
+  const resumeDownloadUrl = '/resume_anil_sahith.pdf'; // Link to PDF in public folder for download
 
   return (
     <MainLayout>
