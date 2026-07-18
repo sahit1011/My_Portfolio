@@ -1,16 +1,20 @@
-# Demo videos
+# Videos
 
-The featured case-study pages show a **play button** over the landing image and
-play a screen recording when clicked (`DemoPlayer` → `project.demoVideo`).
+Two kinds of clip per featured project:
 
-Drop your recordings here with these exact filenames (mp4, H.264, ideally ≤ ~20 MB,
-16:9). Until a file exists the play button will 404, so add them before/soon after
-this version goes live:
+### 1. Card preview loops — `previewVideo` (home Work cards)
+Short landing-page scroll-throughs that autoplay muted/looping on the card cover.
+- `cryptai.mp4`   ✅
+- `studyarc.mp4`  ✅ (dark mode)
+- `klaro.mp4`     ✅
+- MediQuick / TodoAI → none yet (cards show the poster image)
 
-- `cryptai.mp4`      → CryptAI
-- `studyarc.mp4`     → StudyArc
-- `klaro.mp4`        → Klaro
-- `mediquick.mp4`    → MediQuick AI
-- `todoai.mp4`       → TodoAI
+### 2. Case-study walkthroughs — `demoVideo` (play-to-watch on /projects/<slug>)
+Full app walkthroughs (signup → dashboard etc.). Shown behind a play button.
+- `studyarc-demo.mp4` ✅ — full onboarding → generated plan
+- CryptAI → blocked (signup needs email confirmation)
+- Klaro → blocked (frontend needs its Python/Postgres backend running)
+- MediQuick / TodoAI → no local app to record
 
-To change a filename, edit `demoVideo` on that project in `src/data/content.json`.
+Field names live on each project in `src/data/content.json`
+(`previewVideo` = card loop, `demoVideo` = case-study walkthrough).

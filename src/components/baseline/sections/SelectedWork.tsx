@@ -27,7 +27,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         className="relative block aspect-video w-full overflow-hidden border-b border-hair"
       >
         <CardCover
-          video={project.demoVideo}
+          video={project.previewVideo}
           preview={project.preview}
           title={title}
           label={project.tag}

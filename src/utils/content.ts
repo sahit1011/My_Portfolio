@@ -65,7 +65,8 @@ export interface Project {
   description: string[];
   image?: string;        // legacy/unused — covers now come from `preview`
   preview?: string;      // /projects/<slug>.png — cover screenshot (graceful fallback if missing)
-  demoVideo?: string;    // /projects/<slug>.mp4 — optional demo clip (case study)
+  previewVideo?: string; // /videos/<slug>.mp4 — looping landing clip for the card cover
+  demoVideo?: string;    // /videos/<slug>-demo.mp4 — full app walkthrough (case-study play-to-watch)
   technologies: string[];
   github: string;
   demo?: string;

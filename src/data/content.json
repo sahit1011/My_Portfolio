@@ -452,7 +452,7 @@
       ],
       "github": "https://github.com/sahit1011/Quant-AI-Trading-Platform",
       "featured": true,
-      "demoVideo": "/videos/cryptai.mp4"
+      "previewVideo": "/videos/cryptai.mp4"
     },
     {
       "id": 17,
@@ -479,7 +479,8 @@
       "github": "",
       "demo": "https://studyarc-alpha.vercel.app",
       "featured": true,
-      "demoVideo": "/videos/studyarc.mp4"
+      "previewVideo": "/videos/studyarc.mp4",
+      "demoVideo": "/videos/studyarc-demo.mp4"
     },
     {
       "id": 16,
@@ -505,7 +506,7 @@
       "github": "https://github.com/sahit1011/Full-Stack-MiniAI-As-A-Service",
       "featured": true,
       "image": "/images/klaro-landing.png",
-      "demoVideo": "/videos/klaro.mp4"
+      "previewVideo": "/videos/klaro.mp4"
     },
     {
       "id": 12,
