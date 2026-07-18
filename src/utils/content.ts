@@ -187,6 +187,12 @@ export const getLinkedinUsername = (): string => getPersonalInfo().linkedin;
 export const getGithubUrl = (): string => `https://github.com/${getGithubUsername()}`;
 export const getLinkedinUrl = (): string => `https://linkedin.com/in/${getLinkedinUsername()}`;
 
+/** Gmail compose window addressed to the portfolio email (open in a new tab). */
+export const getEmailComposeUrl = (subject?: string): string => {
+  const base = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(getEmail())}`;
+  return subject ? `${base}&su=${encodeURIComponent(subject)}` : base;
+};
+
 export const getProjectById = (id: number): Project | undefined =>
   getProjects().find(project => project.id === id);
 

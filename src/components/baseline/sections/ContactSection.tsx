@@ -4,11 +4,11 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
 import Reveal from '../Reveal';
 import MagneticButton from '../MagneticButton';
 import SectionHeader from './SectionHeader';
-import { getPersonalInfo, getGithubUrl, getLinkedinUrl } from '@/utils/content';
+import { getPersonalInfo, getGithubUrl, getLinkedinUrl, getEmailComposeUrl } from '@/utils/content';
 
 export default function ContactSection() {
   const info = getPersonalInfo();
-  const mailto = `mailto:${info.email}`;
+  const emailCompose = getEmailComposeUrl();
 
   return (
     <section id="contact" className="shell scroll-mt-20 border-t border-hair py-24 sm:py-32">
@@ -21,7 +21,7 @@ export default function ContactSection() {
             in AI/ML and full-stack engineering. The fastest way to reach me is email.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <MagneticButton href={mailto} variant="solid" external>
+            <MagneticButton href={emailCompose} variant="solid" external>
               {info.email} <FaArrowRight className="transition-transform group-hover:translate-x-0.5" />
             </MagneticButton>
           </div>
@@ -33,7 +33,7 @@ export default function ContactSection() {
             <a href={getLinkedinUrl()} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="transition-colors hover:text-signal">
               <FaLinkedin size={20} />
             </a>
-            <a href={mailto} aria-label="Email" className="transition-colors hover:text-signal">
+            <a href={emailCompose} target="_blank" rel="noopener noreferrer" aria-label="Email" className="transition-colors hover:text-signal">
               <FaEnvelope size={20} />
             </a>
           </div>

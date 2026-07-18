@@ -6,7 +6,7 @@ import MagneticButton from '../MagneticButton';
 import Typewriter from '../Typewriter';
 import HeroBackdrop from '../hero/HeroBackdrop';
 import { EASE_OUT } from '../motion';
-import { getPersonalInfo, getGithubUrl, getLinkedinUrl } from '@/utils/content';
+import { getPersonalInfo, getGithubUrl, getLinkedinUrl, getEmailComposeUrl } from '@/utils/content';
 
 const ROLES = ['a Software Engineer', 'an AI Engineer', 'an ML Engineer', 'a Data Scientist'];
 
@@ -18,7 +18,7 @@ const fadeUp = (delay: number) => ({
 
 export default function Hero() {
   const info = getPersonalInfo();
-  const mailto = `mailto:${info.email}`;
+  const emailCompose = getEmailComposeUrl();
 
   return (
     <section className="relative flex min-h-[92vh] items-center overflow-hidden pb-16 pt-32 sm:pt-40">
@@ -108,7 +108,7 @@ export default function Hero() {
           <a href={getLinkedinUrl()} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="transition-colors hover:text-signal">
             <FaLinkedin size={20} />
           </a>
-          <a href={mailto} aria-label="Email" className="transition-colors hover:text-signal">
+          <a href={emailCompose} target="_blank" rel="noopener noreferrer" aria-label="Email" className="transition-colors hover:text-signal">
             <FaEnvelope size={20} />
           </a>
           <span className="hidden h-px w-12 bg-hair sm:block" />

@@ -1,12 +1,12 @@
 'use client';
 
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import { getPersonalInfo, getGithubUrl, getLinkedinUrl } from '@/utils/content';
+import { getPersonalInfo, getGithubUrl, getLinkedinUrl, getEmailComposeUrl } from '@/utils/content';
 
 export default function SiteFooter() {
   const info = getPersonalInfo();
   const year = new Date().getFullYear();
-  const mailto = `mailto:${info.email}`;
+  const emailCompose = getEmailComposeUrl();
 
   return (
     <footer className="border-t border-hair">
@@ -21,7 +21,7 @@ export default function SiteFooter() {
           <a href={getLinkedinUrl()} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="transition-colors hover:text-signal">
             <FaLinkedin size={18} />
           </a>
-          <a href={mailto} aria-label="Email" className="transition-colors hover:text-signal">
+          <a href={emailCompose} target="_blank" rel="noopener noreferrer" aria-label="Email" className="transition-colors hover:text-signal">
             <FaEnvelope size={18} />
           </a>
         </div>
