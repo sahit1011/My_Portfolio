@@ -452,7 +452,8 @@
       ],
       "github": "https://github.com/sahit1011/Quant-AI-Trading-Platform",
       "featured": true,
-      "previewVideo": "/videos/cryptai.mp4"
+      "previewVideo": "/videos/cryptai.mp4",
+      "demo": "https://cryptai.vercel.app"
     },
     {
       "id": 17,
@@ -506,7 +507,8 @@
       "github": "https://github.com/sahit1011/Full-Stack-MiniAI-As-A-Service",
       "featured": true,
       "image": "/images/klaro-landing.png",
-      "previewVideo": "/videos/klaro.mp4"
+      "previewVideo": "/videos/klaro.mp4",
+      "demoVideo": "/videos/klaro-demo.mp4"
     },
     {
       "id": 12,
