@@ -19,6 +19,7 @@ export interface AboutInfo {
   name: string;
   roles: Array<{ prefix: string; name: string }>;
   bio: string[];
+  chat?: string[];
   currentlyExploring: string[];
   education: string;
   experience: string;
@@ -31,6 +32,8 @@ export interface Experience {
   company: string;
   location: string;
   period: string;
+  summary?: string;
+  highlights?: string[];
   description: string[];
   skills: string[];
 }
@@ -57,8 +60,12 @@ export interface SkillCategory {
 export interface Project {
   id: number;
   title: string;
+  slug?: string;
+  tag?: string;
   description: string[];
-  image: string;
+  image?: string;        // legacy/unused — covers now come from `preview`
+  preview?: string;      // /projects/<slug>.png — cover screenshot (graceful fallback if missing)
+  demoVideo?: string;    // /projects/<slug>.mp4 — optional demo clip (case study)
   technologies: string[];
   github: string;
   demo?: string;
@@ -181,6 +188,19 @@ export const getLinkedinUrl = (): string => `https://linkedin.com/in/${getLinked
 
 export const getProjectById = (id: number): Project | undefined =>
   getProjects().find(project => project.id === id);
+
+// Stable slug for deep project pages (falls back to a slugified title).
+export const getProjectSlug = (project: Project): string =>
+  project.slug ||
+  project.title
+    .split(/[-—]/)[0]
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+
+export const getProjectBySlug = (slug: string): Project | undefined =>
+  getProjects().find(project => getProjectSlug(project) === slug);
 
 export const getExperienceById = (id: number): Experience | undefined =>
   getExperiences().find(exp => exp.id === id);

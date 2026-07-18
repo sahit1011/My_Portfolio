@@ -1,6 +1,6 @@
 {
   "personalInfo": {
-    "name": "Vallepu Anil Sahith",
+    "name": "Anil Sahith Vallepu",
     "displayName": "Anil Sahith",
     "titles": [
       "Software Engineer",
@@ -9,27 +9,40 @@
     ],
     "email": "anilsahithvallepu@gmail.com",
     "phone": "+91 8143400946",
-    "location": "Hyderabad, India",
+    "location": "Bangalore, India",
     "github": "sahit1011",
     "linkedin": "anil-sahith",
     "twitter": "",
     "website": ""
   },
-
   "about": {
     "greeting": "Hello, Myself",
     "name": "Anil Sahith",
     "roles": [
-      { "prefix": "I'm a ", "name": "Software Engineer" },
-      { "prefix": "I'm a ", "name": "Data Scientist" },
-      { "prefix": "I'm an ", "name": "AI/ML Engineer" }
-      
+      {
+        "prefix": "I'm a ",
+        "name": "Software Engineer"
+      },
+      {
+        "prefix": "I'm a ",
+        "name": "Data Scientist"
+      },
+      {
+        "prefix": "I'm an ",
+        "name": "AI/ML Engineer"
+      }
     ],
     "bio": [
-      "With strong Computer Science concepts and an eye for detail, I enjoy creating effective solutions to challenging problems. I'm always excited to use new technologies to build impactful applications.",
-      "My interest in technology started with a fascination for how software can change industries and improve lives. I'm dedicated to learning and finding new ways to solve problems.",
-      "I'm particularly drawn to the dynamic and innovative nature of startup environments. My previous two company experiences were with startups, which I found incredibly rewarding. I'm also actively developing a few startup ideas of my own, including currently building a Doctor assistant app.",
-      "When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge through technical writing and mentoring."
+      "I build real-world AI/ML systems — and the products around them. I'm comfortable across the whole stack of a problem: training models, wiring up the data and inference pipelines, and shipping the interface people actually touch. Strong CS fundamentals, an eye for detail, and a bias toward things that hold up in production.",
+      "I've done my best work at startups, where owning a problem end to end is just the job. Lately I'm building a few ideas of my own too — including a doctor-assistant app that takes the administrative load off clinicians so they can stay focused on patients."
+    ],
+    "chat": [
+      "hey 👋",
+      "i'm anil, an AI/ML engineer 🤖",
+      "i build things at startups — rn it's ai voice agents 🎙️",
+      "offline? pool, gym, some court, or off travelling somewhere ✈️",
+      "i also (rarely) sketch faces in pencil ✏️, love to cook 🍳, and watch way too much anime 🍥",
+      "anyway that's me… say hi 👇"
     ],
     "currentlyExploring": [
       "Agentic AI",
@@ -40,54 +53,143 @@
     "experience": "2+ Professional Experiences (Internships & Freelancing)",
     "technologies": "Proficient in 20+ Technologies"
   },
-
   "experience": [
     {
-      "id": 1,
-      "title": "Freelance AI Developer",
-      "company": "ArcherReview",
-      "location": "Remote",
-      "period": "Apr 2025 - May 2025",
-      "description": [
-
-        "Built full-stack Next.js application with TypeScript, MongoDB, and real-time features including interactive drag-and-drop calendar, user authentication, progress analytics, and AI tutor integration serving personalized learning experiences.",
-        "Developed a sophisticated multi-agent AI system using Google Gemini API with specialized agents for monitoring student progress, adapting study plans, and coordinating remediation activities, resulting in 85% improvement over static educational platforms.",
-        "Implemented advanced adaptive learning algorithms combining constraint-based optimization with machine learning for dynamic study plan generation and spaced repetition scheduling based on individual performance patterns.",
-        "Created intelligent monitoring system that tracks user behavior, detects learning difficulties, and automatically adjusts content difficulty and scheduling using sentiment analysis and natural language processing."
+      "id": 5,
+      "title": "Software Engineer II",
+      "company": "Arrowhead",
+      "location": "Bangalore, India · On-site",
+      "period": "Apr 2026 - Present",
+      "summary": "Building an AI voice-bot platform end to end — the real-time speech pipeline, high-performance plugins, and in-house speech & language models.",
+      "highlights": [
+        "Platform & backend services powering the real-time voice pipeline (STT → LLM → TTS), call orchestration, and the plugin API.",
+        "High-performance Rust plugins running on the live call path, plus operational tooling.",
+        "Building in-house AI models — STT, TTS, and the conversational LLM — via SFT and DPO."
       ],
-      "skills": [ "Next.js", "TypeScript", "Python", "MongoDB", "Multi-agentic AI","Google Gemini API", "Machine Learning", "NLP", "Sentiment Analysis", "Progress Analytics", "AI Tutor Integration"]
+      "description": [
+        "SDE-2 on an AI voice-bot platform — building backend and platform services for the real-time speech pipeline (STT → LLM → TTS with noise suppression), call/conversation orchestration, knowledge base, and a plugin API.",
+        "Build high-performance Rust plugins that run on the live call path for low-latency processing, plus Rust operational tooling.",
+        "Work on in-house speech & language models — STT, TTS, and the conversational LLM — through SFT and DPO data pipelines (mixed reasoning/direct modes), with a scenario-based evaluation framework to catch regressions."
+      ],
+      "skills": [
+        "Python",
+        "Rust",
+        "FastAPI",
+        "WebSockets",
+        "AWS",
+        "EKS",
+        "Temporal",
+        "Docker",
+        "PostgreSQL",
+        "Redis",
+        "LLMs",
+        "SFT",
+        "DPO",
+        "STT",
+        "TTS",
+        "Voice AI"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Software Engineer, AI",
+      "company": "Matters.AI",
+      "location": "Bangalore, Karnataka",
+      "period": "Dec 2025 - Mar 2026",
+      "summary": "Production ML serving and large-scale document-processing infrastructure.",
+      "highlights": [
+        "Inference gateway on GKE — 10K RPS ingestion, ~0.001% failure across 1M+ docs",
+        "NER on ONNX + TensorRT, OCR on vLLM — sub-100ms p99 latency",
+        "Distributed extraction with Dask + VLM/LLM models for PII/PHI"
+      ],
+      "description": [
+        "Built a production-grade data processing system for massive structured & unstructured datasets — distributed parallel execution with Dask and a hybrid extraction engine for PII/PHI detection, integrating VLM and LLM models for image extraction, entity classification, and post-verification.",
+        "Designed and deployed an inference gateway on GKE routing NER/OCR payloads across Modal and self-hosted GPU backends, with Redis Streams queue decoupling — ingesting up to 10K RPS while holding controlled downstream throughput (~3K RPS), plus health-aware routing, rate limiting, and retry/DLQ handling for a ~0.001% failure rate across 1M+ documents.",
+        "Built high-throughput ML serving infra: optimized NER models with ONNX Runtime + TensorRT and OCR with vLLM + Flash-Attention on GPU node pools, achieving sub-100ms p99 NER batch latency and sub-500ms OCR latency via async micro-batching and A/B-tested concurrency tuning."
+      ],
+      "skills": [
+        "Python",
+        "FastAPI",
+        "Dask",
+        "GKE / Kubernetes",
+        "Docker",
+        "GCP",
+        "Modal",
+        "Redis Streams",
+        "ONNX Runtime",
+        "TensorRT",
+        "vLLM",
+        "Flash-Attention",
+        "NER",
+        "OCR",
+        "VLM / LLM"
+      ]
     },
     {
       "id": 2,
-      "title": "Junior AI Engineer",
+      "title": "AI Engineer",
       "company": "Noccarc Robotics Pvt Ltd.",
       "location": "Pune, Maharashtra",
       "period": "Jun 2024 - Apr 2025",
-      "description": [
-        "Developed a real-time arrhythmia detection system for embedded patient monitors using a combined multi-channel hybrid model (CNN-GRU with separable convolutions, an attention layer) to generate predictive masks for 8+ arrhythmia classes, achieving over 95% accuracy.",
-        "System enables real-time detection of heart abnormalities, generating nearly 20+ distinct alarms via the model, facilitating immediate clinical decision-making and reducing response times in critical care settings.",
-        "Architecture includes data flow from ECG sensors, preprocessing, front-end display, back-end processing, and model inference pipelines for seamless embedded hardware operation.",
-        "Model inference occurs in real-time every 5 seconds, generating alarms if any abnormality is detected, all while consuming less than 10% of single-core CPU resources."
+      "summary": "Real-time arrhythmia detection on embedded patient monitors.",
+      "highlights": [
+        "Hybrid net (ResNet + CBAM + GRU) on-device — ~300ms latency, <12% CPU",
+        "20+ arrhythmia classes with automated ICU alarms",
+        "End-to-end pipeline: sensors → inference → frontend"
       ],
-      "skills": ["Python", "Machine Learning", "Deep Learning", "CNN", "GRU", "Attention Mechanism", "Separable Convolutions", "TF-Lite", "Embedded Systems", "Real-time Processing", "CPU Optimization"]
+      "description": [
+        "Architected a real-time arrhythmia detection system for embedded patient-monitoring devices, with an end-to-end pipeline from sensor integration to frontend visualization and automated alarm generation across 20+ distinct classifications for critical heart abnormalities — reducing clinical response times in ICUs.",
+        "Implemented a hybrid neural network (ResNet + CBAM attention + GRU with separable convolutions) tuned for efficient edge deployment — ~300ms inference latency on a patient monitor, processing ECG every 5 seconds at under 12% single-core CPU."
+      ],
+      "skills": [
+        "Python",
+        "Embedded Systems",
+        "Real-time Inference",
+        "CPU Optimization",
+        "Signal Processing",
+        "Edge ML",
+        "PyTorch",
+        "TensorFlow",
+        "TF-Lite",
+        "Deep Learning",
+        "CNN",
+        "ResNet",
+        "CBAM Attention",
+        "GRU"
+      ]
     },
     {
       "id": 3,
-      "title": "Summer Intern - AI/ML",
-      "company": "Carelon Global Solutions, (Elevance Healthcare)",
+      "title": "Summer Intern, ML",
+      "company": "Carelon Global Solutions (Elevance Healthcare)",
       "location": "Bangalore, Karnataka",
       "period": "Jun 2023 - Aug 2023",
-      "description": [
-        "Integrated PyTesseract (OCR), OpenCV (for image preprocessing), and YOLOv8 (for object detection) to extract text and identify regions of interest from EOBs (Explanation of Benefits) and RAs (Remittance Advice) for health insurances, processing ~700 documents/hour with 95% accuracy.",
-        "Implemented multi-threading and multi-processing techniques.",
-        "Delivered a comprehensive, scalable solution for automating data extraction, reducing processing time and cost by 90%."
+      "summary": "Automated healthcare document processing with CV + deep learning.",
+      "highlights": [
+        "OCR pipeline (PyTesseract + EasyOCR + YOLOv8) — 700+ docs/hr at 95%",
+        "Cut document processing time by 90% via multi-threading/processing"
       ],
-      "skills": ["Python", "PyTesseract", "OpenCV", "YOLOv8", "OCR", "Computer Vision", "Multi-threading", "Multi-processing", "Healthcare IT", "EOB Processing", "RA Processing"]
+      "description": [
+        "Automated a document-processing pipeline using computer vision and deep learning to extract and classify data from 700+ documents/hour at 95% accuracy — an end-to-end OCR solution with PyTesseract + EasyOCR for text extraction, OpenCV for preprocessing, and YOLOv8 for region identification.",
+        "Accelerated throughput with multi-threading and multi-processing, cutting document processing time by 90% and operational cost, and delivered a production-ready solution integrated with existing enterprise data workflows."
+      ],
+      "skills": [
+        "Python",
+        "NumPy",
+        "Multi-threading",
+        "Multi-processing",
+        "Healthcare IT",
+        "OpenCV",
+        "PyTesseract",
+        "EasyOCR",
+        "YOLOv8",
+        "Object Detection",
+        "OCR",
+        "Image Preprocessing",
+        "Computer Vision"
+      ]
     }
-
-
   ],
-
   "education": [
     {
       "id": 1,
@@ -98,134 +200,388 @@
       "achievements": []
     }
   ],
-
   "skills": {
     "programmingLanguages": [
-      { "name": "Python", "icon": "FaPython" },
-      { "name": "C++", "icon": "SiCplusplus" },
-      { "name": "JavaScript", "icon": "FaJs" },
-      { "name": "TypeScript", "icon": "SiTypescript" },
-      { "name": "SQL", "icon": "FaDatabase" },
-      { "name": "Matlab", "icon": "FaLaptopCode" }
+      {
+        "name": "Python",
+        "icon": "FaPython"
+      },
+      {
+        "name": "C++",
+        "icon": "SiCplusplus"
+      },
+      {
+        "name": "JavaScript",
+        "icon": "FaJs"
+      },
+      {
+        "name": "TypeScript",
+        "icon": "SiTypescript"
+      },
+      {
+        "name": "SQL",
+        "icon": "FaDatabase"
+      }
     ],
     "webTechnologies": [
-      { "name": "HTML", "icon": "FaHtml5" },
-      { "name": "CSS", "icon": "FaCss3Alt" },
-      { "name": "React", "icon": "FaReact" },
-      { "name": "Next.js", "icon": "SiNextdotjs" },
-      { "name": "Node.js", "icon": "FaNodeJs" },
-      { "name": "Django", "icon": "SiDjango" },
-      { "name": "Flask", "icon": "SiFlask" },
-      { "name": "Streamlit", "icon": "FaPython" },
-      { "name": "Gradio", "icon": "FaPython" },
-      { "name": "Beautiful Soup", "icon": "FaCodeBranch" }
+      {
+        "name": "React",
+        "icon": "FaReact"
+      },
+      {
+        "name": "Next.js",
+        "icon": "SiNextdotjs"
+      },
+      {
+        "name": "Node.js",
+        "icon": "FaNodeJs"
+      },
+      {
+        "name": "Django",
+        "icon": "SiDjango"
+      },
+      {
+        "name": "Flask",
+        "icon": "SiFlask"
+      },
+      {
+        "name": "FastAPI",
+        "icon": "FaPython"
+      },
+      {
+        "name": "WebSockets",
+        "icon": "FaCodeBranch"
+      },
+      {
+        "name": "Kafka",
+        "icon": "FaServer"
+      },
+      {
+        "name": "RabbitMQ",
+        "icon": "FaServer"
+      }
     ],
     "databasesAndCloud": [
-      { "name": "MySQL", "icon": "SiMysql" },
-      { "name": "PostgreSQL", "icon": "SiPostgresql" },
-      { "name": "SQLite", "icon": "SiSqlite" },
-      { "name": "MongoDB", "icon": "SiMongodb" },
-      { "name": "Redis", "icon": "SiRedis" },
-
-      { "name": "Pinecone", "icon": "FaDatabase" },
-      { "name": "Git", "icon": "FaGithub" },
-      { "name": "GCP", "icon": "FaGoogle" },
-      { "name": "Docker", "icon": "FaDocker" }
+      {
+        "name": "MySQL",
+        "icon": "SiMysql"
+      },
+      {
+        "name": "PostgreSQL",
+        "icon": "SiPostgresql"
+      },
+      {
+        "name": "MongoDB",
+        "icon": "SiMongodb"
+      },
+      {
+        "name": "Supabase",
+        "icon": "FaDatabase"
+      },
+      {
+        "name": "Redis",
+        "icon": "SiRedis"
+      },
+      {
+        "name": "Pinecone",
+        "icon": "FaDatabase"
+      },
+      {
+        "name": "ChromaDB",
+        "icon": "FaDatabase"
+      },
+      {
+        "name": "AWS",
+        "icon": "FaAws"
+      },
+      {
+        "name": "GCP",
+        "icon": "FaGoogle"
+      },
+      {
+        "name": "Docker",
+        "icon": "FaDocker"
+      },
+      {
+        "name": "Kubernetes",
+        "icon": "SiKubernetes"
+      },
+      {
+        "name": "ArgoCD",
+        "icon": "FaServer"
+      }
     ],
     "aiMl": [
-      { "name": "Deep Learning", "icon": "FaBrain" },
-      { "name": "Computer Vision", "icon": "FaBrain" },
-      { "name": "NLP", "icon": "FaBrain" },
-      { "name": "Agentic AI", "icon": "FaBrain" },
-      { "name": "Edge ML", "icon": "FaMicrochip" },
-      { "name": "TensorFlow", "icon": "SiTensorflow" },
-      { "name": "TF-Lite", "icon": "SiTensorflow" },
-      { "name": "PyTorch", "icon": "SiPytorch" },
-      { "name": "Scikit-learn", "icon": "SiScikitlearn" },
-
-      { "name": "LangChain", "icon": "FaBrain" },
-      { "name": "Hugging Face", "icon": "SiHuggingface" }
-
-
-
+      {
+        "name": "PyTorch",
+        "icon": "SiPytorch"
+      },
+      {
+        "name": "TensorFlow",
+        "icon": "SiTensorflow"
+      },
+      {
+        "name": "CUDA",
+        "icon": "FaMicrochip"
+      },
+      {
+        "name": "ONNX",
+        "icon": "FaBrain"
+      },
+      {
+        "name": "TensorRT",
+        "icon": "FaMicrochip"
+      },
+      {
+        "name": "vLLM",
+        "icon": "FaBrain"
+      },
+      {
+        "name": "OpenCV",
+        "icon": "FaBrain"
+      },
+      {
+        "name": "LangChain",
+        "icon": "FaBrain"
+      },
+      {
+        "name": "LangGraph",
+        "icon": "FaBrain"
+      },
+      {
+        "name": "RAG",
+        "icon": "FaBrain"
+      },
+      {
+        "name": "LLMs & VLMs",
+        "icon": "FaBrain"
+      },
+      {
+        "name": "Deep Learning",
+        "icon": "FaBrain"
+      }
     ],
     "developerTools": [
-      { "name": "VS Code", "icon": "FaCode" },
-      { "name": "Spyder", "icon": "FaPython" },
-      { "name": "PyCharm", "icon": "FaPython" },
-      { "name": "Google Colab", "icon": "FaGoogle" },
-      { "name": "GitHub", "icon": "FaGithub" },
-      { "name": "Cursor", "icon": "FaLaptopCode" },
-      { "name": "Power BI", "icon": "FaChartBar" },
-      { "name": "Figma", "icon": "SiFigma" },
-      { "name": "Postman", "icon": "FaBrain" }
+      {
+        "name": "VS Code",
+        "icon": "FaCode"
+      },
+      {
+        "name": "Cursor",
+        "icon": "FaLaptopCode"
+      },
+      {
+        "name": "GitHub",
+        "icon": "FaGithub"
+      },
+      {
+        "name": "GitHub Actions",
+        "icon": "FaGithub"
+      },
+      {
+        "name": "Modal",
+        "icon": "FaServer"
+      },
+      {
+        "name": "Prometheus",
+        "icon": "FaChartBar"
+      },
+      {
+        "name": "Grafana",
+        "icon": "FaChartBar"
+      },
+      {
+        "name": "Postman",
+        "icon": "FaCode"
+      },
+      {
+        "name": "Figma",
+        "icon": "SiFigma"
+      }
     ],
     "conceptsAndSystems": [
-      { "name": "System Design", "icon": "FaServer" },
-      { "name": "Computer Networks", "icon": "FaNetworkWired" },
-      { "name": "Embedded Systems", "icon": "FaMicrochip" },
-      { "name": "IOT and Cloud Computing", "icon": "FaCloud" },
-      { "name": "Data Structures & Algorithms", "icon": "FaCode" },
-      { "name": "Quantum Computing", "icon": "FaBrain" }
+      {
+        "name": "System Design",
+        "icon": "FaServer"
+      },
+      {
+        "name": "Data Structures & Algorithms",
+        "icon": "FaCode"
+      },
+      {
+        "name": "Embedded Systems",
+        "icon": "FaMicrochip"
+      },
+      {
+        "name": "Edge ML",
+        "icon": "FaMicrochip"
+      },
+      {
+        "name": "MLOps",
+        "icon": "FaServer"
+      },
+      {
+        "name": "AI Voice Agents",
+        "icon": "FaBrain"
+      }
     ]
   },
-
   "projects": [
     {
-      "id": 1,
-      "title": "Custom Stock Trend Predictor",
+      "id": 6,
+      "title": "CryptAI - AI Trading Engine",
+      "slug": "cryptai",
+      "tag": "Agentic AI · Trading",
+      "preview": "/images/cryptai-landing.png",
       "description": [
-        "Web-based Flask tool for technical analysis with future stock price predictions",
-        "Analyzed multiple forecasting models to achieve most accurate predictions",
-        "Interactive dashboard displaying predicted curves and numerical stock data"
+        "Autonomous crypto-futures trading system built on a multi-agent architecture — specialized AI agents analyze markets, identify swing/scalp setups, validate risk, and execute real-time trades over WebSockets.",
+        "Stores trade history and adapts from performance, with a live dashboard for portfolio and agent-activity monitoring.",
+        "Designed for low-latency execution and resilient, observable agent orchestration."
       ],
-      "image": "/placeholder.jpg",
-      "technologies": ["Python", "HTML", "CSS", "JavaScript", "Flask", "Pandas", "Numpy", "Matplotlib", "Scikit-learn", "Keras"],
-      "github": "https://github.com/sahit1011/custom-stock-trend-predictor",
-      "featured": false
+      "image": "/images/cryptai-landing.png",
+      "technologies": [
+        "Python",
+        "Next.js",
+        "FastAPI",
+        "Redis",
+        "PostgreSQL",
+        "LangGraph",
+        "Groq LLM API",
+        "Docker",
+        "Vercel"
+      ],
+      "github": "https://github.com/sahit1011/Quant-AI-Trading-Platform",
+      "featured": true,
+      "demoVideo": "/videos/cryptai.mp4"
     },
     {
-      "id": 2,
-      "title": "Dr. Assistant - AI-Powered Healthcare Solution",
+      "id": 17,
+      "title": "StudyArc — AI NEET/JEE Study Planner",
+      "slug": "studyarc",
+      "tag": "Full-Stack · Adaptive AI",
+      "preview": "/images/studyarc-landing.png",
       "description": [
-        "Comprehensive AI-powered healthcare platform designed to streamline doctor workflows and reduce administrative burden in the Indian healthcare system.",
-        "Features voice-assisted EMR, AI-powered clinical note generation, intelligent scheduling, and seamless integration with India's ABDM health data network.",
-        "Helps doctors focus more on patient care and less on paperwork through advanced automation and AI assistance."
+        "An AI-powered adaptive study planner for India's NEET & JEE aspirants — it builds a personalized day-by-day calendar around your exam date, runs a diagnostic to surface weak chapters, and rebalances the plan as your performance changes.",
+        "Multi-agent adaptivity (monitor → adaptation → remediation) with an SM-2 spaced-repetition review engine, a live readiness score, and a 24/7 AI tutor for doubt-solving.",
+        "Full-stack build: Next.js 15 + React 19 with a modern light/dark design system, JWT auth, and a MongoDB-backed API with durable background jobs."
       ],
-      "image": "/placeholder.jpg",
-      "technologies": ["React", "TypeScript", "Material UI", "Node.js", "Express", "PostgreSQL", "MongoDB", "Redis", "Python", "FastAPI", "TensorFlow", "Hugging Face", "Docker", "Kubernetes", "AWS"],
-      "github": "#",
-      "featured": true
+      "image": "/images/studyarc-landing.png",
+      "technologies": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "MongoDB",
+        "Mongoose",
+        "AI Agents",
+        "JWT"
+      ],
+      "github": "",
+      "demo": "https://studyarc-alpha.vercel.app",
+      "featured": true,
+      "demoVideo": "/videos/studyarc.mp4"
     },
     {
-      "id": 3,
-      "title": "Post-Quantum Crypto Simulator",
+      "id": 16,
+      "title": "Klaro · Mini AI Analyst",
+      "slug": "othor-ai-mini-analyst",
+      "tag": "AI-as-a-Service · AutoML",
+      "preview": "/images/klaro-landing.png",
       "description": [
-        "Real-time web app demonstrating RSA vs quantum-resistant algorithms (NTRU, Kyber)",
-        "Interactive chat with live encryption/decryption and attacker simulation mode",
-        "Educational visualizations showcasing post-quantum cryptography concepts"
+        "A full-stack \"AI analyst as a service\" — upload a CSV and get instant statistical insights, train ML models, and generate predictions through a professional web interface.",
+        "Intelligent AutoML (automated model selection, training, and evaluation) plus deep data analysis: distributions, correlation heatmaps, and categorical insights.",
+        "Production-ready — JWT auth with role-based access, Docker containerization, API docs, and testing. Built as a full-stack take-home assignment."
       ],
-      "image": "/placeholder.jpg",
-      "technologies": ["Python", "Flask", "JavaScript", "Bootstrap", "RSA", "NTRU", "Kyber", "AES-GCM", "WebSocket", "PyCryptodome", "NumPy", "Post-Quantum Cryptography"],
-      "github": "#",
+      "technologies": [
+        "Next.js",
+        "TypeScript",
+        "FastAPI",
+        "Python",
+        "AutoML",
+        "scikit-learn",
+        "Docker",
+        "JWT"
+      ],
+      "github": "https://github.com/sahit1011/Full-Stack-MiniAI-As-A-Service",
+      "featured": true,
+      "image": "/images/klaro-landing.png",
+      "demoVideo": "/videos/klaro.mp4"
+    },
+    {
+      "id": 12,
+      "title": "MediQuick AI",
+      "slug": "mediquick-ai",
+      "tag": "Full-stack · Healthcare",
+      "preview": "/images/medi-quick-image.png",
+      "description": [
+        "An AI-powered healthcare platform focused on simplifying access to care.",
+        "Full-stack TypeScript app — a React + Tailwind frontend with a Node / Express backend.",
+        "Modern, responsive UI with AI-assisted healthcare features."
+      ],
+      "technologies": [
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Node.js",
+        "Express"
+      ],
+      "github": "https://github.com/sahit1011/MediQuickAI",
+      "featured": true,
+      "image": "/images/medi-quick-image.png",
+      "demoVideo": "/videos/mediquick.mp4"
+    },
+    {
+      "id": 7,
+      "title": "SEC Filings QA Agent",
+      "slug": "sec-filings-qa-agent",
+      "tag": "Agentic RAG · Finance",
+      "preview": "/projects/sec-filings-qa-agent.png",
+      "description": [
+        "A question-answering system over SEC filings — ask complex financial research questions across companies, sectors, and time periods and get well-sourced answers.",
+        "Hybrid retrieval (semantic search + metadata filtering) with automatic ticker / date / filing-type extraction and section-level source attribution.",
+        "FastAPI backend with a React + TypeScript frontend and real-time query processing."
+      ],
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "React",
+        "TypeScript",
+        "RAG",
+        "Vector DB",
+        "LLM"
+      ],
+      "github": "https://github.com/sahit1011/SEC-Filings-QA-Agent",
       "featured": false
     },
     {
       "id": 4,
       "title": "Secured Health Prediction using FHE-ML",
+      "slug": "fhe-ml-health-prediction",
+      "tag": "Privacy-Preserving ML",
+      "preview": "/projects/fhe-ml-health-prediction.png",
       "description": [
         "Privacy-preserving health risk prediction system using Fully Homomorphic Encryption (FHE) to enable secure computation on sensitive medical data.",
         "Advanced ML inference pipeline that performs predictions on encrypted health data without ever exposing sensitive patient information.",
         "Comprehensive web interface for secure health metrics input and risk assessment."
       ],
       "image": "/placeholder.jpg",
-      "technologies": ["Python", "Flask", "FHE", "Machine Learning", "Privacy Computing", "Web Security"],
+      "technologies": [
+        "Python",
+        "Flask",
+        "FHE",
+        "Machine Learning",
+        "Privacy Computing",
+        "Web Security"
+      ],
       "github": "https://github.com/sahit1011/FHE_ML_health_prediction",
-      "featured": true
+      "featured": false
     },
     {
       "id": 5,
       "title": "TodoAI - AI-Powered Task Management Application",
+      "slug": "todoai",
+      "tag": "Agentic AI",
+      "preview": "/projects/todoai.png",
       "description": [
         "AI powered Todo app, where you can directly manage your tasks with our AI agent by voice or text, without explicitly performing API calls from frontend.",
         "Multi-agent AI system for task management through natural language conversations.",
@@ -233,12 +589,223 @@
         "Modern React interface with real-time chat capabilities and FastAPI backend."
       ],
       "image": "/placeholder.jpg",
-      "technologies": ["React", "FastAPI", "Google Gemini-Pro API", "LangChain", "SQLite", "Vite"],
+      "technologies": [
+        "React",
+        "FastAPI",
+        "Google Gemini-Pro API",
+        "LangChain",
+        "SQLite",
+        "Vite"
+      ],
       "github": "https://github.com/sahit1011/TodoAI",
-      "featured": true
+      "featured": true,
+      "demoVideo": "/videos/todoai.mp4"
+    },
+    {
+      "id": 1,
+      "title": "Custom Stock Trend Predictor",
+      "slug": "stock-trend-predictor",
+      "tag": "ML · Finance",
+      "preview": "/projects/stock-trend-predictor.png",
+      "description": [
+        "Web-based Flask tool for technical analysis with future stock price predictions",
+        "Analyzed multiple forecasting models to achieve most accurate predictions",
+        "Interactive dashboard displaying predicted curves and numerical stock data"
+      ],
+      "image": "/placeholder.jpg",
+      "technologies": [
+        "Python",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Flask",
+        "Pandas",
+        "Numpy",
+        "Matplotlib",
+        "Scikit-learn",
+        "Keras"
+      ],
+      "github": "https://github.com/sahit1011/custom-stock-trend-predictor",
+      "featured": false
+    },
+    {
+      "id": 3,
+      "title": "Post-Quantum Crypto Simulator",
+      "slug": "post-quantum-crypto-simulator",
+      "tag": "Cryptography",
+      "preview": "/projects/post-quantum-crypto-simulator.png",
+      "description": [
+        "Real-time web app demonstrating RSA vs quantum-resistant algorithms (NTRU, Kyber)",
+        "Interactive chat with live encryption/decryption and attacker simulation mode",
+        "Educational visualizations showcasing post-quantum cryptography concepts"
+      ],
+      "image": "/placeholder.jpg",
+      "technologies": [
+        "Python",
+        "Flask",
+        "JavaScript",
+        "Bootstrap",
+        "RSA",
+        "NTRU",
+        "Kyber",
+        "AES-GCM",
+        "WebSocket",
+        "PyCryptodome",
+        "NumPy",
+        "Post-Quantum Cryptography"
+      ],
+      "github": "#",
+      "featured": false
+    },
+    {
+      "id": 8,
+      "title": "HSN RAG + Knowledge Graph",
+      "slug": "hsn-rag-knowgraph",
+      "tag": "RAG · Knowledge Graph",
+      "preview": "/projects/hsn-rag-knowgraph.png",
+      "description": [
+        "An intelligent HSN (Harmonized System Nomenclature) code classification system for the trade industry, combining RAG, knowledge graphs, and NLP.",
+        "Hybrid retrieval over vector search + a knowledge graph, with a Streamlit chat UI and a full CLI for batch processing.",
+        "Modular, production-ready architecture with a test suite and fast UV-based installs."
+      ],
+      "technologies": [
+        "Python",
+        "RAG",
+        "Knowledge Graph",
+        "Vector Search",
+        "Streamlit",
+        "LLM"
+      ],
+      "github": "https://github.com/sahit1011/HSN_RAG_KnowGraph",
+      "featured": false
+    },
+    {
+      "id": 9,
+      "title": "Warehouse Free-Space CV",
+      "slug": "warehouse-cv",
+      "tag": "Computer Vision",
+      "preview": "/projects/warehouse-cv.png",
+      "description": [
+        "A computer-vision system that measures and manages warehouse free space from surveillance video.",
+        "YOLOv8 detection of racks, pallet slots, and empty spaces, with automated frame extraction and synthetic annotation generation.",
+        "Flask backend (REST API + Excel export) and an interactive web frontend for analysis and reporting."
+      ],
+      "technologies": [
+        "Python",
+        "YOLOv8",
+        "OpenCV",
+        "Flask",
+        "Computer Vision"
+      ],
+      "github": "https://github.com/sahit1011/Warehouse_CV_clean",
+      "featured": false
+    },
+    {
+      "id": 10,
+      "title": "NL → Pinecone Query Agent",
+      "slug": "nlp-pinecone-agent",
+      "tag": "Agentic AI · Vector DB",
+      "preview": "/projects/nlp-pinecone-agent.png",
+      "description": [
+        "An agent that converts natural-language queries into precise Pinecone-compatible JSON filters for vector search.",
+        "Hybrid LLM + rule-based approach with robust date handling, multi-LLM fallback, and comprehensive operator support.",
+        "Served via FastAPI and designed for reliable, repeatable query translation."
+      ],
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "Pinecone",
+        "LLM",
+        "NLP"
+      ],
+      "github": "https://github.com/sahit1011/NLP-Pinecone-Agent",
+      "featured": false
+    },
+    {
+      "id": 11,
+      "title": "Medical FAQ RAG Chatbot",
+      "slug": "medical-faq-rag",
+      "tag": "RAG · Healthcare",
+      "preview": "/projects/medical-faq-rag.png",
+      "description": [
+        "A Retrieval-Augmented Generation chatbot that answers medical FAQs from a curated knowledge base.",
+        "FAISS vector search for fast retrieval + OpenRouter models for natural-language answers, with both Streamlit and CLI interfaces.",
+        "Modular pipeline with one-command, cross-platform setup."
+      ],
+      "technologies": [
+        "Python",
+        "RAG",
+        "FAISS",
+        "OpenRouter",
+        "Streamlit"
+      ],
+      "github": "https://github.com/sahit1011/Medical_FAQ_RAG",
+      "featured": false
+    },
+    {
+      "id": 13,
+      "title": "Homestays Price Prediction",
+      "slug": "homestays-price-prediction",
+      "tag": "ML · Data Analysis",
+      "preview": "/projects/homestays-price-prediction.png",
+      "description": [
+        "End-to-end data analysis and price prediction for homestays using classical machine learning.",
+        "EDA, feature engineering, and model comparison to predict nightly prices — implemented start to finish in a Jupyter notebook.",
+        "Covers the full workflow from raw data to evaluated predictions."
+      ],
+      "technologies": [
+        "Python",
+        "Pandas",
+        "scikit-learn",
+        "Matplotlib",
+        "Jupyter"
+      ],
+      "github": "https://github.com/sahit1011/Homestays-Data-Analysis-and-Price-Prediction-using-ML",
+      "featured": false
+    },
+    {
+      "id": 14,
+      "title": "Bank Customer Churn Prediction",
+      "slug": "bank-churn-prediction",
+      "tag": "Deep Learning",
+      "preview": "/projects/bank-churn-prediction.png",
+      "description": [
+        "A deep-learning model that predicts whether a bank customer will churn, from demographic and account features.",
+        "Covers preprocessing, model training, and evaluation on tabular customer data.",
+        "Built and documented end to end in a Jupyter notebook."
+      ],
+      "technologies": [
+        "Python",
+        "TensorFlow",
+        "Keras",
+        "Deep Learning",
+        "Pandas"
+      ],
+      "github": "https://github.com/sahit1011/Bank-Customer-Retention-Prediction-with-Deep-Learning-Model-RNN-",
+      "featured": false
+    },
+    {
+      "id": 15,
+      "title": "Dog Emotion Detection",
+      "slug": "dog-emotion-detection",
+      "tag": "Computer Vision",
+      "preview": "/projects/dog-emotion-detection.png",
+      "description": [
+        "A computer-vision model that predicts a dog's emotion from a photo.",
+        "Trains a convolutional neural network with PyTorch and torchvision, then evaluates and iterates to improve it.",
+        "An end-to-end image-classification project."
+      ],
+      "technologies": [
+        "Python",
+        "PyTorch",
+        "torchvision",
+        "CNN",
+        "Computer Vision"
+      ],
+      "github": "https://github.com/sahit1011/Deep_learning_project1",
+      "featured": false
     }
   ],
-
   "resume": {
     "summary": "Experienced software engineer with expertise in full-stack development, AI/ML, and data science. Passionate about building scalable applications and implementing machine learning solutions to solve complex problems.",
     "skills": {
@@ -250,7 +817,6 @@
       "devOps": "Docker, Kubernetes, AWS, GCP, CI/CD"
     }
   },
-
   "terminal": {
     "welcomeMessage": "Welcome to Anil's Terminal Portfolio!",
     "helpText": "Type help to see available commands.",
@@ -266,12 +832,11 @@
       "linux": "Terminal - bash"
     },
     "featuredProjects": [
-      "AI-powered recommendation system",
-      "Full-stack e-commerce platform",
-      "Data visualization dashboard"
+      "Dr. Assistant — AI-powered healthcare platform",
+      "TodoAI — multi-agent task management",
+      "Secured Health Prediction using FHE-ML"
     ]
   },
-
   "contact": {
     "heading": "Get in Touch",
     "subheading": "Have a question or want to work together? Feel free to contact me!",
@@ -290,13 +855,18 @@
       "submit": "Send Message"
     }
   },
-
   "meta": {
     "title": "Anil Sahith Portfolio | Software Engineer & AI/ML Engineer",
     "description": "Personal portfolio of Anil, a Software Engineer, AI/ML Engineer, and Data Scientist.",
-    "keywords": ["portfolio", "software engineer", "AI engineer", "ML engineer", "data scientist", "developer"]
+    "keywords": [
+      "portfolio",
+      "software engineer",
+      "AI engineer",
+      "ML engineer",
+      "data scientist",
+      "developer"
+    ]
   },
-
   "navigation": {
     "home": "Home",
     "about": "About",
@@ -307,26 +877,49 @@
     "contact": "Contact",
     "resume": "Resume"
   },
-
   "footer": {
     "description": "Software Engineer, AI/ML Engineer, and Data Scientist passionate about building innovative solutions.",
     "quickLinks": {
       "title": "Quick Links",
       "links": [
-        { "name": "Home", "href": "/" },
-        { "name": "About", "href": "/about" },
-        { "name": "Experience", "href": "/experience" },
-        { "name": "Projects", "href": "/projects" },
-        { "name": "Skills", "href": "/skills" },
-        { "name": "Contact", "href": "/contact" },
-        { "name": "Resume", "href": "/resume" },
-        { "name": "AI Resume Match", "href": "/resume-parser" }
+        {
+          "name": "Home",
+          "href": "/"
+        },
+        {
+          "name": "About",
+          "href": "/about"
+        },
+        {
+          "name": "Experience",
+          "href": "/experience"
+        },
+        {
+          "name": "Projects",
+          "href": "/projects"
+        },
+        {
+          "name": "Skills",
+          "href": "/skills"
+        },
+        {
+          "name": "Contact",
+          "href": "/contact"
+        },
+        {
+          "name": "Resume",
+          "href": "/resume"
+        },
+        {
+          "name": "AI Resume Match",
+          "href": "/resume-parser"
+        }
       ]
     },
     "contactSection": {
       "title": "Contact",
       "email": "anilsahithvallepu@gmail.com",
-      "location": "Hyderabad, India",
+      "location": "Bangalore, India",
       "availability": "Available for freelance and full-time opportunities"
     },
     "socialLinks": {
@@ -337,7 +930,6 @@
     },
     "copyright": "All rights reserved."
   },
-
   "loading": {
     "title": "Anil Sahith's Portfolio",
     "message": "Loading terminal environment...",

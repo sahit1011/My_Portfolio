@@ -1,11 +1,14 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import MainLayout from '@/components/layout/MainLayout';
 import { FaDownload, FaEye, FaTrophy, FaUsers } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { getPersonalInfo, getGithubUrl, getLinkedinUrl } from '@/utils/content';
 
 const ResumePage = () => {
+  const personalInfo = getPersonalInfo();
   const resumeUrl = '/anil_ml_resme.pdf'; // Link to PDF in public folder
   const resumeDownloadUrl = '/anil_ml_resme.pdf'; // Link to PDF in public folder for download
 
@@ -44,12 +47,12 @@ const ResumePage = () => {
 
           <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
             <div className="mb-6">
-              <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-400">VALLEPU ANIL SAHITH</h2>
-              <p className="text-gray-700 dark:text-gray-300">Software Engineer | AI/ML Engineer | Data Scientist</p>
-              <p className="text-gray-600 dark:text-gray-400">anilsahithvallepu@gmail.com | +91 8143400946 | India</p>
+              <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-400">{personalInfo.name.toUpperCase()}</h2>
+              <p className="text-gray-700 dark:text-gray-300">AI/ML Engineer | Software Engineer | Data Scientist</p>
+              <p className="text-gray-600 dark:text-gray-400">{personalInfo.email} | {personalInfo.phone} | {personalInfo.location}</p>
               <p className="text-gray-600 dark:text-gray-400">
-                <a href="https://github.com/sahit1011" target="_blank" rel="noopener noreferrer" className="hover:underline">github.com/sahit1011</a> | 
-                <a href="https://www.linkedin.com/in/anilsahithvallepu" target="_blank" rel="noopener noreferrer" className="hover:underline"> linkedin.com/in/anilsahithvallepu</a>
+                <a href={getGithubUrl()} target="_blank" rel="noopener noreferrer" className="hover:underline">{getGithubUrl().replace('https://', '')}</a> {' | '}
+                <a href={getLinkedinUrl()} target="_blank" rel="noopener noreferrer" className="hover:underline">{getLinkedinUrl().replace('https://', '')}</a>
               </p>
             </div>
 
@@ -80,15 +83,16 @@ const ResumePage = () => {
               <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-700 pb-2 mb-3">EXPERIENCE</h3>
               <p className="text-gray-700 dark:text-gray-300">
                 Detailed work experience, including roles at Noccarc Robotics and Carelon Global Solutions, 
-                can be found on the <a href="/experience" className="text-blue-500 hover:underline">Experience page</a>.
+                can be found on the <Link href="/#experience" className="text-blue-500 hover:underline">Experience section</Link>.
               </p>
             </div>
 
             <div className="mb-6">
               <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-700 pb-2 mb-3">PROJECTS</h3>
               <p className="text-gray-700 dark:text-gray-300">
-                Key projects including the Custom Stock Trend Predictor, Smart ATS Resume Tracker, Quantum Perceptron, 
-                and Medical Chat Bot are detailed on the <a href="/projects" className="text-blue-500 hover:underline">Projects page</a>.
+                Key projects including Dr. Assistant (AI healthcare platform), TodoAI (multi-agent task manager),
+                the Post-Quantum Crypto Simulator, Secured Health Prediction (FHE-ML), and the Custom Stock Trend
+                Predictor are detailed on the <Link href="/#work" className="text-blue-500 hover:underline">Work section</Link>.
               </p>
             </div>
 
@@ -117,7 +121,7 @@ const ResumePage = () => {
               <h3 className="text-xl font-bold text-gray-800 dark:text-gray-200 border-b border-gray-300 dark:border-gray-700 pb-2 mb-3">SKILLS</h3>
               <p className="text-gray-700 dark:text-gray-300">
                 A comprehensive list of technical skills including programming languages, web technologies, databases, AI/ML tools, 
-                and more is available on the <a href="/skills" className="text-blue-500 hover:underline">Skills page</a>.
+                and more is available on the <Link href="/#about" className="text-blue-500 hover:underline">About section</Link>.
               </p>
             </div>
           </div>

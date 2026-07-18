@@ -43,16 +43,31 @@ export default function ContactPage() {
     setIsSubmitting(true);
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Open the visitor's email client with the message pre-filled.
+      // (No backend required — the message goes straight to my inbox.)
+      const subject = formData.subject
+        ? `[Portfolio] ${formData.subject} — from ${formData.name}`
+        : `[Portfolio] Message from ${formData.name}`;
+      const body =
+        `Name: ${formData.name}\n` +
+        `Email: ${formData.email}\n\n` +
+        `${formData.message}`;
+      const mailto = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+        personalInfo.email
+      )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+      window.open(mailto, '_blank', 'noopener,noreferrer');
+
       setSubmitStatus({
         success: true,
-        message: 'Your message has been sent successfully! I will get back to you soon.',
+        message:
+          'Your email client just opened with the message ready — hit send and it lands in my inbox. Prefer to copy my address? It\'s in the panel on the left.',
       });
       setFormData({ name: '', email: '', subject: '', message: '' });
     } catch {
       setSubmitStatus({
         success: false,
-        message: 'There was an error sending your message. Please try again later.',
+        message: `Couldn't open your email client. Please email me directly at ${personalInfo.email}.`,
       });
     } finally {
       setIsSubmitting(false);
@@ -230,7 +245,7 @@ export default function ContactPage() {
                   disabled={isSubmitting}
                   className="btn btn-accent w-full"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? 'Opening email…' : 'Send Message'}
                 </button>
               </form>
             </div>

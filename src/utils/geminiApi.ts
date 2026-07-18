@@ -15,12 +15,15 @@ import {
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 const OPENROUTER_MODEL = 'deepseek/deepseek-chat';
 
-// Initialize the Gemini API with your API key
+// Initialize the Gemini API with your API key.
+// Prefer the server-only var; fall back to the legacy NEXT_PUBLIC one so
+// existing deployments keep working. This util must only run server-side
+// (see src/app/api/resume-match/route.ts) so the key never reaches the client.
 const getGeminiAPI = () => {
-  const apiKey = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY || process.env.NEXT_PUBLIC_GEMINI_API_KEY;
 
   if (!apiKey) {
-    console.error("Gemini API key is not set. Please set NEXT_PUBLIC_GEMINI_API_KEY in your .env.local file.");
+    console.error("Gemini API key is not set. Please set GEMINI_API_KEY in your .env.local file.");
     return null;
   }
 
@@ -284,14 +287,18 @@ interface MatchBreakdown {
   projectRelevance: number;
 }
 
-interface ResumeAnalysisResult {
+export interface RecommendedProject extends Project {
+  relevanceScore?: number;
+}
+
+export interface ResumeAnalysisResult {
   overallMatch: number;
   matchBreakdown: MatchBreakdown;
   warnings: string[];
   skillsMatch: SkillMatch[];
   missingSkills: string[];
   candidateSummary: string;
-  recommendedProjects: Project[];
+  recommendedProjects: RecommendedProject[];
   recommendedProjectIds?: number[];
 }
 
@@ -563,7 +570,7 @@ function extractSkillsFromJobDescription(jobDescription: string): string[] {
   return foundSkills;
 }
 
-function findRecommendedProjects(jobSkills: string[]): Project[] {
+function findRecommendedProjects(jobSkills: string[]): RecommendedProject[] {
   const projects = getProjects();
 
   const projectsWithScores = projects.map(project => {

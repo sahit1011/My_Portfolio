@@ -42,3 +42,13 @@ next-env.d.ts
 
 # logs
 /logs
+
+# local editor / agent config
+.claude/
+.codex/
+.cursor/
+
+# local data / tooling artifacts
+chroma_db/
+*.db
+supabase/.temp/

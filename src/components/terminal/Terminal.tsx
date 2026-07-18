@@ -12,16 +12,22 @@ import ScanLines from './ScanLines';
 // Import skill icons
 import {
   FaPython, FaJs, FaDatabase,
-  FaReact, FaHtml5, FaCss3Alt,
-  FaNodeJs, FaDocker, FaAws, FaGoogle
+  FaReact, FaNodeJs, FaDocker, FaGoogle
 } from 'react-icons/fa';
 import {
   SiTypescript, SiNextdotjs, SiTailwindcss,
-  SiDjango, SiFlask, SiExpress,
+  SiDjango, SiFlask,
   SiTensorflow, SiPytorch, SiScikitlearn, SiHuggingface,
   SiMongodb, SiPostgresql,
-  SiKubernetes, SiRedux, SiGraphql, SiRedis, SiMysql
+  SiRedis, SiMysql, SiCplusplus
 } from 'react-icons/si';
+
+import {
+  getPersonalInfo,
+  getFeaturedProjects,
+  getGithubUrl,
+  getLinkedinUrl,
+} from '@/utils/content';
 
 type OSTheme = 'windows' | 'linux' | 'mac';
 
@@ -150,65 +156,81 @@ const Terminal: React.FC = () => {
       case 'skills':
         output = (
           <div className="space-y-4">
-            {/* Frontend Development */}
+            {/* AI & Machine Learning */}
             <div>
-              <p className="font-semibold text-purple-400 mb-1">Frontend Development:</p>
+              <p className="font-semibold text-pink-400 mb-1">AI &amp; Machine Learning:</p>
               <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
                 <div className="flex items-center gap-2">
-                  <FaReact className="text-blue-400" size={18} /> React.js
+                  <SiTensorflow className="text-orange-500" size={18} /> TensorFlow / TF-Lite
                 </div>
                 <div className="flex items-center gap-2">
-                  <SiNextdotjs className="text-gray-300" size={18} /> Next.js
+                  <SiPytorch className="text-red-500" size={18} /> PyTorch
                 </div>
                 <div className="flex items-center gap-2">
-                  <FaJs className="text-yellow-400" size={18} /> JavaScript
+                  <SiScikitlearn className="text-orange-400" size={18} /> scikit-learn
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiHuggingface className="text-yellow-300" size={18} /> Hugging Face
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaPython className="text-blue-400" size={18} /> Deep Learning / CV / NLP
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaPython className="text-blue-400" size={18} /> Agentic AI / LangChain
+                </div>
+              </div>
+            </div>
+
+            {/* Languages */}
+            <div>
+              <p className="font-semibold text-purple-400 mb-1">Languages:</p>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
+                <div className="flex items-center gap-2">
+                  <FaPython className="text-blue-400" size={18} /> Python
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiCplusplus className="text-blue-600" size={18} /> C++
                 </div>
                 <div className="flex items-center gap-2">
                   <SiTypescript className="text-blue-500" size={18} /> TypeScript
                 </div>
                 <div className="flex items-center gap-2">
-                  <FaHtml5 className="text-orange-500" size={18} /> HTML
+                  <FaJs className="text-yellow-400" size={18} /> JavaScript
                 </div>
                 <div className="flex items-center gap-2">
-                  <FaCss3Alt className="text-blue-500" size={18} /> CSS
+                  <FaDatabase className="text-green-400" size={18} /> SQL
+                </div>
+              </div>
+            </div>
+
+            {/* Web & Backend */}
+            <div>
+              <p className="font-semibold text-yellow-500 mb-1">Web &amp; Backend:</p>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
+                <div className="flex items-center gap-2">
+                  <FaReact className="text-blue-400" size={18} /> React
+                </div>
+                <div className="flex items-center gap-2">
+                  <SiNextdotjs className="text-gray-300" size={18} /> Next.js
                 </div>
                 <div className="flex items-center gap-2">
                   <SiTailwindcss className="text-cyan-400" size={18} /> Tailwind CSS
                 </div>
                 <div className="flex items-center gap-2">
-                  <SiRedux className="text-purple-600" size={18} /> Redux
-                </div>
-              </div>
-            </div>
-
-            {/* Backend Development */}
-            <div>
-              <p className="font-semibold text-yellow-500 mb-1">Backend Development:</p>
-              <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
-                <div className="flex items-center gap-2">
                   <FaNodeJs className="text-green-500" size={18} /> Node.js
-                </div>
-                <div className="flex items-center gap-2">
-                  <SiExpress className="text-gray-400" size={18} /> Express
-                </div>
-                <div className="flex items-center gap-2">
-                  <FaPython className="text-blue-400" size={18} /> Python
                 </div>
                 <div className="flex items-center gap-2">
                   <SiDjango className="text-green-700" size={18} /> Django
                 </div>
                 <div className="flex items-center gap-2">
-                  <SiFlask className="text-gray-300" size={18} /> Flask
-                </div>
-                <div className="flex items-center gap-2">
-                  <SiGraphql className="text-pink-600" size={18} /> GraphQL
+                  <SiFlask className="text-gray-300" size={18} /> Flask / FastAPI
                 </div>
               </div>
             </div>
 
-            {/* Database & Data */}
+            {/* Data & Infra */}
             <div>
-              <p className="font-semibold text-blue-400 mb-1">Database & Data:</p>
+              <p className="font-semibold text-blue-400 mb-1">Data &amp; Infra:</p>
               <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
                 <div className="flex items-center gap-2">
                   <SiMongodb className="text-green-500" size={18} /> MongoDB
@@ -223,48 +245,17 @@ const Terminal: React.FC = () => {
                   <SiRedis className="text-red-500" size={18} /> Redis
                 </div>
                 <div className="flex items-center gap-2">
-                  <FaDatabase className="text-green-400" size={18} /> SQL
-                </div>
-              </div>
-            </div>
-
-            {/* AI & Machine Learning */}
-            <div>
-              <p className="font-semibold text-pink-400 mb-1">AI & Machine Learning:</p>
-              <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
-                <div className="flex items-center gap-2">
-                  <SiTensorflow className="text-orange-500" size={18} /> TensorFlow
-                </div>
-                <div className="flex items-center gap-2">
-                  <SiPytorch className="text-red-500" size={18} /> PyTorch
-                </div>
-                <div className="flex items-center gap-2">
-                  <SiScikitlearn className="text-orange-400" size={18} /> scikit-learn
-                </div>
-                <div className="flex items-center gap-2">
-                  <SiHuggingface className="text-yellow-300" size={18} /> Hugging Face
-                </div>
-              </div>
-            </div>
-
-            {/* DevOps & Cloud */}
-            <div>
-              <p className="font-semibold text-blue-400 mb-1">DevOps & Cloud:</p>
-              <div className="grid grid-cols-2 gap-x-4 gap-y-2 ml-4">
-                <div className="flex items-center gap-2">
                   <FaDocker className="text-blue-400" size={18} /> Docker
-                </div>
-                <div className="flex items-center gap-2">
-                  <SiKubernetes className="text-blue-500" size={18} /> Kubernetes
-                </div>
-                <div className="flex items-center gap-2">
-                  <FaAws className="text-orange-400" size={18} /> AWS
                 </div>
                 <div className="flex items-center gap-2">
                   <FaGoogle className="text-blue-400" size={18} /> GCP
                 </div>
               </div>
             </div>
+
+            <p className="mt-1 text-gray-400">
+              Full breakdown &rarr; type <span className="text-yellow-400">portfolio</span> or visit the Skills page.
+            </p>
           </div>
         );
         break;
@@ -272,30 +263,39 @@ const Terminal: React.FC = () => {
       case 'projects':
         output = (
           <div>
-            <p className="font-bold text-accent-light">Featured Projects:</p>
-            <ul className="ml-4 mt-1">
-              <li><span className="text-yellow-400">Project 1:</span> AI-powered recommendation system</li>
-              <li><span className="text-yellow-400">Project 2:</span> Full-stack e-commerce platform</li>
-              <li><span className="text-yellow-400">Project 3:</span> Data visualization dashboard</li>
+            <p className="font-bold text-green-400">Featured Projects:</p>
+            <ul className="ml-4 mt-1 space-y-1">
+              {getFeaturedProjects().map((p, i) => (
+                <li key={p.id}>
+                  <span className="text-yellow-400">{i + 1}.</span>{' '}
+                  <span className="text-gray-100">{p.title}</span>
+                  <span className="text-gray-400">
+                    {' '}— {p.technologies.slice(0, 4).join(', ')}
+                  </span>
+                </li>
+              ))}
             </ul>
-            <p className="mt-1">
-              Type <span className="text-yellow-400">portfolio</span> to see detailed project information.
+            <p className="mt-2 text-gray-300">
+              Type <span className="text-yellow-400">portfolio</span> for full project details &amp; links.
             </p>
           </div>
         );
         break;
 
-      case 'contact':
+      case 'contact': {
+        const info = getPersonalInfo();
         output = (
           <div>
-            <p className="font-bold text-accent-light">Contact Information:</p>
-            <p className="mt-1"><span className="text-yellow-400">Email:</span> your.email@example.com</p>
-            <p><span className="text-yellow-400">LinkedIn:</span> linkedin.com/in/yourusername</p>
-            <p><span className="text-yellow-400">GitHub:</span> github.com/yourusername</p>
-            <p><span className="text-yellow-400">Twitter:</span> twitter.com/yourusername</p>
+            <p className="font-bold text-green-400">Contact Information:</p>
+            <p className="mt-1"><span className="text-yellow-400">Email:</span> {info.email}</p>
+            <p><span className="text-yellow-400">Phone:</span> {info.phone}</p>
+            <p><span className="text-yellow-400">Location:</span> {info.location}</p>
+            <p><span className="text-yellow-400">GitHub:</span> {getGithubUrl().replace('https://', '')}</p>
+            <p><span className="text-yellow-400">LinkedIn:</span> {getLinkedinUrl().replace('https://', '')}</p>
           </div>
         );
         break;
+      }
 
       case 'clear':
         setHistory([]);
@@ -304,106 +304,61 @@ const Terminal: React.FC = () => {
       case 'portfolio':
         output = <p>Redirecting to portfolio...</p>;
         setTimeout(() => {
-          router.push('/about');
+          router.push('/');
         }, 1000);
         break;
 
-      case 'resume':
+      case 'resume': {
+        const info = getPersonalInfo();
         output = (
           <div className="font-mono text-sm">
             <div className="mb-4">
-              <h2 className="text-xl font-bold text-blue-400">VALLEPU ANIL SAHITH</h2>
-              <p>Software Engineer | AI/ML Engineer | Data Scientist</p>
-              <p>your.email@example.com | +1 (123) 456-7890 | San Francisco, CA</p>
-              <p>github.com/yourusername | linkedin.com/in/yourusername</p>
+              <h2 className="text-xl font-bold text-green-400">{info.name.toUpperCase()}</h2>
+              <p>AI/ML Engineer | Software Engineer | Data Scientist</p>
+              <p>{info.email} | {info.phone} | {info.location}</p>
+              <p>{getGithubUrl().replace('https://', '')} | {getLinkedinUrl().replace('https://', '')}</p>
             </div>
 
             <div className="mb-4">
               <h3 className="text-lg font-bold text-yellow-400">SUMMARY</h3>
               <p className="border-b border-gray-600 mb-2"></p>
-              <p>Experienced software engineer with expertise in full-stack development, AI/ML, and data science.
-              Passionate about building scalable applications and implementing machine learning solutions to solve complex problems.</p>
+              <p>AI/ML Engineer with a B.Tech from NIT Warangal. I&apos;ve shipped real-time
+              ML on embedded patient monitors, multi-agent learning platforms, and document
+              automation pipelines — across Noccarc Robotics, Carelon (Elevance), and freelance work.</p>
             </div>
 
             <div className="mb-4">
               <h3 className="text-lg font-bold text-yellow-400">EDUCATION</h3>
               <p className="border-b border-gray-600 mb-2"></p>
-              <p className="font-bold">Master of Science in Computer Science</p>
-              <p>Stanford University | 2018 - 2020</p>
-              <p className="mb-2">GPA: 3.9/4.0 | Specialization in Artificial Intelligence</p>
-
-              <p className="font-bold">Bachelor of Technology in Computer Science</p>
-              <p>Indian Institute of Technology | 2014 - 2018</p>
-              <p>GPA: 3.8/4.0 | Minor in Mathematics</p>
+              <p className="font-bold">B.Tech, Electrical &amp; Electronics Engineering</p>
+              <p>National Institute of Technology (NIT) Warangal</p>
             </div>
 
             <div className="mb-4">
               <h3 className="text-lg font-bold text-yellow-400">EXPERIENCE</h3>
               <p className="border-b border-gray-600 mb-2"></p>
-
-              <p className="font-bold">Senior Software Engineer | Tech Innovations Inc.</p>
-              <p className="italic">Jan 2021 - Present</p>
-              <ul className="list-disc ml-4 mb-2">
-                <li>Developed and maintained microservices architecture using Node.js and Python</li>
-                <li>Implemented machine learning models for product recommendation system</li>
-                <li>Led a team of 5 engineers for the development of a new data pipeline</li>
-                <li>Reduced API response time by 40% through optimization techniques</li>
-              </ul>
-
-              <p className="font-bold">Software Engineer | DataTech Solutions</p>
-              <p className="italic">Jun 2020 - Dec 2020</p>
-              <ul className="list-disc ml-4 mb-2">
-                <li>Built RESTful APIs using Express.js and MongoDB</li>
-                <li>Developed front-end components with React and Redux</li>
-                <li>Implemented CI/CD pipelines using GitHub Actions</li>
-              </ul>
+              <p className="font-bold">Junior AI Engineer — Noccarc Robotics</p>
+              <p className="text-gray-400">Real-time arrhythmia detection (CNN-GRU + attention) on embedded monitors, 95%+ accuracy.</p>
+              <p className="font-bold mt-2">AI/ML Intern — Carelon Global Solutions (Elevance)</p>
+              <p className="text-gray-400">OCR + YOLOv8 document pipeline processing ~700 docs/hr at 95% accuracy.</p>
             </div>
 
-            <div className="mb-4">
-              <h3 className="text-lg font-bold text-yellow-400">PROJECTS</h3>
-              <p className="border-b border-gray-600 mb-2"></p>
-
-              <p className="font-bold">AI-Powered Recommendation System</p>
-              <ul className="list-disc ml-4 mb-2">
-                <li>Developed a recommendation engine using collaborative filtering and deep learning</li>
-                <li>Achieved 25% improvement in recommendation accuracy</li>
-                <li>Technologies: Python, TensorFlow, Flask, MongoDB</li>
-              </ul>
-
-              <p className="font-bold">Full-Stack E-commerce Platform</p>
-              <ul className="list-disc ml-4 mb-2">
-                <li>Built a scalable e-commerce platform with microservices architecture</li>
-                <li>Implemented real-time inventory management and payment processing</li>
-                <li>Technologies: React, Node.js, Express, PostgreSQL, Docker</li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-bold text-yellow-400">SKILLS</h3>
-              <p className="border-b border-gray-600 mb-2"></p>
-              <p><span className="font-bold">Languages:</span> Python, JavaScript, TypeScript, Java, SQL</p>
-              <p><span className="font-bold">Frontend:</span> React, Next.js, HTML/CSS, Tailwind CSS, Redux</p>
-              <p><span className="font-bold">Backend:</span> Node.js, Express, Django, Flask, GraphQL</p>
-              <p><span className="font-bold">Databases:</span> MongoDB, PostgreSQL, MySQL, Redis</p>
-              <p><span className="font-bold">AI/ML:</span> TensorFlow, PyTorch, scikit-learn, NLP, Computer Vision</p>
-              <p><span className="font-bold">DevOps:</span> Docker, Kubernetes, AWS, GCP, CI/CD</p>
-            </div>
-
-            <div className="mt-4 text-center">
-              <p>Type <span className="text-yellow-400">portfolio</span> to visit my portfolio website for more details</p>
+            <div className="mt-4">
+              <p>Full resume &rarr; type <span className="text-yellow-400">portfolio</span> or download the PDF from the Resume page.</p>
             </div>
           </div>
         );
         break;
+      }
 
       case 'github':
-        output = <p>Opening GitHub profile...</p>;
-        window.open('https://github.com/yourusername', '_blank');
+        output = <p>Opening GitHub profile…</p>;
+        window.open(getGithubUrl(), '_blank', 'noopener,noreferrer');
         break;
 
       case 'linkedin':
-        output = <p>Opening LinkedIn profile...</p>;
-        window.open('https://linkedin.com/in/yourusername', '_blank');
+        output = <p>Opening LinkedIn profile…</p>;
+        window.open(getLinkedinUrl(), '_blank', 'noopener,noreferrer');
         break;
 
       case 'whoami':

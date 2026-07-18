@@ -1,28 +1,44 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Fira_Code } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
-import ThemeToggle from "@/components/theme/ThemeToggle";
 import { FunFactProvider } from "@/context/FunFactContext";
 import FunFactToast from "@/components/ui/FunFactToast";
+import GrainOverlay from "@/components/baseline/GrainOverlay";
+import CommandPalette from "@/components/baseline/CommandPalette";
+import SmoothScroll from "@/components/baseline/SmoothScroll";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
-const firaCode = Fira_Code({
-  subsets: ["latin"],
-  variable: "--font-fira-code",
-  display: "swap",
-});
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://anilsahith.vercel.app";
+const description =
+  "Anil Sahith — AI/ML Engineer building real-world machine learning systems and the full-stack products around them.";
 
 export const metadata: Metadata = {
-  title: "Anil Sahith Portfolio | Software Engineer & AI/ML Engineer",
-  description: "Personal portfolio of Anil, a Software Engineer, AI/ML Engineer, and Data Scientist.",
-  keywords: ["portfolio", "software engineer", "AI engineer", "ML engineer", "data scientist", "developer"],
+  metadataBase: new URL(siteUrl),
+  title: "Anil Sahith — AI/ML Engineer",
+  description,
+  keywords: [
+    "Anil Sahith",
+    "AI engineer",
+    "ML engineer",
+    "machine learning",
+    "deep learning",
+    "edge ML",
+    "software engineer",
+    "portfolio",
+  ],
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    title: "Anil Sahith — AI/ML Engineer",
+    description,
+    siteName: "Anil Sahith",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Anil Sahith — AI/ML Engineer",
+    description,
+  },
 };
 
 export default function RootLayout({
@@ -31,13 +47,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${firaCode.variable}`} suppressHydrationWarning>
-      <body className="antialiased" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`dark ${GeistSans.variable} ${GeistMono.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="bg-base text-ink font-sans antialiased" suppressHydrationWarning>
+        <div className="bg-fx" aria-hidden="true" />
+        <GrainOverlay />
+        <SmoothScroll />
         <ThemeProvider>
           <FunFactProvider>
-            <ThemeToggle />
             {children}
             <FunFactToast />
+            <CommandPalette />
           </FunFactProvider>
         </ThemeProvider>
       </body>
