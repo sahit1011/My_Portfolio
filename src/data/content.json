@@ -453,7 +453,8 @@
       "github": "https://github.com/sahit1011/Quant-AI-Trading-Platform",
       "featured": true,
       "previewVideo": "/videos/cryptai.mp4",
-      "demo": "https://cryptai-app.vercel.app"
+      "demo": "https://cryptai-app.vercel.app",
+      "demoVideo": "/videos/cryptai-demo.mp4"
     },
     {
       "id": 17,
