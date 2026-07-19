@@ -1,6 +1,7 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
 import MagneticButton from '../MagneticButton';
 import Typewriter from '../Typewriter';
@@ -20,12 +21,31 @@ export default function Hero() {
   const info = getPersonalInfo();
   const emailCompose = getEmailComposeUrl();
 
+  // Scroll parallax: the neural field lags behind while the text scrolls up
+  // faster, so the two move at different rates (depth). Off for reduced-motion.
+  const sectionRef = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], reduced ? ['0%', '0%'] : ['0%', '22%']);
+  const textY = useTransform(scrollYProgress, [0, 1], reduced ? ['0%', '0%'] : ['0%', '-38%']);
+  const textOpacity = useTransform(scrollYProgress, [0, 0.6, 1], reduced ? [1, 1, 1] : [1, 1, 0.35]);
+
   return (
-    <section className="relative flex min-h-[92vh] items-center overflow-hidden pb-16 pt-32 sm:pt-40">
-      {/* neural-field backdrop — subtler on mobile so text stays readable */}
-      <div className="absolute inset-0 z-0 opacity-60 lg:opacity-100">
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-[92vh] items-center overflow-hidden pb-16 pt-32 sm:pt-40"
+    >
+      {/* neural-field backdrop — extends beyond the hero so the parallax drift
+          never reveals empty edges. Subtler on mobile so text stays readable. */}
+      <motion.div
+        style={{ y: bgY }}
+        className="pointer-events-none absolute inset-x-0 -top-[20%] z-0 h-[140%] opacity-60 lg:opacity-100"
+      >
         <HeroBackdrop />
-      </div>
+      </motion.div>
       {/* legibility masks over the field so the text stays readable */}
       <div
         className="absolute inset-0 z-[1] hidden lg:block bg-gradient-to-r from-base via-base/75 to-transparent"
@@ -40,7 +60,7 @@ export default function Hero() {
       <div className="ambient-glow left-[-10%] top-[6%] h-[36rem] w-[36rem]" aria-hidden />
       <div className="ambient-glow right-[-5%] bottom-[0%] h-[28rem] w-[28rem] opacity-10" aria-hidden />
 
-      <div className="shell relative z-10">
+      <motion.div style={{ y: textY, opacity: textOpacity }} className="shell relative z-10">
         <div className="relative z-10 lg:max-w-[54%]">
         <motion.p {...fadeUp(0)} className="stamp mb-10 flex flex-wrap items-center gap-x-3 gap-y-1">
           <span className="inline-flex items-center gap-2">
@@ -115,7 +135,7 @@ export default function Hero() {
           <span className="hidden font-mono text-xs text-faint sm:block">scroll to explore ↓</span>
         </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
