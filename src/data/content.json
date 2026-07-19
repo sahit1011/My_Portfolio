@@ -806,6 +806,92 @@
       ],
       "github": "https://github.com/sahit1011/Deep_learning_project1",
       "featured": false
+    },
+    {
+      "title": "Slack Content Creation Assistant",
+      "slug": "slackbot-content-assistant",
+      "tag": "Agentic AI · Slack Bot",
+      "description": [
+        "A Slack bot that turns raw keywords into content ideas and structured outlines — clustering keywords with sentence transformers, running automated web research (Brave Search), and generating ideas & outlines via a Groq LLM.",
+        "Production-ready: Supabase persistence, Redis caching, SendGrid PDF email reports, health checks, and Docker deployment."
+      ],
+      "technologies": [
+        "Python",
+        "Slack API",
+        "Groq LLM",
+        "Sentence Transformers",
+        "Brave Search API",
+        "Supabase",
+        "Redis",
+        "SendGrid",
+        "Docker"
+      ],
+      "github": "https://github.com/sahit1011/SlackBot-Content-Creation-Assistant",
+      "featured": false,
+      "id": 18
+    },
+    {
+      "title": "AI Coding Session Search",
+      "slug": "ai-coding-session-search",
+      "tag": "RAG · Semantic Search",
+      "description": [
+        "A semantic search app over AI coding-assistant (Claude Code) session history — hybrid BM25 + vector retrieval with cross-encoder reranking and LLM-powered query expansion.",
+        "Production-grade RAG: Redis caching (~70% latency cut), pagination, rate limiting, and input validation; FastAPI + ChromaDB backend with a React UI, containerized with Docker."
+      ],
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "React",
+        "ChromaDB",
+        "Sentence Transformers",
+        "BM25",
+        "Groq LLM",
+        "Redis",
+        "Docker"
+      ],
+      "github": "https://github.com/sahit1011/AI-Coding-Session",
+      "featured": false,
+      "id": 19
+    },
+    {
+      "title": "MCSC — Multi-Channel Scheduling Coordinator",
+      "slug": "mcsc-scheduling-coordinator",
+      "tag": "LLM Agent · Scheduling",
+      "description": [
+        "A TypeScript CLI assistant that coordinates scheduling across Email and SMS with cross-thread, cross-channel memory.",
+        "LLM-first orchestration (retrieval planning → outreach planning → fact extraction → response drafting) with Chroma vector retrieval, compact top-K context injection, and persistence across restarts."
+      ],
+      "technologies": [
+        "TypeScript",
+        "Claude API",
+        "ChromaDB",
+        "Node.js",
+        "Vector Search"
+      ],
+      "github": "https://github.com/sahit1011/MCSC",
+      "featured": false,
+      "id": 20
+    },
+    {
+      "id": 21,
+      "title": "Resume Screener (RAG)",
+      "slug": "resume-screener-rag",
+      "tag": "RAG · Recruiting",
+      "description": [
+        "An AI-powered resume-screening tool with Retrieval-Augmented Generation — upload resumes and ask intelligent Q&A about candidates, getting grounded answers from the most relevant context.",
+        "Full-stack: a TypeScript/Node backend and a Vite + React frontend, with a Python layer for parsing, embeddings, and vector retrieval."
+      ],
+      "technologies": [
+        "TypeScript",
+        "Node.js",
+        "React",
+        "Vite",
+        "Python",
+        "RAG",
+        "Vector Search"
+      ],
+      "github": "https://github.com/sahit1011/Resume-Screener-Tool",
+      "featured": false
     }
   ],
   "resume": {
