@@ -6,6 +6,7 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
 import MagneticButton from '../MagneticButton';
 import Typewriter from '../Typewriter';
 import HeroBackdrop from '../hero/HeroBackdrop';
+import HeroConsole from '../hero/HeroConsole';
 import { EASE_OUT } from '../motion';
 import { getPersonalInfo, getGithubUrl, getLinkedinUrl, getEmailComposeUrl } from '@/utils/content';
 
@@ -61,7 +62,8 @@ export default function Hero() {
       <div className="ambient-glow right-[-5%] bottom-[0%] h-[28rem] w-[28rem] opacity-10" aria-hidden />
 
       <motion.div style={{ y: textY, opacity: textOpacity }} className="shell relative z-10">
-        <div className="relative z-10 lg:max-w-[54%]">
+        <div className="lg:grid lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.92fr)] lg:items-center lg:gap-12">
+        <div className="relative z-10">
         <motion.p {...fadeUp(0)} className="stamp mb-10 flex flex-wrap items-center gap-x-3 gap-y-1">
           <span className="inline-flex items-center gap-2">
             <span className="inline-block h-1.5 w-1.5 animate-amber-pulse rounded-full bg-signal" />
@@ -134,6 +136,13 @@ export default function Hero() {
           <span className="hidden h-px w-12 bg-hair sm:block" />
           <span className="hidden font-mono text-xs text-faint sm:block">scroll to explore ↓</span>
         </motion.div>
+        </div>
+
+        {/* right column — terminal console filling the desktop void.
+            Anchored low (self-end + offset) so it clears the fun-fact toast zone top-right. */}
+        <div className="relative hidden lg:flex lg:translate-y-6 lg:justify-end lg:self-end">
+          <HeroConsole />
+        </div>
         </div>
       </motion.div>
     </section>
