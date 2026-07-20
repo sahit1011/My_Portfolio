@@ -506,6 +506,7 @@
         "JWT"
       ],
       "github": "https://github.com/sahit1011/Full-Stack-MiniAI-As-A-Service",
+      "demo": "https://klaro-vert.vercel.app",
       "featured": true,
       "image": "/images/klaro-landing.png",
       "previewVideo": "/videos/klaro.mp4",
