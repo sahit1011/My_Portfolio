@@ -56,7 +56,6 @@ export default function AboutSkills() {
               <CountUp to={2} suffix="+" />
               <span className="ml-1.5 text-base font-normal text-muted">yrs</span>
             </p>
-            <p className="mt-1 text-sm text-muted">Internships &amp; freelancing</p>
           </SpotlightCard>
 
           <SpotlightCard tilt className={CARD}>
