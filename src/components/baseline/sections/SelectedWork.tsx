@@ -101,7 +101,7 @@ export default function SelectedWork() {
   };
 
   return (
-    <section id="work" className="scroll-mt-20 border-t border-hair py-24 sm:py-32">
+    <section id="work" className="scroll-mt-20 border-t border-hair py-16 sm:py-20">
       <div className="shell">
         <SectionHeader
           stamp="Selected Work"

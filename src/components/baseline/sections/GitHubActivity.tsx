@@ -97,7 +97,7 @@ export default function GitHubActivity() {
   }, [primary]);
 
   return (
-    <section id="github" className="scroll-mt-20 border-t border-hair py-24 sm:py-32">
+    <section id="github" className="scroll-mt-20 border-t border-hair py-16 sm:py-20">
       <div className="shell">
         <SectionHeader
           stamp="Open Source"

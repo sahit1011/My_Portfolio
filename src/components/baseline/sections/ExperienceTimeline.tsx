@@ -19,7 +19,7 @@ export default function ExperienceTimeline() {
   };
 
   return (
-    <section id="experience" className="scroll-mt-20 border-t border-hair py-24 sm:py-32">
+    <section id="experience" className="scroll-mt-20 border-t border-hair py-16 sm:py-20">
       <div className="shell">
         <SectionHeader
           stamp="Experience"

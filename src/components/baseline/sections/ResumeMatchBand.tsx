@@ -6,7 +6,7 @@ import MagneticButton from '../MagneticButton';
 
 export default function ResumeMatchBand() {
   return (
-    <section className="shell scroll-mt-20 border-t border-hair py-24 sm:py-32">
+    <section className="shell scroll-mt-20 border-t border-hair py-16 sm:py-20">
       <Reveal className="relative overflow-hidden rounded-2xl border border-hair bg-surface p-8 sm:p-12">
         <div className="ambient-glow right-[-8%] top-[-30%] h-[24rem] w-[24rem] opacity-[0.12]" aria-hidden />
         <div className="relative grid grid-cols-1 items-center gap-8 lg:grid-cols-[1.3fr_0.7fr]">

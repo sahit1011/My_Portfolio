@@ -11,7 +11,7 @@ export default function ContactSection() {
   const emailCompose = getEmailComposeUrl();
 
   return (
-    <section id="contact" className="shell scroll-mt-20 border-t border-hair py-24 sm:py-32">
+    <section id="contact" className="shell scroll-mt-20 border-t border-hair py-16 sm:py-20">
       <SectionHeader stamp="Contact" title="Let's build something." />
 
       <Reveal className="grid grid-cols-1 gap-10 lg:grid-cols-[1.2fr_0.8fr]">
