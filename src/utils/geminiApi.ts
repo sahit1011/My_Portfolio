@@ -1,6 +1,6 @@
 // Gemini API integration
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { logToFile, createAnalysisLogFile } from './logger';
+import { logToFile, logVerbose, createAnalysisLogFile } from './serverLogger';
 import {
   getPersonalInfo,
   getExperiences,
@@ -319,20 +319,20 @@ export async function analyzeJobDescription(jobDescription: string): Promise<Res
   // Log the full resume context being sent to LLM
   const resumeContextMessage = "📄📄📄 FULL RESUME CONTEXT BEING SENT TO LLM 📄📄📄";
   console.log("\n\n" + resumeContextMessage);
-  await logToFile(resumeContextMessage, logFilename);
+  await logVerbose(resumeContextMessage, logFilename);
   console.log("==================================================");
   console.log(resumeContent);
-  await logToFile(resumeContent, logFilename);
+  await logVerbose(resumeContent, logFilename);
   console.log("==================================================");
   console.log("📄📄📄 END RESUME CONTEXT 📄📄📄\n\n");
 
   // Log the complete prompt being sent to LLM
   const promptLogMessage = "🤖🤖🤖 COMPLETE PROMPT BEING SENT TO LLM 🤖🤖🤖";
   console.log("\n\n" + promptLogMessage);
-  await logToFile(promptLogMessage, logFilename);
+  await logVerbose(promptLogMessage, logFilename);
   console.log("==================================================");
   console.log(prompt);
-  await logToFile(prompt, logFilename);
+  await logVerbose(prompt, logFilename);
   console.log("==================================================");
   console.log("🤖🤖🤖 END COMPLETE PROMPT 🤖🤖🤖\n\n");
 
@@ -363,10 +363,10 @@ export async function analyzeJobDescription(jobDescription: string): Promise<Res
 
       const rawResponseStartMessage = "🤖🤖🤖 RAW GEMINI RESPONSE START 🤖🤖🤖";
       console.log("\n\n" + rawResponseStartMessage);
-      await logToFile(rawResponseStartMessage, logFilename);
+      await logVerbose(rawResponseStartMessage, logFilename);
       console.log("==================================================");
       console.log(text);
-      await logToFile(text, logFilename);
+      await logVerbose(text, logFilename);
       console.log("==================================================");
       console.log("🤖🤖🤖 RAW GEMINI RESPONSE END 🤖🤖🤖\n\n");
 
@@ -406,7 +406,7 @@ export async function analyzeJobDescription(jobDescription: string): Promise<Res
         };
 
         console.log("🎉 Gemini analysis complete! Returning results.");
-        await logToFile(`🎉 Analysis complete! Results: ${JSON.stringify(result, null, 2)}`, logFilename);
+        await logVerbose(`🎉 Analysis complete! Results: ${JSON.stringify(result, null, 2)}`, logFilename);
 
         return result;
       } catch (parseError) {
@@ -437,10 +437,10 @@ export async function analyzeJobDescription(jobDescription: string): Promise<Res
 
     const rawResponseStartMessage = "🤖🤖🤖 RAW OPENROUTER RESPONSE START 🤖🤖🤖";
     console.log("\n\n" + rawResponseStartMessage);
-    await logToFile(rawResponseStartMessage, logFilename);
+    await logVerbose(rawResponseStartMessage, logFilename);
     console.log("==================================================");
     console.log(openRouterText);
-    await logToFile(openRouterText, logFilename);
+    await logVerbose(openRouterText, logFilename);
     console.log("==================================================");
     console.log("🤖🤖🤖 RAW OPENROUTER RESPONSE END 🤖🤖🤖\n\n");
 
@@ -480,7 +480,7 @@ export async function analyzeJobDescription(jobDescription: string): Promise<Res
       };
 
       console.log("🎉 OpenRouter analysis complete! Returning results.");
-      await logToFile(`🎉 OpenRouter analysis complete! Results: ${JSON.stringify(result, null, 2)}`, logFilename);
+      await logVerbose(`🎉 OpenRouter analysis complete! Results: ${JSON.stringify(result, null, 2)}`, logFilename);
 
       return result;
     } catch (parseError) {
@@ -537,7 +537,7 @@ async function getSimulatedResponse(jobDescription: string, logFilename: string)
   };
 
   console.log("🎉 Simulated response generated successfully!");
-  await logToFile(`💻 SIMULATED RESPONSE: ${JSON.stringify(result, null, 2)}`, logFilename);
+  await logVerbose(`💻 SIMULATED RESPONSE: ${JSON.stringify(result, null, 2)}`, logFilename);
 
   return result;
 }
