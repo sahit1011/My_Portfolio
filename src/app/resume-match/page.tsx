@@ -26,6 +26,8 @@ interface AnalysisResult {
   candidateSummary: string;
   warnings?: string[];
   recommendedProjects: RecProject[];
+  // Set when no AI provider was reachable and the scores are placeholders.
+  simulated?: boolean;
 }
 
 const SAMPLE_JD = `Senior AI/ML Engineer
@@ -245,6 +247,17 @@ export default function ResumeMatchPage() {
             id="results" variants={reveal} initial="hidden" animate="show"
             className="mt-8 space-y-8 pb-24"
           >
+            {results.simulated && (
+              <div className="rounded-xl border border-warn/30 bg-warn/5 p-6">
+                <p className="stamp mb-3 text-warn">AI analysis unavailable</p>
+                <p className="text-muted">
+                  No AI provider could be reached, so the scores below are randomly
+                  generated placeholders — not a real assessment of this job
+                  description. Please try again later.
+                </p>
+              </div>
+            )}
+
             <div className="panel p-6 sm:p-8">
               <ScoreMeter value={results.overallMatch} />
               {results.candidateSummary && (

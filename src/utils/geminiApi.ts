@@ -15,6 +15,12 @@ import {
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
 const OPENROUTER_MODEL = 'deepseek/deepseek-chat';
 
+// Hard ceilings per provider. The route's maxDuration is 60s and Gemini is
+// tried before OpenRouter, so both must fit inside that budget with room for
+// the fallback to actually run.
+const GEMINI_TIMEOUT_MS = 25_000;
+const OPENROUTER_TIMEOUT_MS = 25_000;
+
 // Initialize the Gemini API with your API key.
 // Prefer the server-only var; fall back to the legacy NEXT_PUBLIC one so
 // existing deployments keep working. This util must only run server-side
@@ -191,9 +197,12 @@ CANDIDATE PREFERENCES:
   `;
 }
 
-// Function to call OpenRouter API as fallback
+// Function to call OpenRouter API as fallback.
+// Prefer the server-only var, same as Gemini above; fall back to the legacy
+// NEXT_PUBLIC name so existing deployments keep working.
 async function callOpenRouterAPI(prompt: string, logFilename: string): Promise<string> {
-  const openRouterApiKey = process.env.NEXT_PUBLIC_OPENROUTER_API_KEY;
+  const openRouterApiKey =
+    process.env.OPENROUTER_API_KEY || process.env.NEXT_PUBLIC_OPENROUTER_API_KEY;
 
   if (!openRouterApiKey) {
     const noApiKeyMessage = "⚠️ OpenRouter API key not found, cannot use fallback";
@@ -209,6 +218,7 @@ async function callOpenRouterAPI(prompt: string, logFilename: string): Promise<s
   try {
     const response = await fetch(OPENROUTER_API_URL, {
       method: 'POST',
+      signal: AbortSignal.timeout(OPENROUTER_TIMEOUT_MS),
       headers: {
         'Authorization': `Bearer ${openRouterApiKey}`,
         'Content-Type': 'application/json',
@@ -300,6 +310,10 @@ export interface ResumeAnalysisResult {
   candidateSummary: string;
   recommendedProjects: RecommendedProject[];
   recommendedProjectIds?: number[];
+  // True when every provider failed and the scores are randomly generated
+  // placeholders. The UI MUST say so — otherwise the page presents invented
+  // match percentages to recruiters as a real assessment.
+  simulated?: boolean;
 }
 
 export async function analyzeJobDescription(jobDescription: string): Promise<ResumeAnalysisResult> {
@@ -346,7 +360,10 @@ export async function analyzeJobDescription(jobDescription: string): Promise<Res
     await logToFile(apiKeyFoundMessage, logFilename);
 
     try {
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+      const model = genAI.getGenerativeModel(
+        { model: "gemini-1.5-pro" },
+        { timeout: GEMINI_TIMEOUT_MS }
+      );
 
       const sendingPromptMessage = "🚀 Sending prompt to Gemini API...";
       console.log("\n" + sendingPromptMessage);
@@ -533,7 +550,8 @@ async function getSimulatedResponse(jobDescription: string, logFilename: string)
     missingSkills: ['GraphQL', 'Kubernetes', 'Swift', 'Kotlin', 'Rust']
       .filter(() => Math.random() > 0.6),
     candidateSummary: `Anil Sahith demonstrates strong expertise in ${skills.slice(0, 3).join(', ')} and other technologies relevant to this position. With a background in both software engineering and AI/ML, he brings a versatile skill set that would be valuable for this role.`,
-    recommendedProjects
+    recommendedProjects,
+    simulated: true
   };
 
   console.log("🎉 Simulated response generated successfully!");

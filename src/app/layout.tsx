@@ -9,7 +9,10 @@ import GrainOverlay from "@/components/baseline/GrainOverlay";
 import CommandPalette from "@/components/baseline/CommandPalette";
 import SmoothScroll from "@/components/baseline/SmoothScroll";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://anilsahith.vercel.app";
+// Fallback must match the real deployment: anilsahith.vercel.app has no
+// deployment behind it, which pointed every canonical URL and OG image at a
+// dead host. Override with NEXT_PUBLIC_SITE_URL when a custom domain exists.
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://anil-portfolio-chi.vercel.app";
 const description =
   "Anil Sahith — AI/ML Engineer building real-world machine learning systems and the full-stack products around them.";
 
