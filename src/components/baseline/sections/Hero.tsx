@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaEnvelope, FaArrowRight } from 'react-icons/fa';
 import MagneticButton from '../MagneticButton';
@@ -10,6 +10,31 @@ import { EASE_OUT } from '../motion';
 import { getPersonalInfo, getGithubUrl, getLinkedinUrl, getEmailComposeUrl } from '@/utils/content';
 
 const ROLES = ['a Software Engineer', 'an AI Engineer', 'an ML Engineer', 'a Data Scientist'];
+
+// 12 July 2002, 11:34 PM IST.
+const BIRTH_MS = Date.parse('2002-07-12T23:34:00+05:30');
+// Mean Gregorian year (365.2425 days), so leap years average out.
+const MS_PER_YEAR = 365.2425 * 24 * 60 * 60 * 1000;
+// One second is ~3.2e-8 years; 9 decimals makes the last digits move every tick.
+const AGE_DECIMALS = 9;
+
+/** Age in decimal years, ticking every second. Empty until mount: the page is
+ *  statically prerendered, so a server-computed age would be the build-time age. */
+function LiveAge() {
+  const [now, setNow] = useState<number | null>(null);
+
+  useEffect(() => {
+    setNow(Date.now());
+    const t = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(t);
+  }, []);
+
+  return (
+    <span className="inline-block min-w-[12ch] tabular-nums">
+      {now === null ? '' : ((now - BIRTH_MS) / MS_PER_YEAR).toFixed(AGE_DECIMALS)}
+    </span>
+  );
+}
 
 const fadeUp = (delay: number) => ({
   initial: { opacity: 0, y: 16 },
@@ -62,17 +87,6 @@ export default function Hero() {
 
       <motion.div style={{ y: textY, opacity: textOpacity }} className="shell relative z-10">
         <div className="relative z-10 lg:max-w-[54%]">
-        <motion.p {...fadeUp(0)} className="stamp mb-10 flex flex-wrap items-center gap-x-3 gap-y-1">
-          <span className="inline-flex items-center gap-2">
-            <span className="inline-block h-1.5 w-1.5 animate-amber-pulse rounded-full bg-signal" />
-            Available for work
-          </span>
-          <span className="text-faint">/</span>
-          <span>Software&nbsp;Engineer&nbsp;·&nbsp;AI/ML</span>
-          <span className="text-faint">/</span>
-          <span>{info.location}</span>
-        </motion.p>
-
         <motion.p
           {...fadeUp(0.05)}
           className="mb-2 font-mono text-lg text-muted sm:text-xl"
@@ -90,9 +104,8 @@ export default function Hero() {
         <motion.p
           {...fadeUp(0.13)}
           className="mt-1.5 font-mono text-sm text-faint"
-          title="24 — one byte (8-bit) in memory"
         >
-          <span className="text-signal">0001&nbsp;1000</span> yrs old
+          <span className="text-signal"><LiveAge /></span> yrs old
         </motion.p>
 
         <motion.div
