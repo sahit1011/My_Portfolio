@@ -485,6 +485,33 @@
       "demoVideo": "/videos/studyarc-demo.mp4"
     },
     {
+      "id": 22,
+      "title": "AnvyAI — On-Device Personal AI",
+      "slug": "anvyai",
+      "tag": "On-device AI · Android",
+      "preview": "/images/anvyai-landing.png",
+      "description": [
+        "A private personal AI that lives on your phone. It understands you in your own languages (Telugu, Hindi, Hinglish, even mixed in one sentence), and your life never leaves the device.",
+        "Learns your routines overnight and shows your day as one line: what it learned, what it is doing now, and what needs your yes. Birthdays and bills are ready before you remember them.",
+        "Runs errands in your apps, like groceries, rides and UPI payments, and never spends above your limit without asking.",
+        "Safe by design: it spots scam messages, keeps your sign-ins in a private vault, and lets you see, correct or forget anything it knows about you."
+      ],
+      "technologies": [
+        "Kotlin",
+        "Jetpack Compose",
+        "Rust",
+        "llama.cpp",
+        "Gemma",
+        "sherpa-onnx",
+        "SQLite",
+        "Python"
+      ],
+      "github": "",
+      "featured": true,
+      "previewVideo": "/videos/anvyai.mp4",
+      "demoVideo": "/videos/anvyai-demo.mp4"
+    },
+    {
       "id": 16,
       "title": "Klaro · Mini AI Analyst",
       "slug": "othor-ai-mini-analyst",
@@ -602,7 +629,7 @@
         "Vite"
       ],
       "github": "https://github.com/sahit1011/TodoAI",
-      "featured": true
+      "featured": false
     },
     {
       "id": 1,
