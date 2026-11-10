@@ -57,11 +57,6 @@ export default function NeuralField({ scrollRef }: { scrollRef: React.MutableRef
     let last = 0;
     let pulseTimer = 0;
 
-    // a comet that approaches the viewer (top-left → bottom-right, growing)
-    let comet: { t: number; dur: number } | null = null;
-    let cometTimer = 0;
-    let nextComet = 2 + Math.random() * 1.5; // first one after 2–3.5s
-
     const pointer = { cx: -9999, cy: -9999, has: false };
 
     const seed = () => {
@@ -207,71 +202,6 @@ export default function NeuralField({ scrollRef }: { scrollRef: React.MutableRef
         ctx.beginPath();
         ctx.arc(x, y, 2.1, 0, Math.PI * 2);
         ctx.fill();
-      }
-
-      // comet approaching the viewer: top-left → bottom-right, growing as it nears.
-      // Desktop only — skip entirely on narrow screens.
-      cometTimer += dt;
-      if (w < 1024) {
-        comet = null;
-      } else {
-        if (!comet && cometTimer >= nextComet) {
-          cometTimer = 0;
-          nextComet = 4 + Math.random() * 2; // then every ~4–6s
-          comet = { t: 0, dur: 4.6 }; // slower approach
-        }
-        if (comet) {
-          comet.t += dt / comet.dur;
-          if (comet.t >= 1) {
-            comet = null;
-          } else {
-            const t = comet.t;
-            const ease = Math.pow(t, 1.6); // accelerate + grow toward the viewer
-            // path: off the top-left corner → off the bottom-right corner
-            const x0 = -w * 0.08;
-            const y0 = -h * 0.12;
-            const cx = x0 + (w * 1.16) * ease;
-            const cy = y0 + (h * 1.27) * ease;
-            const scale = 0.12 + ease; // 0.12 → 1.12
-            const coreR = 1.5 + scale * 6; // smaller, crisp
-            const haloR = 4 + scale * 26;
-            const tailLen = 50 + scale * 220;
-            const opacity = Math.min(1, t * 4) * fade; // quick fade-in while far
-            // straight-line travel direction (constant)
-            const dlen = Math.hypot(w * 1.16, h * 1.27) || 1;
-            const ux = (w * 1.16) / dlen;
-            const uy = (h * 1.27) / dlen;
-            const tx = cx - ux * tailLen;
-            const ty = cy - uy * tailLen;
-            const tail = ctx.createLinearGradient(tx, ty, cx, cy);
-            tail.addColorStop(0, `rgba(${MINT}, 0)`);
-            tail.addColorStop(1, `rgba(${MINT}, ${0.7 * opacity})`);
-            ctx.strokeStyle = tail;
-            ctx.lineWidth = 1 + scale * 3;
-            ctx.lineCap = 'round';
-            ctx.beginPath();
-            ctx.moveTo(tx, ty);
-            ctx.lineTo(cx, cy);
-            ctx.stroke();
-            // soft mint glow (tight, on-brand)
-            const halo = ctx.createRadialGradient(cx, cy, 0, cx, cy, haloR);
-            halo.addColorStop(0, `rgba(${MINT}, ${0.5 * opacity})`);
-            halo.addColorStop(1, `rgba(${MINT}, 0)`);
-            ctx.fillStyle = halo;
-            ctx.beginPath();
-            ctx.arc(cx, cy, haloR, 0, Math.PI * 2);
-            ctx.fill();
-            // solid mint core with a hot center — crisp, not a fuzzy blob
-            ctx.fillStyle = `rgba(150, 235, 205, ${opacity})`;
-            ctx.beginPath();
-            ctx.arc(cx, cy, coreR, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.fillStyle = `rgba(240, 255, 250, ${opacity})`;
-            ctx.beginPath();
-            ctx.arc(cx, cy, coreR * 0.5, 0, Math.PI * 2);
-            ctx.fill();
-          }
-        }
       }
     };
 
