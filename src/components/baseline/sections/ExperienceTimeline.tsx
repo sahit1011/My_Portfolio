@@ -33,17 +33,13 @@ export default function ExperienceTimeline() {
             ref={trackRef}
             className="scrollbar-none flex snap-x snap-mandatory items-stretch gap-5 overflow-x-auto pb-2"
           >
-            {experiences.map((exp, i) => {
+            {experiences.map((exp) => {
               const points = exp.highlights ?? exp.description;
               return (
                 <article
                   key={exp.id}
                   className="relative flex min-h-[24rem] w-[90%] shrink-0 snap-start flex-col overflow-hidden rounded-2xl border border-hair bg-surface p-7 sm:w-[85%] sm:p-10 lg:w-[74%]"
                 >
-                  {/* big faded index */}
-                  <span className="pointer-events-none absolute -right-1 top-0 select-none font-mono text-[7rem] font-bold leading-none text-white/[0.03] sm:text-[9rem]">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
                   <div className="ambient-glow left-[-8%] top-[-30%] h-[22rem] w-[22rem] opacity-[0.1]" aria-hidden />
 
                   <div className="relative">
